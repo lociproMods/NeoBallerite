@@ -1,14 +1,18 @@
 package com.locipro.neoballerite.menu.tabs;
 
 import static com.locipro.neoballerite.NeoBallerite.MODID;
+
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import static com.locipro.neoballerite.item.ModItems.*;
+import static com.locipro.neoballerite.block.ModBlocks.*;
 
 public class ModCreativeTabs {
 
@@ -16,15 +20,28 @@ public class ModCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
 
-    // Creates a creative tab with the id "neoballerite:example_tab" for the example item, that is placed after the combat tab
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.exampletab")) //The language key for the title of your CreativeModeTab
-            .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> EXAMPLE_ITEM.get().getDefaultInstance())
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_TOOLS = CREATIVE_MODE_TABS.register("ballerite_tools", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.ballerite_tools"))
+            .withTabsBefore(CreativeModeTabs.COMBAT) // After the last tab (combat)
+            .icon(() -> BALL_DOWSER.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(EXAMPLE_ITEM.get());
-                output.accept(EXAMPLE_ITEM.get());
-                // Add the example item to the tab. For your own tabs, this method is preferred over the event
+                output.accept(BALL_DOWSER.get());
+            }).build());
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_BLOCKS = CREATIVE_MODE_TABS.register("ballerite_blocks", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.ballerite_blocks"))
+            .withTabsBefore(ResourceLocation.fromNamespaceAndPath(MODID, "ballerite_tools")) // After our first itemgroup
+            .icon(() -> new ItemStack(COMPRESSED_BALLERITE_BLOCK)) // You either `X_BLOCK.get().asItem().getDefaultInstance()` or just itemstack
+            .displayItems((parameters, output) -> {
+                output.accept(COMPRESSED_BALLERITE_BLOCK);
+                output.accept(CHARRED_BALLERITE_BLOCK);
+            }).build());
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_ITEMS = CREATIVE_MODE_TABS.register("ballerite_items", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.ballerite_items"))
+            .withTabsBefore(ResourceLocation.fromNamespaceAndPath(MODID, "ballerite_blocks"))
+            .icon(() -> COMPRESSED_BALLERITE_INGOT.get().getDefaultInstance())
+            .displayItems((parameters, output) -> {
+                output.accept(COMPRESSED_BALLERITE_INGOT);
+                output.accept(RAW_BALLERITE);
             }).build());
 
 }
