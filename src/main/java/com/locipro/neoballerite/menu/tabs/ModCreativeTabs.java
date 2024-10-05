@@ -24,9 +24,7 @@ public class ModCreativeTabs {
             .title(Component.translatable("itemGroup.ballerite_tools"))
             .withTabsBefore(CreativeModeTabs.COMBAT) // After the last tab (combat)
             .icon(() -> BALL_DOWSER.get().getDefaultInstance())
-            .displayItems((parameters, output) -> {
-                output.accept(BALL_DOWSER.get());
-            }).build());
+            .displayItems((parameters, output) -> output.accept(BALL_DOWSER.get())).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_BLOCKS = CREATIVE_MODE_TABS.register("ballerite_blocks", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.ballerite_blocks"))
             .withTabsBefore(ResourceLocation.fromNamespaceAndPath(MODID, "ballerite_tools")) // After our first itemgroup
