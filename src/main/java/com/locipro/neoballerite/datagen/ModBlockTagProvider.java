@@ -26,6 +26,20 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(RAW_BALLERITE_BLOCK.get())
                 .add(COOKED_BALLERITE_BLOCK.get());
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(WITHERED_LOG.get())
+                .add(STRIPPED_WITHERED_LOG.get())
+                .add(WITHERED_WOOD.get())
+                .add(STRIPPED_WITHERED_WOOD.get())
+                .add(WITHERED_PLANKS.get())
+                .add(WITHERED_SLAB.get())
+                .add(WITHERED_STAIRS.get())
+                .add(WITHERED_DOOR.get())
+                .add(WITHERED_TRAPDOOR.get())
+                .add(WITHERED_BUTTON.get())
+                .add(WITHERED_PRESSURE_PLATE.get())
+                .add(WITHERED_FENCE.get())
+                .add(WITHERED_FENCE_GATE.get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(BALLERITE_ORE.get())
@@ -34,6 +48,27 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(CHARRED_BALLERITE_BLOCK.get())
                 .add(COMPRESSED_BALLERITE_BLOCK.get());
 
+        tag(BlockTags.LOGS_THAT_BURN)
+                .add(WITHERED_LOG.get())
+                .add(STRIPPED_WITHERED_LOG.get())
+                .add(WITHERED_WOOD.get())
+                .add(STRIPPED_WITHERED_WOOD.get());
+        tag(BlockTags.WOODEN_FENCES)
+                .add(WITHERED_FENCE.get());
+        tag(BlockTags.FENCE_GATES)
+                .add(WITHERED_FENCE_GATE.get());
+        tag(BlockTags.WOODEN_DOORS)
+                .add(WITHERED_DOOR.get());
+        tag(BlockTags.WOODEN_TRAPDOORS)
+                .add(WITHERED_TRAPDOOR.get());
+        tag(BlockTags.WOODEN_PRESSURE_PLATES)
+                .add(WITHERED_PRESSURE_PLATE.get());
+        tag(BlockTags.WOODEN_BUTTONS)
+                .add(WITHERED_BUTTON.get());
+        tag(BlockTags.WOODEN_SLABS)
+                .add(WITHERED_SLAB.get());
+        tag(BlockTags.WOODEN_STAIRS)
+                .add(WITHERED_STAIRS.get());
 
         tag(ModTags.Blocks.BALLERITE_BLOCKS)
                 .add(BALLERITE_ORE.get())

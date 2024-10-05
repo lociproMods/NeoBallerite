@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "neoballerite:block/withered_planks",
+    "side": "neoballerite:block/withered_planks",
+    "top": "neoballerite:block/withered_planks"
+  }
+}

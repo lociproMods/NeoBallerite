@@ -36,6 +36,25 @@ public class ModCreativeTabs {
                 output.accept(CHARRED_BALLERITE_BLOCK);
                 output.accept(COMPRESSED_BALLERITE_BLOCK);
             }).build());
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WOODEN_BLOCKS = CREATIVE_MODE_TABS.register("wooden_blocks", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.withered_blocks"))
+            .withTabsBefore(ResourceLocation.fromNamespaceAndPath(MODID, "ballerite_blocks"))
+            .icon(() -> new ItemStack(WITHERED_PLANKS)) // You either `X_BLOCK.get().asItem().getDefaultInstance()` or just itemstack
+            .displayItems((parameters, output) -> {
+                output.accept(WITHERED_LOG);
+                output.accept(STRIPPED_WITHERED_LOG);
+                output.accept(WITHERED_WOOD);
+                output.accept(STRIPPED_WITHERED_WOOD);
+                output.accept(WITHERED_PLANKS);
+                output.accept(WITHERED_DOOR);
+                output.accept(WITHERED_FENCE_GATE);
+                output.accept(WITHERED_BUTTON);
+                output.accept(WITHERED_FENCE);
+                output.accept(WITHERED_TRAPDOOR);
+                output.accept(WITHERED_STAIRS);
+                output.accept(WITHERED_SLAB);
+                output.accept(WITHERED_PRESSURE_PLATE);
+            }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_ITEMS = CREATIVE_MODE_TABS.register("ballerite_items", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.ballerite_items"))
             .withTabsBefore(ResourceLocation.fromNamespaceAndPath(MODID, "ballerite_blocks"))

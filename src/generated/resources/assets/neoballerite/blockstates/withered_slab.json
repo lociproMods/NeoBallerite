@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "neoballerite:block/withered_slab"
+    },
+    "type=double": {
+      "model": "neoballerite:block/withered_planks"
+    },
+    "type=top": {
+      "model": "neoballerite:block/withered_slab_top"
+    }
+  }
+}

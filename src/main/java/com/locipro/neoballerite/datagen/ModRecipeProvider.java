@@ -1,6 +1,7 @@
 package com.locipro.neoballerite.datagen;
 
 import com.locipro.neoballerite.NeoBallerite;
+import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -29,6 +30,46 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         twoByTwoPacker(recipeOutput, RecipeCategory.MISC, RAW_BALLERITE_BLOCK, RAW_BALLERITE);
         twoByTwoPacker(recipeOutput, RecipeCategory.MISC, COOKED_BALLERITE_BLOCK, COOKED_BALLERITE);
+        twoByTwoPacker(recipeOutput, RecipeCategory.MISC, CHARRED_BALLERITE_BLOCK, CHARRED_BALLERITE);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, CHARRED_BALLERITE, 4)
+                        .requires(CHARRED_BALLERITE_BLOCK)
+                        .group("ballerite")
+                        .unlockedBy("has_charred_ballerite_block", has(CHARRED_BALLERITE_BLOCK))
+                        .save(recipeOutput);
+
+        planksFromLogs(recipeOutput, WITHERED_PLANKS, ModTags.Items.WITHERED_LOGS, 4);
+        woodFromLogs(recipeOutput, WITHERED_WOOD, WITHERED_LOG);
+        // Not actually sure if it's supposed to be like this.
+        woodFromLogs(recipeOutput, STRIPPED_WITHERED_WOOD, STRIPPED_WITHERED_LOG);
+
+
+        stairBuilder(WITHERED_STAIRS, Ingredient.of(WITHERED_PLANKS))
+                .group("withered")
+                .unlockedBy("has_withered_planks", has(WITHERED_PLANKS)).save(recipeOutput);
+        slab(recipeOutput, RecipeCategory.BUILDING_BLOCKS, WITHERED_SLAB, WITHERED_PLANKS);
+
+        fenceBuilder(WITHERED_FENCE, Ingredient.of(WITHERED_PLANKS))
+                .group("withered")
+                .unlockedBy("has_withered_planks", has(WITHERED_PLANKS)).save(recipeOutput);
+        fenceGateBuilder(WITHERED_FENCE_GATE, Ingredient.of(WITHERED_PLANKS))
+                .group("withered")
+                .unlockedBy("has_withered_planks", has(WITHERED_PLANKS)).save(recipeOutput);
+
+        buttonBuilder(WITHERED_BUTTON, Ingredient.of(WITHERED_PLANKS))
+                .group("withered")
+                .unlockedBy("has_withered_planks", has(WITHERED_PLANKS)).save(recipeOutput);
+        pressurePlate(recipeOutput, WITHERED_PRESSURE_PLATE, WITHERED_PLANKS);
+
+        doorBuilder(WITHERED_DOOR, Ingredient.of(WITHERED_PLANKS))
+                .group("withered")
+                .unlockedBy("has_withered_planks", has(WITHERED_PLANKS)).save(recipeOutput);
+        trapdoorBuilder(WITHERED_TRAPDOOR, Ingredient.of(WITHERED_PLANKS))
+                .group("withered")
+                .unlockedBy("has_withered_planks", has(WITHERED_PLANKS)).save(recipeOutput);
+
+
+
+
 //        threeByThreePacker(recipeOutput, RecipeCategory.MISC, COMPRESSED_BALLERITE_BLOCK, COMPRESSED_BALLERITE_INGOT);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, COMPRESSED_BALLERITE_BLOCK.get())
@@ -58,7 +99,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         offerSmeltingAndSmoking(recipeOutput, List.of(RAW_BALLERITE), RecipeCategory.FOOD, COOKED_BALLERITE,
                 0.25f, 200, "ballerite");
-        offerSmeltingAndSmoking(recipeOutput, List.of(RAW_BALLERITE_BLOCK), RecipeCategory.FOOD, COOKED_BALLERITE,
+        offerSmeltingAndSmoking(recipeOutput, List.of(RAW_BALLERITE_BLOCK), RecipeCategory.FOOD, COOKED_BALLERITE_BLOCK,
                 0.25f, 200, "ballerite");
 
 

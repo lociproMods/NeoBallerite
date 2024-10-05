@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "neoballerite:block/stripped_withered_log_top",
+    "side": "neoballerite:block/stripped_withered_log"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "neoballerite:block/stripped_withered_log_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "neoballerite:block/stripped_withered_log"
+    },
+    "axis=z": {
+      "model": "neoballerite:block/stripped_withered_log_horizontal",
+      "x": 90
+    }
+  }
+}

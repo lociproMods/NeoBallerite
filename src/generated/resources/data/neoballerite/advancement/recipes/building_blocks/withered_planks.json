@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_raw_ballerite_block": {
+    "has_logs": {
       "conditions": {
         "items": [
           {
-            "items": "neoballerite:raw_ballerite_block"
+            "items": "#neoballerite:withered_logs"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "neoballerite:cooked_ballerite_from_smoking_raw_ballerite_block"
+        "recipe": "neoballerite:withered_planks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_raw_ballerite_block"
+      "has_logs"
     ]
   ],
   "rewards": {
     "recipes": [
-      "neoballerite:cooked_ballerite_from_smoking_raw_ballerite_block"
+      "neoballerite:withered_planks"
     ]
   }
 }

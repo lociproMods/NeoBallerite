@@ -22,6 +22,7 @@ public class ModTags {
     }
     public static class Items {
         public static final TagKey<Item> BALLERITE_ITEMS = createTag("ballerite_items");
+        public static final TagKey<Item> WITHERED_LOGS = createTag("withered_logs");
 
         private static TagKey<Item> createTag(String name){
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(MODID, name));

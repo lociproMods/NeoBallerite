@@ -43,6 +43,22 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(CHARRED_BALLERITE_BLOCK.get());
         dropSelf(COMPRESSED_BALLERITE_BLOCK.get());
 
+
+        dropSelf(WITHERED_LOG.get());
+        dropSelf(STRIPPED_WITHERED_LOG.get());
+        dropSelf(WITHERED_WOOD.get());
+        dropSelf(STRIPPED_WITHERED_WOOD.get());
+
+        dropSelf(WITHERED_PLANKS.get());
+        add(WITHERED_SLAB.get(), createSlabItemTable(WITHERED_SLAB.get()));
+        dropSelf(WITHERED_STAIRS.get());
+        dropSelf(WITHERED_TRAPDOOR.get());
+        dropSelf(WITHERED_FENCE.get());
+        dropSelf(WITHERED_FENCE_GATE.get());
+        dropSelf(WITHERED_BUTTON.get());
+        dropSelf(WITHERED_PRESSURE_PLATE.get());
+        add(WITHERED_DOOR.get(), createDoorTable(WITHERED_DOOR.get()));
+
     }
 
     protected LootTable.Builder createVariableOreDrops(Block block, ItemLike item, NumberProvider numberProvider) {

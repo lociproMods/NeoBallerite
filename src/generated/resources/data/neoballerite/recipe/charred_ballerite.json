@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "ballerite",
+  "ingredients": [
+    {
+      "item": "neoballerite:charred_ballerite_block"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "neoballerite:charred_ballerite"
+  }
+}

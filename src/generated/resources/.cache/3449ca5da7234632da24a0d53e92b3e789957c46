@@ -1,2 +1,14 @@
-// 1.21.1	2024-10-05T07:38:09.8836499	Tags for minecraft:item mod id neoballerite
+// 1.21.1	2024-10-05T15:11:26.2074853	Tags for minecraft:item mod id neoballerite
+d3fa56d9d3b598d2a6e2c10c031a9aaef969cbd7 data/minecraft/tags/item/fence_gates.json
+6c24fbbd054bfc7403cf479549c9f92ac2ba514e data/minecraft/tags/item/logs.json
+6c24fbbd054bfc7403cf479549c9f92ac2ba514e data/minecraft/tags/item/logs_that_burn.json
+e5b2e77582737589c804035dca2c3d3e1ee52632 data/minecraft/tags/item/planks.json
+0a020433804ae3b7c1e3c88e08d6d795115b8d19 data/minecraft/tags/item/wooden_buttons.json
+d018f7e77422efb81353db02ac62f6ac8e5dbdbc data/minecraft/tags/item/wooden_doors.json
+02f13c4e184a4ded96d83b84a63ae4295ffb5695 data/minecraft/tags/item/wooden_fences.json
+5bfeaf648421bfa7005a805cc5cd084e689b5f02 data/minecraft/tags/item/wooden_pressure_plates.json
+8a092a7fc1b81cd0b575ddbeef262c000751c1b5 data/minecraft/tags/item/wooden_slabs.json
+cd4037b57774c19d46541645479c48c863efb62c data/minecraft/tags/item/wooden_stairs.json
+a0583de6584f52a60ee5e8edd3a55da5536d3198 data/minecraft/tags/item/wooden_trapdoors.json
 ed3acdbb69d7634a0b1e34e791573ae9b8af796b data/neoballerite/tags/item/ballerite_items.json
+6c24fbbd054bfc7403cf479549c9f92ac2ba514e data/neoballerite/tags/item/withered_logs.json

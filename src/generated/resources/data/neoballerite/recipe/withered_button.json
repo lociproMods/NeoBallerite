@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "withered",
+  "ingredients": [
+    {
+      "item": "neoballerite:withered_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "neoballerite:withered_button"
+  }
+}

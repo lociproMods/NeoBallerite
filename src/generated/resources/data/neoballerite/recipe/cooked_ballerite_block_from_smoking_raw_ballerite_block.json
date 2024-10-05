@@ -1,7 +1,7 @@
 {
-  "type": "minecraft:smelting",
+  "type": "minecraft:smoking",
   "category": "food",
-  "cookingtime": 200,
+  "cookingtime": 100,
   "experience": 0.25,
   "group": "ballerite",
   "ingredient": {
@@ -9,6 +9,6 @@
   },
   "result": {
     "count": 1,
-    "id": "neoballerite:cooked_ballerite"
+    "id": "neoballerite:cooked_ballerite_block"
   }
 }

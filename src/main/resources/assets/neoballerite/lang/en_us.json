@@ -2,10 +2,36 @@
   "itemGroup.ballerite_tools": "Ballerite Tools",
   "itemGroup.ballerite_blocks" : "Ballerite Blocks",
   "itemGroup.ballerite_items" : "Ballerite Items",
+  "itemGroup.withered_blocks" : "Withered wood",
   "item.neoballerite.ball_dowser": "Ballerite Dowsing Rod",
   "item.neoballerite.raw_ballerite": "Raw Ballerite",
   "item.neoballerite.compressed_ballerite_ingot": "Compressed Ballerite Ingot",
-  "block.neoballerite.compressed_ballerite_block" : "Compressed Ballerite Block",
+  "item.neoballerite.cooked_ballerite": "Cooked Ballerite",
+  "item.neoballerite.charred_ballerite": "A charred clump of ballerite...",
+
+
+
+  "block.neoballerite.raw_ballerite_block" : "Raw Ballerite Block",
+  "block.neoballerite.cooked_ballerite_block" : "Cooked Ballerite Block",
+  "block.neoballerite.burnt_ballerite_block" : "Burnt Ballerite Block",
   "block.neoballerite.charred_ballerite_block" : "Charred Ballerite Block",
-  "block.neoballerite.ballerite_ore" : "Ballerite Ore Block"
+  "block.neoballerite.compressed_ballerite_block" : "Compressed Ballerite Block",
+  "block.neoballerite.ballerite_ore" : "Ballerite Ore Block",
+
+  "block.neoballerite.withered_log" : "Withered Log",
+  "block.neoballerite.withered_wood" : "Withered Wood",
+  "block.neoballerite.stripped_withered_log" : "Stripped Withered Log",
+  "block.neoballerite.stripped_withered_wood" : "Stripped Withered Wood",
+  "block.neoballerite.withered_planks" : "Withered Planks",
+
+  "block.neoballerite.withered_button" : "Withered Button",
+  "block.neoballerite.withered_pressure_plate" : "Withered Pressure Plate",
+  "block.neoballerite.withered_fence" : "Withered Fence",
+  "block.neoballerite.withered_fence_gate" : "Withered Fence Gate",
+
+  "block.neoballerite.withered_slab" : "Withered Slab",
+  "block.neoballerite.withered_stairs" : "Withered Stairs",
+
+  "block.neoballerite.withered_door" : "Withered Door",
+  "block.neoballerite.withered_trapdoor" : "Withered Trapdoor"
 }
