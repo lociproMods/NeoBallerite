@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "cookingtime": 100,
+  "experience": 0.25,
+  "group": "ballerite",
+  "ingredient": {
+    "item": "neoballerite:raw_ballerite_block"
+  },
+  "result": {
+    "count": 1,
+    "id": "neoballerite:cooked_ballerite"
+  }
+}

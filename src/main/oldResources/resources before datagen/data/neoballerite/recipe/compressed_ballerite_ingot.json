@@ -1,0 +1,13 @@
+{
+  "type" : "minecraft:crafting_shapeless",
+  "category" : "misc",
+  "ingredients": [
+    {
+      "item" : "neoballerite:compressed_ballerite_block"
+    }
+  ],
+  "result": {
+    "count" : 9,
+    "id" : "neoballerite:compressed_ballerite_ingot"
+  }
+}

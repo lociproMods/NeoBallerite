@@ -32,16 +32,21 @@ public class ModCreativeTabs {
             .withTabsBefore(ResourceLocation.fromNamespaceAndPath(MODID, "ballerite_tools")) // After our first itemgroup
             .icon(() -> new ItemStack(COMPRESSED_BALLERITE_BLOCK)) // You either `X_BLOCK.get().asItem().getDefaultInstance()` or just itemstack
             .displayItems((parameters, output) -> {
-                output.accept(COMPRESSED_BALLERITE_BLOCK);
+                output.accept(RAW_BALLERITE_BLOCK);
+                output.accept(COOKED_BALLERITE_BLOCK);
+                output.accept(BURNT_BALLERITE_BLOCK);
                 output.accept(CHARRED_BALLERITE_BLOCK);
+                output.accept(COMPRESSED_BALLERITE_BLOCK);
             }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_ITEMS = CREATIVE_MODE_TABS.register("ballerite_items", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.ballerite_items"))
             .withTabsBefore(ResourceLocation.fromNamespaceAndPath(MODID, "ballerite_blocks"))
             .icon(() -> COMPRESSED_BALLERITE_INGOT.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(COMPRESSED_BALLERITE_INGOT);
                 output.accept(RAW_BALLERITE);
+                output.accept(COOKED_BALLERITE);
+                output.accept(CHARRED_BALLERITE);
+                output.accept(COMPRESSED_BALLERITE_INGOT);
             }).build());
 
 }

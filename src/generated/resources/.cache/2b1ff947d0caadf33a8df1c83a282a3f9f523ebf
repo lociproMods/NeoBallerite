@@ -1,0 +1,6 @@
+// 1.21.1	2024-10-05T07:38:09.8846494	Tags for minecraft:block mod id neoballerite
+98aba5a742bd43c9fa58858ed74f85b5a90075cb data/minecraft/tags/block/mineable/pickaxe.json
+6a8c43dec3d909dd94a8d56b2d2797ccc01c4f67 data/minecraft/tags/block/mineable/shovel.json
+2a64a50a0b146d9501b32a2ae71488b3d4c9a7b5 data/minecraft/tags/block/needs_iron_tool.json
+995ab629f4289921cad48259ac5a2e3f820a40c4 data/minecraft/tags/block/needs_stone_tool.json
+e9806b0d71e3d7aab6023f572c306e43c948501d data/neoballerite/tags/block/ballerite_blocks.json

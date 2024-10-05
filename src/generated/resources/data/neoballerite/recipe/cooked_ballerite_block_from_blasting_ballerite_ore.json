@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "blocks",
+  "cookingtime": 130,
+  "experience": 0.25,
+  "group": "ballerite",
+  "ingredient": {
+    "item": "neoballerite:ballerite_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "neoballerite:cooked_ballerite_block"
+  }
+}

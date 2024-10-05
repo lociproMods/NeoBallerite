@@ -1,0 +1,10 @@
+{
+  "values": [
+    "neoballerite:ballerite_ore",
+    "neoballerite:raw_ballerite_block",
+    "neoballerite:cooked_ballerite_block",
+    "neoballerite:burnt_ballerite_block",
+    "neoballerite:charred_ballerite_block",
+    "neoballerite:compressed_ballerite_block"
+  ]
+}

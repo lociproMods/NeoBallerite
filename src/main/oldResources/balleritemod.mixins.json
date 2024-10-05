@@ -1,0 +1,24 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.locipro.balleritemod.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "AbstractHorseEntityMixin",
+    "PigEntityMixin",
+    "PlayerEntityMixin",
+    "drinks.MilkBucketItemMixin",
+    "drinks.ThrowPotionMixin",
+    "drinks.PotionItemMixin"
+  ],
+  "client": [
+    "BalleriteModMixin",
+    "client.ClientPlayerEntityMixin",
+    "client.MilkBucketItemClientMixin"
+  ],
+  "server": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

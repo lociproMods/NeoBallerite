@@ -1,0 +1,8 @@
+{
+  "replace" : false,
+  "values": [
+    "neoballerite:ballerite_ore",
+    "neoballerite:compressed_ballerite_block",
+    "neoballerite:charred_ballerite_block"
+  ]
+}

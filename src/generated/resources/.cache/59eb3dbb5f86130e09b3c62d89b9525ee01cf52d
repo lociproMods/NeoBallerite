@@ -1,0 +1,7 @@
+// 1.21.1	2024-10-05T07:15:49.0551085	Loot Tables
+5a86a00284c4b547b1259ca9228f729d2082b1a7 data/neoballerite/loot_table/blocks/ballerite_ore.json
+4be49505bcb9b4cac5e3ebd6184436550fc17f65 data/neoballerite/loot_table/blocks/burnt_ballerite_block.json
+81acfa015b9764e542dfcf7be755ef91d9df85a9 data/neoballerite/loot_table/blocks/charred_ballerite_block.json
+3c02d34151215ff40ee35ca75a688831093f3832 data/neoballerite/loot_table/blocks/compressed_ballerite_block.json
+b6146d9bc92ca2b892de5a19985d2c0d0759435c data/neoballerite/loot_table/blocks/cooked_ballerite_block.json
+8b248f7460ee96febdf6b8097ec6200102a1c2f5 data/neoballerite/loot_table/blocks/raw_ballerite_block.json

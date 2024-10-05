@@ -1,0 +1,10 @@
+{
+  "values": {
+    "neoballerite:charred_ballerite": {
+      "burn_time": 888
+    },
+    "neoballerite:charred_ballerite_block": {
+      "burn_time": 8000
+    }
+  }
+}

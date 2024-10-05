@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 260,
+  "experience": 0.25,
+  "group": "ballerite",
+  "ingredient": {
+    "item": "neoballerite:burnt_ballerite_block"
+  },
+  "result": {
+    "count": 1,
+    "id": "neoballerite:charred_ballerite_block"
+  }
+}
