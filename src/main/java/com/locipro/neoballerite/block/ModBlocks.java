@@ -11,17 +11,19 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Supplier;
@@ -125,19 +127,36 @@ public class ModBlocks {
     // There's something like "BlockFamily" ? maybe check that out
 
     public static final DeferredBlock<RotatedPillarBlock> WITHERED_LOG = registerBlock("withered_log",
-            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)));
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)) {
+                @Override
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility itemAbility, boolean simulate) {
+                    if (ItemAbilities.AXE_STRIP == itemAbility) {
+                        return STRIPPED_WITHERED_LOG.get().defaultBlockState();
+                    }
+                    return super.getToolModifiedState(state, context, itemAbility, simulate);
+                }
+            });
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_WITHERED_LOG = registerBlock("stripped_withered_log",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG)));
-    // TODO implement Strip-ables. check AxeItem for some funky shit there... idkk
+
     public static final DeferredBlock<RotatedPillarBlock> WITHERED_WOOD = registerBlock("withered_wood",
-            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)) {
+                @Override
+                public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility itemAbility, boolean simulate) {
+                    if (ItemAbilities.AXE_STRIP == itemAbility) {
+                        return STRIPPED_WITHERED_WOOD.get().defaultBlockState();
+                    }
+                    return super.getToolModifiedState(state, context, itemAbility, simulate);
+                }
+            });
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_WITHERED_WOOD = registerBlock("stripped_withered_wood",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)));
 
-    // TODO temporarily no lototable.
-    public static final DeferredBlock<LeavesBlock> WITHERED_LEAVES = registerBlock("withered_leaves",
-            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).noLootTable()));
 
+    public static final DeferredBlock<LeavesBlock> WITHERED_LEAVES = registerBlock("withered_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
+//    public static final DeferredBlock<SaplingBlock> WITHERED_SAPLING = registerBlock("withered_sapling",
+//            () -> new SaplingBlock())
 
     public static final DeferredBlock<Block> WITHERED_PLANKS = registerBlock("withered_planks",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));

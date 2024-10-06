@@ -10,6 +10,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
@@ -28,6 +29,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
     protected ModBlockLootTableProvider(HolderLookup.Provider registries) {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
     }
+    protected static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
+
 
     @Override
     protected void generate() {
@@ -46,6 +49,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         dropSelf(WITHERED_LOG.get());
         dropSelf(STRIPPED_WITHERED_LOG.get());
+        // TODO When sapling exists.
+        add(WITHERED_LEAVES.get(), createLeavesDrops(WITHERED_LEAVES.get(), Blocks.OAK_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
         dropSelf(WITHERED_WOOD.get());
         dropSelf(STRIPPED_WITHERED_WOOD.get());
 

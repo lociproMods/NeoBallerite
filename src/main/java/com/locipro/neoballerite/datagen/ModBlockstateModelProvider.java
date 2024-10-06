@@ -1,8 +1,8 @@
 package com.locipro.neoballerite.datagen;
 
-import net.minecraft.commands.arguments.TemplateRotationArgument;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -31,6 +31,8 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
 
         logWithItem(WITHERED_LOG);
         logWithItem(STRIPPED_WITHERED_LOG);
+        // Leaves aren't cubeAll... Hmmm
+        leavesWithItem(WITHERED_LEAVES);
 
         nWoodBlockWithItem(WITHERED_WOOD);
         nWoodBlockWithItem(STRIPPED_WITHERED_WOOD);
@@ -69,6 +71,11 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         // Makes a cubeAll block model with that texture, attached to our new block
         simpleBlock(block.get(), models().cubeAll(block.getId().getPath(), woodTexture));
         blockItem(block);
+    }
+    private void leavesWithItem(DeferredBlock<LeavesBlock> leavesBlock) {
+        ResourceLocation leavesTexture = modLoc("block/" + leavesBlock.getId().getPath());
+        simpleBlock(leavesBlock.get(), models().leaves(leavesBlock.getId().toString(), leavesTexture));
+        blockItem(leavesBlock);
     }
 
     /** NOW, I am a god and my ego remains unbroken. **/

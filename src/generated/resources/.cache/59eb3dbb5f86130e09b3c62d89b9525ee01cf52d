@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-05T13:52:04.9334805	Loot Tables
+// 1.21.1	2024-10-06T14:54:32.2382205	Loot Tables
 5a86a00284c4b547b1259ca9228f729d2082b1a7 data/neoballerite/loot_table/blocks/ballerite_ore.json
 4be49505bcb9b4cac5e3ebd6184436550fc17f65 data/neoballerite/loot_table/blocks/burnt_ballerite_block.json
 81acfa015b9764e542dfcf7be755ef91d9df85a9 data/neoballerite/loot_table/blocks/charred_ballerite_block.json
@@ -11,6 +11,7 @@ b553583615aad56311e3a5f855ba03448a16c4e2 data/neoballerite/loot_table/blocks/str
 5df955755ba459447e377893c2b129aba0447460 data/neoballerite/loot_table/blocks/withered_door.json
 6282f46672972f7b3e5f3162ca1d27453658d42f data/neoballerite/loot_table/blocks/withered_fence.json
 2edce249f6e93ebf595cb979df6b3824d884e13d data/neoballerite/loot_table/blocks/withered_fence_gate.json
+814bb1b9a319b07f493d2832d49476dca1d561a9 data/neoballerite/loot_table/blocks/withered_leaves.json
 d405ce2c575c9cab698cb20ab8f4664dbaba5f41 data/neoballerite/loot_table/blocks/withered_log.json
 f7319163fbf62f2a810da7bbe5588950c7501278 data/neoballerite/loot_table/blocks/withered_planks.json
 d215995488403b00e3f3c29515b54a2b0db82c6b data/neoballerite/loot_table/blocks/withered_pressure_plate.json

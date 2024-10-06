@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-06T14:21:58.520201	Block States: neoballerite
+// 1.21.1	2024-10-06T14:47:20.7488202	Block States: neoballerite
 73cab4e41bb73606af8b4806b1240e291388508c assets/neoballerite/blockstates/ballerite_ore.json
 0d8b345e21c654083fae5dd9c4750944907855de assets/neoballerite/blockstates/burnt_ballerite_block.json
 06344b8af153b122607ec9d5edbb55d7d1ce99dd assets/neoballerite/blockstates/charred_ballerite_block.json
@@ -11,6 +11,7 @@ ab62d1376bebe72e908f78ed4150c64c2b22f485 assets/neoballerite/blockstates/strippe
 05d2cc5b31f5f70cb3a732bdf8836ab72cf404a9 assets/neoballerite/blockstates/withered_door.json
 635b3c2b9465454a04eee3771fa5846d71e7e9d1 assets/neoballerite/blockstates/withered_fence.json
 19e11ff92b7366d66927e55d899e59c5d6afc880 assets/neoballerite/blockstates/withered_fence_gate.json
+3945eef742f9e94ff604b66cb6e4733e5814130b assets/neoballerite/blockstates/withered_leaves.json
 6e08f7fec04f4f1747e9fc4d2b5c9bc26412a436 assets/neoballerite/blockstates/withered_log.json
 6e7b68dcc7a54068e827b23bf722c3c920f49bdb assets/neoballerite/blockstates/withered_planks.json
 ec7acfcf416716156a67ceea154fccd1d6497575 assets/neoballerite/blockstates/withered_pressure_plate.json
@@ -44,6 +45,7 @@ f5a7f3f501e191eea2f493e1337721e46718b040 assets/neoballerite/models/block/wither
 de4493639eee509b8491a25b14f0cf56ef446081 assets/neoballerite/models/block/withered_fence_gate_wall_open.json
 049d0898ac84664b6d048358ec2d71e4dd201f1c assets/neoballerite/models/block/withered_fence_post.json
 db678082bf211b17eb7d2c09f236826292be02a7 assets/neoballerite/models/block/withered_fence_side.json
+159cf7596062af1de1580cf7999d5c58fbfd7c6a assets/neoballerite/models/block/withered_leaves.json
 426bdd75caed082869e3cda640adec5d09277fd2 assets/neoballerite/models/block/withered_log.json
 d33e230f345bebe0c8593e28f65d5e14853499ce assets/neoballerite/models/block/withered_log_horizontal.json
 359f65980712890fde3e6bf15af876424de761de assets/neoballerite/models/block/withered_planks.json
@@ -68,6 +70,7 @@ e4019b373d8dc097816db31ebc76ca04c4e83b43 assets/neoballerite/models/item/cooked_
 9a66c0745dcee7fc458145e41247d071a9dd6d43 assets/neoballerite/models/item/stripped_withered_log.json
 f7694ecea302e539500e7b6030937bd420c2ecf2 assets/neoballerite/models/item/stripped_withered_wood.json
 67af3f92c152e89f95c26d15ad2d62761577d597 assets/neoballerite/models/item/withered_fence_gate.json
+8d8cd499b8c027908da160c22514ed209958961f assets/neoballerite/models/item/withered_leaves.json
 185cf1bb98b0e9efa0a35e76b9f32d22d701ee60 assets/neoballerite/models/item/withered_log.json
 b34730dbea71b534c7352249488965ae7bdc3217 assets/neoballerite/models/item/withered_planks.json
 8f9f9565f764fa75904ea29ad28eada55c5c9cd5 assets/neoballerite/models/item/withered_pressure_plate.json

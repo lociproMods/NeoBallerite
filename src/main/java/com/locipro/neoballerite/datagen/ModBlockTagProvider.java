@@ -48,6 +48,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(CHARRED_BALLERITE_BLOCK.get())
                 .add(COMPRESSED_BALLERITE_BLOCK.get());
 
+        tag(BlockTags.LEAVES)
+                .add(WITHERED_LEAVES.get());
+
         tag(BlockTags.LOGS_THAT_BURN)
                 .add(WITHERED_LOG.get())
                 .add(STRIPPED_WITHERED_LOG.get())

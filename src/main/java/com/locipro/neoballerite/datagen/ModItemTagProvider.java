@@ -43,6 +43,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(WITHERED_WOOD.get().asItem())
                 .add(STRIPPED_WITHERED_WOOD.get().asItem());
 
+        tag(ItemTags.LEAVES)
+                .add(WITHERED_LEAVES.get().asItem());
+
         tag(ItemTags.LOGS_THAT_BURN)
                 .add(WITHERED_LOG.get().asItem())
                 .add(STRIPPED_WITHERED_LOG.get().asItem())
