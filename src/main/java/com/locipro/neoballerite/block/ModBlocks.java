@@ -122,6 +122,8 @@ public class ModBlocks {
             () -> new DropExperienceBlock(UniformInt.of(3, 4), BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_ORE)));
 
 
+    // There's something like "BlockFamily" ? maybe check that out
+
     public static final DeferredBlock<RotatedPillarBlock> WITHERED_LOG = registerBlock("withered_log",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)));
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_WITHERED_LOG = registerBlock("stripped_withered_log",
@@ -131,6 +133,11 @@ public class ModBlocks {
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_WITHERED_WOOD = registerBlock("stripped_withered_wood",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)));
+
+    // TODO temporarily no lototable.
+    public static final DeferredBlock<LeavesBlock> WITHERED_LEAVES = registerBlock("withered_leaves",
+            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).noLootTable()));
+
 
     public static final DeferredBlock<Block> WITHERED_PLANKS = registerBlock("withered_planks",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
@@ -150,8 +157,6 @@ public class ModBlocks {
     public static final DeferredBlock<FenceGateBlock> WITHERED_FENCE_GATE = registerBlock("withered_fence_gate",
             () -> new FenceGateBlock(WoodType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE)));
 
-//    public static final DeferredBlock<WallBlock> WITHERED_WALL = registerBlock("withered_wall",
-//            () -> new WallBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE)));
 
     public static final DeferredBlock<DoorBlock> WITHERED_DOOR = registerBlock("withered_door",
             () -> new DoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR).noOcclusion()));

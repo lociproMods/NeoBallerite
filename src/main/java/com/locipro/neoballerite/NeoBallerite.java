@@ -35,8 +35,10 @@ public class NeoBallerite {
 
 
         ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
-        ModItems.ITEMS.register(modEventBus);
+        // Blocks before Items. See https://docs.neoforged.net/docs/items/#:~:text=If%20you%20keep%20your%20registered%20blocks%20in%20a%20separate%20class%2C%20you%20should%20classload%20your%20blocks%20class%20before%20your%20items%20class.
         ModBlocks.BLOCKS.register(modEventBus);
+        ModItems.ITEMS.register(modEventBus);
+
 
 
 

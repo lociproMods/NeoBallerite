@@ -32,8 +32,8 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         logWithItem(WITHERED_LOG);
         logWithItem(STRIPPED_WITHERED_LOG);
 
-        woodBlockWithItem(WITHERED_WOOD);
-        woodBlockWithItem(STRIPPED_WITHERED_WOOD);
+        nWoodBlockWithItem(WITHERED_WOOD);
+        nWoodBlockWithItem(STRIPPED_WITHERED_WOOD);
 
         blockWithItem(WITHERED_PLANKS);
 
@@ -60,17 +60,36 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         simpleBlockWithItem(block.get(), cubeAll(block.get()));
     }
 
-    /** I am a god and my ego remains unbroken **/
+    /** I am a god and my ego remains unbroken
+     * update 1 day later : Actual wood blocks in the game are still axis-rotated blocks... This isn't.**/
     private void woodBlockWithItem(DeferredBlock<?> block) {
         // Gets the path to the normal default texture (the side texture)
         String woodTexturePath = block.getId().getPath().replace("wood", "log");
         ResourceLocation woodTexture = modLoc("block/" + woodTexturePath);
-
         // Makes a cubeAll block model with that texture, attached to our new block
         simpleBlock(block.get(), models().cubeAll(block.getId().getPath(), woodTexture));
-
         blockItem(block);
     }
+
+    /** NOW, I am a god and my ego remains unbroken. **/
+    private void nWoodBlockWithItem(DeferredBlock<RotatedPillarBlock> woodBlock) {
+        // Gets the path to the normal default texture (the side texture)
+        String woodTexturePath = woodBlock.getId().getPath().replace("wood", "log");
+        ResourceLocation woodTexture = modLoc("block/" + woodTexturePath);
+        // This treats the second parameter as "baseName" and goes and looks for "baseName_side" and "baseName_end".
+        //axisBlock(woodBlock.get(), woodTexture);
+        axisBlock(woodBlock.get(), woodTexture, woodTexture);
+        blockItem(woodBlock);
+        // This makes a cubeAll block... Which actual wood isn't!
+        //simpleBlock(woodBlock.get(), models().cubeAll(woodBlock.getId().getPath(), woodTexture));
+    }/*public BlockModelGenerators.WoodProvider wood(Block woodBlock) {
+            TextureMapping texturemapping = this.logMapping.copyAndUpdate(TextureSlot.END, this.logMapping.get(TextureSlot.SIDE));
+            ResourceLocation resourcelocation = ModelTemplates.CUBE_COLUMN.create(woodBlock, texturemapping, BlockModelGenerators.this.modelOutput);
+            BlockModelGenerators.this.blockStateOutput.accept(BlockModelGenerators.createAxisAlignedPillarBlock(woodBlock, resourcelocation));
+            return this;
+        }*/
+
+
     private void blockItem(DeferredBlock<?> deferredBlock) {
         simpleBlockItem(deferredBlock.get(), new ModelFile.UncheckedModelFile("neoballerite:block/" + deferredBlock.getId().getPath()));
     }

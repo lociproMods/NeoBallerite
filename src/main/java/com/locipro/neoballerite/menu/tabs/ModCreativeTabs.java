@@ -45,6 +45,7 @@ public class ModCreativeTabs {
                 output.accept(STRIPPED_WITHERED_LOG);
                 output.accept(WITHERED_WOOD);
                 output.accept(STRIPPED_WITHERED_WOOD);
+                output.accept(WITHERED_LEAVES);
                 output.accept(WITHERED_PLANKS);
                 output.accept(WITHERED_DOOR);
                 output.accept(WITHERED_FENCE_GATE);
@@ -54,6 +55,7 @@ public class ModCreativeTabs {
                 output.accept(WITHERED_STAIRS);
                 output.accept(WITHERED_SLAB);
                 output.accept(WITHERED_PRESSURE_PLATE);
+
             }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_ITEMS = CREATIVE_MODE_TABS.register("ballerite_items", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.ballerite_items"))
