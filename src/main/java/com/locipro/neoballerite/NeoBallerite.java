@@ -20,6 +20,10 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
+// TODO -
+//      Add sugar components
+//      Add claymores
+//      Make torches turn off during rain
 
 @Mod(NeoBallerite.MODID)
 public class NeoBallerite {

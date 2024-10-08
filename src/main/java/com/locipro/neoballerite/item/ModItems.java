@@ -59,6 +59,10 @@ public class ModItems {
 
     public static final DeferredItem<Item> LEAD_INGOT = ITEMS.register("lead_ingot",
             () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> RAW_LEAD = ITEMS.register("raw_lead",
+            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LEAD_NUGGET = ITEMS.register("lead_nugget",
+            () -> new Item(new Item.Properties()));
 
 
     

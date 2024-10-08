@@ -28,13 +28,16 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(RAW_BALLERITE.get());
+        basicItem(RAW_BALLERITE.get());
         basicItem(COOKED_BALLERITE.get());
         basicItem(CHARRED_BALLERITE.get());
         basicItem(COMPRESSED_BALLERITE_INGOT.get());
         basicItem(BALL_DOWSER.get());
 
 
+        basicItem(RAW_LEAD.get());
         basicItem(LEAD_INGOT.get());
+        basicItem(LEAD_NUGGET.get());
 
 //        basicItem(WITHERED_LOG.asItem());
 //        basicItem(STRIPPED_WITHERED_LOG.asItem());

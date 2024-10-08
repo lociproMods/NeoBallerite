@@ -23,7 +23,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(BALLERITE_ORE.get())
                 .add(BURNT_BALLERITE_BLOCK.get())
                 .add(CHARRED_BALLERITE_BLOCK.get())
-                .add(COMPRESSED_BALLERITE_BLOCK.get());
+                .add(COMPRESSED_BALLERITE_BLOCK.get())
+                .add(DEEPSLATE_LEAD_ORE.get())
+                .add(LEAD_ORE.get())
+                .add(LEAD_BLOCK.get());
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(RAW_BALLERITE_BLOCK.get())
                 .add(COOKED_BALLERITE_BLOCK.get());
@@ -44,10 +47,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(BALLERITE_ORE.get())
-                .add(BURNT_BALLERITE_BLOCK.get());
+                .add(BURNT_BALLERITE_BLOCK.get())
+                .add(LEAD_ORE.get())
+                .add(DEEPSLATE_LEAD_ORE.get());
         tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(CHARRED_BALLERITE_BLOCK.get())
-                .add(COMPRESSED_BALLERITE_BLOCK.get());
+                .add(COMPRESSED_BALLERITE_BLOCK.get())
+                .add(LEAD_BLOCK.get());
 
         tag(BlockTags.LEAVES)
                 .add(WITHERED_LEAVES.get());

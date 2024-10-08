@@ -37,6 +37,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         add(BALLERITE_ORE.get(),
                 createVariableOreDrops(BALLERITE_ORE.get(), RAW_BALLERITE, UniformGenerator.between(3, 6)));
+        add(LEAD_ORE.get(),
+                createVariableOreDrops(LEAD_ORE.get(), RAW_LEAD, UniformGenerator.between(1, 3)));
+        add(DEEPSLATE_LEAD_ORE.get(),
+                createVariableOreDrops(DEEPSLATE_LEAD_ORE.get(), RAW_LEAD, UniformGenerator.between(1, 3)));
         // Like clay
         add(RAW_BALLERITE_BLOCK.get(),
                 createSingleItemTableWithSilkTouch(RAW_BALLERITE_BLOCK.get(), RAW_BALLERITE, ConstantValue.exactly(4.0f)));
@@ -45,6 +49,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(BURNT_BALLERITE_BLOCK.get());
         dropSelf(CHARRED_BALLERITE_BLOCK.get());
         dropSelf(COMPRESSED_BALLERITE_BLOCK.get());
+        dropSelf(LEAD_BLOCK.get());
 
 
         dropSelf(WITHERED_LOG.get());

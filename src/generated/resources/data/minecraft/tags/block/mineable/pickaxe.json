@@ -3,6 +3,9 @@
     "neoballerite:ballerite_ore",
     "neoballerite:burnt_ballerite_block",
     "neoballerite:charred_ballerite_block",
-    "neoballerite:compressed_ballerite_block"
+    "neoballerite:compressed_ballerite_block",
+    "neoballerite:deepslate_lead_ore",
+    "neoballerite:lead_ore",
+    "neoballerite:lead_block"
   ]
 }

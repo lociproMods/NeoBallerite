@@ -1,6 +1,8 @@
 {
   "values": [
     "neoballerite:ballerite_ore",
-    "neoballerite:burnt_ballerite_block"
+    "neoballerite:burnt_ballerite_block",
+    "neoballerite:lead_ore",
+    "neoballerite:deepslate_lead_ore"
   ]
 }

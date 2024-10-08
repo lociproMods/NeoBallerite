@@ -84,5 +84,10 @@ public class DataGenHandler {
 
 
 
+        generator.addProvider(
+                event.includeServer(),
+                new NeoWorldGenProvider(output, lookupProvider)
+        );
+
     }
 }

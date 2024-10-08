@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-08T09:39:47.3490811	Item Models: neoballerite
+// 1.21.1	2024-10-08T17:16:10.8281638	Item Models: neoballerite
 fabb35efbbd2c30a10b5a323a53fe9011ce5e9b6 assets/neoballerite/models/item/ballerite_axe.json
 c6724a078f9eaac98a1a80a794dbc71adb2ddf59 assets/neoballerite/models/item/ballerite_hoe.json
 76e44816b0f2ab9937b0742517abae62147c3fab assets/neoballerite/models/item/ballerite_pickaxe.json
@@ -11,10 +11,12 @@ b7894de62e66417443dba267c164992d46001018 assets/neoballerite/models/item/compres
 0b6827afffccdc16d8a70b3d0c3c3e457d6e00f1 assets/neoballerite/models/item/lead_axe.json
 3d107bae07809b54b16bce56b4b714801374b573 assets/neoballerite/models/item/lead_hoe.json
 4df6f0c25c2b436dd4bd9c6e90f33a0f29be7ed6 assets/neoballerite/models/item/lead_ingot.json
+dd52aafa61856002fa6026f17b821bf64b118e73 assets/neoballerite/models/item/lead_nugget.json
 d1d9265157ee464c376e88a58c75ec0f78811504 assets/neoballerite/models/item/lead_pickaxe.json
 5182cd7d7f2c12f57347a6e22dbf6b5aa26e05c4 assets/neoballerite/models/item/lead_shovel.json
 042d01e14b00562238eef5263bd964f28dd69d1d assets/neoballerite/models/item/lead_sword.json
 d2dbfe2daffaa1a13f996facce9c28af3ccf4c32 assets/neoballerite/models/item/raw_ballerite.json
+e564bef09fe753ab139c7af2a85bf382b1336cba assets/neoballerite/models/item/raw_lead.json
 ec865a17f8a7226be8768ddbba951779ca0ccd59 assets/neoballerite/models/item/withered_button.json
 6987a61578f55de5e44c55b8e7107e3ec97aecfa assets/neoballerite/models/item/withered_door.json
 86633fbfc02dc910c185a09c60caf7a1acf1fad4 assets/neoballerite/models/item/withered_fence.json

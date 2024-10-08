@@ -21,12 +21,14 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         blockWithItem(BALLERITE_ORE);
+        blockWithItem(LEAD_ORE);
+        blockWithItem(DEEPSLATE_LEAD_ORE);
         blockWithItem(RAW_BALLERITE_BLOCK);
         blockWithItem(COOKED_BALLERITE_BLOCK);
         blockWithItem(BURNT_BALLERITE_BLOCK);
         blockWithItem(CHARRED_BALLERITE_BLOCK);
         blockWithItem(COMPRESSED_BALLERITE_BLOCK);
-
+        blockWithItem(LEAD_BLOCK);
 
 
         logWithItem(WITHERED_LOG);

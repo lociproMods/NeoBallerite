@@ -48,6 +48,10 @@ public class ModCreativeTabs {
                 output.accept(BURNT_BALLERITE_BLOCK);
                 output.accept(CHARRED_BALLERITE_BLOCK);
                 output.accept(COMPRESSED_BALLERITE_BLOCK);
+                output.accept(BALLERITE_ORE);
+                output.accept(LEAD_ORE);
+                output.accept(DEEPSLATE_LEAD_ORE);
+                output.accept(LEAD_BLOCK);
             }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WOODEN_BLOCKS = CREATIVE_MODE_TABS.register("wooden_blocks", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.withered_blocks"))
@@ -80,6 +84,7 @@ public class ModCreativeTabs {
                 output.accept(CHARRED_BALLERITE);
                 output.accept(COMPRESSED_BALLERITE_INGOT);
                 output.accept(LEAD_INGOT);
+                output.accept(LEAD_NUGGET);
             }).build());
 
 }

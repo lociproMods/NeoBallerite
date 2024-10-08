@@ -105,7 +105,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
-
+    // TODO ADD LEAD FURNACE STUFFS and also add the ballerite ORE block smelting recipe
 
 //        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, COMPRESSED_BALLERITE_BLOCK.get())
 //                .pattern("BBB")
@@ -115,10 +115,38 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 //                .unlockedBy("has_compressed_ballerite", has(COMPRESSED_BALLERITE_INGOT))
 //                .save(recipeOutput);
         threeByThreePacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, COMPRESSED_BALLERITE_BLOCK, COMPRESSED_BALLERITE_INGOT);
+        threeByThreePacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, LEAD_BLOCK, LEAD_INGOT);
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, COMPRESSED_BALLERITE_INGOT, 9)
                 .requires(COMPRESSED_BALLERITE_BLOCK)
                 .unlockedBy("has_compressed_ballerite_block", has(COMPRESSED_BALLERITE_BLOCK))
                 .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, LEAD_BLOCK.get())
+                .pattern("BBB")
+                .pattern("BBB")
+                .pattern("BBB")
+                .define('B', LEAD_INGOT)
+                .unlockedBy("has_lead_ingot", has(LEAD_INGOT))
+                .save(recipeOutput, NeoBallerite.MODID + ":lead_block_from_ingot");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LEAD_NUGGET, 9)
+                .requires(LEAD_INGOT)
+                .unlockedBy("has_lead_ingot", has(LEAD_INGOT))
+                .save(recipeOutput, NeoBallerite.MODID + ":lead_nugget_from_ingot");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, LEAD_INGOT)
+                .pattern("BBB")
+                .pattern("BBB")
+                .pattern("BBB")
+                .define('B', LEAD_NUGGET)
+                .unlockedBy("has_lead_nugget", has(LEAD_NUGGET))
+                .save(recipeOutput, NeoBallerite.MODID + ":lead_ingot_from_nuggets");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LEAD_INGOT, 9)
+                .requires(LEAD_BLOCK)
+                .unlockedBy("has_lead_block", has(LEAD_BLOCK))
+                .save(recipeOutput, NeoBallerite.MODID + ":lead_ingot_from_block");
 
 
         offerSmeltingAndBlasting(recipeOutput, List.of(BALLERITE_ORE), RecipeCategory.MISC, COOKED_BALLERITE_BLOCK,

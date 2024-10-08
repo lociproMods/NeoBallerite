@@ -25,6 +25,13 @@
   "item.neoballerite.lead_shovel" : "Lead Shovel",
   "item.neoballerite.lead_hoe" : "Lead Hoe",
 
+  "item.neoballerite.lead_ingot" : "Lead Ingot",
+  "item.neoballerite.raw_lead" : "Raw Lead",
+  "item.neoballerite.lead_nugget" : "Lead Nugget",
+  "block.neoballerite.lead_block" : "Lead Block",
+  "block.neoballerite.lead_ore" : "Lead Ore",
+  "block.neoballerite.deepslate_lead_ore" : "Deepslate Lead Ore",
+
 
 
   "block.neoballerite.raw_ballerite_block" : "Raw Ballerite Block",
