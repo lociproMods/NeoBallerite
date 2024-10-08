@@ -1,31 +1,21 @@
 package com.locipro.neoballerite.item.custom;
 
 import com.locipro.neoballerite.block.ModBlocks;
-import com.locipro.neoballerite.item.ModItems;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
-import net.minecraft.core.particles.ItemParticleOption;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.ParticleUtils;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
-import org.apache.logging.log4j.core.jmx.Server;
 
-import java.util.Random;
-
-public class BalleritePickaxeItem extends PickaxeItem {
-    public BalleritePickaxeItem(Tier p_42961_, Properties p_42964_) {
-        super(p_42961_, p_42964_);
+public class BalleriteShovelItem extends ShovelItem {
+    public BalleriteShovelItem(Tier p_43114_, Properties p_43117_) {
+        super(p_43114_, p_43117_);
     }
-
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
 
@@ -43,7 +33,7 @@ public class BalleritePickaxeItem extends PickaxeItem {
                     4f
             );
             serverLevel.sendParticles(
-                    ParticleTypes.GLOW,
+                    ParticleTypes.GLOW_SQUID_INK,
                     pos.getX() + 0.5,
                     pos.getY() + 0.4,
                     pos.getZ() + 0.5,

@@ -1,8 +1,7 @@
 package com.locipro.neoballerite.item;
 
 
-import com.locipro.neoballerite.item.custom.BallDowserItem;
-import com.locipro.neoballerite.item.custom.BalleritePickaxeItem;
+import com.locipro.neoballerite.item.custom.*;
 import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -65,7 +64,7 @@ public class ModItems {
     
 
     public static final DeferredItem<SwordItem> BALLERITE_SWORD = ITEMS.register("ballerite_sword",
-            () -> new SwordItem(
+            () -> new BalleriteSwordItem(
                     ModTiers.BALLERITE_TIER,
                     new Item.Properties().attributes(
                             SwordItem.createAttributes(
@@ -86,7 +85,7 @@ public class ModItems {
                     )
             ));
     public static final DeferredItem<AxeItem> BALLERITE_AXE = ITEMS.register("ballerite_axe",
-            () -> new AxeItem(
+            () -> new BalleriteAxeItem(
                     ModTiers.BALLERITE_TIER,
                     new Item.Properties().attributes(
                             AxeItem.createAttributes(
@@ -97,7 +96,7 @@ public class ModItems {
                     )
             ));
     public static final DeferredItem<ShovelItem> BALLERITE_SHOVEL = ITEMS.register("ballerite_shovel",
-            () -> new ShovelItem(
+            () -> new BalleriteShovelItem(
                     ModTiers.BALLERITE_TIER,
                     new Item.Properties().attributes(
                             ShovelItem.createAttributes(
