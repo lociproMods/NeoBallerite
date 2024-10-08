@@ -1,15 +1,34 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "misc",
-  "key": {
-    "B": {
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "neoballerite:compressed_ballerite_ingot"
+    },
+    {
+      "item": "neoballerite:compressed_ballerite_ingot"
+    },
+    {
+      "item": "neoballerite:compressed_ballerite_ingot"
+    },
+    {
+      "item": "neoballerite:compressed_ballerite_ingot"
+    },
+    {
+      "item": "neoballerite:compressed_ballerite_ingot"
+    },
+    {
+      "item": "neoballerite:compressed_ballerite_ingot"
+    },
+    {
+      "item": "neoballerite:compressed_ballerite_ingot"
+    },
+    {
+      "item": "neoballerite:compressed_ballerite_ingot"
+    },
+    {
       "item": "neoballerite:compressed_ballerite_ingot"
     }
-  },
-  "pattern": [
-    "BBB",
-    "BBB",
-    "BBB"
   ],
   "result": {
     "count": 1,

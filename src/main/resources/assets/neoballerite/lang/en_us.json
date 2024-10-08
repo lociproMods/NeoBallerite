@@ -11,6 +11,22 @@
 
 
 
+
+  "item.neoballerite.ballerite_sword" : "Ballerite Sword",
+  "item.neoballerite.ballerite_pickaxe" : "Ballerite Pickaxe",
+  "item.neoballerite.ballerite_axe" : "Ballerite Axe",
+  "item.neoballerite.ballerite_shovel" : "Ballerite Shovel",
+  "item.neoballerite.ballerite_hoe" : "Ballerite Hoe",
+
+
+  "item.neoballerite.lead_sword" : "Lead Sword",
+  "item.neoballerite.lead_pickaxe" : "Lead Pickaxe",
+  "item.neoballerite.lead_axe" : "Lead Axe",
+  "item.neoballerite.lead_shovel" : "Lead Shovel",
+  "item.neoballerite.lead_hoe" : "Lead Hoe",
+
+
+
   "block.neoballerite.raw_ballerite_block" : "Raw Ballerite Block",
   "block.neoballerite.cooked_ballerite_block" : "Cooked Ballerite Block",
   "block.neoballerite.burnt_ballerite_block" : "Burnt Ballerite Block",

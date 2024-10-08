@@ -4,6 +4,7 @@ import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -80,5 +81,13 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(BURNT_BALLERITE_BLOCK.get())
                 .add(CHARRED_BALLERITE_BLOCK.get())
                 .add(COMPRESSED_BALLERITE_BLOCK.get());
+
+        tag(ModTags.Blocks.INCORRECT_FOR_BALLERITE_TOOL)
+                .addTags(BlockTags.INCORRECT_FOR_IRON_TOOL)
+                .remove(Tags.Blocks.OBSIDIANS);
+
+        // UNUSED
+        tag(ModTags.Blocks.INCORRECT_FOR_LEAD_TOOL)
+                .addTags(BlockTags.INCORRECT_FOR_GOLD_TOOL);
     }
 }

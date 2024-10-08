@@ -14,7 +14,8 @@ public class ModTags {
     public static class Blocks {
 
         public static final TagKey<Block> BALLERITE_BLOCKS = createTag("ballerite_blocks");
-
+        public static final TagKey<Block> INCORRECT_FOR_BALLERITE_TOOL = createTag("incorrect_for_ballerite_tool");
+        public static final TagKey<Block> INCORRECT_FOR_LEAD_TOOL = createTag("incorrect_for_lead_tool");
 
         private static TagKey<Block> createTag(String name){
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(MODID, name));

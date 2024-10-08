@@ -5,9 +5,13 @@ import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import net.neoforged.neoforge.registries.DeferredItem;
+
 import static com.locipro.neoballerite.block.ModBlocks.*;
 import static com.locipro.neoballerite.item.ModItems.*;
 
@@ -37,6 +41,27 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         .unlockedBy("has_charred_ballerite_block", has(CHARRED_BALLERITE_BLOCK))
                         .save(recipeOutput);
 
+        
+        offerTools(recipeOutput,
+                BALLERITE_SWORD,
+                BALLERITE_PICKAXE,
+                BALLERITE_AXE,
+                BALLERITE_SHOVEL,
+                BALLERITE_HOE,
+                COMPRESSED_BALLERITE_INGOT);
+        offerTools(recipeOutput,
+                LEAD_SWORD,
+                LEAD_PICKAXE,
+                LEAD_AXE,
+                LEAD_SHOVEL,
+                LEAD_HOE,
+                LEAD_INGOT);
+        
+        
+        
+        
+        
+        
         planksFromLogs(recipeOutput, WITHERED_PLANKS, ModTags.Items.WITHERED_LOGS, 4);
         woodFromLogs(recipeOutput, WITHERED_WOOD, WITHERED_LOG);
         // Not actually sure if it's supposed to be like this.
@@ -70,15 +95,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
-//        threeByThreePacker(recipeOutput, RecipeCategory.MISC, COMPRESSED_BALLERITE_BLOCK, COMPRESSED_BALLERITE_INGOT);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, COMPRESSED_BALLERITE_BLOCK.get())
-                .pattern("BBB")
-                .pattern("BBB")
-                .pattern("BBB")
-                .define('B', COMPRESSED_BALLERITE_INGOT)
-                .unlockedBy("has_compressed_ballerite", has(COMPRESSED_BALLERITE_INGOT))
-                .save(recipeOutput);
+
+
+//        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, COMPRESSED_BALLERITE_BLOCK.get())
+//                .pattern("BBB")
+//                .pattern("BBB")
+//                .pattern("BBB")
+//                .define('B', COMPRESSED_BALLERITE_INGOT)
+//                .unlockedBy("has_compressed_ballerite", has(COMPRESSED_BALLERITE_INGOT))
+//                .save(recipeOutput);
+        threeByThreePacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, COMPRESSED_BALLERITE_BLOCK, COMPRESSED_BALLERITE_INGOT);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, COMPRESSED_BALLERITE_INGOT, 9)
                 .requires(COMPRESSED_BALLERITE_BLOCK)
                 .unlockedBy("has_compressed_ballerite_block", has(COMPRESSED_BALLERITE_BLOCK))
@@ -141,6 +168,61 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime, pCookingSerializer, factory).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(recipeOutput, NeoBallerite.MODID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
+    }
+
+    protected static void offerTools(RecipeOutput recipeOutput,
+                                     DeferredItem<SwordItem> swordItem,
+                                     DeferredItem<PickaxeItem> pickaxeItem,
+                                     DeferredItem<AxeItem> axeItem,
+                                     DeferredItem<ShovelItem> shovelItem,
+                                     DeferredItem<HoeItem> hoeItem,
+                                     DeferredItem<?> repairItem) {
+//        Ingredient repairIngredient = hoeItem.get().getTier().getRepairIngredient();
+//        Item repairItem = repairIngredient.getItems()[0].getItem();
+//        ResourceLocation repairIngLoc = ResourceLocation.fromNamespaceAndPath(repairItem.getNa)
+//        String repairItemName = repairItem.getDescription()
+        String condition = "has_" + repairItem.getRegisteredName().replace(repairItem.getId().getNamespace() + ":", "");
+        System.out.println(condition);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, hoeItem)
+                .define('#', Items.STICK)
+                .define('X', repairItem)
+                .pattern("XX")
+                .pattern(" #")
+                .pattern(" #")
+                .unlockedBy(condition, has(repairItem))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, pickaxeItem)
+                .define('#', Items.STICK)
+                .define('X', repairItem)
+                .pattern("XXX")
+                .pattern(" # ")
+                .pattern(" # ")
+                .unlockedBy(condition, has(repairItem))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, shovelItem)
+                .define('#', Items.STICK)
+                .define('X', repairItem)
+                .pattern("X")
+                .pattern("#")
+                .pattern("#")
+                .unlockedBy(condition, has(repairItem))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, swordItem)
+                .define('#', Items.STICK)
+                .define('X', repairItem)
+                .pattern("X")
+                .pattern("X")
+                .pattern("#")
+                .unlockedBy(condition, has(repairItem))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, axeItem)
+                .define('#', Items.STICK)
+                .define('X', repairItem)
+                .pattern("XX")
+                .pattern("X#")
+                .pattern(" #")
+                .unlockedBy(condition, has(repairItem))
+                .save(recipeOutput);
     }
 
 }

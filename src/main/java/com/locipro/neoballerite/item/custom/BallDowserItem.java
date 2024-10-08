@@ -4,6 +4,7 @@ import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -52,6 +53,11 @@ public class BallDowserItem extends Item {
                     BlockPos currentIteratingBlockPos = new BlockPos(startingPos.getX(), i, startingPos.getZ());
                     if (blockIsValuable(level, currentIteratingBlockPos)) {
                         player.displayClientMessage(Component.literal("Found ballerite block at " + new BlockPos(currentIteratingBlockPos.getX(), currentIteratingBlockPos.getY(), currentIteratingBlockPos.getZ()-1).toShortString()), false);
+//                        level.addParticle(ParticleTypes.SMOKE,
+//                                startingPos.getX(),
+//                                startingPos.getY(),
+//                                startingPos.getZ(),
+//                                1f, 0f, 0f);
                         context.getItemInHand().hurtAndBreak(1, ((ServerLevel)level), player,
                                 item -> player.onEquippedItemBroken(item, EquipmentSlot.MAINHAND));
                         level.playSound(null, context.getClickedPos(), SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS);

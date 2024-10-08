@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_compressed_ballerite_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "neoballerite:compressed_ballerite_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "neoballerite:ballerite_pickaxe"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_compressed_ballerite_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "neoballerite:ballerite_pickaxe"
+    ]
+  }
+}

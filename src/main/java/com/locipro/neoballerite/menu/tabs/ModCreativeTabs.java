@@ -24,7 +24,20 @@ public class ModCreativeTabs {
             .title(Component.translatable("itemGroup.ballerite_tools"))
             .withTabsBefore(CreativeModeTabs.COMBAT) // After the last tab (combat)
             .icon(() -> BALL_DOWSER.get().getDefaultInstance())
-            .displayItems((parameters, output) -> output.accept(BALL_DOWSER.get())).build());
+            .displayItems((parameters, output) -> {
+                output.accept(BALL_DOWSER.get());
+                output.accept(BALLERITE_SWORD.get());
+                output.accept(BALLERITE_PICKAXE.get());
+                output.accept(BALLERITE_AXE.get());
+                output.accept(BALLERITE_SHOVEL.get());
+                output.accept(BALLERITE_HOE.get()); 
+                
+                output.accept(LEAD_SWORD.get());
+                output.accept(LEAD_PICKAXE.get());
+                output.accept(LEAD_AXE.get());
+                output.accept(LEAD_SHOVEL.get());
+                output.accept(LEAD_HOE.get());
+            }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_BLOCKS = CREATIVE_MODE_TABS.register("ballerite_blocks", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.ballerite_blocks"))
             .withTabsBefore(ResourceLocation.fromNamespaceAndPath(MODID, "ballerite_tools")) // After our first itemgroup
@@ -66,6 +79,7 @@ public class ModCreativeTabs {
                 output.accept(COOKED_BALLERITE);
                 output.accept(CHARRED_BALLERITE);
                 output.accept(COMPRESSED_BALLERITE_INGOT);
+                output.accept(LEAD_INGOT);
             }).build());
 
 }

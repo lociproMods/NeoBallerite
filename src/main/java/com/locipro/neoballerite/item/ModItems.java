@@ -2,13 +2,12 @@ package com.locipro.neoballerite.item;
 
 
 import com.locipro.neoballerite.item.custom.BallDowserItem;
+import com.locipro.neoballerite.item.custom.BalleritePickaxeItem;
 import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -59,7 +58,125 @@ public class ModItems {
                 }
             });
 
+    public static final DeferredItem<Item> LEAD_INGOT = ITEMS.register("lead_ingot",
+            () -> new Item(new Item.Properties()));
 
+
+    
+
+    public static final DeferredItem<SwordItem> BALLERITE_SWORD = ITEMS.register("ballerite_sword",
+            () -> new SwordItem(
+                    ModTiers.BALLERITE_TIER,
+                    new Item.Properties().attributes(
+                            SwordItem.createAttributes(
+                                    ModTiers.BALLERITE_TIER,
+                                    3f,
+                                    -2.4f
+                            )
+                    )
+            ));
+    public static final DeferredItem<PickaxeItem> BALLERITE_PICKAXE = ITEMS.register("ballerite_pickaxe",
+            () -> new BalleritePickaxeItem(
+                    ModTiers.BALLERITE_TIER,
+                    new Item.Properties().attributes(
+                            PickaxeItem.createAttributes(
+                                    ModTiers.BALLERITE_TIER,
+                                    1,
+                                    -2.8f)
+                    )
+            ));
+    public static final DeferredItem<AxeItem> BALLERITE_AXE = ITEMS.register("ballerite_axe",
+            () -> new AxeItem(
+                    ModTiers.BALLERITE_TIER,
+                    new Item.Properties().attributes(
+                            AxeItem.createAttributes(
+                                    ModTiers.BALLERITE_TIER,
+                                    6f,
+                                    -3f
+                            )
+                    )
+            ));
+    public static final DeferredItem<ShovelItem> BALLERITE_SHOVEL = ITEMS.register("ballerite_shovel",
+            () -> new ShovelItem(
+                    ModTiers.BALLERITE_TIER,
+                    new Item.Properties().attributes(
+                            ShovelItem.createAttributes(
+                                    ModTiers.BALLERITE_TIER,
+                                    1.6f,
+                                    -2.9f
+                            )
+                    )
+            ));
+    public static final DeferredItem<HoeItem> BALLERITE_HOE = ITEMS.register("ballerite_hoe",
+            () -> new HoeItem(
+                    ModTiers.BALLERITE_TIER,
+                    new Item.Properties().attributes(
+                            HoeItem.createAttributes(
+                                    ModTiers.BALLERITE_TIER,
+                                    -1f,
+                                    -1f
+                            )
+                    )
+            ));
+
+
+
+
+
+    public static final DeferredItem<SwordItem> LEAD_SWORD = ITEMS.register("lead_sword",
+            () -> new SwordItem(
+                    ModTiers.LEAD_TIER,
+                    new Item.Properties().attributes(
+                            SwordItem.createAttributes(
+                                    ModTiers.LEAD_TIER,
+                                    3f,
+                                    -2.4f
+                            )
+                    )
+            ));
+    public static final DeferredItem<PickaxeItem> LEAD_PICKAXE = ITEMS.register("lead_pickaxe",
+            () -> new PickaxeItem(
+                    ModTiers.LEAD_TIER,
+                    new Item.Properties().attributes(
+                            PickaxeItem.createAttributes(
+                                    ModTiers.LEAD_TIER,
+                                    1,
+                                    -2.8f)
+                    )
+            ));
+    public static final DeferredItem<AxeItem> LEAD_AXE = ITEMS.register("lead_axe",
+            () -> new AxeItem(
+                    ModTiers.LEAD_TIER,
+                    new Item.Properties().attributes(
+                            AxeItem.createAttributes(
+                                    ModTiers.LEAD_TIER,
+                                    6f,
+                                    -3f
+                            )
+                    )
+            ));
+    public static final DeferredItem<ShovelItem> LEAD_SHOVEL = ITEMS.register("lead_shovel",
+            () -> new ShovelItem(
+                    ModTiers.LEAD_TIER,
+                    new Item.Properties().attributes(
+                            ShovelItem.createAttributes(
+                                    ModTiers.LEAD_TIER,
+                                    1.4f,
+                                    -3.1f
+                            )
+                    )
+            ));
+    public static final DeferredItem<HoeItem> LEAD_HOE = ITEMS.register("lead_hoe",
+            () -> new HoeItem(
+                    ModTiers.LEAD_TIER,
+                    new Item.Properties().attributes(
+                            HoeItem.createAttributes(
+                                    ModTiers.LEAD_TIER,
+                                    0f,
+                                    -2f
+                            )
+                    )
+            ));
 
 
 }

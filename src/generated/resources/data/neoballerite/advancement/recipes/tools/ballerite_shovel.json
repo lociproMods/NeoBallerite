@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_compressed_ballerite": {
+    "has_compressed_ballerite_ingot": {
       "conditions": {
         "items": [
           {
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "neoballerite:compressed_ballerite_block"
+        "recipe": "neoballerite:ballerite_shovel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_compressed_ballerite"
+      "has_compressed_ballerite_ingot"
     ]
   ],
   "rewards": {
     "recipes": [
-      "neoballerite:compressed_ballerite_block"
+      "neoballerite:ballerite_shovel"
     ]
   }
 }
