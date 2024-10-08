@@ -123,7 +123,7 @@ public class ModItems {
 
 
     public static final DeferredItem<SwordItem> LEAD_SWORD = ITEMS.register("lead_sword",
-            () -> new SwordItem(
+            () -> new PoisonousSwordItem(
                     ModTiers.LEAD_TIER,
                     new Item.Properties().attributes(
                             SwordItem.createAttributes(
