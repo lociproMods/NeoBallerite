@@ -128,6 +128,8 @@ public class ModBlocks {
             () -> new DropExperienceBlock(UniformInt.of(3, 4), BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_IRON_ORE)));
    public static final DeferredBlock<Block> LEAD_BLOCK = registerBlock("lead_block",
            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)));
+   public static final DeferredBlock<Block> RAW_LEAD_BLOCK = registerBlock("raw_lead_block",
+           () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_IRON_BLOCK)));
 
     // There's something like "BlockFamily" ? maybe check that out
 

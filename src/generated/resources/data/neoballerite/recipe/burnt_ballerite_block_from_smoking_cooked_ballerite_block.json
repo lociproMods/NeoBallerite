@@ -2,7 +2,7 @@
   "type": "minecraft:smoking",
   "category": "food",
   "cookingtime": 180,
-  "experience": 0.25,
+  "experience": 0.7,
   "group": "ballerite",
   "ingredient": {
     "item": "neoballerite:cooked_ballerite_block"

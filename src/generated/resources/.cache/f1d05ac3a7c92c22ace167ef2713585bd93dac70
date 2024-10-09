@@ -1,4 +1,4 @@
-// 1.21.1	2024-10-08T17:16:10.8341637	Block States: neoballerite
+// 1.21.1	2024-10-09T10:42:08.9472162	Block States: neoballerite
 73cab4e41bb73606af8b4806b1240e291388508c assets/neoballerite/blockstates/ballerite_ore.json
 0d8b345e21c654083fae5dd9c4750944907855de assets/neoballerite/blockstates/burnt_ballerite_block.json
 06344b8af153b122607ec9d5edbb55d7d1ce99dd assets/neoballerite/blockstates/charred_ballerite_block.json
@@ -8,6 +8,7 @@ d64583916af142e88815d14815d03c855b3b9a09 assets/neoballerite/blockstates/cooked_
 56189520187ba20b6f8a0d76898ccc5295720ed8 assets/neoballerite/blockstates/lead_block.json
 62bae9c5d8689276827ae80590767f1c1f41df61 assets/neoballerite/blockstates/lead_ore.json
 18b807155ef84faf536bb2a4fbd6dd745598d27c assets/neoballerite/blockstates/raw_ballerite_block.json
+20c5446ac5ed95158d19223d77540770f8e02070 assets/neoballerite/blockstates/raw_lead_block.json
 ab62d1376bebe72e908f78ed4150c64c2b22f485 assets/neoballerite/blockstates/stripped_withered_log.json
 3008d729d229c26bf445ab18e082986b74fbcc10 assets/neoballerite/blockstates/stripped_withered_wood.json
 176e4e7b7cb5aa4318fde937797232a537e53878 assets/neoballerite/blockstates/withered_button.json
@@ -31,6 +32,7 @@ cea4074134efb80d81cbbbce4f3a70e01ca0e282 assets/neoballerite/models/block/compre
 f964ae59da988772d660cab15b1eda98c640dcdc assets/neoballerite/models/block/lead_block.json
 cab423589736f279681dfd92aef54eb4a24680af assets/neoballerite/models/block/lead_ore.json
 167c6a5c5cb3bcda73eb04cf1c2e93af8541fecb assets/neoballerite/models/block/raw_ballerite_block.json
+5dca190313b77d7a105c16722a95a1125f6badef assets/neoballerite/models/block/raw_lead_block.json
 f2c68edff3651c40c7eb8dffacc4e0da82a70946 assets/neoballerite/models/block/stripped_withered_log.json
 9c51484480de81e8c20a7d7dfe3551bdb8623b72 assets/neoballerite/models/block/stripped_withered_log_horizontal.json
 8f2a4ce2f508ee6f605a3c396b79b552f59a6362 assets/neoballerite/models/block/stripped_withered_wood.json
@@ -76,6 +78,7 @@ a0cf2fc39f8ca399dd66b10c1719e5374a33125f assets/neoballerite/models/item/deepsla
 0a6073078d5b245c35e9112e2db9e627f9126c8c assets/neoballerite/models/item/lead_block.json
 66913eb09de1ef0567b84ca4e64fb1003a66fcb0 assets/neoballerite/models/item/lead_ore.json
 847f9fd93f0e4ae359e3a03a8f5a07e85433e168 assets/neoballerite/models/item/raw_ballerite_block.json
+ebb364057c505cb14e032e8af88fab149219878c assets/neoballerite/models/item/raw_lead_block.json
 9a66c0745dcee7fc458145e41247d071a9dd6d43 assets/neoballerite/models/item/stripped_withered_log.json
 f7694ecea302e539500e7b6030937bd420c2ecf2 assets/neoballerite/models/item/stripped_withered_wood.json
 67af3f92c152e89f95c26d15ad2d62761577d597 assets/neoballerite/models/item/withered_fence_gate.json

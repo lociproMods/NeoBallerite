@@ -35,7 +35,7 @@ public class NeoOrePlacement {
         // Triangle range is bionomial. max+min/2 has the highest stuffs.
         // I think CountPlacement is per chunk?
         PlacementUtils.register(context, ORE_BALLERITE, ballerite,
-                orePlacement(CountPlacement.of(14), HeightRangePlacement.triangle(VerticalAnchor.absolute(4), VerticalAnchor.absolute(80))));
+                orePlacement(CountPlacement.of(10), HeightRangePlacement.triangle(VerticalAnchor.absolute(4), VerticalAnchor.absolute(80))));
         PlacementUtils.register(context, ORE_LEAD, lead,
                 orePlacement(CountPlacement.of(12), HeightRangePlacement.triangle(VerticalAnchor.absolute(-16), VerticalAnchor.absolute(66))));
         PlacementUtils.register(context, ORE_LEAD_BURIED, lead_buried,

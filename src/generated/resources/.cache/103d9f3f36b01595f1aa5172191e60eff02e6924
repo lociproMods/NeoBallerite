@@ -1,10 +1,10 @@
-// 1.21.1	2024-10-08T17:18:33.1772578	Registries
+// 1.21.1	2024-10-09T11:04:28.1118242	Registries
 ccec4e1ed792baea5cace8c55e17b565807559c8 data/neoballerite/neoforge/biome_modifier/add_ore_ballerite.json
 b625a813eee775e7b45c5a28afcbcd2cb45bc177 data/neoballerite/neoforge/biome_modifier/add_ore_lead.json
 6aeeca22a910aca5504eece69078de83eaf500a0 data/neoballerite/neoforge/biome_modifier/add_ore_lead_buried.json
-53bcfd9b1c541f4517f4292791cb3b127dc2cebc data/neoballerite/worldgen/configured_feature/ore_ballerite.json
+ec3ee25e486213573dd8584a5d4371572eab5e9e data/neoballerite/worldgen/configured_feature/ore_ballerite.json
 b56c9c793a0ddb8031429213ad90ad3e66a8d5d1 data/neoballerite/worldgen/configured_feature/ore_lead.json
 fdef3b9f9228de99520602f4700946cb26533fe5 data/neoballerite/worldgen/configured_feature/ore_lead_buried.json
-6bb6578ac2d70276716d3253425961c6f2709c1d data/neoballerite/worldgen/placed_feature/ore_ballerite.json
+8d2999ddeca1cd8037dbf82cfaf32d4781a8f633 data/neoballerite/worldgen/placed_feature/ore_ballerite.json
 c3ff9e6745390446c27fe7f87b457a7a753b69c3 data/neoballerite/worldgen/placed_feature/ore_lead.json
 1cdc8045dfd3e0f2ed742f1945847480804a35fd data/neoballerite/worldgen/placed_feature/ore_lead_buried.json

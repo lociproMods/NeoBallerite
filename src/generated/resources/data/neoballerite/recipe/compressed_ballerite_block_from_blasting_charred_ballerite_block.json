@@ -2,7 +2,7 @@
   "type": "minecraft:blasting",
   "category": "blocks",
   "cookingtime": 180,
-  "experience": 0.25,
+  "experience": 0.9,
   "group": "ballerite",
   "ingredient": {
     "item": "neoballerite:charred_ballerite_block"

@@ -52,6 +52,7 @@ public class ModCreativeTabs {
                 output.accept(LEAD_ORE);
                 output.accept(DEEPSLATE_LEAD_ORE);
                 output.accept(LEAD_BLOCK);
+                output.accept(RAW_LEAD_BLOCK);
             }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WOODEN_BLOCKS = CREATIVE_MODE_TABS.register("wooden_blocks", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.withered_blocks"))

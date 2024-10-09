@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "neoballerite:raw_lead"
+    },
+    {
+      "item": "neoballerite:raw_lead"
+    },
+    {
+      "item": "neoballerite:raw_lead"
+    },
+    {
+      "item": "neoballerite:raw_lead"
+    },
+    {
+      "item": "neoballerite:raw_lead"
+    },
+    {
+      "item": "neoballerite:raw_lead"
+    },
+    {
+      "item": "neoballerite:raw_lead"
+    },
+    {
+      "item": "neoballerite:raw_lead"
+    },
+    {
+      "item": "neoballerite:raw_lead"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "neoballerite:raw_lead_block"
+  }
+}

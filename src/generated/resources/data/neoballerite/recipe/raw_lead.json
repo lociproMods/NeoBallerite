@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "neoballerite:raw_lead_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "neoballerite:raw_lead"
+  }
+}

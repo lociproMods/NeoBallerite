@@ -1,5 +1,6 @@
 package com.locipro.neoballerite.datagen;
 
+import com.google.common.collect.ImmutableList;
 import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
@@ -22,6 +23,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     public ModRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries);
     }
+
+    public static final ImmutableList<ItemLike> LEAD_ORES = ImmutableList.of(LEAD_ORE, DEEPSLATE_LEAD_ORE, RAW_LEAD);
+
 
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
@@ -105,8 +109,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
-    // TODO ADD LEAD FURNACE STUFFS and also add the ballerite ORE block smelting recipe
-
 //        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, COMPRESSED_BALLERITE_BLOCK.get())
 //                .pattern("BBB")
 //                .pattern("BBB")
@@ -116,11 +118,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 //                .save(recipeOutput);
         threeByThreePacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, COMPRESSED_BALLERITE_BLOCK, COMPRESSED_BALLERITE_INGOT);
         threeByThreePacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, LEAD_BLOCK, LEAD_INGOT);
+        threeByThreePacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, RAW_LEAD_BLOCK, RAW_LEAD);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, COMPRESSED_BALLERITE_INGOT, 9)
                 .requires(COMPRESSED_BALLERITE_BLOCK)
                 .unlockedBy("has_compressed_ballerite_block", has(COMPRESSED_BALLERITE_BLOCK))
                 .save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, RAW_LEAD, 9)
+                .requires(RAW_LEAD_BLOCK)
+                .unlockedBy("has_raw_lead_block", has(RAW_LEAD_BLOCK))
+                .save(recipeOutput);
+
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, LEAD_BLOCK.get())
                 .pattern("BBB")
@@ -150,21 +158,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
         offerSmeltingAndBlasting(recipeOutput, List.of(BALLERITE_ORE), RecipeCategory.MISC, COOKED_BALLERITE_BLOCK,
-                0.25f, 260, "ballerite");
+                0.7f, 260, "ballerite");
         offerSmeltingAndBlasting(recipeOutput, List.of(COOKED_BALLERITE_BLOCK), RecipeCategory.MISC, BURNT_BALLERITE_BLOCK,
-                0.25f, 260, "ballerite");
+                0.6f, 260, "ballerite");
         offerSmoking(recipeOutput, List.of(COOKED_BALLERITE_BLOCK), RecipeCategory.MISC, BURNT_BALLERITE_BLOCK,
-                0.25f, 180, "ballerite");
+                0.7f, 180, "ballerite");
 
         offerSmeltingAndBlasting(recipeOutput, List.of(BURNT_BALLERITE_BLOCK), RecipeCategory.MISC, CHARRED_BALLERITE_BLOCK,
-                0.25f, 260, "ballerite");
+                0.7f, 260, "ballerite");
         offerBlasting(recipeOutput, List.of(CHARRED_BALLERITE_BLOCK), RecipeCategory.MISC, COMPRESSED_BALLERITE_BLOCK,
-                0.25f, 180, "ballerite");
+                0.9f, 180, "ballerite");
 
         offerSmeltingAndSmoking(recipeOutput, List.of(RAW_BALLERITE), RecipeCategory.FOOD, COOKED_BALLERITE,
-                0.25f, 200, "ballerite");
+                0.6f, 200, "ballerite");
         offerSmeltingAndSmoking(recipeOutput, List.of(RAW_BALLERITE_BLOCK), RecipeCategory.FOOD, COOKED_BALLERITE_BLOCK,
-                0.25f, 200, "ballerite");
+                0.7f, 200, "ballerite");
+
+        offerSmeltingAndBlasting(recipeOutput, LEAD_ORES, RecipeCategory.MISC, LEAD_INGOT,
+                0.7f, 200, "lead");
 
 
     }

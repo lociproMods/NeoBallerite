@@ -38,7 +38,7 @@ public class NeoOreFeatures {
 
 //        CONFIGURED_FEATURES.register("ore_ballerite", )
 
-        FeatureUtils.register(context, ORE_BALLERITE, Feature.ORE, new OreConfiguration(ballerite_target, 12, 0.2f));
+        FeatureUtils.register(context, ORE_BALLERITE, Feature.ORE, new OreConfiguration(ballerite_target, 12, 0.4f));
         FeatureUtils.register(context, ORE_LEAD, Feature.ORE, new OreConfiguration(lead_target, 9, 0.8f));
         FeatureUtils.register(context, ORE_LEAD_BURIED, Feature.ORE, new OreConfiguration(lead_target, 16, 0.1f));
     }

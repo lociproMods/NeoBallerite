@@ -25,3 +25,4 @@ run-data
 
 repo
 /oldMod/
+/src/generated/resources/.cache/

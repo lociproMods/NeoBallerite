@@ -29,6 +29,7 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         blockWithItem(CHARRED_BALLERITE_BLOCK);
         blockWithItem(COMPRESSED_BALLERITE_BLOCK);
         blockWithItem(LEAD_BLOCK);
+        blockWithItem(RAW_LEAD_BLOCK);
 
 
         logWithItem(WITHERED_LOG);

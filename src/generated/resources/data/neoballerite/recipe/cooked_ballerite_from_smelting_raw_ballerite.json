@@ -2,7 +2,7 @@
   "type": "minecraft:smelting",
   "category": "food",
   "cookingtime": 200,
-  "experience": 0.25,
+  "experience": 0.6,
   "group": "ballerite",
   "ingredient": {
     "item": "neoballerite:raw_ballerite"
