@@ -1,8 +1,6 @@
 {
   "values": [
-    "neoballerite:withered_log",
-    "neoballerite:stripped_withered_log",
-    "neoballerite:withered_wood",
-    "neoballerite:stripped_withered_wood"
+    "#neoballerite:withered_logs",
+    "#neoballerite:star_logs"
   ]
 }

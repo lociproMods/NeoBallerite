@@ -31,19 +31,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(RAW_BALLERITE_BLOCK.get())
                 .add(COOKED_BALLERITE_BLOCK.get());
         tag(BlockTags.MINEABLE_WITH_AXE)
-                .add(WITHERED_LOG.get())
-                .add(STRIPPED_WITHERED_LOG.get())
-                .add(WITHERED_WOOD.get())
-                .add(STRIPPED_WITHERED_WOOD.get())
-                .add(WITHERED_PLANKS.get())
-                .add(WITHERED_SLAB.get())
-                .add(WITHERED_STAIRS.get())
-                .add(WITHERED_DOOR.get())
-                .add(WITHERED_TRAPDOOR.get())
-                .add(WITHERED_BUTTON.get())
-                .add(WITHERED_PRESSURE_PLATE.get())
-                .add(WITHERED_FENCE.get())
-                .add(WITHERED_FENCE_GATE.get());
+                .addTags(ModTags.Blocks.WITHERED_BLOCKS, ModTags.Blocks.STAR_BLOCKS);
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(BALLERITE_ORE.get())
@@ -56,32 +44,39 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(LEAD_BLOCK.get());
 
         tag(BlockTags.LEAVES)
-                .add(WITHERED_LEAVES.get());
+                .add(WITHERED_LEAVES.get())
+                .add(STAR_LEAVES.get());
 
 
         tag(BlockTags.SAPLINGS)
-                .add(WITHERED_SAPLING.get());
+                .add(WITHERED_SAPLING.get())
+                .add(STAR_SAPLING.get());
         tag(BlockTags.LOGS_THAT_BURN)
-                .add(WITHERED_LOG.get())
-                .add(STRIPPED_WITHERED_LOG.get())
-                .add(WITHERED_WOOD.get())
-                .add(STRIPPED_WITHERED_WOOD.get());
+                .addTags(ModTags.Blocks.WITHERED_LOGS);
         tag(BlockTags.WOODEN_FENCES)
-                .add(WITHERED_FENCE.get());
+                .add(WITHERED_FENCE.get())
+                .add(STAR_FENCE.get());
         tag(BlockTags.FENCE_GATES)
-                .add(WITHERED_FENCE_GATE.get());
+                .add(WITHERED_FENCE_GATE.get())
+                .add(STAR_FENCE_GATE.get());
         tag(BlockTags.WOODEN_DOORS)
-                .add(WITHERED_DOOR.get());
+                .add(WITHERED_DOOR.get())
+                .add(STAR_DOOR.get());
         tag(BlockTags.WOODEN_TRAPDOORS)
-                .add(WITHERED_TRAPDOOR.get());
+                .add(WITHERED_TRAPDOOR.get())
+                .add(STAR_TRAPDOOR.get());
         tag(BlockTags.WOODEN_PRESSURE_PLATES)
-                .add(WITHERED_PRESSURE_PLATE.get());
+                .add(WITHERED_PRESSURE_PLATE.get())
+                .add(STAR_PRESSURE_PLATE.get());
         tag(BlockTags.WOODEN_BUTTONS)
-                .add(WITHERED_BUTTON.get());
+                .add(WITHERED_BUTTON.get())
+                .add(STAR_DOOR.get());
         tag(BlockTags.WOODEN_SLABS)
-                .add(WITHERED_SLAB.get());
+                .add(WITHERED_SLAB.get())
+                .add(STAR_SLAB.get());
         tag(BlockTags.WOODEN_STAIRS)
-                .add(WITHERED_STAIRS.get());
+                .add(WITHERED_STAIRS.get())
+                .add(STAR_STAIRS.get());
 
         tag(ModTags.Blocks.BALLERITE_BLOCKS)
                 .add(BALLERITE_ORE.get())
@@ -98,5 +93,45 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         // UNUSED
         tag(ModTags.Blocks.INCORRECT_FOR_LEAD_TOOL)
                 .addTags(BlockTags.INCORRECT_FOR_GOLD_TOOL);
+        
+        tag(ModTags.Blocks.WITHERED_LOGS)
+                .add(WITHERED_LOG.get())
+                .add(STRIPPED_WITHERED_LOG.get())
+                .add(WITHERED_WOOD.get())
+                .add(STRIPPED_WITHERED_WOOD.get());
+        tag(ModTags.Blocks.STAR_LOGS)
+                .add(STAR_LOG.get())
+                .add(STRIPPED_STAR_LOG.get())
+                .add(STAR_WOOD.get())
+                .add(STRIPPED_STAR_WOOD.get());
+        
+        tag(ModTags.Blocks.WITHERED_BLOCKS)
+                .add(WITHERED_LOG.get())
+                .add(STRIPPED_WITHERED_LOG.get())
+                .add(WITHERED_WOOD.get())
+                .add(STRIPPED_WITHERED_WOOD.get())
+                .add(WITHERED_PLANKS.get())
+                .add(WITHERED_SLAB.get())
+                .add(WITHERED_STAIRS.get())
+                .add(WITHERED_DOOR.get())
+                .add(WITHERED_TRAPDOOR.get())
+                .add(WITHERED_BUTTON.get())
+                .add(WITHERED_PRESSURE_PLATE.get())
+                .add(WITHERED_FENCE.get())
+                .add(WITHERED_FENCE_GATE.get());
+        tag(ModTags.Blocks.STAR_BLOCKS)
+                .add(STAR_LOG.get())
+                .add(STRIPPED_STAR_LOG.get())
+                .add(STAR_WOOD.get())
+                .add(STRIPPED_STAR_WOOD.get())
+                .add(STAR_PLANKS.get())
+                .add(STAR_SLAB.get())
+                .add(STAR_STAIRS.get())
+                .add(STAR_DOOR.get())
+                .add(STAR_TRAPDOOR.get())
+                .add(STAR_BUTTON.get())
+                .add(STAR_PRESSURE_PLATE.get())
+                .add(STAR_FENCE.get())
+                .add(STAR_FENCE_GATE.get());
     }
 }

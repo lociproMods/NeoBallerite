@@ -107,6 +107,37 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
+        planksFromLogs(recipeOutput, STAR_PLANKS, ModTags.Items.STAR_LOGS, 4);
+        woodFromLogs(recipeOutput, STAR_WOOD, STAR_LOG);
+
+        woodFromLogs(recipeOutput, STRIPPED_STAR_WOOD, STRIPPED_STAR_LOG);
+
+
+        stairBuilder(STAR_STAIRS, Ingredient.of(STAR_PLANKS))
+                .group("star")
+                .unlockedBy("has_star_planks", has(STAR_PLANKS)).save(recipeOutput);
+        slab(recipeOutput, RecipeCategory.BUILDING_BLOCKS, STAR_SLAB, STAR_PLANKS);
+
+        fenceBuilder(STAR_FENCE, Ingredient.of(STAR_PLANKS))
+                .group("star")
+                .unlockedBy("has_star_planks", has(STAR_PLANKS)).save(recipeOutput);
+        fenceGateBuilder(STAR_FENCE_GATE, Ingredient.of(STAR_PLANKS))
+                .group("star")
+                .unlockedBy("has_star_planks", has(STAR_PLANKS)).save(recipeOutput);
+
+        buttonBuilder(STAR_BUTTON, Ingredient.of(STAR_PLANKS))
+                .group("star")
+                .unlockedBy("has_star_planks", has(STAR_PLANKS)).save(recipeOutput);
+        pressurePlate(recipeOutput, STAR_PRESSURE_PLATE, STAR_PLANKS);
+
+        doorBuilder(STAR_DOOR, Ingredient.of(STAR_PLANKS))
+                .group("star")
+                .unlockedBy("has_star_planks", has(STAR_PLANKS)).save(recipeOutput);
+        trapdoorBuilder(STAR_TRAPDOOR, Ingredient.of(STAR_PLANKS))
+                .group("star")
+                .unlockedBy("has_star_planks", has(STAR_PLANKS)).save(recipeOutput);
+
+
 
 
 //        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, COMPRESSED_BALLERITE_BLOCK.get())

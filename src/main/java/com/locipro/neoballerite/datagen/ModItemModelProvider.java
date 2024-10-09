@@ -48,6 +48,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         fenceItem(WITHERED_FENCE, WITHERED_PLANKS);
 
         basicItem(WITHERED_DOOR.asItem());
+        
+        buttonItem(STAR_BUTTON, STAR_PLANKS);
+        fenceItem(STAR_FENCE, STAR_PLANKS);
+
+        basicItem(STAR_DOOR.asItem());
 //        basicItem(WITHERED_SAPLING.asItem());
 
         

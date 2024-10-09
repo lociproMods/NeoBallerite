@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "neoballerite:block/star_slab"
+    },
+    "type=double": {
+      "model": "neoballerite:block/star_planks"
+    },
+    "type=top": {
+      "model": "neoballerite:block/star_slab_top"
+    }
+  }
+}

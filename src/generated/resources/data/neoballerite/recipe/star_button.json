@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "star",
+  "ingredients": [
+    {
+      "item": "neoballerite:star_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "neoballerite:star_button"
+  }
+}

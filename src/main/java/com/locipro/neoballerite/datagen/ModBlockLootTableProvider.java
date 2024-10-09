@@ -10,7 +10,6 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
@@ -30,7 +29,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
     }
     protected static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
-    protected static final float[] WITHERED_LEAVES_SAPLING_CHANCES = new float[]{0.06F, 0.0725F, 0.093333336F, 0.12F};
+    protected static final float[] HIGHER_LEAVES_SAPLING_CHANCES = new float[]{0.06F, 0.0725F, 0.093333336F, 0.12F};
 
 
     @Override
@@ -58,7 +57,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(WITHERED_LOG.get());
         dropSelf(STRIPPED_WITHERED_LOG.get());
 
-        add(WITHERED_LEAVES.get(), createLeavesDrops(WITHERED_LEAVES.get(), WITHERED_SAPLING.get(), WITHERED_LEAVES_SAPLING_CHANCES));
+        add(WITHERED_LEAVES.get(), createLeavesDrops(WITHERED_LEAVES.get(), WITHERED_SAPLING.get(), HIGHER_LEAVES_SAPLING_CHANCES));
         dropSelf(WITHERED_WOOD.get());
         dropSelf(STRIPPED_WITHERED_WOOD.get());
 
@@ -71,6 +70,25 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(WITHERED_BUTTON.get());
         dropSelf(WITHERED_PRESSURE_PLATE.get());
         add(WITHERED_DOOR.get(), createDoorTable(WITHERED_DOOR.get()));
+
+
+        dropSelf(STAR_SAPLING.get());
+        dropSelf(STAR_LOG.get());
+        dropSelf(STRIPPED_STAR_LOG.get());
+
+        add(STAR_LEAVES.get(), createLeavesDrops(STAR_LEAVES.get(), STAR_SAPLING.get(), HIGHER_LEAVES_SAPLING_CHANCES));
+        dropSelf(STAR_WOOD.get());
+        dropSelf(STRIPPED_STAR_WOOD.get());
+
+        dropSelf(STAR_PLANKS.get());
+        add(STAR_SLAB.get(), createSlabItemTable(STAR_SLAB.get()));
+        dropSelf(STAR_STAIRS.get());
+        dropSelf(STAR_TRAPDOOR.get());
+        dropSelf(STAR_FENCE.get());
+        dropSelf(STAR_FENCE_GATE.get());
+        dropSelf(STAR_BUTTON.get());
+        dropSelf(STAR_PRESSURE_PLATE.get());
+        add(STAR_DOOR.get(), createDoorTable(STAR_DOOR.get()));
 
     }
 

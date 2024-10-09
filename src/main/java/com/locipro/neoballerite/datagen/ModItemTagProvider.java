@@ -4,6 +4,7 @@ import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -33,42 +34,86 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(STRIPPED_WITHERED_LOG.asItem())
                 .add(WITHERED_WOOD.asItem())
                 .add(STRIPPED_WITHERED_WOOD.asItem());
+        tag(ModTags.Items.STAR_LOGS)
+                .add(STAR_LOG.asItem())
+                .add(STRIPPED_STAR_LOG.asItem())
+                .add(STAR_WOOD.asItem())
+                .add(STRIPPED_STAR_WOOD.asItem());
+        
         tag(ItemTags.PLANKS)
-                .add(WITHERED_PLANKS.asItem());
+                .add(WITHERED_PLANKS.asItem())
+                .add(STAR_PLANKS.asItem());
 
         tag(ItemTags.LOGS)
-                .add(WITHERED_LOG.get().asItem())
-                .add(STRIPPED_WITHERED_LOG.get().asItem())
-                .add(WITHERED_WOOD.get().asItem())
-                .add(STRIPPED_WITHERED_WOOD.get().asItem());
+                .addTags(ModTags.Items.WITHERED_LOGS, ModTags.Items.STAR_LOGS);
 
         tag(ItemTags.LEAVES)
-                .add(WITHERED_LEAVES.get().asItem());
+                .add(WITHERED_LEAVES.get().asItem())
+                .add(STAR_LEAVES.get().asItem());
 
         tag(ItemTags.SAPLINGS)
-                .add(WITHERED_SAPLING.get().asItem());
+                .add(WITHERED_SAPLING.get().asItem())
+                .add(STAR_SAPLING.get().asItem());
         tag(ItemTags.LOGS_THAT_BURN)
                 .add(WITHERED_LOG.get().asItem())
                 .add(STRIPPED_WITHERED_LOG.get().asItem())
                 .add(WITHERED_WOOD.get().asItem())
                 .add(STRIPPED_WITHERED_WOOD.get().asItem());
         tag(ItemTags.WOODEN_FENCES)
-                .add(WITHERED_FENCE.get().asItem());
+                .add(WITHERED_FENCE.get().asItem())
+                .add(STAR_FENCE.get().asItem());
         tag(ItemTags.FENCE_GATES)
-                .add(WITHERED_FENCE_GATE.get().asItem());
+                .add(WITHERED_FENCE_GATE.get().asItem())
+                .add(STAR_FENCE_GATE.get().asItem());
         tag(ItemTags.WOODEN_DOORS)
-                .add(WITHERED_DOOR.get().asItem());
+                .add(WITHERED_DOOR.get().asItem())
+                .add(STAR_DOOR.get().asItem());
         tag(ItemTags.WOODEN_TRAPDOORS)
-                .add(WITHERED_TRAPDOOR.get().asItem());
+                .add(WITHERED_TRAPDOOR.get().asItem())
+                .add(STAR_TRAPDOOR.get().asItem());
         tag(ItemTags.WOODEN_PRESSURE_PLATES)
-                .add(WITHERED_PRESSURE_PLATE.get().asItem());
+                .add(WITHERED_PRESSURE_PLATE.get().asItem())
+                .add(STAR_PRESSURE_PLATE.get().asItem());
         tag(ItemTags.WOODEN_BUTTONS)
-                .add(WITHERED_BUTTON.get().asItem());
+                .add(WITHERED_BUTTON.get().asItem())
+                .add(STAR_DOOR.get().asItem());
         tag(ItemTags.WOODEN_SLABS)
-                .add(WITHERED_SLAB.get().asItem());
+                .add(WITHERED_SLAB.get().asItem())
+                .add(STAR_SLAB.get().asItem());
         tag(ItemTags.WOODEN_STAIRS)
-                .add(WITHERED_STAIRS.get().asItem());
+                .add(WITHERED_STAIRS.get().asItem())
+                .add(STAR_STAIRS.get().asItem());
 
+
+
+        tag(ModTags.Items.WITHERED_BLOCKS)
+                .add(WITHERED_LOG.get().asItem())
+                .add(STRIPPED_WITHERED_LOG.get().asItem())
+                .add(WITHERED_WOOD.get().asItem())
+                .add(STRIPPED_WITHERED_WOOD.get().asItem())
+                .add(WITHERED_PLANKS.get().asItem())
+                .add(WITHERED_SLAB.get().asItem())
+                .add(WITHERED_STAIRS.get().asItem())
+                .add(WITHERED_DOOR.get().asItem())
+                .add(WITHERED_TRAPDOOR.get().asItem())
+                .add(WITHERED_BUTTON.get().asItem())
+                .add(WITHERED_PRESSURE_PLATE.get().asItem())
+                .add(WITHERED_FENCE.get().asItem())
+                .add(WITHERED_FENCE_GATE.get().asItem());
+        tag(ModTags.Items.STAR_BLOCKS)
+                .add(STAR_LOG.get().asItem())
+                .add(STRIPPED_STAR_LOG.get().asItem())
+                .add(STAR_WOOD.get().asItem())
+                .add(STRIPPED_STAR_WOOD.get().asItem())
+                .add(STAR_PLANKS.get().asItem())
+                .add(STAR_SLAB.get().asItem())
+                .add(STAR_STAIRS.get().asItem())
+                .add(STAR_DOOR.get().asItem())
+                .add(STAR_TRAPDOOR.get().asItem())
+                .add(STAR_BUTTON.get().asItem())
+                .add(STAR_PRESSURE_PLATE.get().asItem())
+                .add(STAR_FENCE.get().asItem())
+                .add(STAR_FENCE_GATE.get().asItem());
 
 
     }

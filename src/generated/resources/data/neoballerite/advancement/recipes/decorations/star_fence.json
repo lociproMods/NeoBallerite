@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_star_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "neoballerite:star_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "neoballerite:star_fence"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_star_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "neoballerite:star_fence"
+    ]
+  }
+}

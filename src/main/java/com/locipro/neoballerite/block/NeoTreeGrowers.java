@@ -17,4 +17,14 @@ public class NeoTreeGrowers {
             Optional.empty(),
             Optional.empty()
     );
+    public static final TreeGrower STAR = new TreeGrower(
+            "star",
+            0.3F,
+            Optional.empty(),
+            Optional.empty(),
+            Optional.of(NeoTreeFeatures.STAR_TREE),
+            Optional.of(NeoTreeFeatures.STRIPPED_STAR_TREE),
+            Optional.empty(),
+            Optional.empty()
+    );
 }

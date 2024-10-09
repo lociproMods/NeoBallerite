@@ -1,0 +1,17 @@
+{
+  "values": [
+    "neoballerite:star_log",
+    "neoballerite:stripped_star_log",
+    "neoballerite:star_wood",
+    "neoballerite:stripped_star_wood",
+    "neoballerite:star_planks",
+    "neoballerite:star_slab",
+    "neoballerite:star_stairs",
+    "neoballerite:star_door",
+    "neoballerite:star_trapdoor",
+    "neoballerite:star_button",
+    "neoballerite:star_pressure_plate",
+    "neoballerite:star_fence",
+    "neoballerite:star_fence_gate"
+  ]
+}

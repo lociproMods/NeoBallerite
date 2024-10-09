@@ -55,7 +55,7 @@ public class ModCreativeTabs {
                 output.accept(RAW_LEAD_BLOCK);
             }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WOODEN_BLOCKS = CREATIVE_MODE_TABS.register("wooden_blocks", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.withered_blocks"))
+            .title(Component.translatable("itemGroup.wooden_blocks"))
             .withTabsBefore(ResourceLocation.fromNamespaceAndPath(MODID, "ballerite_blocks"))
             .icon(() -> new ItemStack(WITHERED_PLANKS)) // You either `X_BLOCK.get().asItem().getDefaultInstance()` or just itemstack
             .displayItems((parameters, output) -> {
@@ -74,6 +74,22 @@ public class ModCreativeTabs {
                 output.accept(WITHERED_STAIRS);
                 output.accept(WITHERED_SLAB);
                 output.accept(WITHERED_PRESSURE_PLATE);
+                
+                output.accept(STAR_SAPLING);
+                output.accept(STAR_LOG);
+                output.accept(STRIPPED_STAR_LOG);
+                output.accept(STAR_WOOD);
+                output.accept(STRIPPED_STAR_WOOD);
+                output.accept(STAR_LEAVES);
+                output.accept(STAR_PLANKS);
+                output.accept(STAR_DOOR);
+                output.accept(STAR_FENCE_GATE);
+                output.accept(STAR_BUTTON);
+                output.accept(STAR_FENCE);
+                output.accept(STAR_TRAPDOOR);
+                output.accept(STAR_STAIRS);
+                output.accept(STAR_SLAB);
+                output.accept(STAR_PRESSURE_PLATE);
 
             }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_ITEMS = CREATIVE_MODE_TABS.register("ballerite_items", () -> CreativeModeTab.builder()

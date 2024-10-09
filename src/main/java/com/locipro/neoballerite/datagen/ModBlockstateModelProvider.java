@@ -74,6 +74,38 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         blockItem(WITHERED_PRESSURE_PLATE);
         blockItem(WITHERED_FENCE_GATE);
         blockItem(WITHERED_TRAPDOOR, "_bottom");
+
+
+
+        saplingWithItem(STAR_SAPLING);
+
+        logWithItem(STAR_LOG);
+        logWithItem(STRIPPED_STAR_LOG);
+        // Leaves aren't cubeAll... Hmmm
+        leavesWithItem(STAR_LEAVES);
+
+        nWoodBlockWithItem(STAR_WOOD);
+        nWoodBlockWithItem(STRIPPED_STAR_WOOD);
+
+        blockWithItem(STAR_PLANKS);
+
+        stairsBlock(STAR_STAIRS.get(), blockTexture(STAR_PLANKS.get()));
+        blockItem(STAR_STAIRS);
+
+        slabBlock(STAR_SLAB.get(), blockTexture(STAR_PLANKS.get()), blockTexture(STAR_PLANKS.get()));
+        buttonBlock(STAR_BUTTON.get(), blockTexture(STAR_PLANKS.get()));
+        pressurePlateBlock(STAR_PRESSURE_PLATE.get(), blockTexture(STAR_PLANKS.get()));
+
+        fenceBlock(STAR_FENCE.get(), blockTexture(STAR_PLANKS.get()));
+        fenceGateBlock(STAR_FENCE_GATE.get(), blockTexture(STAR_PLANKS.get()));
+
+        doorBlockWithRenderType(STAR_DOOR.get(), modLoc("block/star_door_bottom"), modLoc("block/star_door_top"), "cutout");
+        trapdoorBlockWithRenderType(STAR_TRAPDOOR.get(), modLoc("block/star_trapdoor"), true, "cutout");
+
+        blockItem(STAR_SLAB);
+        blockItem(STAR_PRESSURE_PLATE);
+        blockItem(STAR_FENCE_GATE);
+        blockItem(STAR_TRAPDOOR, "_bottom");
     }
 
     private void blockWithItem(DeferredBlock<?> block) {

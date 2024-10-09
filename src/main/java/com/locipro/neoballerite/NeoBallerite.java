@@ -24,6 +24,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 //      Add sugar components
 //      Add claymores
 //      Make torches turn off during rain
+//         FIX THE ISSUE OF DAMN STAR LEAVES DECAYING FOR NO REASON
 
 @Mod(NeoBallerite.MODID)
 public class NeoBallerite {

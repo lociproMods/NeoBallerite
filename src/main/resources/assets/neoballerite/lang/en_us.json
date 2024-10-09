@@ -2,7 +2,7 @@
   "itemGroup.ballerite_tools": "Ballerite Tools",
   "itemGroup.ballerite_blocks" : "Ballerite Blocks",
   "itemGroup.ballerite_items" : "Ballerite Items",
-  "itemGroup.withered_blocks" : "Withered wood",
+  "itemGroup.wooden_blocks" : "Wooden blocks",
   "item.neoballerite.ball_dowser": "Ballerite Dowsing Rod",
   "item.neoballerite.raw_ballerite": "Raw Ballerite",
   "item.neoballerite.compressed_ballerite_ingot": "Compressed Ballerite Ingot",
@@ -59,5 +59,26 @@
   "block.neoballerite.withered_stairs" : "Withered Stairs",
 
   "block.neoballerite.withered_door" : "Withered Door",
-  "block.neoballerite.withered_trapdoor" : "Withered Trapdoor"
+  "block.neoballerite.withered_trapdoor" : "Withered Trapdoor",
+  
+  
+  
+  "block.neoballerite.star_sapling" : "Star Sapling",
+  "block.neoballerite.star_log" : "Star Log",
+  "block.neoballerite.star_wood" : "Star Wood",
+  "block.neoballerite.star_leaves" : "Star Leaves",
+  "block.neoballerite.stripped_star_log" : "Stripped Star Log",
+  "block.neoballerite.stripped_star_wood" : "Stripped Star Wood",
+  "block.neoballerite.star_planks" : "Star Planks",
+
+  "block.neoballerite.star_button" : "Star Button",
+  "block.neoballerite.star_pressure_plate" : "Star Pressure Plate",
+  "block.neoballerite.star_fence" : "Star Fence",
+  "block.neoballerite.star_fence_gate" : "Star Fence Gate",
+
+  "block.neoballerite.star_slab" : "Star Slab",
+  "block.neoballerite.star_stairs" : "Star Stairs",
+
+  "block.neoballerite.star_door" : "Star Door",
+  "block.neoballerite.star_trapdoor" : "Star Trapdoor"
 }

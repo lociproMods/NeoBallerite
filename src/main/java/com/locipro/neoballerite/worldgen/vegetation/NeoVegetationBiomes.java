@@ -21,6 +21,7 @@ import static com.locipro.neoballerite.worldgen.NeoBiomeModifiers.createKey;
 
 public class NeoVegetationBiomes {
     public static final ResourceKey<BiomeModifier> ADD_TREES_WITHERED = createKey("add_trees_withered");
+    public static final ResourceKey<BiomeModifier> ADD_TREES_STAR = createKey("add_trees_star");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -35,6 +36,14 @@ public class NeoVegetationBiomes {
                 biomes.getOrThrow(Biomes.MEADOW)
                 )
         );
+        HolderSet<Biome> star_biomes = HolderSet.direct(List.of
+                (
+                biomes.getOrThrow(Biomes.MUSHROOM_FIELDS),
+                biomes.getOrThrow(Biomes.SAVANNA),
+                biomes.getOrThrow(Biomes.SAVANNA_PLATEAU),
+                biomes.getOrThrow(Biomes.WINDSWEPT_SAVANNA)
+                )
+        );
 
 
 
@@ -42,6 +51,12 @@ public class NeoVegetationBiomes {
         context.register(ADD_TREES_WITHERED, new BiomeModifiers.AddFeaturesBiomeModifier(
                 withered_biomes,
                 HolderSet.direct(placedFeatures.getOrThrow(NeoVegetationPlacements.TREES_WITHERED)),
+                GenerationStep.Decoration.VEGETAL_DECORATION
+        ));
+
+        context.register(ADD_TREES_STAR, new BiomeModifiers.AddFeaturesBiomeModifier(
+                star_biomes,
+                HolderSet.direct(placedFeatures.getOrThrow(NeoVegetationPlacements.TREES_STAR)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
         /*BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SWAMP, Biomes.FOREST, Biomes.RIVER),
