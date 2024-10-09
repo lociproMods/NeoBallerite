@@ -30,6 +30,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
     }
     protected static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
+    protected static final float[] WITHERED_LEAVES_SAPLING_CHANCES = new float[]{0.06F, 0.0725F, 0.093333336F, 0.12F};
 
 
     @Override
@@ -53,10 +54,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(RAW_LEAD_BLOCK.get());
 
 
+        dropSelf(WITHERED_SAPLING.get());
         dropSelf(WITHERED_LOG.get());
         dropSelf(STRIPPED_WITHERED_LOG.get());
-        // TODO When sapling exists.
-        add(WITHERED_LEAVES.get(), createLeavesDrops(WITHERED_LEAVES.get(), Blocks.OAK_SAPLING, NORMAL_LEAVES_SAPLING_CHANCES));
+
+        add(WITHERED_LEAVES.get(), createLeavesDrops(WITHERED_LEAVES.get(), WITHERED_SAPLING.get(), WITHERED_LEAVES_SAPLING_CHANCES));
         dropSelf(WITHERED_WOOD.get());
         dropSelf(STRIPPED_WITHERED_WOOD.get());
 

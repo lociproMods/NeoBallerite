@@ -58,6 +58,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.LEAVES)
                 .add(WITHERED_LEAVES.get());
 
+
+        tag(BlockTags.SAPLINGS)
+                .add(WITHERED_SAPLING.get());
         tag(BlockTags.LOGS_THAT_BURN)
                 .add(WITHERED_LOG.get())
                 .add(STRIPPED_WITHERED_LOG.get())

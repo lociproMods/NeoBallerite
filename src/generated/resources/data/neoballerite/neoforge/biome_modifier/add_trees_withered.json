@@ -1,0 +1,12 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "minecraft:forest",
+    "minecraft:swamp",
+    "minecraft:river",
+    "minecraft:birch_forest",
+    "minecraft:meadow"
+  ],
+  "features": "neoballerite:trees_withered",
+  "step": "vegetal_decoration"
+}

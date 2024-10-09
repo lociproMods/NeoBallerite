@@ -59,6 +59,7 @@ public class ModCreativeTabs {
             .withTabsBefore(ResourceLocation.fromNamespaceAndPath(MODID, "ballerite_blocks"))
             .icon(() -> new ItemStack(WITHERED_PLANKS)) // You either `X_BLOCK.get().asItem().getDefaultInstance()` or just itemstack
             .displayItems((parameters, output) -> {
+                output.accept(WITHERED_SAPLING);
                 output.accept(WITHERED_LOG);
                 output.accept(STRIPPED_WITHERED_LOG);
                 output.accept(WITHERED_WOOD);

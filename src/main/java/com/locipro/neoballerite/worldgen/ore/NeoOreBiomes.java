@@ -1,25 +1,20 @@
-package com.locipro.neoballerite.worldgen.biome;
+package com.locipro.neoballerite.worldgen.ore;
 
-import com.locipro.neoballerite.worldgen.ore.NeoOreFeatures;
-import com.locipro.neoballerite.worldgen.ore.NeoOrePlacement;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
-import static com.locipro.neoballerite.NeoBallerite.MODID;
+import static com.locipro.neoballerite.worldgen.NeoBiomeModifiers.createKey;
 
-public class NeoBiomeModifiers {
+public class NeoOreBiomes {
     public static final ResourceKey<BiomeModifier> ADD_ORE_BALLERITE = createKey("add_ore_ballerite");
     public static final ResourceKey<BiomeModifier> ADD_ORE_LEAD = createKey("add_ore_lead");
     public static final ResourceKey<BiomeModifier> ADD_ORE_LEAD_BURIED = createKey("add_ore_lead_buried");
@@ -47,11 +42,5 @@ public class NeoBiomeModifiers {
                 GenerationStep.Decoration.UNDERGROUND_ORES
         ));
 
-    }
-
-
-
-    public static ResourceKey<BiomeModifier> createKey(String name) {
-        return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(MODID, name));
     }
 }

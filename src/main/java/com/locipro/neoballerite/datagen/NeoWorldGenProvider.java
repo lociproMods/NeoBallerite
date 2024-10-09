@@ -1,8 +1,9 @@
 package com.locipro.neoballerite.datagen;
 
+import com.locipro.neoballerite.worldgen.NeoBiomeModifiers;
 import com.locipro.neoballerite.worldgen.NeoConfiguredFeatures;
 import com.locipro.neoballerite.worldgen.NeoPlacedFeatures;
-import com.locipro.neoballerite.worldgen.biome.NeoBiomeModifiers;
+import com.locipro.neoballerite.worldgen.ore.NeoOreBiomes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;

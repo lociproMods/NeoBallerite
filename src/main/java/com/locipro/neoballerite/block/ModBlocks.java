@@ -133,6 +133,10 @@ public class ModBlocks {
 
     // There's something like "BlockFamily" ? maybe check that out
 
+    public static final DeferredBlock<SaplingBlock> WITHERED_SAPLING = registerBlock("withered_sapling",
+            () -> new SaplingBlock(NeoTreeGrowers.WITHERED, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
+
+
     public static final DeferredBlock<RotatedPillarBlock> WITHERED_LOG = registerBlock("withered_log",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)) {
                 @Override

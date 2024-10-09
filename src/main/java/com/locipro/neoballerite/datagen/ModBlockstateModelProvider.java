@@ -1,13 +1,23 @@
 package com.locipro.neoballerite.datagen;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.SaplingBlock;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import oshi.util.tuples.Pair;
+
+import java.awt.*;
+import java.lang.reflect.Array;
+import java.util.HashSet;
+import java.util.Map;
 
 import static com.locipro.neoballerite.block.ModBlocks.*;
 import static com.locipro.neoballerite.NeoBallerite.MODID;
@@ -31,6 +41,11 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         blockWithItem(LEAD_BLOCK);
         blockWithItem(RAW_LEAD_BLOCK);
 
+
+
+
+        //simpleBlock(WITHERED_SAPLING.get(), models().cross(modelHelper(WITHERED_SAPLING).getA(), modelHelper(WITHERED_SAPLING).getB()).renderType("cutout"));
+        saplingWithItem(WITHERED_SAPLING);
 
         logWithItem(WITHERED_LOG);
         logWithItem(STRIPPED_WITHERED_LOG);
@@ -79,6 +94,21 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         ResourceLocation leavesTexture = modLoc("block/" + leavesBlock.getId().getPath());
         simpleBlock(leavesBlock.get(), models().leaves(leavesBlock.getId().toString(), leavesTexture));
         blockItem(leavesBlock);
+    }
+    private void saplingWithItem(DeferredBlock<SaplingBlock> sapling) {
+        System.out.println("block/" + sapling.getId());
+        System.out.println("block/" + sapling.getId().getPath());
+        System.out.println("block/" + sapling.getRegisteredName());
+
+        ResourceLocation saplingCrossTexture = modLoc("block/" + sapling.getId().getPath());
+        simpleBlock(sapling.get(), models().cross(sapling.getId().toString(), saplingCrossTexture).renderType("cutout"));
+
+        itemModels().getBuilder(sapling.getId().getPath())
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", saplingCrossTexture);
+    }
+    private Pair<String, ResourceLocation> modelHelper(DeferredBlock<?> block) {
+        return new Pair<>(block.getId().toString(), modLoc("block/" + block.getId().getPath()));
     }
 
     /** NOW, I am a god and my ego remains unbroken. **/

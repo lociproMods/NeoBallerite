@@ -1,6 +1,8 @@
 package com.locipro.neoballerite.worldgen;
 
 import com.locipro.neoballerite.worldgen.ore.NeoOrePlacement;
+import com.locipro.neoballerite.worldgen.vegetation.tree.NeoTreePlacements;
+import com.locipro.neoballerite.worldgen.vegetation.vegetation.NeoVegetationPlacements;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -15,5 +17,7 @@ public class NeoPlacedFeatures {
     }
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         NeoOrePlacement.bootstrap(context);
+        NeoTreePlacements.bootstrap(context);
+        NeoVegetationPlacements.bootstrap(context);
     }
 }
