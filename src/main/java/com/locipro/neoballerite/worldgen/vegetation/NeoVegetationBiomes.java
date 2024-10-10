@@ -1,7 +1,10 @@
 package com.locipro.neoballerite.worldgen.vegetation;
 
 import com.locipro.neoballerite.worldgen.ore.NeoOrePlacement;
+import com.locipro.neoballerite.worldgen.vegetation.flower.NeoBerryFeatures;
+import com.locipro.neoballerite.worldgen.vegetation.flower.NeoBerryPlacements;
 import com.locipro.neoballerite.worldgen.vegetation.vegetation.NeoVegetationPlacements;
+import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
@@ -22,6 +25,9 @@ import static com.locipro.neoballerite.worldgen.NeoBiomeModifiers.createKey;
 public class NeoVegetationBiomes {
     public static final ResourceKey<BiomeModifier> ADD_TREES_WITHERED = createKey("add_trees_withered");
     public static final ResourceKey<BiomeModifier> ADD_TREES_STAR = createKey("add_trees_star");
+
+    public static final ResourceKey<BiomeModifier> ADD_BERRIES = createKey("add_berries");
+    public static final ResourceKey<BiomeModifier> ADD_STRAWBERRIES = createKey("add_strawberries");
 
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
@@ -45,6 +51,30 @@ public class NeoVegetationBiomes {
                 )
         );
 
+        HolderSet<Biome> berries = HolderSet.direct(List.of
+                (
+                biomes.getOrThrow(Biomes.JUNGLE),
+                biomes.getOrThrow(Biomes.SPARSE_JUNGLE),
+                biomes.getOrThrow(Biomes.TAIGA),
+                biomes.getOrThrow(Biomes.SNOWY_TAIGA),
+                biomes.getOrThrow(Biomes.OLD_GROWTH_PINE_TAIGA),
+                biomes.getOrThrow(Biomes.OLD_GROWTH_SPRUCE_TAIGA),
+                biomes.getOrThrow(Biomes.OLD_GROWTH_SPRUCE_TAIGA)
+                )
+        );
+        HolderSet<Biome> strawberries = HolderSet.direct(List.of
+                (
+                biomes.getOrThrow(Biomes.SAVANNA),
+                biomes.getOrThrow(Biomes.SAVANNA_PLATEAU),
+                biomes.getOrThrow(Biomes.JUNGLE),
+                biomes.getOrThrow(Biomes.SPARSE_JUNGLE),
+                biomes.getOrThrow(Biomes.TAIGA),
+                biomes.getOrThrow(Biomes.SNOWY_TAIGA),
+                biomes.getOrThrow(Biomes.OLD_GROWTH_PINE_TAIGA),
+                biomes.getOrThrow(Biomes.OLD_GROWTH_SPRUCE_TAIGA),
+                biomes.getOrThrow(Biomes.OLD_GROWTH_SPRUCE_TAIGA)
+                )
+        );
 
 
 
@@ -59,11 +89,20 @@ public class NeoVegetationBiomes {
                 HolderSet.direct(placedFeatures.getOrThrow(NeoVegetationPlacements.TREES_STAR)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
-        /*BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.SWAMP, Biomes.FOREST, Biomes.RIVER),
-                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.WITHERED_TREE_PLACED_KEY);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(Biomes.MUSHROOM_FIELDS, Biomes.SAVANNA, Biomes.SAVANNA_PLATEAU, Biomes.WINDSWEPT_SAVANNA),
-                GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.STAR_TREE_PLACED_KEY);*/
 
+        context.register(ADD_BERRIES, new BiomeModifiers.AddFeaturesBiomeModifier(
+                berries,
+                HolderSet.direct(List.of(
+                        placedFeatures.getOrThrow(NeoBerryPlacements.BLUEBERRY_BUSH),
+                        placedFeatures.getOrThrow(NeoBerryPlacements.BLACKBERRY_BUSH)
+                )),
+                GenerationStep.Decoration.VEGETAL_DECORATION
+        ));
+        context.register(ADD_STRAWBERRIES, new BiomeModifiers.AddFeaturesBiomeModifier(
+                strawberries,
+                HolderSet.direct(placedFeatures.getOrThrow(NeoBerryPlacements.STRAWBERRY_BUSH)),
+                GenerationStep.Decoration.VEGETAL_DECORATION
+        ));
 
     }
 }

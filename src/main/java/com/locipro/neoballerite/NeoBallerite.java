@@ -25,11 +25,12 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 //      Make torches turn off during rain
 //      USE DATA COMPONENTS TO LINK BACK TO THE ORIGINAL FRUIT ONCE YOU IMPLEMENT JAMS.
 //      RETEXTURE STAR_TRAPDOOR
+//      RETEXTURE BALLERITE_INGOT
 
 @Mod(NeoBallerite.MODID)
 public class NeoBallerite {
     public static final String MODID = "neoballerite";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.

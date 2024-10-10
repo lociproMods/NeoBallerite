@@ -1,6 +1,7 @@
 package com.locipro.neoballerite.worldgen;
 
 import com.locipro.neoballerite.worldgen.ore.NeoOreFeatures;
+import com.locipro.neoballerite.worldgen.vegetation.flower.NeoBerryFeatures;
 import com.locipro.neoballerite.worldgen.vegetation.tree.NeoTreeFeatures;
 import com.locipro.neoballerite.worldgen.vegetation.vegetation.NeoVegetationFeatures;
 import net.minecraft.core.registries.Registries;
@@ -19,5 +20,6 @@ public class NeoConfiguredFeatures {
         NeoOreFeatures.bootstrap(context);
         NeoTreeFeatures.bootstrap(context);
         NeoVegetationFeatures.bootstrap(context);
+        NeoBerryFeatures.bootstrap(context);
     }
 }
