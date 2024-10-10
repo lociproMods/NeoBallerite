@@ -79,6 +79,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         basicItem(BLUEBERRIES.get());
         basicItem(BLACKBERRIES.get());
+        basicItem(STRAWBERRY.get());
+        basicItem(UNRIPE_STRAWBERRY.get());
+        basicItem(STRAWBERRY_SEEDS.get());
 
 
     }

@@ -116,6 +116,9 @@ public class ModCreativeTabs {
                 output.accept(LEAD_NUGGET);
                 output.accept(BLUEBERRIES);
                 output.accept(BLACKBERRIES);
+                output.accept(STRAWBERRY);
+                output.accept(UNRIPE_STRAWBERRY);
+                output.accept(STRAWBERRY_SEEDS);
             }).build());
 
 }

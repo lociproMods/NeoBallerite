@@ -251,9 +251,16 @@ public class ModItems {
 
 
 
-    public static final DeferredItem<BlockItem> BLUEBERRIES = ModItems.ITEMS.registerSimpleBlockItem("blueberries",
+    public static final DeferredItem<BlockItem> BLUEBERRIES = ITEMS.registerSimpleBlockItem("blueberries",
             ModBlocks.BLUEBERRY_BUSH, new Item.Properties().food(BerryFoodProperties.BLUE));
-    public static final DeferredItem<BlockItem> BLACKBERRIES = ModItems.ITEMS.registerSimpleBlockItem("blackberries",
+    public static final DeferredItem<BlockItem> BLACKBERRIES = ITEMS.registerSimpleBlockItem("blackberries",
             ModBlocks.BLACKBERRY_BUSH, new Item.Properties().food(BerryFoodProperties.BLACK));
+
+    public static final DeferredItem<Item> STRAWBERRY = ITEMS.register("strawberry",
+            () -> new Item(new Item.Properties().food(BerryFoodProperties.STRAWBERRIES)));
+    public static final DeferredItem<Item> UNRIPE_STRAWBERRY = ITEMS.register("unripe_strawberry",
+            () -> new Item(new Item.Properties().food(BerryFoodProperties.UNRIPE_STRAWBERRIES)));
+    public static final DeferredItem<BlockItem> STRAWBERRY_SEEDS = ITEMS.registerSimpleBlockItem("strawberry_seeds",
+            ModBlocks.STRAWBERRY_BUSH, new Item.Properties());
 
 }

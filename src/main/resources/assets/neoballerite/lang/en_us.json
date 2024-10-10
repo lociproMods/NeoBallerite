@@ -44,6 +44,9 @@
 
   "block.neoballerite.blueberry_bush" : "Blueberries",
   "block.neoballerite.blackberry_bush" : "Blackberries",
+  "item.neoballerite.strawberry" : "Strawberry",
+  "item.neoballerite.unripe_strawberry" : "Unripe Strawberry",
+  "block.neoballerite.strawberry_bush" : "Strawberry Seeds",
 
 
 

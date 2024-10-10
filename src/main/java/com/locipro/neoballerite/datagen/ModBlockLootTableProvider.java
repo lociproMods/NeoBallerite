@@ -2,6 +2,7 @@ package com.locipro.neoballerite.datagen;
 
 import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.block.custom.NeoBerryBushBlock;
+import com.locipro.neoballerite.block.custom.StrawBerryBushBlock;
 import com.locipro.neoballerite.item.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.Holder;
@@ -112,6 +113,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 BLACKBERRY_BUSH, BLACKBERRIES, NeoBerryBushBlock.AGE, 3, 2
         );
 
+        addCustomBerryDrops(
+                STRAWBERRY_BUSH, STRAWBERRY, UNRIPE_STRAWBERRY, STRAWBERRY_SEEDS, StrawBerryBushBlock.AGE, 5, 4
+        );
+
     }
 
     protected LootTable.Builder createVariableOreDrops(Block block, ItemLike item, NumberProvider numberProvider) {
@@ -123,6 +128,41 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                         LootItem.lootTableItem(item)
                                 .apply(SetItemCountFunction.setCount(numberProvider))
                                 .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
+                )
+        );
+    }
+
+    /** For when you have variants of your drops based on age **/
+    protected void addCustomBerryDrops(DeferredBlock<?> berryBlock,
+                                       DeferredItem<?> ripeBerryItem, DeferredItem<?> unripeBerryItem, DeferredItem<?> seedItem,
+                                       Property<Integer> ageProperty, int ageRipe, int ageUnripe) {
+        HolderGetter<Enchantment> enchantmentReg = registries.lookupOrThrow(Registries.ENCHANTMENT);
+
+        add(
+                berryBlock.get(),
+                block -> applyExplosionDecay(
+                        block,
+                        LootTable.lootTable()
+                                .withPool(
+                                        LootPool.lootPool()
+                                                .when(
+                                                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(berryBlock.get())
+                                                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, ageUnripe))
+                                                )
+                                                .add(LootItem.lootTableItem(unripeBerryItem))
+                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)))
+                                                .apply(ApplyBonusCount.addUniformBonusCount(enchantmentReg.getOrThrow(Enchantments.FORTUNE)))
+                                )
+                                .withPool(
+                                        LootPool.lootPool()
+                                                .when(
+                                                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(berryBlock.get())
+                                                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, ageRipe))
+                                                )
+                                                .add(LootItem.lootTableItem(ripeBerryItem))
+                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2, 4)))
+                                                .apply(ApplyBonusCount.addUniformBonusCount(enchantmentReg.getOrThrow(Enchantments.FORTUNE)))
+                                )
                 )
         );
     }

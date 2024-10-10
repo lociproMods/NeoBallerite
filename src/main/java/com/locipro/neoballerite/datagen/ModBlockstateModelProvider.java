@@ -2,6 +2,7 @@ package com.locipro.neoballerite.datagen;
 
 import com.google.common.collect.ImmutableList;
 import com.locipro.neoballerite.block.custom.NeoBerryBushBlock;
+import com.locipro.neoballerite.block.custom.StrawBerryBushBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.blockstates.MultiVariantGenerator;
@@ -122,6 +123,7 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
 
         customBerryBushBlock(BLUEBERRY_BUSH, NeoBerryBushBlock.AGE);
         customBerryBushBlock(BLACKBERRY_BUSH, NeoBerryBushBlock.AGE);
+        customBerryBushBlock(STRAWBERRY_BUSH, StrawBerryBushBlock.AGE);
 
     }
 

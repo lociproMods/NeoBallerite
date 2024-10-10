@@ -7,6 +7,7 @@ import static com.locipro.neoballerite.NeoBallerite.MODID;
 import com.locipro.neoballerite.block.custom.CompressedBalleriteBlock;
 import com.locipro.neoballerite.block.custom.CustomDistanceLeavesBlock;
 import com.locipro.neoballerite.block.custom.NeoBerryBushBlock;
+import com.locipro.neoballerite.block.custom.StrawBerryBushBlock;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
 import com.locipro.neoballerite.misc.food.BerryFoodProperties;
@@ -272,6 +273,9 @@ public class ModBlocks {
     public static final DeferredBlock<Block> BLACKBERRY_BUSH = registerBlockWithoutItem("blackberry_bush",
             () -> new NeoBerryBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH),
                     () -> ModItems.BLACKBERRIES, 1));
+    public static final DeferredBlock<Block> STRAWBERRY_BUSH = registerBlockWithoutItem("strawberry_bush",
+            () -> new StrawBerryBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH),
+                    ModItems.STRAWBERRY, ModItems.UNRIPE_STRAWBERRY, ModItems.STRAWBERRY_SEEDS));
 
 
 }

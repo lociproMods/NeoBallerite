@@ -201,6 +201,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput, NeoBallerite.MODID + ":lead_ingot_from_block");
 
 
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, STRAWBERRY_SEEDS, 3)
+                .requires(STRAWBERRY)
+                .unlockedBy("has_strawberry", has(STRAWBERRY))
+                .save(recipeOutput);
+
+
+
+
         offerSmeltingAndBlasting(recipeOutput, List.of(BALLERITE_ORE), RecipeCategory.MISC, COOKED_BALLERITE_BLOCK,
                 0.7f, 260, "ballerite");
         offerSmeltingAndBlasting(recipeOutput, List.of(COOKED_BALLERITE_BLOCK), RecipeCategory.MISC, BURNT_BALLERITE_BLOCK,
