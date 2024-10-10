@@ -6,8 +6,10 @@ import static com.locipro.neoballerite.NeoBallerite.MODID;
 
 import com.locipro.neoballerite.block.custom.CompressedBalleriteBlock;
 import com.locipro.neoballerite.block.custom.CustomDistanceLeavesBlock;
+import com.locipro.neoballerite.block.custom.NeoBerryBushBlock;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
+import com.locipro.neoballerite.misc.food.BerryFoodProperties;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -23,6 +25,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.Nullable;
 
@@ -260,6 +263,15 @@ public class ModBlocks {
             () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE).noOcclusion()));
 
 
+
+
+
+    public static final DeferredBlock<Block> BLUEBERRY_BUSH = registerBlockWithoutItem("blueberry_bush",
+            () -> new NeoBerryBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH),
+                    () -> ModItems.BLUEBERRIES, 1));
+    public static final DeferredBlock<Block> BLACKBERRY_BUSH = registerBlockWithoutItem("blackberry_bush",
+            () -> new NeoBerryBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH),
+                    () -> ModItems.BLACKBERRIES, 1));
 
 
 }

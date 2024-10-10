@@ -1,22 +1,35 @@
 package com.locipro.neoballerite.datagen;
 
 import com.locipro.neoballerite.block.ModBlocks;
+import com.locipro.neoballerite.block.custom.NeoBerryBushBlock;
+import com.locipro.neoballerite.item.ModItems;
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SweetBerryBushBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.neoforged.neoforge.registries.DeferredBlock;
+import net.neoforged.neoforge.registries.DeferredItem;
 
 import java.util.Set;
 import static com.locipro.neoballerite.block.ModBlocks.*;
@@ -34,6 +47,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+
 
         add(BALLERITE_ORE.get(),
                 createVariableOreDrops(BALLERITE_ORE.get(), RAW_BALLERITE, UniformGenerator.between(1, 4)));
@@ -90,6 +104,14 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(STAR_PRESSURE_PLATE.get());
         add(STAR_DOOR.get(), createDoorTable(STAR_DOOR.get()));
 
+
+        addCustomBerryDrops(
+                BLUEBERRY_BUSH, BLUEBERRIES, NeoBerryBushBlock.AGE, 3, 2
+        );
+        addCustomBerryDrops(
+                BLACKBERRY_BUSH, BLACKBERRIES, NeoBerryBushBlock.AGE, 3, 2
+        );
+
     }
 
     protected LootTable.Builder createVariableOreDrops(Block block, ItemLike item, NumberProvider numberProvider) {
@@ -101,6 +123,37 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                         LootItem.lootTableItem(item)
                                 .apply(SetItemCountFunction.setCount(numberProvider))
                                 .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
+                )
+        );
+    }
+
+    protected void addCustomBerryDrops(DeferredBlock<?> berryBlock, DeferredItem<?> berryItem, Property<Integer> ageProperty, int maxAge4drop, int secondMaxAge4drop) {
+        HolderGetter<Enchantment> enchantmentReg = registries.lookupOrThrow(Registries.ENCHANTMENT);
+        add(
+                berryBlock.get(),
+                block -> applyExplosionDecay(
+                        block,
+                        LootTable.lootTable()
+                                .withPool(
+                                        LootPool.lootPool()
+                                                .when(
+                                                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(berryBlock.get())
+                                                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, maxAge4drop))
+                                                )
+                                                .add(LootItem.lootTableItem(berryItem))
+                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F)))
+                                                .apply(ApplyBonusCount.addUniformBonusCount(enchantmentReg.getOrThrow(Enchantments.FORTUNE)))
+                                )
+                                .withPool(
+                                        LootPool.lootPool()
+                                                .when(
+                                                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(berryBlock.get())
+                                                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, secondMaxAge4drop))
+                                                )
+                                                .add(LootItem.lootTableItem(berryItem))
+                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                                                .apply(ApplyBonusCount.addUniformBonusCount(enchantmentReg.getOrThrow(Enchantments.FORTUNE)))
+                                )
                 )
         );
     }

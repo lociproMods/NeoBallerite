@@ -1,8 +1,10 @@
 package com.locipro.neoballerite.item;
 
 
+import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.item.custom.*;
 import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
+import com.locipro.neoballerite.misc.food.BerryFoodProperties;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.particles.ParticleTypes;
@@ -11,6 +13,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -244,15 +247,13 @@ public class ModItems {
                 }
             });
 
-    /*public static final Item WOODEN_CLAYMORE = registerItem("wooden_claymore", new SwordItem(Tiers.WOOD, 4, -2.8F, new FabricItemSettings()));
-    public static final Item STONE_CLAYMORE = registerItem("stone_claymore", new SwordItem(Tiers.STONE, 4, -2.8F, new FabricItemSettings()));
-    public static final Item IRON_CLAYMORE = registerItem("iron_claymore", new SwordItem(ModToolMaterials.LEAD, 4, -2.8F, new FabricItemSettings()));
-    public static final Item LEAD_CLAYMORE = registerItem("lead_claymore", new LeadSword(ModToolMaterials.LEAD, 4, -2.8f));
-    public static final Item GOLD_CLAYMORE = registerItem("gold_claymore", new SwordItem(Tiers.GOLD, 4, -2.8F, new FabricItemSettings()));
-    public static final Item DIAMOND_CLAYMORE = registerItem("diamond_claymore", new SwordItem(Tiers.DIAMOND, 5, -2.8F, new FabricItemSettings()));
-    public static final Item NETHERITE_CLAYMORE = registerItem("netherite_claymore", new SwordItem(Tiers.NETHERITE, 4, -2.8F, new FabricItemSettings()));
-    public static final Item BALLERITE_CLAYMORE = registerItem("ballerite_claymore", new SwordItem(ModToolMaterials.COMPRESSED_BALLERITE, 5, -2.8F, new FabricItemSettings()));
-*/
     //endregion
+
+
+
+    public static final DeferredItem<BlockItem> BLUEBERRIES = ModItems.ITEMS.registerSimpleBlockItem("blueberries",
+            ModBlocks.BLUEBERRY_BUSH, new Item.Properties().food(BerryFoodProperties.BLUE));
+    public static final DeferredItem<BlockItem> BLACKBERRIES = ModItems.ITEMS.registerSimpleBlockItem("blackberries",
+            ModBlocks.BLACKBERRY_BUSH, new Item.Properties().food(BerryFoodProperties.BLACK));
 
 }

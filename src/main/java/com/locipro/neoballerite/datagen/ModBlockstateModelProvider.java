@@ -1,14 +1,24 @@
 package com.locipro.neoballerite.datagen;
 
 import com.google.common.collect.ImmutableList;
+import com.locipro.neoballerite.block.custom.NeoBerryBushBlock;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.BlockModelGenerators;
+import net.minecraft.data.models.blockstates.MultiVariantGenerator;
+import net.minecraft.data.models.blockstates.PropertyDispatch;
+import net.minecraft.data.models.blockstates.Variant;
+import net.minecraft.data.models.blockstates.VariantProperties;
+import net.minecraft.data.models.model.ModelTemplates;
+import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -107,6 +117,12 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         blockItem(STAR_PRESSURE_PLATE);
         blockItem(STAR_FENCE_GATE);
         blockItem(STAR_TRAPDOOR, "_bottom");
+
+
+
+        customBerryBushBlock(BLUEBERRY_BUSH, NeoBerryBushBlock.AGE);
+        customBerryBushBlock(BLACKBERRY_BUSH, NeoBerryBushBlock.AGE);
+
     }
 
     private void blockWithItem(DeferredBlock<?> block) {
@@ -173,5 +189,14 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
 
     private void blockItem(DeferredBlock<?> deferredBlock, String appendix) {
         simpleBlockItem(deferredBlock.get(), new ModelFile.UncheckedModelFile("neoballerite:block/" + deferredBlock.getId().getPath() + appendix));
+    }
+
+    private void customBerryBushBlock(DeferredBlock<?> bush, IntegerProperty bushAgeProperty) {
+        String bushName = bush.getId().getPath();
+        getVariantBuilder(bush.get()).forAllStates( state -> {
+            String stateAndModelName = bushName + "_stage" + state.getValue(bushAgeProperty);
+            return new ConfiguredModel[]{new ConfiguredModel(models().cross(stateAndModelName,
+                    ResourceLocation.fromNamespaceAndPath(MODID, "block/" + stateAndModelName)).renderType("cutout"))};
+        });
     }
 }

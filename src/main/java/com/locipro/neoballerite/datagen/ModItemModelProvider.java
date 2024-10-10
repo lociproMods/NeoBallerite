@@ -77,6 +77,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheld(DIAMOND_CLAYMORE);
         handheld(NETHERITE_CLAYMORE);
 
+        basicItem(BLUEBERRIES.get());
+        basicItem(BLACKBERRIES.get());
+
 
     }
     

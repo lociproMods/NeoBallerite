@@ -114,6 +114,8 @@ public class ModCreativeTabs {
                 output.accept(COMPRESSED_BALLERITE_INGOT);
                 output.accept(LEAD_INGOT);
                 output.accept(LEAD_NUGGET);
+                output.accept(BLUEBERRIES);
+                output.accept(BLACKBERRIES);
             }).build());
 
 }
