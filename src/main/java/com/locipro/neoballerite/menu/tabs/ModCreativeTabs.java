@@ -47,6 +47,7 @@ public class ModCreativeTabs {
                 output.accept(BALLERITE_CLAYMORE.get());
                 output.accept(DIAMOND_CLAYMORE.get());
                 output.accept(NETHERITE_CLAYMORE.get());
+                output.accept(KNIFE.get());
 
             }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_BLOCKS = CREATIVE_MODE_TABS.register("ballerite_blocks", () -> CreativeModeTab.builder()

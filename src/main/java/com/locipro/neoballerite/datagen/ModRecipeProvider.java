@@ -57,6 +57,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_cooked_ballerite", has(COOKED_BALLERITE))
                 .save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, KNIFE)
+                .define('#', Items.IRON_INGOT)
+                .define('X', Items.STICK)
+                .pattern(" #")
+                .pattern("X ")
+                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+                .save(recipeOutput);
+
         
         offerTools(recipeOutput,
                 BALLERITE_SWORD,

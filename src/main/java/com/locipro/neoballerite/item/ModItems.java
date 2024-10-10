@@ -250,6 +250,9 @@ public class ModItems {
     //endregion
 
 
+    public static final DeferredItem<Item> KNIFE = ITEMS.register("knife",
+            () -> new KnifeItem(new Item.Properties().setNoRepair().durability(32)));
+
 
     public static final DeferredItem<BlockItem> BLUEBERRIES = ITEMS.registerSimpleBlockItem("blueberries",
             ModBlocks.BLUEBERRY_BUSH, new Item.Properties().food(BerryFoodProperties.BLUE));
