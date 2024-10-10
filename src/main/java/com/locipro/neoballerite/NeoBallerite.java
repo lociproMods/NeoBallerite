@@ -24,6 +24,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 //      Add sugar components
 //      Add claymores
 //      Make torches turn off during rain
+//      NOT ENCHANTIBLE? WDYM
 
 @Mod(NeoBallerite.MODID)
 public class NeoBallerite {

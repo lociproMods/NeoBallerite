@@ -37,6 +37,17 @@ public class ModCreativeTabs {
                 output.accept(LEAD_AXE.get());
                 output.accept(LEAD_SHOVEL.get());
                 output.accept(LEAD_HOE.get());
+
+
+                output.accept(WOODEN_CLAYMORE.get());
+                output.accept(STONE_CLAYMORE.get());
+                output.accept(IRON_CLAYMORE.get());
+                output.accept(LEAD_CLAYMORE.get());
+                output.accept(GOLD_CLAYMORE.get());
+                output.accept(BALLERITE_CLAYMORE.get());
+                output.accept(DIAMOND_CLAYMORE.get());
+                output.accept(NETHERITE_CLAYMORE.get());
+
             }).build());
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_BLOCKS = CREATIVE_MODE_TABS.register("ballerite_blocks", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.ballerite_blocks"))

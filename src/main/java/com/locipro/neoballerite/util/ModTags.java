@@ -32,6 +32,7 @@ public class ModTags {
 
         public static final TagKey<Item> WITHERED_BLOCKS = createTag("withered_blocks");
         public static final TagKey<Item> STAR_BLOCKS = createTag("star_blocks");
+        public static final TagKey<Item> CLAYMORES = createTag("claymores");
 
         private static TagKey<Item> createTag(String name){
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(MODID, name));

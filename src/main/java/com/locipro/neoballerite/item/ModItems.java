@@ -5,8 +5,12 @@ import com.locipro.neoballerite.item.custom.*;
 import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -181,5 +185,74 @@ public class ModItems {
                     )
             ));
 
+    
+    //region CLAYMORES
+    public static final DeferredItem<NeoClaymoreItem> WOODEN_CLAYMORE = ITEMS.register("wooden_claymore",
+            () -> new NeoClaymoreItem(Tiers.WOOD, new Item.Properties()));
+    public static final DeferredItem<NeoClaymoreItem> STONE_CLAYMORE = ITEMS.register("stone_claymore",
+            () -> new NeoClaymoreItem(Tiers.STONE, new Item.Properties()));
+    public static final DeferredItem<NeoClaymoreItem> IRON_CLAYMORE = ITEMS.register("iron_claymore",
+            () -> new NeoClaymoreItem(Tiers.IRON, new Item.Properties()));
+    public static final DeferredItem<NeoClaymoreItem> LEAD_CLAYMORE = ITEMS.register("lead_claymore",
+            () -> new NeoClaymoreItem(ModTiers.LEAD_TIER, new Item.Properties()));
+    public static final DeferredItem<NeoClaymoreItem> GOLD_CLAYMORE = ITEMS.register("gold_claymore",
+            () -> new NeoClaymoreItem(Tiers.GOLD, new Item.Properties()));
+    public static final DeferredItem<NeoClaymoreItem> DIAMOND_CLAYMORE = ITEMS.register("diamond_claymore",
+            () -> new NeoClaymoreItem(Tiers.DIAMOND, new Item.Properties()) {
+                @Override
+                public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+                    Level level = attacker.level();
+                    if (level instanceof ServerLevel) {
+                        ServerLevel serverLevel = (ServerLevel) level;
+                        serverLevel.sendParticles(
+                                ParticleTypes.ELECTRIC_SPARK,
+                                target.getX(),
+                                target.getY() + 1.5,
+                                target.getZ(),
+                                12,
+                                0,
+                                0,
+                                0,
+                                0.3f
+                        );
+                    }
+                    return super.hurtEnemy(stack, target, attacker);
+                }
+            });
+    public static final DeferredItem<NeoClaymoreItem> NETHERITE_CLAYMORE = ITEMS.register("netherite_claymore",
+            () -> new NeoClaymoreItem(Tiers.NETHERITE, new Item.Properties()));
+    public static final DeferredItem<NeoClaymoreItem> BALLERITE_CLAYMORE = ITEMS.register("ballerite_claymore",
+            () -> new NeoClaymoreItem(ModTiers.BALLERITE_TIER, new Item.Properties(), true) {
+                @Override
+                public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+                    Level level = attacker.level();
+                    if (level instanceof ServerLevel) {
+                        ServerLevel serverLevel = (ServerLevel) level;
+                        serverLevel.sendParticles(
+                                ParticleTypes.GLOW,
+                                target.getX(),
+                                target.getY() + 0.5,
+                                target.getZ(),
+                                12,
+                                0,
+                                0,
+                                0,
+                                0.3f
+                        );
+                    }
+                    return super.hurtEnemy(stack, target, attacker);
+                }
+            });
+
+    /*public static final Item WOODEN_CLAYMORE = registerItem("wooden_claymore", new SwordItem(Tiers.WOOD, 4, -2.8F, new FabricItemSettings()));
+    public static final Item STONE_CLAYMORE = registerItem("stone_claymore", new SwordItem(Tiers.STONE, 4, -2.8F, new FabricItemSettings()));
+    public static final Item IRON_CLAYMORE = registerItem("iron_claymore", new SwordItem(ModToolMaterials.LEAD, 4, -2.8F, new FabricItemSettings()));
+    public static final Item LEAD_CLAYMORE = registerItem("lead_claymore", new LeadSword(ModToolMaterials.LEAD, 4, -2.8f));
+    public static final Item GOLD_CLAYMORE = registerItem("gold_claymore", new SwordItem(Tiers.GOLD, 4, -2.8F, new FabricItemSettings()));
+    public static final Item DIAMOND_CLAYMORE = registerItem("diamond_claymore", new SwordItem(Tiers.DIAMOND, 5, -2.8F, new FabricItemSettings()));
+    public static final Item NETHERITE_CLAYMORE = registerItem("netherite_claymore", new SwordItem(Tiers.NETHERITE, 4, -2.8F, new FabricItemSettings()));
+    public static final Item BALLERITE_CLAYMORE = registerItem("ballerite_claymore", new SwordItem(ModToolMaterials.COMPRESSED_BALLERITE, 5, -2.8F, new FabricItemSettings()));
+*/
+    //endregion
 
 }

@@ -2,11 +2,14 @@ package com.locipro.neoballerite.datagen;
 
 import com.google.common.collect.ImmutableList;
 import com.locipro.neoballerite.NeoBallerite;
+import com.locipro.neoballerite.item.custom.NeoClaymoreItem;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
@@ -69,7 +72,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 LEAD_SHOVEL,
                 LEAD_HOE,
                 LEAD_INGOT);
-        
+
+        offerClaymore(recipeOutput, WOODEN_CLAYMORE, ItemTags.PLANKS);
+        offerClaymore(recipeOutput, STONE_CLAYMORE, ItemTags.STONE_CRAFTING_MATERIALS);
+        offerClaymore(recipeOutput, IRON_CLAYMORE, Items.IRON_INGOT);
+        offerClaymore(recipeOutput, LEAD_CLAYMORE, LEAD_INGOT);
+        offerClaymore(recipeOutput, GOLD_CLAYMORE, Items.GOLD_INGOT);
+        offerClaymore(recipeOutput, DIAMOND_CLAYMORE, Items.DIAMOND);
+        offerClaymore(recipeOutput, BALLERITE_CLAYMORE, COMPRESSED_BALLERITE_INGOT);
+        netheriteSmithing(recipeOutput, DIAMOND_CLAYMORE.get(), RecipeCategory.COMBAT, NETHERITE_CLAYMORE.get());
+
+
         
         
         
@@ -247,6 +260,25 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime, pCookingSerializer, factory).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(recipeOutput, NeoBallerite.MODID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
+    }
+
+    protected static void offerClaymore(RecipeOutput recipeOutput, DeferredItem<NeoClaymoreItem> claymore, ItemLike ingredient) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, claymore)
+                .define('X', Items.STICK)
+                .define('#', ingredient)
+                .pattern("  #")
+                .pattern("## ")
+                .pattern("X# ")
+                .unlockedBy("has" + ingredient.toString(), has(ingredient));
+    }
+    protected static void offerClaymore(RecipeOutput recipeOutput, DeferredItem<NeoClaymoreItem> claymore, TagKey<Item> tagKey) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, claymore)
+                .define('X', Items.STICK)
+                .define('#', tagKey)
+                .pattern("  #")
+                .pattern("## ")
+                .pattern("X# ")
+                .unlockedBy("has" + tagKey.toString(), has(tagKey));
     }
 
     protected static void offerTools(RecipeOutput recipeOutput,

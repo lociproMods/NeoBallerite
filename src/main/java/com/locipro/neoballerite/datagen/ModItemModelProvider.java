@@ -68,6 +68,16 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheld(LEAD_SHOVEL);
         handheld(LEAD_HOE);
 
+        handheld(WOODEN_CLAYMORE);
+        handheld(STONE_CLAYMORE);
+        handheld(IRON_CLAYMORE);
+        handheld(LEAD_CLAYMORE);
+        handheld(GOLD_CLAYMORE);
+        handheld(BALLERITE_CLAYMORE);
+        handheld(DIAMOND_CLAYMORE);
+        handheld(NETHERITE_CLAYMORE);
+
+
     }
     
     

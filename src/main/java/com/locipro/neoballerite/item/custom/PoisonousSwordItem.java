@@ -10,6 +10,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
+
+import java.util.List;
 
 public class PoisonousSwordItem extends SwordItem {
     public PoisonousSwordItem(Tier tier, Properties properties) {
@@ -17,11 +20,17 @@ public class PoisonousSwordItem extends SwordItem {
     }
 
     @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.literal("Does poison damage").withStyle(ChatFormatting.ITALIC).withStyle(ChatFormatting.DARK_GREEN));
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    }
+
+    @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (!attacker.level().isClientSide) {
-            target.addEffect(new MobEffectInstance(MobEffects.POISON, 100, 1));
-            if (target instanceof ServerPlayer player) {
-                player.displayClientMessage(Component.literal(
+        if (attacker instanceof ServerPlayer serverPlayer) {
+            target.addEffect(new MobEffectInstance(MobEffects.POISON, 60, 1));
+            if (target instanceof ServerPlayer serverTarget) {
+                serverTarget.displayClientMessage(Component.literal(
                         "You've been poisoned by " + attacker.getDisplayName() + "!")
                         .withStyle(ChatFormatting.RED)
                         .withStyle(ChatFormatting.BOLD), true);

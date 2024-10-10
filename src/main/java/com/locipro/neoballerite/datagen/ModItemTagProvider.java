@@ -114,6 +114,15 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(STAR_PRESSURE_PLATE.get().asItem())
                 .add(STAR_FENCE.get().asItem())
                 .add(STAR_FENCE_GATE.get().asItem());
+        
+        tag(ModTags.Items.CLAYMORES)
+                .add(WOODEN_CLAYMORE.get())
+                .add(STONE_CLAYMORE.get())
+                .add(IRON_CLAYMORE.get())
+                .add(LEAD_CLAYMORE.get())
+                .add(GOLD_CLAYMORE.get())
+                .add(DIAMOND_CLAYMORE.get())
+                .add(BALLERITE_CLAYMORE.get());
 
 
     }

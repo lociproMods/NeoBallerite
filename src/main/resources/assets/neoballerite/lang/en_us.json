@@ -25,6 +25,15 @@
   "item.neoballerite.lead_shovel" : "Lead Shovel",
   "item.neoballerite.lead_hoe" : "Lead Hoe",
 
+  "item.neoballerite.wooden_claymore" : "Wooden Claymore",
+  "item.neoballerite.stone_claymore" : "Stone Claymore",
+  "item.neoballerite.iron_claymore" : "Iron Claymore",
+  "item.neoballerite.gold_claymore" : "Gold Claymore",
+  "item.neoballerite.lead_claymore" : "Lead Claymore",
+  "item.neoballerite.diamond_claymore" : "Diamond Claymore",
+  "item.neoballerite.netherite_claymore" : "Netherite Claymore",
+  "item.neoballerite.ballerite_claymore" : "Ballerite Claymore",
+
   "item.neoballerite.lead_ingot" : "Lead Ingot",
   "item.neoballerite.raw_lead" : "Raw Lead",
   "item.neoballerite.lead_nugget" : "Lead Nugget",
