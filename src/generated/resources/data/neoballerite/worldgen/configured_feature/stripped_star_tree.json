@@ -37,8 +37,8 @@
       "state": {
         "Name": "neoballerite:star_leaves",
         "Properties": {
-          "distance": "7",
           "persistent": "false",
+          "star_leaves_distance": "12",
           "waterlogged": "false"
         }
       }

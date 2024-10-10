@@ -13,7 +13,7 @@
       "offset": 0,
       "radius": {
         "type": "minecraft:uniform",
-        "max_inclusive": 4,
+        "max_inclusive": 3,
         "min_inclusive": 2
       }
     },
@@ -22,8 +22,8 @@
       "state": {
         "Name": "neoballerite:star_leaves",
         "Properties": {
-          "distance": "7",
           "persistent": "false",
+          "star_leaves_distance": "12",
           "waterlogged": "false"
         }
       }
@@ -34,7 +34,7 @@
       "type": "minecraft:two_layers_feature_size",
       "limit": 1,
       "lower_size": 0,
-      "upper_size": 3
+      "upper_size": 2
     },
     "trunk_placer": {
       "type": "minecraft:forking_trunk_placer",

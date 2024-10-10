@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableList;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SaplingBlock;
@@ -122,7 +123,7 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         simpleBlock(block.get(), models().cubeAll(block.getId().getPath(), woodTexture));
         blockItem(block);
     }
-    private void leavesWithItem(DeferredBlock<LeavesBlock> leavesBlock) {
+    private void leavesWithItem(DeferredBlock<?> leavesBlock) {
         ResourceLocation leavesTexture = modLoc("block/" + leavesBlock.getId().getPath());
         simpleBlock(leavesBlock.get(), models().leaves(leavesBlock.getId().toString(), leavesTexture));
         blockItem(leavesBlock);

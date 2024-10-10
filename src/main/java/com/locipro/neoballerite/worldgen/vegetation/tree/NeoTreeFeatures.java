@@ -68,7 +68,7 @@ public class NeoTreeFeatures {
                         BlockStateProvider.simple(WITHERED_LOG.get()),
                         new FancyTrunkPlacer(12, 3, 1),
                         BlockStateProvider.simple(WITHERED_LEAVES.get()),
-                        new FancyFoliagePlacer(UniformInt.of(4, 7), ConstantInt.of(0), 4),
+                        new FancyFoliagePlacer(UniformInt.of(4, 6), ConstantInt.of(0), 3),
                         new TwoLayersFeatureSize(2, 0 ,2)
                 ).decorators(
                         ImmutableList.of(new AlterGroundDecorator(BlockStateProvider.simple(RAW_BALLERITE_BLOCK.get())))
@@ -81,8 +81,8 @@ public class NeoTreeFeatures {
                         BlockStateProvider.simple(STAR_LOG.get()),
                         new ForkingTrunkPlacer(4, 4, 3),
                         BlockStateProvider.simple(STAR_LEAVES.get()),
-                        new AcaciaFoliagePlacer(UniformInt.of(2, 4), ConstantInt.of(0)), // RADIUS, OFFSET
-                        new TwoLayersFeatureSize(1, 0, 3)
+                        new AcaciaFoliagePlacer(UniformInt.of(2, 3), ConstantInt.of(0)), // RADIUS, OFFSET
+                        new TwoLayersFeatureSize(1, 0, 2)
                 )
                         .ignoreVines()
                         .build()

@@ -5,6 +5,7 @@ import static com.locipro.neoballerite.NeoBallerite.MODID;
 
 
 import com.locipro.neoballerite.block.custom.CompressedBalleriteBlock;
+import com.locipro.neoballerite.block.custom.CustomDistanceLeavesBlock;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
 import net.minecraft.ChatFormatting;
@@ -164,8 +165,8 @@ public class ModBlocks {
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)));
 
 
-    public static final DeferredBlock<LeavesBlock> WITHERED_LEAVES = registerBlock("withered_leaves",
-            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES)));
+    public static final DeferredBlock<Block> WITHERED_LEAVES = registerBlock("withered_leaves",
+            () -> new CustomDistanceLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES), 10));
 //    public static final DeferredBlock<SaplingBlock> WITHERED_SAPLING = registerBlock("withered_sapling",
 //            () -> new SaplingBlock())
 
@@ -229,8 +230,8 @@ public class ModBlocks {
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)));
 
 
-    public static final DeferredBlock<LeavesBlock> STAR_LEAVES = registerBlock("star_leaves",
-            () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).noCollission().noOcclusion().lightLevel(state -> 10)));
+    public static final DeferredBlock<Block> STAR_LEAVES = registerBlock("star_leaves",
+            () -> new CustomDistanceLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).noCollission().noOcclusion().lightLevel(state -> 10), 12));
 //    public static final DeferredBlock<SaplingBlock> STAR_SAPLING = registerBlock("star_sapling",
 //            () -> new SaplingBlock())
 

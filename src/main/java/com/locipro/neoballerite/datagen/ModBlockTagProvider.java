@@ -53,6 +53,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(STAR_SAPLING.get());
         tag(BlockTags.LOGS_THAT_BURN)
                 .addTags(ModTags.Blocks.WITHERED_LOGS);
+        tag(BlockTags.LOGS)
+                .addTags(ModTags.Blocks.WITHERED_LOGS, ModTags.Blocks.STAR_LOGS);
         tag(BlockTags.WOODEN_FENCES)
                 .add(WITHERED_FENCE.get())
                 .add(STAR_FENCE.get());

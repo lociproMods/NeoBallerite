@@ -19,8 +19,8 @@
       "state": {
         "Name": "neoballerite:withered_leaves",
         "Properties": {
-          "distance": "7",
           "persistent": "false",
+          "star_leaves_distance": "10",
           "waterlogged": "false"
         }
       }
