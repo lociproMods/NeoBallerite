@@ -40,6 +40,39 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(STAR_WOOD.asItem())
                 .add(STRIPPED_STAR_WOOD.asItem());
         
+        
+        
+        tag(ItemTags.SWORD_ENCHANTABLE)
+                .add(WOODEN_CLAYMORE.get())
+                .add(STONE_CLAYMORE.get())
+                .add(IRON_CLAYMORE.get())
+                .add(LEAD_CLAYMORE.get())
+                .add(GOLD_CLAYMORE.get())
+                .add(DIAMOND_CLAYMORE.get())
+                .add(BALLERITE_CLAYMORE.get())
+                .add(NETHERITE_CLAYMORE.get());
+
+        tag(ItemTags.SWORDS)
+                .add(BALLERITE_SWORD.get())
+                .add(LEAD_SWORD.get());
+
+        tag(ItemTags.PICKAXES)
+                .add(BALLERITE_PICKAXE.get())
+                .add(LEAD_PICKAXE.get());
+        
+        tag(ItemTags.AXES)
+                .add(BALLERITE_AXE.get())
+                .add(LEAD_AXE.get());
+
+        tag(ItemTags.SHOVELS)
+                .add(BALLERITE_SHOVEL.get())
+                .add(LEAD_SHOVEL.get());
+
+        tag(ItemTags.HOES)
+                .add(BALLERITE_HOE.get())
+                .add(LEAD_HOE.get());
+        
+        
         tag(ItemTags.PLANKS)
                 .add(WITHERED_PLANKS.asItem())
                 .add(STAR_PLANKS.asItem());

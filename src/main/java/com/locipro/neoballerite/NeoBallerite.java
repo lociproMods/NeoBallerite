@@ -22,9 +22,8 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
 // TODO -
 //      Add sugar components
-//      Add claymores
 //      Make torches turn off during rain
-//      NOT ENCHANTIBLE? WDYM
+//      USE DATA COMPONENTS TO LINK BACK TO THE ORIGINAL FRUIT ONCE YOU IMPLEMENT JAMS.
 
 @Mod(NeoBallerite.MODID)
 public class NeoBallerite {
