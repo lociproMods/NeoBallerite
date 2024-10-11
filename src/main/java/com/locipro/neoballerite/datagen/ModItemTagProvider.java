@@ -71,7 +71,30 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ItemTags.HOES)
                 .add(BALLERITE_HOE.get())
                 .add(LEAD_HOE.get());
-        
+
+        tag(ItemTags.ARMOR_ENCHANTABLE)
+                .add(BALLERITE_HELMET.get())
+                .add(BALLERITE_CHESTPLATE.get())
+                .add(BALLERITE_LEGGINGS.get())
+                .add(BALLERITE_BOOTS.get())
+                .add(LEAD_HELMET.get())
+                .add(LEAD_CHESTPLATE.get())
+                .add(LEAD_LEGGINGS.get())
+                .add(LEAD_BOOTS.get());
+        tag(ItemTags.HEAD_ARMOR)
+                .add(BALLERITE_HELMET.get())
+                .add(LEAD_HELMET.get());
+        tag(ItemTags.CHEST_ARMOR)
+                .add(BALLERITE_CHESTPLATE.get())
+                .add(LEAD_CHESTPLATE.get());
+        tag(ItemTags.LEG_ARMOR)
+                .add(BALLERITE_LEGGINGS.get())
+                .add(LEAD_LEGGINGS.get());
+        tag(ItemTags.FOOT_ARMOR)
+                .add(BALLERITE_BOOTS.get())
+                .add(LEAD_BOOTS.get())
+                .add(LEAVES_BOOTS.get());
+
         
         tag(ItemTags.PLANKS)
                 .add(WITHERED_PLANKS.asItem())

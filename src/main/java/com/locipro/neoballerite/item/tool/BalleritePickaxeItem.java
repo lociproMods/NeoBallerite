@@ -1,4 +1,4 @@
-package com.locipro.neoballerite.item.custom;
+package com.locipro.neoballerite.item.tool;
 
 import com.locipro.neoballerite.block.ModBlocks;
 import net.minecraft.core.BlockPos;
@@ -6,16 +6,17 @@ import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class BalleriteAxeItem extends AxeItem {
-    public BalleriteAxeItem(Tier p_40521_, Properties p_40524_) {
-        super(p_40521_, p_40524_);
+public class BalleritePickaxeItem extends PickaxeItem {
+    public BalleritePickaxeItem(Tier p_42961_, Properties p_42964_) {
+        super(p_42961_, p_42964_);
     }
+
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
 
@@ -41,7 +42,7 @@ public class BalleriteAxeItem extends AxeItem {
                     0,
                     0,
                     0,
-                    0.15f
+                    0.1f
             );
         }
         return super.mineBlock(stack, level, state, pos, miningEntity);

@@ -22,12 +22,24 @@
   "item.neoballerite.ballerite_shovel" : "Ballerite Shovel",
   "item.neoballerite.ballerite_hoe" : "Ballerite Hoe",
 
+  "item.neoballerite.ballerite_helmet" : "Ballerite Helmet",
+  "item.neoballerite.ballerite_chestplate" : "Ballerite Chestplate",
+  "item.neoballerite.ballerite_leggings" : "Ballerite Leggings",
+  "item.neoballerite.ballerite_boots" : "Ballerite Boots",
+
 
   "item.neoballerite.lead_sword" : "Lead Sword",
   "item.neoballerite.lead_pickaxe" : "Lead Pickaxe",
   "item.neoballerite.lead_axe" : "Lead Axe",
   "item.neoballerite.lead_shovel" : "Lead Shovel",
   "item.neoballerite.lead_hoe" : "Lead Hoe",
+
+  "item.neoballerite.lead_helmet" : "Lead Helmet",
+  "item.neoballerite.lead_chestplate" : "Lead Chestplate",
+  "item.neoballerite.lead_leggings" : "Lead Leggings",
+  "item.neoballerite.lead_boots" : "Lead Boots",
+
+  "item.neoballerite.leaves_boots" : "Farmer's Boots",
 
   "item.neoballerite.wooden_claymore" : "Wooden Claymore",
   "item.neoballerite.stone_claymore" : "Stone Claymore",

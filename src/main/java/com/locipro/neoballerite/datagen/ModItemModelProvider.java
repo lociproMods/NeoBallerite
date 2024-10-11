@@ -62,11 +62,23 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheld(BALLERITE_SHOVEL);
         handheld(BALLERITE_HOE);
         
+        basicItem(BALLERITE_HELMET.asItem());
+        basicItem(BALLERITE_CHESTPLATE.asItem());
+        basicItem(BALLERITE_LEGGINGS.asItem());
+        basicItem(BALLERITE_BOOTS.asItem());
+
+        basicItem(LEAVES_BOOTS.asItem());
+
         handheld(LEAD_SWORD);
         handheld(LEAD_PICKAXE);
         handheld(LEAD_AXE);
         handheld(LEAD_SHOVEL);
         handheld(LEAD_HOE);
+
+        basicItem(LEAD_HELMET.asItem());
+        basicItem(LEAD_CHESTPLATE.asItem());
+        basicItem(LEAD_LEGGINGS.asItem());
+        basicItem(LEAD_BOOTS.asItem());
 
         handheld(KNIFE);
 

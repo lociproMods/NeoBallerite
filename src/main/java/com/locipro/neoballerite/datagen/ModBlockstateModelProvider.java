@@ -143,13 +143,10 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
     }
     private void leavesWithItem(DeferredBlock<?> leavesBlock) {
         ResourceLocation leavesTexture = modLoc("block/" + leavesBlock.getId().getPath());
-        simpleBlock(leavesBlock.get(), models().leaves(leavesBlock.getId().toString(), leavesTexture));
+        simpleBlock(leavesBlock.get(), models().leaves(leavesBlock.getId().toString(), leavesTexture).renderType("cutout"));
         blockItem(leavesBlock);
     }
     private void saplingWithItem(DeferredBlock<SaplingBlock> sapling) {
-        System.out.println("block/" + sapling.getId());
-        System.out.println("block/" + sapling.getId().getPath());
-        System.out.println("block/" + sapling.getRegisteredName());
 
         ResourceLocation saplingCrossTexture = modLoc("block/" + sapling.getId().getPath());
         simpleBlock(sapling.get(), models().cross(sapling.getId().toString(), saplingCrossTexture).renderType("cutout"));

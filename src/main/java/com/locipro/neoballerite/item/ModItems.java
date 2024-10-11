@@ -2,7 +2,11 @@ package com.locipro.neoballerite.item;
 
 
 import com.locipro.neoballerite.block.ModBlocks;
+import com.locipro.neoballerite.item.armor.BushNegatingArmorItem;
+import com.locipro.neoballerite.item.armor.LeadArmorItem;
+import com.locipro.neoballerite.item.armor.NeoArmorMaterials;
 import com.locipro.neoballerite.item.custom.*;
+import com.locipro.neoballerite.item.tool.*;
 import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
 import com.locipro.neoballerite.misc.food.BerryFoodProperties;
 import net.minecraft.ChatFormatting;
@@ -13,7 +17,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -73,7 +76,8 @@ public class ModItems {
 
 
     
-
+    
+    //region ballerite tools
     public static final DeferredItem<SwordItem> BALLERITE_SWORD = ITEMS.register("ballerite_sword",
             () -> new BalleriteSwordItem(
                     ModTiers.BALLERITE_TIER,
@@ -130,9 +134,43 @@ public class ModItems {
             ));
 
 
+    public static final DeferredItem<ArmorItem> BALLERITE_HELMET = ITEMS.register("ballerite_helmet",
+            () -> new ArmorItem(
+                    NeoArmorMaterials.BALLERITE,
+                    ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(35))
+            ));
+    public static final DeferredItem<ArmorItem> BALLERITE_CHESTPLATE = ITEMS.register("ballerite_chestplate",
+            () -> new ArmorItem(
+                    NeoArmorMaterials.BALLERITE,
+                    ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(35))
+            ));
+    public static final DeferredItem<ArmorItem> BALLERITE_LEGGINGS = ITEMS.register("ballerite_leggings",
+            () -> new ArmorItem(
+                    NeoArmorMaterials.BALLERITE,
+                    ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(35))
+            ));
+    public static final DeferredItem<ArmorItem> BALLERITE_BOOTS = ITEMS.register("ballerite_boots",
+            () -> new ArmorItem(
+                    NeoArmorMaterials.BALLERITE,
+                    ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(35))
+            ));
+
+    public static final DeferredItem<ArmorItem> LEAVES_BOOTS = ITEMS.register("leaves_boots",
+            () -> new BushNegatingArmorItem(
+                    NeoArmorMaterials.LEAVES,
+                    ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(77)
+            ));
+
+    //endregion
 
 
 
+    //region Lead
     public static final DeferredItem<SwordItem> LEAD_SWORD = ITEMS.register("lead_sword",
             () -> new PoisonousSwordItem(
                     ModTiers.LEAD_TIER,
@@ -188,6 +226,34 @@ public class ModItems {
                     )
             ));
 
+
+
+    public static final DeferredItem<ArmorItem> LEAD_HELMET = ITEMS.register("lead_helmet",
+            () -> new LeadArmorItem(
+                    NeoArmorMaterials.LEAD,
+                    ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(23))
+            ));
+    public static final DeferredItem<ArmorItem> LEAD_CHESTPLATE = ITEMS.register("lead_chestplate",
+            () -> new LeadArmorItem(
+                    NeoArmorMaterials.LEAD,
+                    ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(23))
+            ));
+    public static final DeferredItem<ArmorItem> LEAD_LEGGINGS = ITEMS.register("lead_leggings",
+            () -> new LeadArmorItem(
+                    NeoArmorMaterials.LEAD,
+                    ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(23))
+            ));
+    public static final DeferredItem<ArmorItem> LEAD_BOOTS = ITEMS.register("lead_boots",
+            () -> new LeadArmorItem(
+                    NeoArmorMaterials.LEAD,
+                    ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(23))
+            ));
+
+    //endregion
     
     //region CLAYMORES
     public static final DeferredItem<NeoClaymoreItem> WOODEN_CLAYMORE = ITEMS.register("wooden_claymore",
@@ -250,6 +316,7 @@ public class ModItems {
     //endregion
 
 
+    //region foods?
     public static final DeferredItem<Item> KNIFE = ITEMS.register("knife",
             () -> new KnifeItem(new Item.Properties().setNoRepair().durability(32)));
 
@@ -265,5 +332,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(BerryFoodProperties.UNRIPE_STRAWBERRIES)));
     public static final DeferredItem<BlockItem> STRAWBERRY_SEEDS = ITEMS.registerSimpleBlockItem("strawberry_seeds",
             ModBlocks.STRAWBERRY_BUSH, new Item.Properties());
+    //endregion
+
+
 
 }

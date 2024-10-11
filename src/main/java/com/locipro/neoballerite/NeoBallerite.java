@@ -1,7 +1,10 @@
 package com.locipro.neoballerite;
 
 import com.locipro.neoballerite.block.ModBlocks;
+import com.locipro.neoballerite.component.NeoDataComponents;
+import com.locipro.neoballerite.datagen.recipe.NeoRecipeSerializers;
 import com.locipro.neoballerite.item.ModItems;
+import com.locipro.neoballerite.item.armor.NeoArmorMaterials;
 import com.locipro.neoballerite.menu.tabs.ModCreativeTabs;
 import org.slf4j.Logger;
 
@@ -26,6 +29,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 //      USE DATA COMPONENTS TO LINK BACK TO THE ORIGINAL FRUIT ONCE YOU IMPLEMENT JAMS.
 //      RETEXTURE STAR_TRAPDOOR
 //      RETEXTURE BALLERITE_INGOT
+//      ADD TEXTURE TO BOTTOM OF ARMOR BOOTS. (It's already on ballerite but not lead or farmers)
 
 @Mod(NeoBallerite.MODID)
 public class NeoBallerite {
@@ -47,6 +51,11 @@ public class NeoBallerite {
         //  ok uhm so, if we do blocks first mod berries break :/ fuck it we ball
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
+
+        NeoArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
+        NeoDataComponents.DATA_COMPONENT_TYPES.register(modEventBus);
+
+        NeoRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
 
 
 

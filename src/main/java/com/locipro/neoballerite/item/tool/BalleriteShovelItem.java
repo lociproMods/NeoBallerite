@@ -1,4 +1,4 @@
-package com.locipro.neoballerite.item.custom;
+package com.locipro.neoballerite.item.tool;
 
 import com.locipro.neoballerite.block.ModBlocks;
 import net.minecraft.core.BlockPos;

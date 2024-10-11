@@ -1,7 +1,6 @@
-package com.locipro.neoballerite.item.custom;
+package com.locipro.neoballerite.item.tool;
 
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.components.ChatComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;

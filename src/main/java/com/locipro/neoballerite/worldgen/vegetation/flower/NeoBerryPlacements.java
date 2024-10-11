@@ -28,17 +28,17 @@ public class NeoBerryPlacements {
 
 
         PlacementUtils.register(context, BLUEBERRY_BUSH, blueberry_bush,
-                RarityFilter.onAverageOnceEvery(16),
+                RarityFilter.onAverageOnceEvery(14),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome());
         PlacementUtils.register(context, BLACKBERRY_BUSH, blackberry_bush,
-                RarityFilter.onAverageOnceEvery(20),
+                RarityFilter.onAverageOnceEvery(16),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome());
         PlacementUtils.register(context, STRAWBERRY_BUSH, strawberry_bush,
-                RarityFilter.onAverageOnceEvery(24),
+                RarityFilter.onAverageOnceEvery(18),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome());

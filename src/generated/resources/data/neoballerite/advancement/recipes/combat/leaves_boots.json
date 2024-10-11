@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_star_leaves": {
+      "conditions": {
+        "items": [
+          {
+            "items": "neoballerite:star_leaves"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "neoballerite:leaves_boots"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_star_leaves"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "neoballerite:leaves_boots"
+    ]
+  }
+}

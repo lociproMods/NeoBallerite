@@ -2,7 +2,8 @@ package com.locipro.neoballerite.datagen;
 
 import com.google.common.collect.ImmutableList;
 import com.locipro.neoballerite.NeoBallerite;
-import com.locipro.neoballerite.item.custom.NeoClaymoreItem;
+import com.locipro.neoballerite.datagen.recipe.NeoShapelessRepair;
+import com.locipro.neoballerite.item.tool.NeoClaymoreItem;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -14,8 +15,10 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 
+import static com.locipro.neoballerite.NeoBallerite.MODID;
 import static com.locipro.neoballerite.block.ModBlocks.*;
 import static com.locipro.neoballerite.item.ModItems.*;
 
@@ -91,6 +94,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         netheriteSmithing(recipeOutput, DIAMOND_CLAYMORE.get(), RecipeCategory.COMBAT, NETHERITE_CLAYMORE.get());
 
 
+        offerHelmet(recipeOutput, BALLERITE_HELMET, COMPRESSED_BALLERITE_INGOT);
+        offerChestplate(recipeOutput, BALLERITE_CHESTPLATE, COMPRESSED_BALLERITE_INGOT);
+        offerLeggings(recipeOutput, BALLERITE_LEGGINGS, COMPRESSED_BALLERITE_INGOT);
+        offerBoots(recipeOutput, BALLERITE_BOOTS, COMPRESSED_BALLERITE_INGOT);
+
+        offerHelmet(recipeOutput, LEAD_HELMET, LEAD_INGOT);
+        offerChestplate(recipeOutput, LEAD_CHESTPLATE, LEAD_INGOT);
+        offerLeggings(recipeOutput, LEAD_LEGGINGS, LEAD_INGOT);
+        offerBoots(recipeOutput, LEAD_BOOTS, LEAD_INGOT);
+
+        offerBoots(recipeOutput, LEAVES_BOOTS, STAR_LEAVES);
+
         
         
         
@@ -125,6 +140,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         trapdoorBuilder(WITHERED_TRAPDOOR, Ingredient.of(WITHERED_PLANKS))
                 .group("withered")
                 .unlockedBy("has_withered_planks", has(WITHERED_PLANKS)).save(recipeOutput);
+
 
 
 
@@ -188,12 +204,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("BBB")
                 .define('B', LEAD_INGOT)
                 .unlockedBy("has_lead_ingot", has(LEAD_INGOT))
-                .save(recipeOutput, NeoBallerite.MODID + ":lead_block_from_ingot");
+                .save(recipeOutput, MODID + ":lead_block_from_ingot");
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LEAD_NUGGET, 9)
                 .requires(LEAD_INGOT)
                 .unlockedBy("has_lead_ingot", has(LEAD_INGOT))
-                .save(recipeOutput, NeoBallerite.MODID + ":lead_nugget_from_ingot");
+                .save(recipeOutput, MODID + ":lead_nugget_from_ingot");
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, LEAD_INGOT)
                 .pattern("BBB")
@@ -201,12 +217,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("BBB")
                 .define('B', LEAD_NUGGET)
                 .unlockedBy("has_lead_nugget", has(LEAD_NUGGET))
-                .save(recipeOutput, NeoBallerite.MODID + ":lead_ingot_from_nuggets");
+                .save(recipeOutput, MODID + ":lead_ingot_from_nuggets");
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, LEAD_INGOT, 9)
                 .requires(LEAD_BLOCK)
                 .unlockedBy("has_lead_block", has(LEAD_BLOCK))
-                .save(recipeOutput, NeoBallerite.MODID + ":lead_ingot_from_block");
+                .save(recipeOutput, MODID + ":lead_ingot_from_block");
 
 
 
@@ -239,8 +255,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 0.7f, 200, "lead");
 
 
+
+        SpecialRecipeBuilder.special(NeoShapelessRepair::new)
+                .save(recipeOutput, getId("farmers_boots_repair"));
+
     }
 
+//    protected static String getHasName(DeferredItem<?> item) {
+//        return item.getId().getPath();
+//    }
+    private ResourceLocation getId(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MODID, path);
+    }
 
 
     protected void offerSmeltingAndBlasting(RecipeOutput recipeOutput, List<ItemLike> ingredients, RecipeCategory category, ItemLike result, float experience, int smeltingCookingTime, String group) {
@@ -275,7 +301,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                                                                        List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup, String pRecipeName) {
         for(ItemLike itemlike : pIngredients) {
             SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime, pCookingSerializer, factory).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
-                    .save(recipeOutput, NeoBallerite.MODID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
+                    .save(recipeOutput, MODID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
     }
 
@@ -286,8 +312,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("  #")
                 .pattern("## ")
                 .pattern("X# ")
-                .unlockedBy("has" + ingredient.toString(), has(ingredient));
+                .unlockedBy(getHasName(ingredient), has(ingredient));
     }
+
     protected static void offerClaymore(RecipeOutput recipeOutput, DeferredItem<NeoClaymoreItem> claymore, TagKey<Item> tagKey) {
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, claymore)
                 .define('X', Items.STICK)
@@ -298,6 +325,40 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has" + tagKey.toString(), has(tagKey));
     }
 
+    protected static void offerHelmet(RecipeOutput recipeOutput, DeferredItem<?> helmet, ItemLike ingredient) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, helmet)
+                .define('X', ingredient)
+                .pattern("XXX")
+                .pattern("X X")
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(recipeOutput);
+    }
+    protected static void offerChestplate(RecipeOutput recipeOutput, DeferredItem<?> chestplate, ItemLike ingredient) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, chestplate)
+                .define('X', ingredient)
+                .pattern("X X")
+                .pattern("XXX")
+                .pattern("XXX")
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(recipeOutput);
+    }
+    protected static void offerLeggings(RecipeOutput recipeOutput, DeferredItem<?> leggings, ItemLike ingredient) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, leggings)
+                .define('X', ingredient)
+                .pattern("XXX")
+                .pattern("X X")
+                .pattern("X X")
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(recipeOutput);
+    }
+    protected static void offerBoots(RecipeOutput recipeOutput, DeferredItem<?> boots, ItemLike ingredient) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, boots)
+                .define('X', ingredient)
+                .pattern("X X")
+                .pattern("X X")
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(recipeOutput);
+    }
     protected static void offerTools(RecipeOutput recipeOutput,
                                      DeferredItem<SwordItem> swordItem,
                                      DeferredItem<PickaxeItem> pickaxeItem,
@@ -305,11 +366,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                                      DeferredItem<ShovelItem> shovelItem,
                                      DeferredItem<HoeItem> hoeItem,
                                      DeferredItem<?> repairItem) {
-//        Ingredient repairIngredient = hoeItem.get().getTier().getRepairIngredient();
-//        Item repairItem = repairIngredient.getItems()[0].getItem();
-//        ResourceLocation repairIngLoc = ResourceLocation.fromNamespaceAndPath(repairItem.getNa)
-//        String repairItemName = repairItem.getDescription()
-        String condition = "has_" + repairItem.getRegisteredName().replace(repairItem.getId().getNamespace() + ":", "");
+        String condition = getHasName(repairItem);
         System.out.println(condition);
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, hoeItem)
                 .define('#', Items.STICK)

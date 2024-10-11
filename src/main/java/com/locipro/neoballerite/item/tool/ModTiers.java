@@ -1,6 +1,6 @@
-package com.locipro.neoballerite.item;
+package com.locipro.neoballerite.item.tool;
 
-import com.locipro.neoballerite.datagen.ModBlockTagProvider;
+import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Tier;

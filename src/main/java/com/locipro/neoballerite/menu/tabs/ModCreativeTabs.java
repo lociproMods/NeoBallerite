@@ -31,12 +31,22 @@ public class ModCreativeTabs {
                 output.accept(BALLERITE_AXE.get());
                 output.accept(BALLERITE_SHOVEL.get());
                 output.accept(BALLERITE_HOE.get()); 
-                
+                output.accept(BALLERITE_HELMET.get());
+                output.accept(BALLERITE_CHESTPLATE.get());
+                output.accept(BALLERITE_LEGGINGS.get());
+                output.accept(BALLERITE_BOOTS.get());
+
                 output.accept(LEAD_SWORD.get());
                 output.accept(LEAD_PICKAXE.get());
                 output.accept(LEAD_AXE.get());
                 output.accept(LEAD_SHOVEL.get());
                 output.accept(LEAD_HOE.get());
+                output.accept(LEAD_HELMET.get());
+                output.accept(LEAD_CHESTPLATE.get());
+                output.accept(LEAD_LEGGINGS.get());
+                output.accept(LEAD_BOOTS.get());
+
+                output.accept(LEAVES_BOOTS.get());
 
 
                 output.accept(WOODEN_CLAYMORE.get());
