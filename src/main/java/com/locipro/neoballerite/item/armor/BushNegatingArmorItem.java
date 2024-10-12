@@ -33,6 +33,9 @@ public class BushNegatingArmorItem extends ArmorItem {
         }else {
             tooltipComponents.add(Component.literal("Negates berry bush damage.").withStyle(ChatFormatting.GRAY));
         }
+        if (stack.get(NeoDataComponents.ADDED_DURABILITY) != null) {
+            tooltipComponents.add(Component.literal("Upgraded to durability " + stack.get(NeoDataComponents.ADDED_DURABILITY)));
+        }
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 

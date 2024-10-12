@@ -19,6 +19,9 @@ public class NeoDataComponents {
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> CAN_NEGATE_BUSH_SLOW = register(
             "can_negate_bush_slow", builder -> builder.persistent(Codec.BOOL)
     );
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> ADDED_DURABILITY = register(
+            "added_durability", builder -> builder.persistent(Codec.INT)
+    );
 
     private static <T>DeferredHolder<DataComponentType<?>, DataComponentType<T>> register(String name,
                                                                                        UnaryOperator<DataComponentType.Builder<T>> builderOperator) {
