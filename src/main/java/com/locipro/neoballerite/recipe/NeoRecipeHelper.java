@@ -1,4 +1,4 @@
-package com.locipro.neoballerite.datagen.recipe;
+package com.locipro.neoballerite.recipe;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingInput;
@@ -41,3 +41,4 @@ public class NeoRecipeHelper {
         return findItems(inv, predicates).size() == predicates.size();
     }
 }
+/* Ingredient.of(new ItemStack(Items.DIAMOND_SWORD)) returns an ingredient that accepts an item stack. Be aware that counts and data components are ignored.*/

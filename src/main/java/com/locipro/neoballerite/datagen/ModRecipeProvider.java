@@ -1,8 +1,7 @@
 package com.locipro.neoballerite.datagen;
 
 import com.google.common.collect.ImmutableList;
-import com.locipro.neoballerite.NeoBallerite;
-import com.locipro.neoballerite.datagen.recipe.NeoShapelessRepair;
+import com.locipro.neoballerite.recipe.NeoShapelessRepair;
 import com.locipro.neoballerite.item.tool.NeoClaymoreItem;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
@@ -15,7 +14,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 import static com.locipro.neoballerite.NeoBallerite.MODID;

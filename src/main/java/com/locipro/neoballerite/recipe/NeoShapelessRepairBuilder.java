@@ -1,4 +1,4 @@
-package com.locipro.neoballerite.datagen.recipe;
+package com.locipro.neoballerite.recipe;
 
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
