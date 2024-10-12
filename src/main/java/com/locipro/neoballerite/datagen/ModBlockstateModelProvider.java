@@ -125,6 +125,8 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         customBerryBushBlock(BLACKBERRY_BUSH, NeoBerryBushBlock.AGE);
         customBerryBushBlock(STRAWBERRY_BUSH, StrawBerryBushBlock.AGE);
 
+        crossBlock(TOMATO_BUSH);
+
     }
 
     private void blockWithItem(DeferredBlock<?> block) {
@@ -197,5 +199,9 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
             return new ConfiguredModel[]{new ConfiguredModel(models().cross(stateAndModelName,
                     ResourceLocation.fromNamespaceAndPath(MODID, "block/" + stateAndModelName)).renderType("cutout"))};
         });
+    }
+    private void crossBlock(DeferredBlock<?> block) {
+        ResourceLocation crossTexture = modLoc("block/" + block.getId().getPath());
+        simpleBlock(block.get(), models().cross(block.getId().toString(), crossTexture).renderType("cutout"));
     }
 }

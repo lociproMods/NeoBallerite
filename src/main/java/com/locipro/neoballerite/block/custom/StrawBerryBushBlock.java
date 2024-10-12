@@ -85,7 +85,8 @@ public class StrawBerryBushBlock extends BushBlock implements BonemealableBlock 
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return AGE_TO_SHAPE[state.getValue(AGE)];
+        Vec3 offset = state.getOffset(level, pos);
+        return AGE_TO_SHAPE[state.getValue(AGE)].move(offset.x, offset.y, offset.z);
     }
 
     @Override

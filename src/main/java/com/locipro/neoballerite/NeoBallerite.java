@@ -30,7 +30,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 //      RETEXTURE STAR_TRAPDOOR
 //      RETEXTURE BALLERITE_INGOT
 //      ADD TEXTURE TO BOTTOM OF ARMOR BOOTS. (It's already on ballerite but not lead or farmers)
-
+//      EGGPLANT, SWEET POTATO, TOMATO, TOMATO FLOWER BUSH.
 @Mod(NeoBallerite.MODID)
 public class NeoBallerite {
     public static final String MODID = "neoballerite";

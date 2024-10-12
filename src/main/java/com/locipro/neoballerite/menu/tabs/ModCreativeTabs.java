@@ -130,6 +130,9 @@ public class ModCreativeTabs {
                 output.accept(STRAWBERRY);
                 output.accept(UNRIPE_STRAWBERRY);
                 output.accept(STRAWBERRY_SEEDS);
+
+                output.accept(TOMATO);
+                output.accept(TOMATO_SEEDS);
             }).build());
 
 }

@@ -46,7 +46,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.LEAVES)
                 .add(WITHERED_LEAVES.get())
                 .add(STAR_LEAVES.get());
-
+        tag(BlockTags.FLOWERS)
+                .add(TOMATO_BUSH.get());
 
         tag(BlockTags.SAPLINGS)
                 .add(WITHERED_SAPLING.get())

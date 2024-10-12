@@ -28,9 +28,15 @@ import static com.locipro.neoballerite.worldgen.NeoConfiguredFeatures.createKey;
 
 public class NeoBerryFeatures {
 
+    // These features are PATCH features
     public static ResourceKey<ConfiguredFeature<?, ?>> BLUEBERRY_BUSH = createKey("blueberry_bush");
     public static ResourceKey<ConfiguredFeature<?, ?>> BLACKBERRY_BUSH = createKey("blackberry_bush");
     public static ResourceKey<ConfiguredFeature<?, ?>> STRAWBERRY_BUSH = createKey("strawberry_bush");
+
+
+    public static ResourceKey<ConfiguredFeature<?, ?>> TOMATO_BUSH = createKey("tomato_bush");
+
+
 
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> bootstrapContext) {
@@ -60,7 +66,13 @@ public class NeoBerryFeatures {
                                         BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(),
                                                 Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.PODZOL, Blocks.COARSE_DIRT)
                                 ))));
-
+/*//I, J, K FOR "RandomPatchFeatureConfig" ARE AS FOLLOWING : tries, xz_spread, y_spread.
+        register(context, TOMATO_FLOWER_KEY, Feature.FLOWER,
+                new RandomPatchConfiguration(48, 7, 3, PlacementUtils.filtered(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.TOMATO_FLOWER)),
+                        BlockPredicate.allOf(BlockPredicate.replaceable(), BlockPredicate.noFluid(),
+                                BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.GRASS_BLOCK, Blocks.PODZOL, Blocks.DIRT)))));
+*/
         FeatureUtils.register(bootstrapContext,
                 STRAWBERRY_BUSH,
                 Feature.RANDOM_PATCH,
@@ -72,6 +84,19 @@ public class NeoBerryFeatures {
                                         BlockPredicate.replaceable(), BlockPredicate.noFluid(),
                                         BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(),
                                                 Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.PODZOL, Blocks.COARSE_DIRT)
+                                ))));
+
+        FeatureUtils.register(bootstrapContext,
+                TOMATO_BUSH,
+                Feature.FLOWER,
+                new RandomPatchConfiguration(36, 6, 3,
+                        PlacementUtils.filtered(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.TOMATO_BUSH.get()
+                                        .defaultBlockState())),
+                                BlockPredicate.allOf(
+                                        BlockPredicate.noFluid(), BlockPredicate.replaceable(),
+                                        BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(),
+                                                Blocks.GRASS_BLOCK, Blocks.DIRT)
                                 ))));
     }
 }

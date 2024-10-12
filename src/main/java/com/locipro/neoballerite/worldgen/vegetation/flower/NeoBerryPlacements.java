@@ -20,11 +20,16 @@ public class NeoBerryPlacements {
     public static ResourceKey<PlacedFeature> STRAWBERRY_BUSH = createKey("strawberry_bush");
 
 
+    public static ResourceKey<PlacedFeature> TOMATO_BUSH = createKey("tomato_bush");
+
+
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> holderGetter = context.lookup(Registries.CONFIGURED_FEATURE);
         Holder<ConfiguredFeature<?, ?>> blueberry_bush = holderGetter.getOrThrow(NeoBerryFeatures.BLUEBERRY_BUSH);
         Holder<ConfiguredFeature<?, ?>> blackberry_bush = holderGetter.getOrThrow(NeoBerryFeatures.BLACKBERRY_BUSH);
         Holder<ConfiguredFeature<?, ?>> strawberry_bush = holderGetter.getOrThrow(NeoBerryFeatures.STRAWBERRY_BUSH);
+
+        Holder<ConfiguredFeature<?, ?>> tomato_bush = holderGetter.getOrThrow(NeoBerryFeatures.TOMATO_BUSH);
 
 
         PlacementUtils.register(context, BLUEBERRY_BUSH, blueberry_bush,
@@ -39,6 +44,12 @@ public class NeoBerryPlacements {
                 BiomeFilter.biome());
         PlacementUtils.register(context, STRAWBERRY_BUSH, strawberry_bush,
                 RarityFilter.onAverageOnceEvery(18),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                BiomeFilter.biome());
+
+        PlacementUtils.register(context, TOMATO_BUSH, tomato_bush,
+                RarityFilter.onAverageOnceEvery(24),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                 BiomeFilter.biome());

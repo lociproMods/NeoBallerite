@@ -4,10 +4,7 @@ package com.locipro.neoballerite.block;
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
 
-import com.locipro.neoballerite.block.custom.CompressedBalleriteBlock;
-import com.locipro.neoballerite.block.custom.CustomDistanceLeavesBlock;
-import com.locipro.neoballerite.block.custom.NeoBerryBushBlock;
-import com.locipro.neoballerite.block.custom.StrawBerryBushBlock;
+import com.locipro.neoballerite.block.custom.*;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
 import com.locipro.neoballerite.misc.food.BerryFoodProperties;
@@ -23,6 +20,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -276,6 +274,36 @@ public class ModBlocks {
     public static final DeferredBlock<Block> STRAWBERRY_BUSH = registerBlockWithoutItem("strawberry_bush",
             () -> new StrawBerryBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH),
                     ModItems.STRAWBERRY, ModItems.UNRIPE_STRAWBERRY, ModItems.STRAWBERRY_SEEDS));
-
+    /*public static final Block SWEET_BERRY_BUSH = register(
+        "sweet_berry_bush",
+        new SweetBerryBushBlock(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.PLANT)
+                .randomTicks()
+                .noCollission()
+                .sound(SoundType.SWEET_BERRY_BUSH)
+                .pushReaction(PushReaction.DESTROY)
+        )*/
+    /*public static final Block ROSE_BUSH = register(
+        "rose_bush",
+        new TallFlowerBlock(
+            BlockBehaviour.Properties.of()
+                .mapColor(MapColor.PLANT)
+                .noCollission()
+                .instabreak()
+                .sound(SoundType.GRASS)
+                .offsetType(BlockBehaviour.OffsetType.XZ)
+                .ignitedByLava()
+                .pushReaction(PushReaction.DESTROY)
+        )
+    );*/
+    public static final DeferredBlock<Block> TOMATO_BUSH = registerBlockWithoutItem("tomato_bush",
+            () -> new TomatoBushBlock(BlockBehaviour.Properties.of()
+                    .noCollission()
+                    .instabreak()
+                    .mapColor(MapColor.PLANT)
+                    .sound(SoundType.GRASS)
+                    .offsetType(BlockBehaviour.OffsetType.XZ)
+                    .pushReaction(PushReaction.DESTROY)));
 
 }

@@ -33,7 +33,7 @@ public class KnifeItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.literal("Used with bread and foods to make sandwiches.").withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.literal("Used with bread and foods to make sandwiches. Also makes jams when used with fruits!").withStyle(ChatFormatting.GRAY));
         if (Screen.hasShiftDown()) {
             tooltipComponents.add(Component.literal("--Irrepairable tool").withStyle(ChatFormatting.DARK_GRAY));
         }

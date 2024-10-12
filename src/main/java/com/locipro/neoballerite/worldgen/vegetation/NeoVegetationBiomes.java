@@ -29,6 +29,9 @@ public class NeoVegetationBiomes {
     public static final ResourceKey<BiomeModifier> ADD_BERRIES = createKey("add_berries");
     public static final ResourceKey<BiomeModifier> ADD_STRAWBERRIES = createKey("add_strawberries");
 
+
+    public static final ResourceKey<BiomeModifier> ADD_TOMATOES = createKey("add_tomatoes");
+
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
@@ -76,6 +79,15 @@ public class NeoVegetationBiomes {
                 )
         );
 
+        HolderSet<Biome> tomatoes = HolderSet.direct(List.of
+                (
+                biomes.getOrThrow(Biomes.PLAINS),
+                biomes.getOrThrow(Biomes.FOREST),
+                biomes.getOrThrow(Biomes.FLOWER_FOREST),
+                biomes.getOrThrow(Biomes.BIRCH_FOREST)
+                )
+        );
+
 
 
         context.register(ADD_TREES_WITHERED, new BiomeModifiers.AddFeaturesBiomeModifier(
@@ -101,6 +113,12 @@ public class NeoVegetationBiomes {
         context.register(ADD_STRAWBERRIES, new BiomeModifiers.AddFeaturesBiomeModifier(
                 strawberries,
                 HolderSet.direct(placedFeatures.getOrThrow(NeoBerryPlacements.STRAWBERRY_BUSH)),
+                GenerationStep.Decoration.VEGETAL_DECORATION
+        ));
+
+        context.register(ADD_TOMATOES, new BiomeModifiers.AddFeaturesBiomeModifier(
+                tomatoes,
+                HolderSet.direct(placedFeatures.getOrThrow(NeoBerryPlacements.TOMATO_BUSH)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
 

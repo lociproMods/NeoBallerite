@@ -9,6 +9,7 @@ import com.locipro.neoballerite.item.custom.*;
 import com.locipro.neoballerite.item.tool.*;
 import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
 import com.locipro.neoballerite.misc.food.BerryFoodProperties;
+import com.locipro.neoballerite.misc.food.FruitFoodProperties;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.particles.ParticleTypes;
@@ -17,6 +18,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -167,7 +169,6 @@ public class ModItems {
             ));
 
     //endregion
-
 
 
     //region Lead
@@ -332,6 +333,14 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(BerryFoodProperties.UNRIPE_STRAWBERRIES)));
     public static final DeferredItem<BlockItem> STRAWBERRY_SEEDS = ITEMS.registerSimpleBlockItem("strawberry_seeds",
             ModBlocks.STRAWBERRY_BUSH, new Item.Properties());
+
+    public static final DeferredItem<Item> TOMATO = ITEMS.register("tomato",
+            () -> new Item(new Item.Properties().food(FruitFoodProperties.TOMATO)));
+    public static final DeferredItem<BlockItem> TOMATO_SEEDS = ITEMS.registerSimpleBlockItem("tomato_seeds",
+            ()  -> Blocks.GOLD_BLOCK, new Item.Properties());
+
+
+
     //endregion
 
 

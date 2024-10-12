@@ -117,6 +117,16 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 STRAWBERRY_BUSH, STRAWBERRY, UNRIPE_STRAWBERRY, STRAWBERRY_SEEDS, StrawBerryBushBlock.AGE, 5, 4
         );
 
+
+        add(TOMATO_BUSH.get(), block ->
+                applyExplosionDecay(block, LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .add(LootItem.lootTableItem(TOMATO))
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3))))
+                        .withPool(LootPool.lootPool()
+                                .add(LootItem.lootTableItem(TOMATO_SEEDS))
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))));
+
     }
 
     protected LootTable.Builder createVariableOreDrops(Block block, ItemLike item, NumberProvider numberProvider) {
