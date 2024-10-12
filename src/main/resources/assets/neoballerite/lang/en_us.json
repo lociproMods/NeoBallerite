@@ -63,8 +63,17 @@
   "item.neoballerite.strawberry" : "Strawberry",
   "item.neoballerite.unripe_strawberry" : "Unripe Strawberry",
   "block.neoballerite.strawberry_bush" : "Strawberry Seeds",
-
+  
+  "block.neoballerite.sweet_potato_crop" : "Sweet Potato",
+  "item.neoballerite.baked_sweet_potato" : "Baked Sweet Potato",
+  
   "item.neoballerite.tomato" : "Tomato",
+  "item.neoballerite.grilled_tomato" : "Grilled Tomato",
+  "block.neoballerite.tomato_crop" : "Tomato Seeds",  
+  
+  "item.neoballerite.eggplant" : "Eggplant",
+  "item.neoballerite.grilled_eggplant" : "Grilled Eggplant",
+  "block.neoballerite.eggplant_crop" : "Eggplant Seeds",
 
 
 

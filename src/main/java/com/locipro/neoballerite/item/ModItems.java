@@ -18,7 +18,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -336,8 +335,22 @@ public class ModItems {
 
     public static final DeferredItem<Item> TOMATO = ITEMS.register("tomato",
             () -> new Item(new Item.Properties().food(FruitFoodProperties.TOMATO)));
+    public static final DeferredItem<Item> GRILLED_TOMATO = ITEMS.register("grilled_tomato",
+            () -> new Item(new Item.Properties().food(FruitFoodProperties.TOMATO)));
     public static final DeferredItem<BlockItem> TOMATO_SEEDS = ITEMS.registerSimpleBlockItem("tomato_seeds",
-            ()  -> Blocks.GOLD_BLOCK, new Item.Properties());
+            ModBlocks.TOMATO_CROP, new Item.Properties());
+
+    public static final DeferredItem<Item> EGGPLANT = ITEMS.register("eggplant",
+            () -> new Item(new Item.Properties().food(FruitFoodProperties.EGGPLANT)));
+    public static final DeferredItem<Item> GRILLED_EGGPLANT = ITEMS.register("grilled_eggplant",
+            () -> new Item(new Item.Properties().food(FruitFoodProperties.GRILLED_EGGPLANT)));
+    public static final DeferredItem<BlockItem> EGGPLANT_SEEDS = ITEMS.registerSimpleBlockItem("eggplant_seeds",
+            ModBlocks.EGGPLANT_CROP, new Item.Properties());
+
+    public static final DeferredItem<BlockItem> SWEET_POTATO = ITEMS.registerSimpleBlockItem("sweet_potato",
+            ModBlocks.SWEET_POTATO_CROP, new Item.Properties().food(FruitFoodProperties.SWEET_POTATO));
+    public static final DeferredItem<Item> BAKED_SWEET_POTATO = ITEMS.register("baked_sweet_potato",
+            () -> new Item(new Item.Properties().food(FruitFoodProperties.BAKED_SWEET_POTATO)));
 
 
 

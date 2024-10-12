@@ -1,35 +1,18 @@
 package com.locipro.neoballerite.datagen;
 
-import com.google.common.collect.ImmutableList;
-import com.locipro.neoballerite.block.custom.NeoBerryBushBlock;
-import com.locipro.neoballerite.block.custom.StrawBerryBushBlock;
+
+import com.locipro.neoballerite.block.custom.*;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.models.BlockModelGenerators;
-import net.minecraft.data.models.blockstates.MultiVariantGenerator;
-import net.minecraft.data.models.blockstates.PropertyDispatch;
-import net.minecraft.data.models.blockstates.Variant;
-import net.minecraft.data.models.blockstates.VariantProperties;
-import net.minecraft.data.models.model.ModelTemplates;
-import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.Resource;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
-import net.neoforged.neoforge.client.model.generators.ModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import oshi.util.tuples.Pair;
-
-import java.awt.*;
-import java.lang.reflect.Array;
-import java.util.HashSet;
-import java.util.Map;
 
 import static com.locipro.neoballerite.block.ModBlocks.*;
 import static com.locipro.neoballerite.NeoBallerite.MODID;
@@ -127,6 +110,10 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
 
         crossBlock(TOMATO_BUSH);
 
+        cropBlock(TOMATO_CROP, TomatoCropBlock.AGE);
+        cropBlock(EGGPLANT_CROP, EggplantCropBlock.AGE);
+        cropBlock(SWEET_POTATO_CROP, SweetPotatoCropBlock.AGE);
+
     }
 
     private void blockWithItem(DeferredBlock<?> block) {
@@ -197,6 +184,14 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         getVariantBuilder(bush.get()).forAllStates( state -> {
             String stateAndModelName = bushName + "_stage" + state.getValue(bushAgeProperty);
             return new ConfiguredModel[]{new ConfiguredModel(models().cross(stateAndModelName,
+                    ResourceLocation.fromNamespaceAndPath(MODID, "block/" + stateAndModelName)).renderType("cutout"))};
+        });
+    }
+    private void cropBlock(DeferredBlock<?> crop, IntegerProperty cropAgeProperty) {
+        String cropName = crop.getId().getPath();
+        getVariantBuilder(crop.get()).forAllStates( state -> {
+            String stateAndModelName = cropName + "_stage" + state.getValue(cropAgeProperty);
+            return new ConfiguredModel[]{new ConfiguredModel(models().crop(stateAndModelName,
                     ResourceLocation.fromNamespaceAndPath(MODID, "block/" + stateAndModelName)).renderType("cutout"))};
         });
     }

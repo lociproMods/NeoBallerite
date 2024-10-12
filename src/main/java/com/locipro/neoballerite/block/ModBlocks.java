@@ -306,4 +306,11 @@ public class ModBlocks {
                     .offsetType(BlockBehaviour.OffsetType.XZ)
                     .pushReaction(PushReaction.DESTROY)));
 
+    public static final DeferredBlock<Block> TOMATO_CROP = registerBlockWithoutItem("tomato_crop",
+            () -> new TomatoCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
+    public static final DeferredBlock<Block> EGGPLANT_CROP = registerBlockWithoutItem("eggplant_crop",
+            () -> new EggplantCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
+    public static final DeferredBlock<Block> SWEET_POTATO_CROP = registerBlockWithoutItem("sweet_potato_crop",
+            () -> new SweetPotatoCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
+
 }

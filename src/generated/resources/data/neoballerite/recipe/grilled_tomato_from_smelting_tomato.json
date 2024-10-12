@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.3,
+  "group": "tomato",
+  "ingredient": {
+    "item": "neoballerite:tomato"
+  },
+  "result": {
+    "count": 1,
+    "id": "neoballerite:grilled_tomato"
+  }
+}

@@ -2,19 +2,15 @@ package com.locipro.neoballerite.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
-
-import java.util.Objects;
 
 import static com.locipro.neoballerite.item.ModItems.*;
 import static com.locipro.neoballerite.block.ModBlocks.*;
@@ -98,7 +94,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(STRAWBERRY_SEEDS.get());
 
         basicItem(TOMATO.get());
+        basicItem(GRILLED_TOMATO.get());
         basicItem(TOMATO_SEEDS.get());
+        
+        basicItem(EGGPLANT.get());
+        basicItem(GRILLED_EGGPLANT.get());
+        basicItem(EGGPLANT_SEEDS.get());
+
+        basicItem(SWEET_POTATO.get());
+        basicItem(BAKED_SWEET_POTATO.get());
 
 
     }

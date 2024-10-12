@@ -131,8 +131,16 @@ public class ModCreativeTabs {
                 output.accept(UNRIPE_STRAWBERRY);
                 output.accept(STRAWBERRY_SEEDS);
 
+                output.accept(SWEET_POTATO);
+                output.accept(BAKED_SWEET_POTATO);
+
                 output.accept(TOMATO);
+                output.accept(GRILLED_TOMATO);
                 output.accept(TOMATO_SEEDS);
+                
+                output.accept(EGGPLANT);
+                output.accept(GRILLED_EGGPLANT);
+                output.accept(EGGPLANT_SEEDS);
             }).build());
 
 }

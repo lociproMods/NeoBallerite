@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.36,
+  "group": "eggplant",
+  "ingredient": {
+    "item": "neoballerite:eggplant"
+  },
+  "result": {
+    "count": 1,
+    "id": "neoballerite:grilled_eggplant"
+  }
+}

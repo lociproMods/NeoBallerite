@@ -228,6 +228,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(STRAWBERRY)
                 .unlockedBy("has_strawberry", has(STRAWBERRY))
                 .save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TOMATO_SEEDS, 3)
+                .requires(TOMATO)
+                .unlockedBy("has_tomato", has(TOMATO))
+                .save(recipeOutput);
 
 
 
@@ -251,6 +255,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         offerSmeltingAndBlasting(recipeOutput, LEAD_ORES, RecipeCategory.MISC, LEAD_INGOT,
                 0.7f, 200, "lead");
+
+
+        offerSmeltingAndSmoking(recipeOutput, List.of(TOMATO), RecipeCategory.FOOD, GRILLED_TOMATO,
+                0.3f, 200, "tomato");
+        offerSmeltingAndSmoking(recipeOutput, List.of(EGGPLANT), RecipeCategory.FOOD, GRILLED_EGGPLANT,
+                0.36f, 200, "eggplant");
+        offerSmeltingAndSmoking(recipeOutput, List.of(SWEET_POTATO), RecipeCategory.FOOD, BAKED_SWEET_POTATO,
+                0.36f, 200, "eggplant");
 
 
         SpecialRecipeBuilder.special(ShapelessRepairRecipe::new)

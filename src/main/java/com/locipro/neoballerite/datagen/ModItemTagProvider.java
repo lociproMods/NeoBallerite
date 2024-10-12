@@ -95,6 +95,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(LEAD_BOOTS.get())
                 .add(LEAVES_BOOTS.get());
 
+
         
         tag(ItemTags.PLANKS)
                 .add(WITHERED_PLANKS.asItem())

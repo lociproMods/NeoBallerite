@@ -1,8 +1,7 @@
 package com.locipro.neoballerite.datagen;
 
 import com.locipro.neoballerite.block.ModBlocks;
-import com.locipro.neoballerite.block.custom.NeoBerryBushBlock;
-import com.locipro.neoballerite.block.custom.StrawBerryBushBlock;
+import com.locipro.neoballerite.block.custom.*;
 import com.locipro.neoballerite.item.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.Holder;
@@ -11,14 +10,14 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SweetBerryBushBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -127,6 +126,12 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                                 .add(LootItem.lootTableItem(TOMATO_SEEDS))
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))));
 
+
+        addCropDrops(TOMATO_CROP, TOMATO.get(), TOMATO_SEEDS.get(), TomatoCropBlock.AGE, 7);
+        addCropDrops(EGGPLANT_CROP, EGGPLANT.get(), EGGPLANT_SEEDS.get(), EggplantCropBlock.AGE, 7);
+        addCropDrops(SWEET_POTATO_CROP, SWEET_POTATO.get(), SweetPotatoCropBlock.AGE, 3);
+
+
     }
 
     protected LootTable.Builder createVariableOreDrops(Block block, ItemLike item, NumberProvider numberProvider) {
@@ -138,6 +143,36 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                         LootItem.lootTableItem(item)
                                 .apply(SetItemCountFunction.setCount(numberProvider))
                                 .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
+                )
+        );
+    }
+
+    /** When no seed item is specified, uses the carrot loot table. **/
+    protected void addCropDrops(DeferredBlock<?> crop, Item drop, Item seed, IntegerProperty ageProperty, int ageToDrop) {
+        add(crop.get(),
+                createCropDrops(crop.get(), drop, seed,
+                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(crop.get())
+                                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, ageToDrop))));
+    }
+    /** When no seed item is specified, uses the carrot loot table. **/
+    protected void addCropDrops(DeferredBlock<?> crop, Item drop, IntegerProperty ageProperty, int ageToDrop) {
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+
+        add(
+                crop.get(),
+                applyExplosionDecay(
+                        crop,
+                        LootTable.lootTable()
+                                .withPool(LootPool.lootPool().add(LootItem.lootTableItem(drop)))
+                                .withPool(
+                                        LootPool.lootPool()
+                                                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(crop.get())
+                                                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, ageToDrop)))
+                                                .add(
+                                                        LootItem.lootTableItem(drop)
+                                                                .apply(ApplyBonusCount.addBonusBinomialDistributionCount(registrylookup.getOrThrow(Enchantments.FORTUNE), 0.5714286F, 3))
+                                                )
+                                )
                 )
         );
     }
