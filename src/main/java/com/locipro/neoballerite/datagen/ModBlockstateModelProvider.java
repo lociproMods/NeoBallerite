@@ -3,6 +3,9 @@ package com.locipro.neoballerite.datagen;
 
 import com.locipro.neoballerite.block.custom.*;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.BlockModelGenerators;
+import net.minecraft.data.models.model.ModelTemplates;
+import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SaplingBlock;
@@ -114,6 +117,8 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         cropBlock(EGGPLANT_CROP, EggplantCropBlock.AGE);
         cropBlock(SWEET_POTATO_CROP, SweetPotatoCropBlock.AGE);
 
+        pumpkinBlock(SWEET_POTATO_BLOCK);
+
     }
 
     private void blockWithItem(DeferredBlock<?> block) {
@@ -121,15 +126,15 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
     }
 
     /** I am a god and my ego remains unbroken
-     * update 1 day later : Actual wood blocks in the game are still axis-rotated blocks... This isn't.**/
-    private void woodBlockWithItem(DeferredBlock<?> block) {
-        // Gets the path to the normal default texture (the side texture)
-        String woodTexturePath = block.getId().getPath().replace("wood", "log");
-        ResourceLocation woodTexture = modLoc("block/" + woodTexturePath);
-        // Makes a cubeAll block model with that texture, attached to our new block
-        simpleBlock(block.get(), models().cubeAll(block.getId().getPath(), woodTexture));
-        blockItem(block);
-    }
+     * update 1 day later : Actual wood blocks in the game are axis-rotated blocks... This isn't.**/
+//    private void woodBlockWithItem(DeferredBlock<?> block) {
+//        // Gets the path to the normal default texture (the side texture)
+//        String woodTexturePath = block.getId().getPath().replace("wood", "log");
+//        ResourceLocation woodTexture = modLoc("block/" + woodTexturePath);
+//        // Makes a cubeAll block model with that texture, attached to our new block
+//        simpleBlock(block.get(), models().cubeAll(block.getId().getPath(), woodTexture));
+//        blockItem(block);
+//    }
     private void leavesWithItem(DeferredBlock<?> leavesBlock) {
         ResourceLocation leavesTexture = modLoc("block/" + leavesBlock.getId().getPath());
         simpleBlock(leavesBlock.get(), models().leaves(leavesBlock.getId().toString(), leavesTexture).renderType("cutout"));
@@ -198,5 +203,12 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
     private void crossBlock(DeferredBlock<?> block) {
         ResourceLocation crossTexture = modLoc("block/" + block.getId().getPath());
         simpleBlock(block.get(), models().cross(block.getId().toString(), crossTexture).renderType("cutout"));
+    }
+
+    /** Kind of misleading since the pumpkin block rotates the item model **/
+    private void pumpkinBlock(DeferredBlock<?> block) {
+        ResourceLocation sideTexture = modLoc("block/" + block.getId().getPath() + "_side");
+        ResourceLocation endTexture = modLoc("block/" + block.getId().getPath() + "_end");
+        simpleBlockWithItem(block.get(), models().cubeColumn(block.getId().toString(), sideTexture, endTexture));
     }
 }

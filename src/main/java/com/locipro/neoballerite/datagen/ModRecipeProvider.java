@@ -233,6 +233,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_tomato", has(TOMATO))
                 .save(recipeOutput);
 
+        twoByTwoPacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, SWEET_POTATO_BLOCK, SWEET_POTATO);
+
 
 
 

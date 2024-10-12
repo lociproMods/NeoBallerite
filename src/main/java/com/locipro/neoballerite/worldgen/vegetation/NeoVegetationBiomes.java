@@ -32,6 +32,9 @@ public class NeoVegetationBiomes {
 
     public static final ResourceKey<BiomeModifier> ADD_TOMATOES = createKey("add_tomatoes");
 
+
+    public static final ResourceKey<BiomeModifier> ADD_SWEET_POTATO_PATCHES = createKey("add_sweet_potato_patches");
+
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
@@ -88,6 +91,15 @@ public class NeoVegetationBiomes {
                 )
         );
 
+        HolderSet<Biome> sweet_potatoes = HolderSet.direct(List.of
+                (
+                biomes.getOrThrow(Biomes.PLAINS),
+                biomes.getOrThrow(Biomes.JUNGLE),
+                biomes.getOrThrow(Biomes.BADLANDS),
+                biomes.getOrThrow(Biomes.WOODED_BADLANDS)
+                )
+        );
+
 
 
         context.register(ADD_TREES_WITHERED, new BiomeModifiers.AddFeaturesBiomeModifier(
@@ -119,6 +131,12 @@ public class NeoVegetationBiomes {
         context.register(ADD_TOMATOES, new BiomeModifiers.AddFeaturesBiomeModifier(
                 tomatoes,
                 HolderSet.direct(placedFeatures.getOrThrow(NeoBerryPlacements.TOMATO_BUSH)),
+                GenerationStep.Decoration.VEGETAL_DECORATION
+        ));
+
+        context.register(ADD_SWEET_POTATO_PATCHES, new BiomeModifiers.AddFeaturesBiomeModifier(
+                sweet_potatoes,
+                HolderSet.direct(placedFeatures.getOrThrow(NeoBerryPlacements.SWEET_POTATO_PATCH)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
 

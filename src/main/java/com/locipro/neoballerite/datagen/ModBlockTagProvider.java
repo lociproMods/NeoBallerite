@@ -31,7 +31,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(RAW_BALLERITE_BLOCK.get())
                 .add(COOKED_BALLERITE_BLOCK.get());
         tag(BlockTags.MINEABLE_WITH_AXE)
-                .addTags(ModTags.Blocks.WITHERED_BLOCKS, ModTags.Blocks.STAR_BLOCKS);
+                .addTags(ModTags.Blocks.WITHERED_BLOCKS, ModTags.Blocks.STAR_BLOCKS)
+                .add(SWEET_POTATO_BLOCK.get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(BALLERITE_ORE.get())

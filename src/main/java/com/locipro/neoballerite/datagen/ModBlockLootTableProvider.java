@@ -130,6 +130,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         addCropDrops(TOMATO_CROP, TOMATO.get(), TOMATO_SEEDS.get(), TomatoCropBlock.AGE, 7);
         addCropDrops(EGGPLANT_CROP, EGGPLANT.get(), EGGPLANT_SEEDS.get(), EggplantCropBlock.AGE, 7);
         addCropDrops(SWEET_POTATO_CROP, SWEET_POTATO.get(), SweetPotatoCropBlock.AGE, 3);
+        add(SWEET_POTATO_BLOCK.get(), block -> createSingleItemTableWithSilkTouch(block, SWEET_POTATO, ConstantValue.exactly(4.0F)));
+
 
 
     }

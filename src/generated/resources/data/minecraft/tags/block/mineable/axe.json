@@ -1,6 +1,7 @@
 {
   "values": [
     "#neoballerite:withered_blocks",
-    "#neoballerite:star_blocks"
+    "#neoballerite:star_blocks",
+    "neoballerite:sweet_potato_block"
   ]
 }

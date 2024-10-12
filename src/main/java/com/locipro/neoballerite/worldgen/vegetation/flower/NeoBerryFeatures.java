@@ -36,6 +36,8 @@ public class NeoBerryFeatures {
 
     public static ResourceKey<ConfiguredFeature<?, ?>> TOMATO_BUSH = createKey("tomato_bush");
 
+    public static ResourceKey<ConfiguredFeature<?, ?>> SWEET_POTATO_PATCH = createKey("sweet_potato_patch");
+
 
 
 
@@ -97,6 +99,19 @@ public class NeoBerryFeatures {
                                         BlockPredicate.noFluid(), BlockPredicate.replaceable(),
                                         BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(),
                                                 Blocks.GRASS_BLOCK, Blocks.DIRT)
+                                ))));
+
+        FeatureUtils.register(bootstrapContext,
+                SWEET_POTATO_PATCH,
+                Feature.FLOWER,
+                new RandomPatchConfiguration(64, 5, 3,
+                        PlacementUtils.filtered(Feature.SIMPLE_BLOCK,
+                                new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.SWEET_POTATO_BLOCK.get()
+                                        .defaultBlockState())),
+                                BlockPredicate.allOf(
+                                        BlockPredicate.noFluid(), BlockPredicate.replaceable(),
+                                        BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(),
+                                                Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.RED_SAND)
                                 ))));
     }
 }

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "neoballerite:block/sweet_potato_block_end",
+    "side": "neoballerite:block/sweet_potato_block_side"
+  }
+}

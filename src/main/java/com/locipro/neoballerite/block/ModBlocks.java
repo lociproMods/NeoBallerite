@@ -313,4 +313,6 @@ public class ModBlocks {
     public static final DeferredBlock<Block> SWEET_POTATO_CROP = registerBlockWithoutItem("sweet_potato_crop",
             () -> new SweetPotatoCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT)));
 
+    public static final DeferredBlock<Block> SWEET_POTATO_BLOCK = registerBlock("sweet_potato_block",
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.PUMPKIN)));
 }
