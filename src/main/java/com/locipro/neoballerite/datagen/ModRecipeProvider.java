@@ -1,8 +1,8 @@
 package com.locipro.neoballerite.datagen;
 
 import com.google.common.collect.ImmutableList;
-import com.locipro.neoballerite.recipe.NeoShapelessRepair;
 import com.locipro.neoballerite.item.tool.NeoClaymoreItem;
+import com.locipro.neoballerite.recipe.ShapelessRepairRecipe;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -253,10 +253,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 0.7f, 200, "lead");
 
 
-
-        SpecialRecipeBuilder.special(NeoShapelessRepair::new)
-                .save(recipeOutput, getId("farmers_boots_repair"));
-
+        SpecialRecipeBuilder.special(ShapelessRepairRecipe::new)
+                        .save(recipeOutput, getId("leaves_boots_repair"));
     }
 
 //    protected static String getHasName(DeferredItem<?> item) {

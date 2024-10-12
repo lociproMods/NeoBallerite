@@ -8,6 +8,7 @@ import java.util.BitSet;
 import java.util.List;
 import java.util.function.Predicate;
 
+// unused.
 public class NeoRecipeHelper {
     /** Thank you TeamPneuamatic **/
     public static List<ItemStack> findItems(CraftingInput inv, List<Predicate<ItemStack>> predicates) {
