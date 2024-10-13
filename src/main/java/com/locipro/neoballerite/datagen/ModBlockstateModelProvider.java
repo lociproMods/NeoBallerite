@@ -9,6 +9,9 @@ import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SaplingBlock;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -119,6 +122,55 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
 
         pumpkinBlock(SWEET_POTATO_BLOCK);
 
+        twoTallCrop(CORN_CROP, CornCropBlock.AGE, CornCropBlock.BECOMES_DOUBLE_BLOCK);
+
+    }
+
+    /** This literally worked first try, I'm so shocked
+     * @param cutoff is the age when your upper texture actually needs a texture (i.e. exists) **/
+    private void twoTallCrop(DeferredBlock<?> crop, IntegerProperty age, int cutoff) {
+        // So we have 10 stages, and two types (lower, upper). Technically not 20, since
+        // we don't need stages 1 -> 5 on UPPER, but we need stages 1 -> 10 for LOWER.
+        // So for states we'll need all 20, but states(half=upper, age<5) will just refer to model(half=upper, age=minimum)
+        // We will need 10 models for lower block, 5 models for upper.
+
+        // Twenty blockstates, 15 models, 15 textures.
+        // 1, 2, 3, 4, 5, 67, 89, 1011, 1213, 1415
+
+
+        EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
+        String cropName = crop.getId().getPath();
+
+        getVariantBuilder(crop.get()).forAllStates( state -> {
+            boolean isLower = state.getValue(HALF) == DoubleBlockHalf.LOWER;
+            boolean isUpper = !isLower;
+
+            String half = isLower ? "_lower_" : "_upper_";
+            String stage = "stage" + state.getValue(age);
+
+            String blockstateName = cropName + half + stage;
+            boolean willCutoff = isUpper && state.getValue(age) <= cutoff;
+            String textureName = willCutoff ? cropName + half + "stage" + cutoff : blockstateName;
+
+
+            // Uhhh I think this will try to make duplicate models which will crash us.
+            // UPDATE: IT DIDN'T? IT JUST- WORKED? FIRST TRY? 100%??????
+            // UPDATE2: It didn't make duplicate models, it made different models which pointed to the same texture.
+            //          I'm fine with that. 5 extra json files that allow for future customization? Don't mind if I do. (technically I didn't implement the feature I wanted to)
+            return new ConfiguredModel[] {new ConfiguredModel(models().
+                    crop(blockstateName,
+                            ResourceLocation.fromNamespaceAndPath(MODID, "block/" + textureName))
+                    .renderType("cutout"))
+            };
+        });
+    }
+    private void cropBlock(DeferredBlock<?> crop, IntegerProperty cropAgeProperty) {
+        String cropName = crop.getId().getPath();
+        getVariantBuilder(crop.get()).forAllStates( state -> {
+            String stateAndModelName = cropName + "_stage" + state.getValue(cropAgeProperty);
+            return new ConfiguredModel[]{new ConfiguredModel(models().crop(stateAndModelName,
+                    ResourceLocation.fromNamespaceAndPath(MODID, "block/" + stateAndModelName)).renderType("cutout"))};
+        });
     }
 
     private void blockWithItem(DeferredBlock<?> block) {
@@ -192,14 +244,7 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
                     ResourceLocation.fromNamespaceAndPath(MODID, "block/" + stateAndModelName)).renderType("cutout"))};
         });
     }
-    private void cropBlock(DeferredBlock<?> crop, IntegerProperty cropAgeProperty) {
-        String cropName = crop.getId().getPath();
-        getVariantBuilder(crop.get()).forAllStates( state -> {
-            String stateAndModelName = cropName + "_stage" + state.getValue(cropAgeProperty);
-            return new ConfiguredModel[]{new ConfiguredModel(models().crop(stateAndModelName,
-                    ResourceLocation.fromNamespaceAndPath(MODID, "block/" + stateAndModelName)).renderType("cutout"))};
-        });
-    }
+
     private void crossBlock(DeferredBlock<?> block) {
         ResourceLocation crossTexture = modLoc("block/" + block.getId().getPath());
         simpleBlock(block.get(), models().cross(block.getId().toString(), crossTexture).renderType("cutout"));

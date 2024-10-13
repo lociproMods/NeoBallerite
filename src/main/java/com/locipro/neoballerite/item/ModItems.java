@@ -353,6 +353,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(FruitFoodProperties.BAKED_SWEET_POTATO)));
 
 
+    public static final DeferredItem<BlockItem> TEST = ITEMS.registerSimpleBlockItem("test",
+            ModBlocks.CORN_CROP, new Item.Properties());
 
     //endregion
 
