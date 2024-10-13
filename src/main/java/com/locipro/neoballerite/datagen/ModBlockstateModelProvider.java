@@ -126,7 +126,16 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
 
     }
 
+    /* right now your code is of the form forEachBlockstate(makeNewModel)
+i suppose you could decouple these 2 operations:
+make15Models();
+forEachBlockstate(assignCorrectModel);
+some dude in discord talm bout this
+     */
+
+
     /** This literally worked first try, I'm so shocked
+     * Come fix it later yo
      * @param cutoff is the age when your upper texture actually needs a texture (i.e. exists) **/
     private void twoTallCrop(DeferredBlock<?> crop, IntegerProperty age, int cutoff) {
         // So we have 10 stages, and two types (lower, upper). Technically not 20, since

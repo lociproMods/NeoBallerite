@@ -24,6 +24,8 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
 // TODO -
+//      CORN TEXTURES.
+//      .
 //      Add sugar components
 //      Make torches turn off during rain
 //      USE DATA COMPONENTS TO LINK BACK TO THE ORIGINAL FRUIT ONCE YOU IMPLEMENT JAMS.
@@ -31,6 +33,7 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 //      RETEXTURE BALLERITE_INGOT
 //      ADD TEXTURE TO BOTTOM OF ARMOR BOOTS. (It's already on ballerite but not lead or farmers)
 //      RETEXTURE CROPS AND TOMATO BUSH.
+//      Add global loot modifier to grass to make eggplant seeds obtainable.
 @Mod(NeoBallerite.MODID)
 public class NeoBallerite {
     public static final String MODID = "neoballerite";

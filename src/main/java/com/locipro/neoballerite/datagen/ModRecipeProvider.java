@@ -232,6 +232,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(TOMATO)
                 .unlockedBy("has_tomato", has(TOMATO))
                 .save(recipeOutput);
+        offerSeeds(recipeOutput, CORN_KERNELS, CORN_COB, 3);
 
         twoByTwoPacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, SWEET_POTATO_BLOCK, SWEET_POTATO);
 
@@ -265,6 +266,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 0.36f, 200, "eggplant");
         offerSmeltingAndSmoking(recipeOutput, List.of(SWEET_POTATO), RecipeCategory.FOOD, BAKED_SWEET_POTATO,
                 0.36f, 200, "eggplant");
+        offerSmeltingAndSmoking(recipeOutput, List.of(CORN_COB), RecipeCategory.FOOD, GRILLED_CORN_COB,
+                0.45f, 200, "corn");
 
 
         SpecialRecipeBuilder.special(ShapelessRepairRecipe::new)
@@ -278,6 +281,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 
+    protected void offerSeeds(RecipeOutput recipeOutput, ItemLike seed, ItemLike ingredient, int count) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, seed, count)
+                .requires(ingredient)
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(recipeOutput);
+    }
 
     protected void offerSmeltingAndBlasting(RecipeOutput recipeOutput, List<ItemLike> ingredients, RecipeCategory category, ItemLike result, float experience, int smeltingCookingTime, String group) {
         offerSmelting(recipeOutput, ingredients, category, result, experience, smeltingCookingTime, group);

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "neoballerite:corn_cob"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "id": "neoballerite:corn_kernels"
+  }
+}

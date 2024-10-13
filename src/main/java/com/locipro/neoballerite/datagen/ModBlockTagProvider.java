@@ -52,7 +52,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.CROPS)
                 .add(TOMATO_CROP.get())
                 .add(EGGPLANT_CROP.get())
-                .add(SWEET_POTATO_CROP.get());
+                .add(SWEET_POTATO_CROP.get())
+                .add(CORN_CROP.get());
 
         tag(BlockTags.SAPLINGS)
                 .add(WITHERED_SAPLING.get())

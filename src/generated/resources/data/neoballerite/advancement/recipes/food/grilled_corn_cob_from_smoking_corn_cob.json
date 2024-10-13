@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_corn_cob": {
+      "conditions": {
+        "items": [
+          {
+            "items": "neoballerite:corn_cob"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "neoballerite:grilled_corn_cob_from_smoking_corn_cob"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_corn_cob"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "neoballerite:grilled_corn_cob_from_smoking_corn_cob"
+    ]
+  }
+}

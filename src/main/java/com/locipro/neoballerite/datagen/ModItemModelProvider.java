@@ -104,6 +104,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(SWEET_POTATO.get());
         basicItem(BAKED_SWEET_POTATO.get());
 
+        basicItem(CORN_COB.get());
+        basicItem(GRILLED_CORN_COB.get());
+        basicItem(CORN_KERNELS.get());
+
 
     }
     

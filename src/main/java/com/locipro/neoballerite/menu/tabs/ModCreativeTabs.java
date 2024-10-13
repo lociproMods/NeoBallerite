@@ -142,6 +142,11 @@ public class ModCreativeTabs {
                 output.accept(EGGPLANT);
                 output.accept(GRILLED_EGGPLANT);
                 output.accept(EGGPLANT_SEEDS);
+
+
+                output.accept(CORN_KERNELS);
+                output.accept(CORN_COB);
+                output.accept(GRILLED_CORN_COB);
             }).build());
 
 }

@@ -319,5 +319,5 @@ public class ModBlocks {
 
 
     public static final DeferredBlock<Block> CORN_CROP = registerBlockWithoutItem("corn_crop",
-            () -> new CornCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PITCHER_CROP).noLootTable()));
+            () -> new CornCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PITCHER_CROP)));
 }

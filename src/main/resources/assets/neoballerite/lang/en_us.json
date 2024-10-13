@@ -76,6 +76,10 @@
   "item.neoballerite.grilled_eggplant" : "Grilled Eggplant",
   "block.neoballerite.eggplant_crop" : "Eggplant Seeds",
 
+  "item.neoballerite.corn_cob" : "Cob O' Corn",
+  "item.neoballerite.grilled_corn_cob" : "Grilled Cob O' Corn",
+  "block.neoballerite.corn_crop" : "Corn Kernels",
+
 
 
   "block.neoballerite.raw_ballerite_block" : "Raw Ballerite Block",

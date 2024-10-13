@@ -9,7 +9,7 @@ import com.locipro.neoballerite.item.custom.*;
 import com.locipro.neoballerite.item.tool.*;
 import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
 import com.locipro.neoballerite.misc.food.BerryFoodProperties;
-import com.locipro.neoballerite.misc.food.FruitFoodProperties;
+import com.locipro.neoballerite.misc.food.CropFoodProperties;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.particles.ParticleTypes;
@@ -334,27 +334,31 @@ public class ModItems {
             ModBlocks.STRAWBERRY_BUSH, new Item.Properties());
 
     public static final DeferredItem<Item> TOMATO = ITEMS.register("tomato",
-            () -> new Item(new Item.Properties().food(FruitFoodProperties.TOMATO)));
+            () -> new Item(new Item.Properties().food(CropFoodProperties.TOMATO)));
     public static final DeferredItem<Item> GRILLED_TOMATO = ITEMS.register("grilled_tomato",
-            () -> new Item(new Item.Properties().food(FruitFoodProperties.TOMATO)));
+            () -> new Item(new Item.Properties().food(CropFoodProperties.TOMATO)));
     public static final DeferredItem<BlockItem> TOMATO_SEEDS = ITEMS.registerSimpleBlockItem("tomato_seeds",
             ModBlocks.TOMATO_CROP, new Item.Properties());
 
     public static final DeferredItem<Item> EGGPLANT = ITEMS.register("eggplant",
-            () -> new Item(new Item.Properties().food(FruitFoodProperties.EGGPLANT)));
+            () -> new Item(new Item.Properties().food(CropFoodProperties.EGGPLANT)));
     public static final DeferredItem<Item> GRILLED_EGGPLANT = ITEMS.register("grilled_eggplant",
-            () -> new Item(new Item.Properties().food(FruitFoodProperties.GRILLED_EGGPLANT)));
+            () -> new Item(new Item.Properties().food(CropFoodProperties.GRILLED_EGGPLANT)));
     public static final DeferredItem<BlockItem> EGGPLANT_SEEDS = ITEMS.registerSimpleBlockItem("eggplant_seeds",
             ModBlocks.EGGPLANT_CROP, new Item.Properties());
 
     public static final DeferredItem<BlockItem> SWEET_POTATO = ITEMS.registerSimpleBlockItem("sweet_potato",
-            ModBlocks.SWEET_POTATO_CROP, new Item.Properties().food(FruitFoodProperties.SWEET_POTATO));
+            ModBlocks.SWEET_POTATO_CROP, new Item.Properties().food(CropFoodProperties.SWEET_POTATO));
     public static final DeferredItem<Item> BAKED_SWEET_POTATO = ITEMS.register("baked_sweet_potato",
-            () -> new Item(new Item.Properties().food(FruitFoodProperties.BAKED_SWEET_POTATO)));
+            () -> new Item(new Item.Properties().food(CropFoodProperties.BAKED_SWEET_POTATO)));
 
 
-    public static final DeferredItem<BlockItem> TEST = ITEMS.registerSimpleBlockItem("test",
-            ModBlocks.CORN_CROP, new Item.Properties());
+    public static final DeferredItem<BlockItem> CORN_KERNELS = ITEMS.registerSimpleBlockItem("corn_kernels",
+            ModBlocks.CORN_CROP, new Item.Properties().food(CropFoodProperties.KERNELS));
+    public static final DeferredItem<Item> CORN_COB = ITEMS.register("corn_cob",
+            () -> new Item(new Item.Properties().food(CropFoodProperties.COB)));
+    public static final DeferredItem<Item> GRILLED_CORN_COB = ITEMS.register("grilled_corn_cob",
+            () -> new Item(new Item.Properties().food(CropFoodProperties.GRILLED_COB)));
 
     //endregion
 

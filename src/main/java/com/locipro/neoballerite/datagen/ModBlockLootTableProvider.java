@@ -16,11 +16,10 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.AlternativesEntry;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
@@ -132,6 +131,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         addCropDrops(SWEET_POTATO_CROP, SWEET_POTATO.get(), SweetPotatoCropBlock.AGE, 3);
         add(SWEET_POTATO_BLOCK.get(), block -> createSingleItemTableWithSilkTouch(block, SWEET_POTATO, ConstantValue.exactly(4.0F)));
 
+        addTallCropDrops(CORN_CROP, CORN_COB.get(), CORN_KERNELS.get(),
+                CornCropBlock.HALF, CornCropBlock.AGE, 7, 3);
+
 
 
     }
@@ -177,6 +179,122 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                                 )
                 )
         );
+    }
+    /** Always drops seeds
+     * The numbers are kinda hard coded for a 10 stage crop though... Hmm.**/
+    protected void addTallCropDrops(DeferredBlock<?> crop, ItemLike drop, ItemLike seed, EnumProperty<DoubleBlockHalf> halfProperty, IntegerProperty ageProperty, int ageToStartDrops, int ageToStartSeeds) {
+        if (ageToStartDrops <= 3) throw new IllegalArgumentException("If it's 3 then we have 0 in our number providers, cause we do age-3 check it bossman");
+        LootItemBlockStatePropertyCondition.Builder half_condition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(crop.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(halfProperty, DoubleBlockHalf.LOWER));
+
+        add(crop.get(), applyExplosionDecay(crop,
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .add(AlternativesEntry.alternatives(
+                                        ageProperty.getPossibleValues(),
+                                        age -> {
+                                            if (age >= ageToStartDrops) {
+                                                return LootItem.lootTableItem(drop)
+                                                        .when(half_condition)
+                                                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(crop.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, age)))
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(age - 3, age + 1)));
+                                            }
+                                            return LootItem.lootTableItem(Items.AIR)
+                                                    .when(half_condition)
+                                                    .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(crop.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, age)));
+                                        }
+                                ))
+                        )
+                        .withPool(LootPool.lootPool()
+                                .add(AlternativesEntry.alternatives(
+                                        ageProperty.getPossibleValues(),
+                                        age -> {
+                                            if (age >= ageToStartSeeds) {
+                                                return LootItem.lootTableItem(seed)
+                                                        .when(half_condition)
+                                                        .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(crop.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, age)))
+                                                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(age - 3, age)));
+                                            }
+                                            return LootItem.lootTableItem(seed)
+                                                    .when(half_condition)
+                                                    .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(crop.get()).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, age)));
+                                        }
+                                )))));
+
+
+        /*add(crop.get(),
+                applyExplosionDecay(
+                        crop,
+                        LootTable.lootTable()
+                                .withPool(LootPool.lootPool()
+                                        .add(AlternativesEntry.alternatives(
+                                                ageProperty.getPossibleValues(), // We will loop over the ages
+                                                value -> {
+                                                    if (value >= ageToDrop1 && value < ageToDrop2) {
+                                                        return LootItem.lootTableItem(drop)
+                                                                .when(half_condition)
+                                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 5)));
+                                                    }
+                                                    else {
+                                                        return LootItem.lootTableItem(drop)
+                                                                .when(half_condition)
+                                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(6, 10)));
+                                                    }
+                                                }
+                                        ))
+                                        .add(AlternativesEntry.alternatives(
+                                                ageProperty.getPossibleValues(),
+                                                value -> {
+                                                    if (value >= ageToDrop1 && value < ageToDrop2) {
+                                                        return LootItem.lootTableItem(seed)
+                                                                .when(half_condition)
+                                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 3)));
+                                                    }
+                                                    else {
+                                                        return LootItem.lootTableItem(seed)
+                                                                .when(half_condition)
+                                                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(3, 7)));
+                                                    }
+                                                }
+                                        )))
+                                .withPool(LootPool.lootPool()
+                                        .add(LootItem.lootTableItem(seed))
+                                        .when(half_condition)
+                                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)
+                                        )))
+                ));*/
+        /*private LootTable.Builder createPitcherCropLoot() {
+        return this.applyExplosionDecay(
+            Blocks.PITCHER_CROP,
+            LootTable.lootTable()
+                .withPool(
+                    LootPool.lootPool()
+                        .add(
+                            AlternativesEntry.alternatives(
+                                PitcherCropBlock.AGE.getPossibleValues(),
+                                p_277248_ -> {
+                                    LootItemBlockStatePropertyCondition.Builder lootitemblockstatepropertycondition$builder = LootItemBlockStatePropertyCondition.hasBlockStateProperties(
+                                            Blocks.PITCHER_CROP
+                                        )
+                                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER));
+                                    LootItemBlockStatePropertyCondition.Builder lootitemblockstatepropertycondition$builder1 = LootItemBlockStatePropertyCondition.hasBlockStateProperties(
+                                            Blocks.PITCHER_CROP
+                                        )
+                                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(PitcherCropBlock.AGE, p_277248_.intValue()));
+                                    return p_277248_ == 4
+                                        ? LootItem.lootTableItem(Items.PITCHER_PLANT)
+                                            .when(lootitemblockstatepropertycondition$builder1)
+                                            .when(lootitemblockstatepropertycondition$builder)
+                                            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                                        : LootItem.lootTableItem(Items.PITCHER_POD)
+                                            .when(lootitemblockstatepropertycondition$builder1)
+                                            .when(lootitemblockstatepropertycondition$builder)
+                                            .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)));
+                                }
+                            )
+                        )
+                )
+        );
+    }*/
     }
 
     /** For when you have variants of your drops based on age **/
