@@ -19,7 +19,7 @@ import net.minecraft.world.phys.Vec3;
 import java.util.List;
 
 
-// TODO Make repairable in normal recipes.
+
 public class BushNegatingArmorItem extends ArmorItem {
     public BushNegatingArmorItem(Holder<ArmorMaterial> material, Type type, Properties properties) {
         super(material, type, properties);
@@ -29,7 +29,7 @@ public class BushNegatingArmorItem extends ArmorItem {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         if (stack.get(NeoDataComponents.CAN_NEGATE_BUSH_SLOW) != null &&
                 !stack.get(NeoDataComponents.CAN_NEGATE_BUSH_SLOW)) {
-            tooltipComponents.add(Component.literal("Will not negate speed de-buffs until repaired.").withStyle(ChatFormatting.RED).withStyle(ChatFormatting.ITALIC));
+            tooltipComponents.add(Component.literal("Will not negate speed de-buffs until repaired with leaves.").withStyle(ChatFormatting.RED).withStyle(ChatFormatting.ITALIC));
         }else {
             tooltipComponents.add(Component.literal("Negates berry bush damage.").withStyle(ChatFormatting.GRAY));
         }

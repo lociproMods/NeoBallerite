@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -113,7 +114,7 @@ public class NeoArmorMaterials {
             }),
             0,
             SoundEvents.ARMOR_EQUIP_LEATHER,
-            () -> Ingredient.of(ModBlocks.STAR_LEAVES),
+            () -> Ingredient.of(ItemStack.EMPTY),
             List.of(
                     // Creates a new armor texture that will be located at:
                     // - 'assets/mod_id/textures/models/armor/copper_layer_1.png' for the outer texture
