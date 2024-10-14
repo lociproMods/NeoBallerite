@@ -1,6 +1,5 @@
 package com.locipro.neoballerite.item.armor;
 
-import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.item.ModItems;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
@@ -19,7 +18,7 @@ import java.util.List;
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
 public class NeoArmorMaterials {
-    public static DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(Registries.ARMOR_MATERIAL, MODID);
+    public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(Registries.ARMOR_MATERIAL, MODID);
 
     /*public static final Holder<ArmorMaterial> IRON = register("iron", Util.make(new EnumMap<>(ArmorItem.Type.class), p_323378_ -> {
         p_323378_.put(ArmorItem.Type.BOOTS, 2);

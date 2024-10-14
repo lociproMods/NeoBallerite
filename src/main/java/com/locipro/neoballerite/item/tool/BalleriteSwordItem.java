@@ -16,8 +16,7 @@ public class BalleriteSwordItem extends SwordItem {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         Level level = attacker.level();
-        if (level instanceof ServerLevel) {
-            ServerLevel serverLevel = (ServerLevel) level;
+        if (level instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(
                     ParticleTypes.GLOW,
                     target.getX(),

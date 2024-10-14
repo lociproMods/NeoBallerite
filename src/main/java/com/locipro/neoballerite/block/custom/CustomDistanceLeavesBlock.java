@@ -48,9 +48,9 @@ public class CustomDistanceLeavesBlock extends Block implements SimpleWaterlogge
         this.registerDefaultState(
                 this.stateDefinition
                         .any()
-                        .setValue(DISTANCE, Integer.valueOf(distance))
-                        .setValue(PERSISTENT, Boolean.valueOf(false))
-                        .setValue(WATERLOGGED, Boolean.valueOf(false))
+                        .setValue(DISTANCE, distance)
+                        .setValue(PERSISTENT, Boolean.FALSE)
+                        .setValue(WATERLOGGED, Boolean.FALSE)
         );
     }
 
@@ -69,13 +69,13 @@ public class CustomDistanceLeavesBlock extends Block implements SimpleWaterlogge
      */
     @Override
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (this.decaying(state)) {
+        if (this.isDecaying(state)) {
             dropResources(state, level, pos);
             level.removeBlock(pos, false);
         }
     }
 
-    protected boolean decaying(BlockState state) {
+    protected boolean isDecaying(BlockState state) {
         return !state.getValue(PERSISTENT) && state.getValue(DISTANCE) == DECAY_DISTANCE;
     }
 
@@ -115,12 +115,10 @@ public class CustomDistanceLeavesBlock extends Block implements SimpleWaterlogge
         for (Direction direction : Direction.values()) {
             blockpos$mutableblockpos.setWithOffset(pos, direction);
             i = Math.min(i, getDistanceAt(level.getBlockState(blockpos$mutableblockpos)) + 1);
-            if (i == 1) {
-                break;
-            }
+            if (i == 1) break;
         }
 
-        return state.setValue(DISTANCE, Integer.valueOf(i));
+        return state.setValue(DISTANCE, i);
     }
 
     private static int getDistanceAt(BlockState neighbor) {
@@ -165,8 +163,8 @@ public class CustomDistanceLeavesBlock extends Block implements SimpleWaterlogge
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
         BlockState blockstate = this.defaultBlockState()
-                .setValue(PERSISTENT, Boolean.valueOf(true))
-                .setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+                .setValue(PERSISTENT, Boolean.TRUE)
+                .setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
         return updateDistance(blockstate, context.getLevel(), context.getClickedPos());
     }
 

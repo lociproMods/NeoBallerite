@@ -271,8 +271,7 @@ public class ModItems {
                 @Override
                 public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
                     Level level = attacker.level();
-                    if (level instanceof ServerLevel) {
-                        ServerLevel serverLevel = (ServerLevel) level;
+                    if (level instanceof ServerLevel serverLevel) {
                         serverLevel.sendParticles(
                                 ParticleTypes.ELECTRIC_SPARK,
                                 target.getX(),
@@ -291,12 +290,11 @@ public class ModItems {
     public static final DeferredItem<NeoClaymoreItem> NETHERITE_CLAYMORE = ITEMS.register("netherite_claymore",
             () -> new NeoClaymoreItem(Tiers.NETHERITE, new Item.Properties()));
     public static final DeferredItem<NeoClaymoreItem> BALLERITE_CLAYMORE = ITEMS.register("ballerite_claymore",
-            () -> new NeoClaymoreItem(ModTiers.BALLERITE_TIER, new Item.Properties(), true) {
+            () -> new NeoClaymoreItem(ModTiers.BALLERITE_TIER, new Item.Properties()) {
                 @Override
                 public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
                     Level level = attacker.level();
-                    if (level instanceof ServerLevel) {
-                        ServerLevel serverLevel = (ServerLevel) level;
+                    if (level instanceof ServerLevel serverLevel) {
                         serverLevel.sendParticles(
                                 ParticleTypes.GLOW,
                                 target.getX(),
@@ -311,7 +309,7 @@ public class ModItems {
                     }
                     return super.hurtEnemy(stack, target, attacker);
                 }
-            });
+            }.doesPoison());
 
     //endregion
 

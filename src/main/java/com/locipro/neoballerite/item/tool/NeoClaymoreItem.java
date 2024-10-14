@@ -25,10 +25,9 @@ public class NeoClaymoreItem extends SwordItem {
     public NeoClaymoreItem(Tier tier, Properties properties) {
         super(tier, properties.attributes(createAttributes(tier)));
     }
-
-    public NeoClaymoreItem(Tier tier, Properties properties, boolean doesPoison) {
-        super(tier, properties.attributes(createAttributes(tier)));
-        this.doesPoison = doesPoison;
+    public NeoClaymoreItem doesPoison() {
+        this.doesPoison = true;
+        return this;
     }
 
     @Override
@@ -51,13 +50,13 @@ public class NeoClaymoreItem extends SwordItem {
                 .add(
                         Attributes.ATTACK_DAMAGE,
                         new AttributeModifier(
-                                BASE_ATTACK_DAMAGE_ID, (double)((float)5.25 + tier.getAttackDamageBonus()), AttributeModifier.Operation.ADD_VALUE
+                                BASE_ATTACK_DAMAGE_ID, 5.25f + tier.getAttackDamageBonus(), AttributeModifier.Operation.ADD_VALUE
                         ),
                         EquipmentSlotGroup.MAINHAND
                 )
                 .add(
                         Attributes.ATTACK_SPEED,
-                        new AttributeModifier(BASE_ATTACK_SPEED_ID, (double)-2.8, AttributeModifier.Operation.ADD_VALUE),
+                        new AttributeModifier(BASE_ATTACK_SPEED_ID, -2.8, AttributeModifier.Operation.ADD_VALUE),
                         EquipmentSlotGroup.MAINHAND
                 )
                 .build();

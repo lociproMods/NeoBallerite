@@ -15,9 +15,9 @@ import java.util.List;
 import static com.locipro.neoballerite.worldgen.NeoPlacedFeatures.createKey;
 
 public class NeoOrePlacement {
-    public static ResourceKey<PlacedFeature> ORE_BALLERITE = createKey("ore_ballerite");
-    public static ResourceKey<PlacedFeature> ORE_LEAD = createKey("ore_lead");
-    public static ResourceKey<PlacedFeature> ORE_LEAD_BURIED = createKey("ore_lead_buried");
+    public static final ResourceKey<PlacedFeature> ORE_BALLERITE = createKey("ore_ballerite");
+    public static final ResourceKey<PlacedFeature> ORE_LEAD = createKey("ore_lead");
+    public static final ResourceKey<PlacedFeature> ORE_LEAD_BURIED = createKey("ore_lead_buried");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         // From my understanding, configured features are, the features themselves.

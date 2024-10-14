@@ -2,7 +2,6 @@ package com.locipro.neoballerite.datagen;
 
 import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.block.custom.*;
-import com.locipro.neoballerite.item.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;

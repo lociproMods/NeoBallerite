@@ -11,7 +11,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
@@ -23,7 +22,7 @@ public class SweetPotatoCropBlock extends CropBlock {
             Block.box(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
             Block.box(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
             Block.box(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)};
-    public static MapCodec<SweetPotatoCropBlock> CODEC = simpleCodec(SweetPotatoCropBlock::new);
+    public static final MapCodec<SweetPotatoCropBlock> CODEC = simpleCodec(SweetPotatoCropBlock::new);
 
     @Override
     public @NotNull MapCodec<? extends CropBlock> codec() {

@@ -1,6 +1,5 @@
 package com.locipro.neoballerite.block.custom;
 
-import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.item.armor.BushNegatingArmorItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
@@ -50,7 +49,7 @@ public class NeoBerryBushBlock extends SweetBerryBushBlock {
             level.playSound(
                     null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 1.0F + level.random.nextFloat() * 0.4F
             );
-            BlockState blockstate = state.setValue(AGE, Integer.valueOf(1));
+            BlockState blockstate = state.setValue(AGE, 1);
             level.setBlock(pos, blockstate, 2);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockstate));
             return InteractionResult.sidedSuccess(level.isClientSide);
@@ -74,7 +73,11 @@ public class NeoBerryBushBlock extends SweetBerryBushBlock {
             }
 
             entity.makeStuckInBlock(state, new Vec3(0.8F, 0.75, 0.8F));
-            if (!level.isClientSide && state.getValue(AGE) > 0 && (entity.xOld != entity.getX() || entity.zOld != entity.getZ())) {
+
+            boolean entityMoved = entity.xOld != entity.getX() || entity.zOld != entity.getZ();
+            if (!level.isClientSide
+                    && state.getValue(AGE) > 0
+                    && entityMoved) {
                 double d0 = Math.abs(entity.getX() - entity.xOld);
                 double d1 = Math.abs(entity.getZ() - entity.zOld);
                 if (d0 >= 0.003F || d1 >= 0.003F) {

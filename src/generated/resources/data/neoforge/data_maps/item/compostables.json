@@ -1,0 +1,68 @@
+{
+  "values": {
+    "neoballerite:blackberries": {
+      "can_villager_compost": true,
+      "chance": 0.5
+    },
+    "neoballerite:blueberries": {
+      "can_villager_compost": true,
+      "chance": 0.5
+    },
+    "neoballerite:corn_cob": {
+      "can_villager_compost": true,
+      "chance": 0.8
+    },
+    "neoballerite:corn_kernels": {
+      "can_villager_compost": true,
+      "chance": 0.4
+    },
+    "neoballerite:eggplant": {
+      "can_villager_compost": true,
+      "chance": 0.5
+    },
+    "neoballerite:eggplant_seeds": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "neoballerite:star_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "neoballerite:star_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "neoballerite:strawberry": {
+      "can_villager_compost": true,
+      "chance": 0.6
+    },
+    "neoballerite:strawberry_seeds": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "neoballerite:sweet_potato": {
+      "can_villager_compost": true,
+      "chance": 0.66
+    },
+    "neoballerite:tomato": {
+      "can_villager_compost": true,
+      "chance": 0.5
+    },
+    "neoballerite:tomato_seeds": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "neoballerite:unripe_strawberry": {
+      "can_villager_compost": true,
+      "chance": 0.4
+    },
+    "neoballerite:withered_leaves": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    },
+    "neoballerite:withered_sapling": {
+      "can_villager_compost": true,
+      "chance": 0.3
+    }
+  }
+}

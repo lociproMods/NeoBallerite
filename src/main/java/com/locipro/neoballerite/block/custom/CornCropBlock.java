@@ -1,6 +1,5 @@
 package com.locipro.neoballerite.block.custom;
 
-import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.item.ModItems;
 import com.mojang.serialization.MapCodec;
@@ -168,7 +167,7 @@ public class CornCropBlock extends DoublePlantBlock implements BonemealableBlock
     private void grow(ServerLevel level, BlockState state, BlockPos pos, int ageIncrement) {
         int ageAfter = Math.min(state.getValue(AGE) + ageIncrement, MAX_AGE);
         if (this.canGrow(level, pos, state, ageAfter)) {
-            BlockState blockstate = state.setValue(AGE, Integer.valueOf(ageAfter));
+            BlockState blockstate = state.setValue(AGE, ageAfter);
             level.setBlock(pos, blockstate, 2);
             if (isDoubleBlock(state)) {
                 level.setBlock(pos.above(), blockstate.setValue(HALF, DoubleBlockHalf.UPPER), 3);
@@ -233,7 +232,7 @@ public class CornCropBlock extends DoublePlantBlock implements BonemealableBlock
     }
 
     // Copy paste from CropBlock because it's FUCKING PROTECTEX ACCESS
-    protected static float getGrowthSpeed(BlockState blockState, BlockGetter p_52274_, BlockPos p_52275_) {
+    private static float getGrowthSpeed(BlockState blockState, BlockGetter p_52274_, BlockPos p_52275_) {
         Block p_52273_ = blockState.getBlock();
         float f = 1.0F;
         BlockPos blockpos = p_52275_.below();

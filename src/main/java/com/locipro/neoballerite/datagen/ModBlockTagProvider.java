@@ -17,6 +17,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         super(output, lookupProvider, MODID, existingFileHelper);
     }
 
+
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
@@ -30,6 +31,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(RAW_BALLERITE_BLOCK.get())
                 .add(COOKED_BALLERITE_BLOCK.get());
+
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .addTags(ModTags.Blocks.WITHERED_BLOCKS, ModTags.Blocks.STAR_BLOCKS)
                 .add(SWEET_POTATO_BLOCK.get());

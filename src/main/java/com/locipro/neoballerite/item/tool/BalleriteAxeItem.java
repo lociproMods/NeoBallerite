@@ -16,11 +16,11 @@ public class BalleriteAxeItem extends AxeItem {
     public BalleriteAxeItem(Tier p_40521_, Properties p_40524_) {
         super(p_40521_, p_40524_);
     }
+
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
 
-        if (level instanceof ServerLevel) {
-            ServerLevel serverLevel = (ServerLevel) level;
+        if (level instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(
                     new BlockParticleOption(ParticleTypes.BLOCK, ModBlocks.COMPRESSED_BALLERITE_BLOCK.get().defaultBlockState()),
                     pos.getX() + 0.5,

@@ -1,6 +1,5 @@
 package com.locipro.neoballerite.item.armor;
 
-import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;

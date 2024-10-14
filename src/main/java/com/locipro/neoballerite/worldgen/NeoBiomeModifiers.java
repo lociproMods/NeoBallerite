@@ -1,14 +1,10 @@
 package com.locipro.neoballerite.worldgen;
 
 import com.locipro.neoballerite.worldgen.ore.NeoOreBiomes;
-import com.locipro.neoballerite.worldgen.ore.NeoOreFeatures;
 import com.locipro.neoballerite.worldgen.vegetation.NeoVegetationBiomes;
-import com.locipro.neoballerite.worldgen.vegetation.tree.NeoTreeFeatures;
-import com.locipro.neoballerite.worldgen.vegetation.vegetation.NeoVegetationFeatures;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 

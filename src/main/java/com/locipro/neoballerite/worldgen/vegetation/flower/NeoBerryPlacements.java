@@ -15,14 +15,14 @@ import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import static com.locipro.neoballerite.worldgen.NeoPlacedFeatures.createKey;
 
 public class NeoBerryPlacements {
-    public static ResourceKey<PlacedFeature> BLUEBERRY_BUSH = createKey("blueberry_bush");
-    public static ResourceKey<PlacedFeature> BLACKBERRY_BUSH = createKey("blackberry_bush");
-    public static ResourceKey<PlacedFeature> STRAWBERRY_BUSH = createKey("strawberry_bush");
+    public static final ResourceKey<PlacedFeature> BLUEBERRY_BUSH = createKey("blueberry_bush");
+    public static final ResourceKey<PlacedFeature> BLACKBERRY_BUSH = createKey("blackberry_bush");
+    public static final ResourceKey<PlacedFeature> STRAWBERRY_BUSH = createKey("strawberry_bush");
 
 
-    public static ResourceKey<PlacedFeature> TOMATO_BUSH = createKey("tomato_bush");
+    public static final ResourceKey<PlacedFeature> TOMATO_BUSH = createKey("tomato_bush");
 
-    public static ResourceKey<PlacedFeature> SWEET_POTATO_PATCH = createKey("sweet_potato_patch");
+    public static final ResourceKey<PlacedFeature> SWEET_POTATO_PATCH = createKey("sweet_potato_patch");
 
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {

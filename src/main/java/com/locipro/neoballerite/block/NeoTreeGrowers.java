@@ -1,7 +1,6 @@
 package com.locipro.neoballerite.block;
 
 import com.locipro.neoballerite.worldgen.vegetation.tree.NeoTreeFeatures;
-import net.minecraft.data.worldgen.features.TreeFeatures;
 import net.minecraft.world.level.block.grower.TreeGrower;
 
 import java.util.Optional;

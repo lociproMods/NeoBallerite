@@ -12,9 +12,6 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.MangrovePropaguleBlock;
-import net.minecraft.world.level.block.SeaPickleBlock;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
@@ -24,7 +21,6 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlac
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FancyFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.RandomSpreadFoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.RandomizedIntStateProvider;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AlterGroundDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.AttachedToLeavesDecorator;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.BendingTrunkPlacer;
@@ -44,11 +40,11 @@ public class NeoTreeFeatures {
 //            WITHERED_SAPLING.get()
 //    );
 
-    public static ResourceKey<ConfiguredFeature<?, ?>> WITHERED_TREE = createKey("withered_tree");
-    public static ResourceKey<ConfiguredFeature<?, ?>> FANCY_WITHERED_TREE = createKey("fancy_withered_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> WITHERED_TREE = createKey("withered_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_WITHERED_TREE = createKey("fancy_withered_tree");
 
-    public static ResourceKey<ConfiguredFeature<?, ?>> STAR_TREE = createKey("star_tree");
-    public static ResourceKey<ConfiguredFeature<?, ?>> STRIPPED_STAR_TREE = createKey("stripped_star_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> STAR_TREE = createKey("star_tree");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> STRIPPED_STAR_TREE = createKey("stripped_star_tree");
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>>context) {
         HolderGetter<Block> holderGetter = context.lookup(Registries.BLOCK);

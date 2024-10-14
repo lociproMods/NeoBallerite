@@ -1,13 +1,11 @@
 package com.locipro.neoballerite.recipe;
 
-import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.ModItems;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
@@ -20,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 // Hmm... Maybe I should've extended ShapelessRecipe instead.
 // Most of these "custom" recipes in vanilla are hardcoded. No need to make our own builder, just hard code that bitch. check hierarchy of CustomRecipe
 public class ShapelessRepairRecipe extends CustomRecipe {
-    private int addedDurability = 16;
+    private static final int addedDurability = 16;
     public ShapelessRepairRecipe(CraftingBookCategory category) {
         super(category);
     }

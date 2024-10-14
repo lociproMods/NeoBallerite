@@ -1,9 +1,6 @@
 package com.locipro.neoballerite.block.custom;
 
-import com.locipro.neoballerite.NeoBallerite;
-import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.armor.BushNegatingArmorItem;
-import com.locipro.neoballerite.item.armor.NeoArmorMaterials;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -17,8 +14,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
@@ -28,7 +23,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.SweetBerryBushBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -41,8 +35,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.registries.DeferredItem;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.function.Supplier;
 
 import static net.neoforged.neoforge.common.CommonHooks.canCropGrow;
 
@@ -63,9 +55,9 @@ public class StrawBerryBushBlock extends BushBlock implements BonemealableBlock 
             Block.box(1.0, 0.0, 1.0, 14, 16, 14),
             Block.box(1.0, 0.0, 1.0, 16, 16, 16)
     };
-    public DeferredItem<?> RIPE;
-    public DeferredItem<?> UNRIPE;
-    public DeferredItem<?> SEED_SUPPLIER;
+    public final DeferredItem<?> RIPE;
+    public final DeferredItem<?> UNRIPE;
+    public final DeferredItem<?> SEED_SUPPLIER;
     
     public StrawBerryBushBlock(Properties properties,
                                DeferredItem<?> RIPE, DeferredItem<?> UNRIPE, DeferredItem<?> SEED) {
@@ -101,7 +93,7 @@ public class StrawBerryBushBlock extends BushBlock implements BonemealableBlock 
     protected void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         int i = state.getValue(AGE);
         if (i < MAX_AGE && level.getRawBrightness(pos.above(), 0) >= 9 && canCropGrow(level, pos, state, random.nextInt(5) == 0)) {
-            BlockState blockstate = state.setValue(AGE, Integer.valueOf(i + 1));
+            BlockState blockstate = state.setValue(AGE, i + 1);
             level.setBlock(pos, blockstate, 2);
             net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(level, pos, state);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(blockstate));
@@ -124,7 +116,11 @@ public class StrawBerryBushBlock extends BushBlock implements BonemealableBlock 
             }
 
             entity.makeStuckInBlock(state, new Vec3(0.8F, 0.75, 0.8F));
-            if (!level.isClientSide && state.getValue(AGE) > 0 && (entity.xOld != entity.getX() || entity.zOld != entity.getZ())) {
+
+            boolean entityMoved = entity.xOld != entity.getX() || entity.zOld != entity.getZ();
+            if (!level.isClientSide
+                    && state.getValue(AGE) > 0
+                    && entityMoved) {
                 double d0 = Math.abs(entity.getX() - entity.xOld);
                 double d1 = Math.abs(entity.getZ() - entity.zOld);
                 if (d0 >= 0.003F || d1 >= 0.003F) {

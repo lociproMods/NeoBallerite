@@ -6,6 +6,7 @@ import com.locipro.neoballerite.recipe.NeoRecipeSerializers;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.armor.NeoArmorMaterials;
 import com.locipro.neoballerite.menu.tabs.ModCreativeTabs;
+import net.minecraft.client.Minecraft;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -107,9 +108,9 @@ public class NeoBallerite {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            /*// Some client setup code
+            // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());*/
+            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
     }
 }

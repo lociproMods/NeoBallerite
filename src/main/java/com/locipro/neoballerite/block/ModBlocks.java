@@ -7,7 +7,6 @@ import static com.locipro.neoballerite.NeoBallerite.MODID;
 import com.locipro.neoballerite.block.custom.*;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
-import com.locipro.neoballerite.misc.food.BerryFoodProperties;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -24,7 +23,6 @@ import net.minecraft.world.level.material.PushReaction;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.Nullable;
 
