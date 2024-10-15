@@ -2,6 +2,7 @@ package com.locipro.neoballerite.block.custom;
 
 import com.locipro.neoballerite.item.armor.BushNegatingArmorItem;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;

@@ -26,7 +26,6 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
 // TODO -
 //      Add global loot modifier to grass to make eggplant seeds obtainable.
-//      MAKE VANILLA SWEET BERRIES ACCOUNT FOR LEASVES BOOTS.
 //      common tags #c:
 //      .
 //      Add sugar components

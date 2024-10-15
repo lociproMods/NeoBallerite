@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "package": "com/locipro/neoballerite/mixin",
+  "compatibilityLevel": "JAVA_21",
+
+  "mixins": [
+    "SweetBerryBushBlockMixin"
+  ],
+
+
+  "client": [
+    "NeoBalleriteMixin"
+  ],
+  "server": [
+  ],
+
+
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -2,6 +2,7 @@ package com.locipro.neoballerite.item;
 
 
 import com.locipro.neoballerite.block.ModBlocks;
+import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.armor.*;
 import com.locipro.neoballerite.item.custom.*;
 import com.locipro.neoballerite.item.tool.*;
@@ -171,7 +172,10 @@ public class ModItems {
             () -> new BushNegatingArmorItem(
                     NeoArmorMaterials.LEAVES,
                     ArmorItem.Type.BOOTS,
-                    new Item.Properties().durability(77)
+                    new Item.Properties()
+                            .durability(77)
+                            .component(NeoDataComponents.CAN_NEGATE_BUSH_SLOW.value(), true)
+                            .component(NeoDataComponents.ADDED_DURABILITY.value(), 0)
             ));
 
     //endregion
