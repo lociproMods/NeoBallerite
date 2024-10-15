@@ -2,6 +2,7 @@ package com.locipro.neoballerite;
 
 import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.component.NeoDataComponents;
+import com.locipro.neoballerite.datagen.lootmodifier.GLMSerializers;
 import com.locipro.neoballerite.recipe.NeoRecipeSerializers;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.armor.NeoArmorMaterials;
@@ -25,7 +26,6 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
 // TODO -
-//      Add global loot modifier to grass to make eggplant seeds obtainable.
 //      common tags #c:
 //      .
 //      Add sugar components
@@ -58,6 +58,7 @@ public class NeoBallerite {
         NeoDataComponents.DATA_COMPONENT_TYPES.register(modEventBus);
 
         NeoRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
+        GLMSerializers.GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
 
 
 

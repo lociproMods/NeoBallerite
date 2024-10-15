@@ -1,0 +1,10 @@
+{
+  "entries": [
+    "neoballerite:corn_from_grass_modifier",
+    "neoballerite:eggplant_from_grass_modifier",
+    "neoballerite:eggplant_from_tall_grass_modifier",
+    "neoballerite:corn_from_tall_grass_modifier",
+    "neoballerite:eggplant_from_zombie"
+  ],
+  "replace": false
+}

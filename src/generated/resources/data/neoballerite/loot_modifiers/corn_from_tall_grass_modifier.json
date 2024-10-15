@@ -1,0 +1,16 @@
+{
+  "type": "neoballerite:neo_item_loot_modifier",
+  "conditions": [
+    {
+      "block": "minecraft:tall_grass",
+      "condition": "minecraft:block_state_property"
+    },
+    {
+      "chance": 0.1,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "count1": 1,
+  "count2": 1,
+  "drop": "neoballerite:corn_kernels"
+}
