@@ -3,6 +3,7 @@ package com.locipro.neoballerite.item.armor;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -26,25 +27,24 @@ public class BushNegatingArmorItem extends ArmorItem {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        if (stack.get(NeoDataComponents.CAN_NEGATE_BUSH_SLOW) != null &&
-                !stack.get(NeoDataComponents.CAN_NEGATE_BUSH_SLOW)) {
+        // All items get default values when registered, so their data components can't be null.
+        if (!stack.get(NeoDataComponents.CAN_NEGATE_BUSH_SLOW)) {
             tooltipComponents.add(Component.literal("Will not negate speed de-buffs until repaired with leaves.").withStyle(ChatFormatting.RED).withStyle(ChatFormatting.ITALIC));
         }else {
-            tooltipComponents.add(Component.literal("Negates berry bush damage.").withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(Component.literal("Negates berry bush damage and slightly negates the slow.").withStyle(ChatFormatting.GRAY));
         }
-        if (stack.get(NeoDataComponents.ADDED_DURABILITY) != null) {
-            tooltipComponents.add(Component.literal("Upgraded to durability " + stack.get(NeoDataComponents.ADDED_DURABILITY)));
+        if (stack.get(NeoDataComponents.ADDED_DURABILITY) > 0) {
+            tooltipComponents.add(Component.literal("Upgraded to durability " + stack.getMaxDamage()));
         }
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
     public void onBushEntry(BlockState blockState, Level level, ItemStack itemStack, Player player) {
         if (itemStack.get(NeoDataComponents.CAN_NEGATE_BUSH_SLOW)) {
-            player.makeStuckInBlock(blockState, new Vec3(1.5F, 1.5f, 1.5f));
+            player.makeStuckInBlock(blockState, new Vec3(1.321232123F, 1.0f, 1.321232123f));
         }else {
             player.makeStuckInBlock(blockState, new Vec3(0.8F, 0.75, 0.8F));
         }
-
 
 
         if ((player.xOld != player.getX() || player.zOld != player.getZ()) && !level.isClientSide)
@@ -64,22 +64,21 @@ public class BushNegatingArmorItem extends ArmorItem {
         }
     }
 
-    // Technically unnecessary.
-    @Override
-    public void onCraftedPostProcess(ItemStack stack, Level level) {
-        stack.set(NeoDataComponents.CAN_NEGATE_BUSH_SLOW, true);
-        super.onCraftedPostProcess(stack, level);
-    }
 
-    // This is where we actually handle CAN_NEGATE_BUSH_SLOW setting logic.
+
     @Override
     public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int slotId, boolean isSelected) {
         if (entity instanceof ServerPlayer serverPlayer) {
-            if (itemStack.getDamageValue() < itemStack.getMaxDamage()) {
-                itemStack.set(NeoDataComponents.CAN_NEGATE_BUSH_SLOW, true);
-            }else {
+
+            // I think this is better? because we don't set the property every tick.
+            boolean can_negate = Boolean.TRUE.equals(itemStack.get(NeoDataComponents.CAN_NEGATE_BUSH_SLOW));
+            if (itemStack.getDamageValue() >= itemStack.getMaxDamage() && can_negate) {
                 itemStack.set(NeoDataComponents.CAN_NEGATE_BUSH_SLOW, false);
             }
+            else if (itemStack.getDamageValue() < itemStack.getMaxDamage() && !can_negate) {
+                itemStack.set(NeoDataComponents.CAN_NEGATE_BUSH_SLOW, true);
+            }
+
             super.inventoryTick(itemStack, level, entity, slotId, isSelected);
         }
     }
