@@ -53,6 +53,7 @@ public class BushNegatingArmorItem extends ArmorItem {
             double travelledZ = Math.abs(player.getZ() - player.zOld);
             if (travelledX >= 0.25F || travelledZ >= 0.25F)
             {
+                // Technically there's a redundant call here, no?
                 // Damages until minimum damage, then does nothing.
                 if (itemStack.getDamageValue() + 1 > itemStack.getMaxDamage()) {
                     itemStack.setDamageValue(itemStack.getMaxDamage());

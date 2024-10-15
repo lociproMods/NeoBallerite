@@ -10,19 +10,16 @@ import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
-public class LeadArmorItem extends ArmorItem {
-    public LeadArmorItem(Type type, Properties properties) {
-        super(NeoArmorMaterials.LEAD, type, properties);
+public class BalleriteArmorItem extends ArmorItem {
+    public BalleriteArmorItem(Type type, Properties properties) {
+        super(NeoArmorMaterials.BALLERITE, type, properties);
     }
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.literal(
-                "Heavy piece of armor with solid knockback resistance."
-        ));
-        tooltipComponents.add(Component.literal("Wearing a full suit slows you down")
+        tooltipComponents.add(Component.literal("Wearing a full suit grants you +2 luck.")
                 .withStyle(ChatFormatting.ITALIC)
-                .withStyle(ChatFormatting.DARK_BLUE));
+                .withStyle(ChatFormatting.GREEN));
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 }

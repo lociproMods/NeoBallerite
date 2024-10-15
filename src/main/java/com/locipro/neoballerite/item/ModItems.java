@@ -2,9 +2,7 @@ package com.locipro.neoballerite.item;
 
 
 import com.locipro.neoballerite.block.ModBlocks;
-import com.locipro.neoballerite.item.armor.BushNegatingArmorItem;
-import com.locipro.neoballerite.item.armor.LeadArmorItem;
-import com.locipro.neoballerite.item.armor.NeoArmorMaterials;
+import com.locipro.neoballerite.item.armor.*;
 import com.locipro.neoballerite.item.custom.*;
 import com.locipro.neoballerite.item.tool.*;
 import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
@@ -15,6 +13,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -136,26 +135,34 @@ public class ModItems {
 
 
     public static final DeferredItem<ArmorItem> BALLERITE_HELMET = ITEMS.register("ballerite_helmet",
-            () -> new ArmorItem(
+            () -> new SetEffectsItem(
                     NeoArmorMaterials.BALLERITE,
                     ArmorItem.Type.HELMET,
-                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(35))
-            ));
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(35)),
+                    MobEffects.LUCK,
+                    80,
+                    2
+            ) {
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.literal("Wearing a full suit grants you +2 luck.")
+                            .withStyle(ChatFormatting.ITALIC)
+                            .withStyle(ChatFormatting.GREEN));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
     public static final DeferredItem<ArmorItem> BALLERITE_CHESTPLATE = ITEMS.register("ballerite_chestplate",
-            () -> new ArmorItem(
-                    NeoArmorMaterials.BALLERITE,
+            () -> new BalleriteArmorItem(
                     ArmorItem.Type.CHESTPLATE,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(35))
             ));
     public static final DeferredItem<ArmorItem> BALLERITE_LEGGINGS = ITEMS.register("ballerite_leggings",
-            () -> new ArmorItem(
-                    NeoArmorMaterials.BALLERITE,
+            () -> new BalleriteArmorItem(
                     ArmorItem.Type.LEGGINGS,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(35))
             ));
     public static final DeferredItem<ArmorItem> BALLERITE_BOOTS = ITEMS.register("ballerite_boots",
-            () -> new ArmorItem(
-                    NeoArmorMaterials.BALLERITE,
+            () -> new BalleriteArmorItem(
                     ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(35))
             ));
@@ -229,26 +236,37 @@ public class ModItems {
 
 
     public static final DeferredItem<ArmorItem> LEAD_HELMET = ITEMS.register("lead_helmet",
-            () -> new LeadArmorItem(
+            () -> new SetEffectsItem(
                     NeoArmorMaterials.LEAD,
                     ArmorItem.Type.HELMET,
-                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(23))
-            ));
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(23)),
+                    MobEffects.MOVEMENT_SLOWDOWN,
+                    80,
+                    0
+            ) {
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.literal(
+                            "Heavy piece of armor with solid knockback resistance."
+                    ));
+                    tooltipComponents.add(Component.literal("Wearing a full suit slows you down")
+                            .withStyle(ChatFormatting.ITALIC)
+                            .withStyle(ChatFormatting.DARK_BLUE));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
     public static final DeferredItem<ArmorItem> LEAD_CHESTPLATE = ITEMS.register("lead_chestplate",
             () -> new LeadArmorItem(
-                    NeoArmorMaterials.LEAD,
                     ArmorItem.Type.CHESTPLATE,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(23))
             ));
     public static final DeferredItem<ArmorItem> LEAD_LEGGINGS = ITEMS.register("lead_leggings",
             () -> new LeadArmorItem(
-                    NeoArmorMaterials.LEAD,
                     ArmorItem.Type.LEGGINGS,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(23))
             ));
     public static final DeferredItem<ArmorItem> LEAD_BOOTS = ITEMS.register("lead_boots",
             () -> new LeadArmorItem(
-                    NeoArmorMaterials.LEAD,
                     ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(23))
             ));
