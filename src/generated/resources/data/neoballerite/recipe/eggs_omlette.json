@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "neoballerite:milk_vile"
+    },
+    {
+      "item": "neoballerite:tomato"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "neoballerite:eggs_omlette"
+  }
+}
