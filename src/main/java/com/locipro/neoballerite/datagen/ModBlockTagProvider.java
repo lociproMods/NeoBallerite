@@ -4,6 +4,8 @@ import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -144,5 +146,26 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(STAR_PRESSURE_PLATE.get())
                 .add(STAR_FENCE.get())
                 .add(STAR_FENCE_GATE.get());
+
+
+
+        tag(ModTags.Blocks.OVERWORLD_FUNGALS)
+                .add(Blocks.BROWN_MUSHROOM)
+                .add(Blocks.RED_MUSHROOM);
+        tag(ModTags.Blocks.NETHER_FUNGALS)
+                .add(Blocks.WARPED_FUNGUS)
+                .add(Blocks.CRIMSON_FUNGUS);
+        tag(ModTags.Blocks.END_FUNGALS)
+                .add(Blocks.CHORUS_FLOWER);
+
+        tag(ModTags.Blocks.FUNGALS)
+                .addTags(ModTags.Blocks.OVERWORLD_FUNGALS, ModTags.Blocks.NETHER_FUNGALS, ModTags.Blocks.END_FUNGALS);
+
+
+
+        tag(ModTags.Common.BERRY_BUSHES)
+                .add(BLUEBERRY_BUSH.get())
+                .add(BLACKBERRY_BUSH.get())
+                .add(STRAWBERRY_BUSH.get());
     }
 }

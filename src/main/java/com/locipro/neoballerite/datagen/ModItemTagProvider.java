@@ -4,7 +4,10 @@ import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -23,22 +26,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        tag(ModTags.Items.BALLERITE_ITEMS)
+        tag(ModTags.Items.BALLERITE_BLOCKS)
                 .add(RAW_BALLERITE.get())
                 .add(COOKED_BALLERITE.get())
                 .add(CHARRED_BALLERITE.get())
                 .add(COMPRESSED_BALLERITE_INGOT.get());
 
-        tag(ModTags.Items.WITHERED_LOGS)
-                .add(WITHERED_LOG.asItem())
-                .add(STRIPPED_WITHERED_LOG.asItem())
-                .add(WITHERED_WOOD.asItem())
-                .add(STRIPPED_WITHERED_WOOD.asItem());
-        tag(ModTags.Items.STAR_LOGS)
-                .add(STAR_LOG.asItem())
-                .add(STRIPPED_STAR_LOG.asItem())
-                .add(STAR_WOOD.asItem())
-                .add(STRIPPED_STAR_WOOD.asItem());
         
         
         
@@ -102,6 +95,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(WITHERED_PLANKS.asItem())
                 .add(STAR_PLANKS.asItem());
 
+
+        copy(ModTags.Blocks.WITHERED_LOGS, ModTags.Items.WITHERED_LOGS);
+        copy(ModTags.Blocks.STAR_LOGS, ModTags.Items.STAR_LOGS);
+
         tag(ItemTags.LOGS)
                 .addTags(ModTags.Items.WITHERED_LOGS, ModTags.Items.STAR_LOGS);
 
@@ -143,36 +140,27 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(STAR_STAIRS.get().asItem());
 
 
+        tag(ItemTags.HORSE_FOOD)
+                .add(SWEET_POTATO.get(),CORN_COB.get());
+        tag(ItemTags.HORSE_TEMPT_ITEMS)
+                .add(SWEET_POTATO.get());
+        tag(ItemTags.FOX_FOOD)
+                .add(BLUEBERRIES.get(), BLACKBERRIES.get(), STRAWBERRY.get());
+        tag(ItemTags.CHICKEN_FOOD)
+                .add(EGGPLANT_SEEDS.get(),
+                        TOMATO_SEEDS.get(),
+                        STRAWBERRY_SEEDS.get(),
+                        CORN_KERNELS.get());
+        tag(ItemTags.PIG_FOOD)
+                .add(TOMATO.get(), EGGPLANT.get(), SWEET_POTATO.get());
 
-        tag(ModTags.Items.WITHERED_BLOCKS)
-                .add(WITHERED_LOG.get().asItem())
-                .add(STRIPPED_WITHERED_LOG.get().asItem())
-                .add(WITHERED_WOOD.get().asItem())
-                .add(STRIPPED_WITHERED_WOOD.get().asItem())
-                .add(WITHERED_PLANKS.get().asItem())
-                .add(WITHERED_SLAB.get().asItem())
-                .add(WITHERED_STAIRS.get().asItem())
-                .add(WITHERED_DOOR.get().asItem())
-                .add(WITHERED_TRAPDOOR.get().asItem())
-                .add(WITHERED_BUTTON.get().asItem())
-                .add(WITHERED_PRESSURE_PLATE.get().asItem())
-                .add(WITHERED_FENCE.get().asItem())
-                .add(WITHERED_FENCE_GATE.get().asItem());
-        tag(ModTags.Items.STAR_BLOCKS)
-                .add(STAR_LOG.get().asItem())
-                .add(STRIPPED_STAR_LOG.get().asItem())
-                .add(STAR_WOOD.get().asItem())
-                .add(STRIPPED_STAR_WOOD.get().asItem())
-                .add(STAR_PLANKS.get().asItem())
-                .add(STAR_SLAB.get().asItem())
-                .add(STAR_STAIRS.get().asItem())
-                .add(STAR_DOOR.get().asItem())
-                .add(STAR_TRAPDOOR.get().asItem())
-                .add(STAR_BUTTON.get().asItem())
-                .add(STAR_PRESSURE_PLATE.get().asItem())
-                .add(STAR_FENCE.get().asItem())
-                .add(STAR_FENCE_GATE.get().asItem());
-        
+
+
+
+
+        copy(ModTags.Blocks.WITHERED_BLOCKS, ModTags.Items.WITHERED_BLOCKS);
+        copy(ModTags.Blocks.STAR_BLOCKS, ModTags.Items.STAR_BLOCKS);
+
         tag(ModTags.Items.CLAYMORES)
                 .add(WOODEN_CLAYMORE.get())
                 .add(STONE_CLAYMORE.get())
@@ -182,18 +170,34 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(DIAMOND_CLAYMORE.get())
                 .add(BALLERITE_CLAYMORE.get());
 
+        copy(ModTags.Blocks.OVERWORLD_FUNGALS, ModTags.Items.OVERWORLD_FUNGALS);
+        copy(ModTags.Blocks.NETHER_FUNGALS, ModTags.Items.NETHER_FUNGALS);
+        copy(ModTags.Blocks.END_FUNGALS, ModTags.Items.END_FUNGALS);
+
         tag(ModTags.Items.OVERWORLD_FUNGALS)
-                .add(Items.BROWN_MUSHROOM)
-                .add(Items.RED_MUSHROOM)
                 .add(Items.ROTTEN_FLESH);
-        tag(ModTags.Items.NETHER_FUNGALS)
-                .add(Items.WARPED_FUNGUS)
-                .add(Items.CRIMSON_FUNGUS);
-        tag(ModTags.Items.END_FUNGALS)
-                .add(Items.CHORUS_FLOWER);
 
         tag(ModTags.Items.FUNGALS)
                 .addTags(ModTags.Items.OVERWORLD_FUNGALS, ModTags.Items.NETHER_FUNGALS, ModTags.Items.END_FUNGALS);
 
+
+
+
+
+        tag(ModTags.Common.INGOTS)
+                .add(LEAD_INGOT.get())
+                .add(COMPRESSED_BALLERITE_INGOT.get());
+        tag(ModTags.Common.NUGGETS)
+                .add(LEAD_NUGGET.get());
+
+        tag(ModTags.Common.STRAWBERRIES)
+                .add(STRAWBERRY.get())
+                .add(UNRIPE_STRAWBERRY.get());
+
+        tag(ModTags.Common.BERRIES)
+                .add(STRAWBERRY.get())
+                .add(UNRIPE_STRAWBERRY.get())
+                .add(BLUEBERRIES.get())
+                .add(BLACKBERRIES.get());
     }
 }
