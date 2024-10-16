@@ -392,6 +392,22 @@ public class ModItems {
             () -> new CheeseItem(new Item.Properties().food(FungalFoodProperties.CHEESE))
                     .cheeseType(CheeseItem.CheeseTypes.OVERWORLD));
 
+    public static final DeferredItem<Item> IRON_CARROT = ITEMS.register("iron_carrot",
+            () -> new Item(new Item.Properties().food(CropFoodProperties.IRON_CARROT)) {
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.literal("Don't have to worry about anemia, heh.").withStyle(ChatFormatting.GRAY));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
+
+    public static final DeferredItem<Item> EGGS_SUNNY = ITEMS.register("eggs_sunny",
+            () -> new Item(new Item.Properties().food(EggFoodProperties.SUNNY)));
+    public static final DeferredItem<Item> EGGS_SCRAMBLED = ITEMS.register("eggs_scrambled",
+            () -> new Item(new Item.Properties().food(EggFoodProperties.SCRAMBLED)));
+    public static final DeferredItem<Item> EGGS_OMLETTE = ITEMS.register("eggs_omlette",
+            () -> new Item(new Item.Properties().food(EggFoodProperties.OMLETTE)));
+
     //endregion
 
 

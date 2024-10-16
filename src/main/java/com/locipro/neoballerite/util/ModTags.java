@@ -61,6 +61,8 @@ public class ModTags {
         public static final TagKey<Item> STRAWBERRIES = createCommonItemTagKey("strawberries");
 
         public static final TagKey<Block> BERRY_BUSHES = createCommonBlockTagKey("berry_bushes");
+
+        public static final TagKey<Item> CARROTS = createCommonItemTagKey("carrots");
     }
     public static TagKey<Item> getFungalTagForCheese(@NotNull CheeseItem cheeseItem) {
         return switch (cheeseItem.getCheeseType()) {

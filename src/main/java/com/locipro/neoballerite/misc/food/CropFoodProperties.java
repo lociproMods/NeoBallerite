@@ -1,5 +1,7 @@
 package com.locipro.neoballerite.misc.food;
 
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 
 public class CropFoodProperties {
@@ -39,8 +41,14 @@ public class CropFoodProperties {
             .saturationModifier(0.5F)
             .build();
     public static final FoodProperties KERNELS = new FoodProperties.Builder()
-            .nutrition(2)
+            .nutrition(1)
             .saturationModifier(0.0F)
             .fast()
+            .build();
+
+    public static FoodProperties IRON_CARROT = new FoodProperties.Builder()
+            .nutrition(4)
+            .saturationModifier(0.6f)
+            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 0), 1.0f)
             .build();
 }

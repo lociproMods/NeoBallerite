@@ -280,6 +280,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 0.45f, 200, "corn");
 
 
+        offerSmelting(recipeOutput, List.of(Items.EGG), RecipeCategory.FOOD, EGGS_SCRAMBLED,
+                0.4f, 200, "egg");
+        offerSmoking(recipeOutput, List.of(Items.EGG), RecipeCategory.FOOD, EGGS_SUNNY,
+                0.5f, 100, "egg");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, EGGS_OMLETTE)
+                        .requires(Items.EGG)
+                        .requires(MILK_VILE)
+                        .requires(TOMATO)
+                        .unlockedBy(getHasName(Items.EGG), has(Items.EGG))
+                        .save(recipeOutput);
+
+        offerEightCoveredRecipe(recipeOutput, RecipeCategory.FOOD, IRON_CARROT, Items.CARROT, Items.IRON_INGOT);
+        offerEightCoveredRecipe(recipeOutput, RecipeCategory.FOOD, IRON_CARROT, Items.CARROT, ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "ingots/iron")), "common_iron_ingots");
+
+
         SpecialRecipeBuilder.special(ShapelessRepairRecipe::new)
                         .save(recipeOutput, getId("leaves_boots_repair"));
     }
@@ -444,6 +460,28 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern(" #")
                 .unlockedBy(condition, has(repairItem))
                 .save(recipeOutput);
+    }
+
+
+    protected static void offerEightCoveredRecipe(RecipeOutput recipeOutput, RecipeCategory recipeCategory, ItemLike result, ItemLike covered, ItemLike covering) {
+        ShapedRecipeBuilder.shaped(recipeCategory, result)
+                .define('#', covering)
+                .define('O', covered)
+                .pattern("###")
+                .pattern("#O#")
+                .pattern("###")
+                .unlockedBy(getHasName(covered), has(covered))
+                .save(recipeOutput);
+    }
+    protected static void offerEightCoveredRecipe(RecipeOutput recipeOutput, RecipeCategory recipeCategory, ItemLike result, ItemLike covered, TagKey<Item> covering, String tagName) {
+        ShapedRecipeBuilder.shaped(recipeCategory, result)
+                .define('#', covering)
+                .define('O', covered)
+                .pattern("###")
+                .pattern("#O#")
+                .pattern("###")
+                .unlockedBy(getHasName(covered), has(covered))
+                .save(recipeOutput, MODID + ":" + getItemName(result) + "from_tag_" + tagName);
     }
 
 

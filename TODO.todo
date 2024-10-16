@@ -1,10 +1,11 @@
 TODO -
-   egg foods
    Sandwiches.
    Add sugar food components
+   diamond carrot? haha
    WARPED CHEESE (from mixing milk with nether mushrooms)
    fix creative tabs.
    .
+   Enchantments. Wow they seem complicated. https://docs.neoforged.net/docs/resources/server/enchantments/
    Make torches turn off during rain :
         I think I might need a custom blockstate and model for this, this shi seems complex.
    USE DATA COMPONENTS TO LINK BACK TO THE ORIGINAL FRUIT ONCE YOU IMPLEMENT JAMS.
@@ -18,3 +19,4 @@ TODO -
 COSMETIC-TODO-
            RETEXTURE ALL COMPRESS BALLERITE TEXTURES. GIVE THEM A DAMN PALETTE
            RETEXTURE CROPS AND TOMATO BUSH.
+           RETETURsdjks omlette and scrambled

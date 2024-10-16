@@ -152,6 +152,12 @@ public class ModCreativeTabs {
 
                 output.accept(MILK_VILE);
                 output.accept(MILK_CHEESE);
+
+                output.accept(EGGS_SUNNY);
+                output.accept(EGGS_SCRAMBLED);
+                output.accept(EGGS_OMLETTE);
+
+                output.accept(IRON_CARROT);
             }).build());
 
 }

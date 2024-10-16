@@ -8,7 +8,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
 
-// TODO implement this.
+
 public class NeoRandomItemLootModifier extends LootModifier {
     /**
      * Constructs a LootModifier.

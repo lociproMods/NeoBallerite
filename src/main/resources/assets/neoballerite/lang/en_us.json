@@ -85,6 +85,12 @@
   "item.neoballerite.milk_vile" : "Vile O' Milk",
   "item.neoballerite.milk_cheese" : "Cheese",
 
+  "item.neoballerite.eggs_sunny" : "Sunny Side Eggs",
+  "item.neoballerite.eggs_scrambled" : "Scrambled Eggs",
+  "item.neoballerite.eggs_omlette" : "Omlette O' Eggs",
+
+  "item.neoballerite.iron_carrot" : "Iron Carrot",
+
 
 
   "block.neoballerite.raw_ballerite_block" : "Raw Ballerite Block",

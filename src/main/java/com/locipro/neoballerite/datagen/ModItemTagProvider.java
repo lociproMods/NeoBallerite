@@ -199,5 +199,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(UNRIPE_STRAWBERRY.get())
                 .add(BLUEBERRIES.get())
                 .add(BLACKBERRIES.get());
+
+        tag(ModTags.Common.CARROTS)
+                .add(IRON_CARROT.get());
+
     }
 }
