@@ -1,9 +1,13 @@
 {
   "entries": [
-    "neoballerite:corn_from_grass_modifier",
-    "neoballerite:eggplant_from_grass_modifier",
+    "neoballerite:corn_from_short_grass_modifier",
+    "neoballerite:eggplant_from_short_grass_modifier",
+    "neoballerite:ballerite_horse_armor_from_pyramid",
     "neoballerite:eggplant_from_tall_grass_modifier",
     "neoballerite:corn_from_tall_grass_modifier",
+    "neoballerite:ballerite_horse_armor_from_mineshaft",
+    "neoballerite:ballerite_horse_armor_from_dungeon",
+    "neoballerite:ballerite_horse_armor_from_jungle_temple",
     "neoballerite:eggplant_from_zombie"
   ],
   "replace": false

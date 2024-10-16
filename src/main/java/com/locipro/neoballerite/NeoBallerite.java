@@ -25,14 +25,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 
-// TODO -
-//      common tags #c:
-//      .
-//      Add sugar components
-//      Make torches turn off during rain
-//      USE DATA COMPONENTS TO LINK BACK TO THE ORIGINAL FRUIT ONCE YOU IMPLEMENT JAMS.
-//      RETEXTURE ALL COMPRESS BALLERITE TEXTURES. GIVE THEM A DAMN PALETTE
-//      RETEXTURE CROPS AND TOMATO BUSH.
+
 @Mod(NeoBallerite.MODID)
 public class NeoBallerite {
     public static final String MODID = "neoballerite";

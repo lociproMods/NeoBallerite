@@ -6,11 +6,11 @@
       "condition": "minecraft:block_state_property"
     },
     {
-      "chance": 0.25,
+      "chance": 0.33,
       "condition": "minecraft:random_chance"
     }
   ],
   "count1": 1,
-  "count2": 1,
+  "count2": 2,
   "drop": "neoballerite:eggplant_seeds"
 }

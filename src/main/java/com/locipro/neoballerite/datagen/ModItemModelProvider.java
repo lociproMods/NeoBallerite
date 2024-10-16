@@ -63,6 +63,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(BALLERITE_LEGGINGS.asItem());
         basicItem(BALLERITE_BOOTS.asItem());
 
+        basicItem(BALLERITE_HORSE_ARMOR.asItem());
+
         basicItem(LEAVES_BOOTS.asItem());
 
         handheld(LEAD_SWORD);

@@ -168,6 +168,11 @@ public class ModItems {
                     new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(35))
             ));
 
+    // I think this will look for "textures/entity/horse/armor/horse_armor_ballerite_horse_armor"
+    // nvm it just looks for "horse_armor_ballerite", it doesn't use the item's key, it uses the material's key for the texture.
+    public static final DeferredItem<Item> BALLERITE_HORSE_ARMOR = ITEMS.register("ballerite_horse_armor",
+            () -> new AnimalArmorItem(NeoArmorMaterials.BALLERITE, AnimalArmorItem.BodyType.EQUESTRIAN, true, new Item.Properties().stacksTo(1)));
+
     public static final DeferredItem<ArmorItem> LEAVES_BOOTS = ITEMS.register("leaves_boots",
             () -> new BushNegatingArmorItem(
                     NeoArmorMaterials.LEAVES,

@@ -46,6 +46,8 @@ public class ModCreativeTabs {
                 output.accept(LEAD_LEGGINGS.get());
                 output.accept(LEAD_BOOTS.get());
 
+                output.accept(BALLERITE_HORSE_ARMOR.get());
+
                 output.accept(LEAVES_BOOTS.get());
 
 

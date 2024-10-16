@@ -9,13 +9,16 @@ import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.*;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
 import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
 import net.neoforged.neoforge.common.loot.AddTableLootModifier;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 
 import java.util.concurrent.CompletableFuture;
@@ -27,31 +30,19 @@ public class NeoGLMProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        // TODO reverte to 0.33f after testing
-        add("eggplant_from_grass_modifier",
-                new NeoItemLootModifier(new LootItemCondition[] {
-                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SHORT_GRASS).build(),
-                        LootItemRandomChanceCondition.randomChance(0.33f).build()
-                }, 1, 2, ModItems.EGGPLANT_SEEDS.get()));
 
+
+
+        add("eggplant_from_short_grass_modifier",
+                addItemToBlock(Blocks.SHORT_GRASS, 1, 1, ModItems.EGGPLANT_SEEDS.get(), 0.33f));
         add("eggplant_from_tall_grass_modifier",
-                new NeoItemLootModifier(new LootItemCondition[] {
-                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.TALL_GRASS).build(),
-                        LootItemRandomChanceCondition.randomChance(0.25f).build()
-                }, 1, 1, ModItems.EGGPLANT_SEEDS.get()));
+                addItemToBlock(Blocks.TALL_GRASS, 1, 2, ModItems.EGGPLANT_SEEDS.get(), 0.33f));
 
 
-        add("corn_from_grass_modifier",
-                new NeoItemLootModifier(new LootItemCondition[] {
-                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.SHORT_GRASS).build(),
-                        LootItemRandomChanceCondition.randomChance(0.1f).build()
-                }, 1, 2, ModItems.CORN_KERNELS.get()));
-
+        add("corn_from_short_grass_modifier",
+                addItemToBlock(Blocks.SHORT_GRASS, 1, 2, ModItems.CORN_KERNELS.get(), 0.1f));
         add("corn_from_tall_grass_modifier",
-                new NeoItemLootModifier(new LootItemCondition[] {
-                        LootItemBlockStatePropertyCondition.hasBlockStateProperties(Blocks.TALL_GRASS).build(),
-                        LootItemRandomChanceCondition.randomChance(0.1f).build()
-                }, 1, 1, ModItems.CORN_KERNELS.get()));
+                addItemToBlock(Blocks.TALL_GRASS, 1, 1, ModItems.CORN_KERNELS.get(), 0.1f));
 
 
 
@@ -67,5 +58,27 @@ public class NeoGLMProvider extends GlobalLootModifierProvider {
                                 ).build()).build()).build()
 
                 }, 1, 1, ModItems.EGGPLANT.get()));
+
+
+        add("ballerite_horse_armor_from_pyramid", addItemToChest("desert_pyramid", 1, 1, ModItems.BALLERITE_HORSE_ARMOR.get(), 0.3f) );
+        add("ballerite_horse_armor_from_mineshaft", addItemToChest("abandoned_mineshaft", 1, 1, ModItems.BALLERITE_HORSE_ARMOR.get(), 0.3f));
+        add("ballerite_horse_armor_from_dungeon", addItemToChest("simple_dungeon", 1, 1, ModItems.BALLERITE_HORSE_ARMOR.get(), 0.5f));
+        add("ballerite_horse_armor_from_jungle_temple", addItemToChest("jungle_temple", 1, 1, ModItems.BALLERITE_HORSE_ARMOR.get(), 0.7f));
+    }
+
+    private NeoItemLootModifier addItemToChest(String chestID, int count1, int count2, Item drop, float chance) {
+        return addItemToID("chests/" + chestID, count1, count2, drop, chance);
+    }
+    private NeoItemLootModifier addItemToID(String lootableID, int count1, int count2, Item drop, float chance) {
+        return new NeoItemLootModifier(new LootItemCondition[]{
+                new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace(lootableID)).build(),
+                LootItemRandomChanceCondition.randomChance(chance).build()
+        }, count1, count2, drop);
+    }
+    private NeoItemLootModifier addItemToBlock(Block block, int count1, int count2, Item drop, float chance) {
+        return new NeoItemLootModifier(new LootItemCondition[]{
+                LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build(),
+                LootItemRandomChanceCondition.randomChance(chance).build()
+        }, count1, count2, drop);
     }
 }
