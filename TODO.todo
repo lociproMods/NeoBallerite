@@ -1,13 +1,19 @@
 TODO -
    Milk, cheese, sandwiches.
+   Add to horse food (seems to be a tag)
+   Make cheese obtainable by combining milk vile and any "fungal" item (make a tag for these fungabaols)
    common tags #c:
    Add sugar food components
+   WARPED CHEESE (from mixing milk with nether mushrooms)
    fix creative tabs.
    .
    Make torches turn off during rain :
         I think I might need a custom blockstate and model for this, this shi seems complex.
    USE DATA COMPONENTS TO LINK BACK TO THE ORIGINAL FRUIT ONCE YOU IMPLEMENT JAMS.
    Implement NeoRandomItemLootModifier in your glm
+   Add glm to trial chamber loot tables (loot table id is equipment/)
+   Add glm  to piglin bartering loot tables
+   Add food recipes to campfires.
 
 
 COSMETIC-TODO-

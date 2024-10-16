@@ -1,20 +1,19 @@
 package com.locipro.neoballerite.datagen;
 
 import com.google.common.collect.ImmutableList;
+import com.locipro.neoballerite.item.custom.CheeseItem;
 import com.locipro.neoballerite.item.tool.NeoClaymoreItem;
 import com.locipro.neoballerite.recipe.ShapelessRepairRecipe;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.storage.loot.LootTable;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.neoforged.neoforge.registries.DeferredItem;
 
@@ -229,15 +228,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, STRAWBERRY_SEEDS, 3)
                 .requires(STRAWBERRY)
-                .unlockedBy("has_strawberry", has(STRAWBERRY))
+                .unlockedBy(getHasName(STRAWBERRY), has(STRAWBERRY))
                 .save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, TOMATO_SEEDS, 3)
                 .requires(TOMATO)
-                .unlockedBy("has_tomato", has(TOMATO))
+                .unlockedBy(getHasName(TOMATO), has(TOMATO))
                 .save(recipeOutput);
         offerSeeds(recipeOutput, CORN_KERNELS, CORN_COB, 3);
 
         twoByTwoPacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, SWEET_POTATO_BLOCK, SWEET_POTATO);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, MILK_VILE, 3)
+                .requires(Items.MILK_BUCKET)
+                .requires(Items.GLASS_BOTTLE, 3)
+                .unlockedBy(getHasName(Items.MILK_BUCKET), has(Items.MILK_BUCKET))
+                .save(recipeOutput);
+
+        offerCheese(recipeOutput, MILK_CHEESE);
 
 
 
@@ -288,6 +295,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, seed, count)
                 .requires(ingredient)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(recipeOutput);
+    }
+    protected void offerCheese(RecipeOutput recipeOutput, DeferredItem<CheeseItem> cheeseItem) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, cheeseItem, 3)
+                .requires(ModTags.getFungalTagForCheese(cheeseItem.get()))
+                .requires(MILK_VILE, 3)
+                .unlockedBy(getHasName(MILK_VILE), has(MILK_VILE))
                 .save(recipeOutput);
     }
 

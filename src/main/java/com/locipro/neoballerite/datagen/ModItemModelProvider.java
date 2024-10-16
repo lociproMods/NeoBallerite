@@ -110,6 +110,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(GRILLED_CORN_COB.get());
         basicItem(CORN_KERNELS.get());
 
+        basicItem(MILK_VILE.get());
+        basicItem(MILK_CHEESE.get());
+
 
     }
     

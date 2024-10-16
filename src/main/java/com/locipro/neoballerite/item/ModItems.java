@@ -6,9 +6,7 @@ import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.armor.*;
 import com.locipro.neoballerite.item.custom.*;
 import com.locipro.neoballerite.item.tool.*;
-import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
-import com.locipro.neoballerite.misc.food.BerryFoodProperties;
-import com.locipro.neoballerite.misc.food.CropFoodProperties;
+import com.locipro.neoballerite.misc.food.*;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.particles.ParticleTypes;
@@ -384,6 +382,15 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(CropFoodProperties.COB)));
     public static final DeferredItem<Item> GRILLED_CORN_COB = ITEMS.register("grilled_corn_cob",
             () -> new Item(new Item.Properties().food(CropFoodProperties.GRILLED_COB)));
+
+
+
+    public static final DeferredItem<Item> MILK_VILE = ITEMS.register("milk_vile",
+            () -> new MilkVileItem(new Item.Properties().food(DrinkFoodProperties.MILK)));
+
+    public static final DeferredItem<CheeseItem> MILK_CHEESE = ITEMS.register("milk_cheese",
+            () -> new CheeseItem(new Item.Properties().food(FungalFoodProperties.CHEESE))
+                    .cheeseType(CheeseItem.CheeseTypes.OVERWORLD));
 
     //endregion
 

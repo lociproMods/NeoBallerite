@@ -82,6 +82,10 @@
   "block.neoballerite.corn_crop" : "Corn Kernels",
 
 
+  "item.neoballerite.milk_vile" : "Vile O' Milk",
+  "item.neoballerite.milk_cheese" : "Cheese",
+
+
 
   "block.neoballerite.raw_ballerite_block" : "Raw Ballerite Block",
   "block.neoballerite.cooked_ballerite_block" : "Cooked Ballerite Block",

@@ -5,6 +5,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -95,6 +96,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(LEAVES_BOOTS.get());
 
 
+
         
         tag(ItemTags.PLANKS)
                 .add(WITHERED_PLANKS.asItem())
@@ -180,6 +182,18 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(DIAMOND_CLAYMORE.get())
                 .add(BALLERITE_CLAYMORE.get());
 
+        tag(ModTags.Items.OVERWORLD_FUNGALS)
+                .add(Items.BROWN_MUSHROOM)
+                .add(Items.RED_MUSHROOM)
+                .add(Items.ROTTEN_FLESH);
+        tag(ModTags.Items.NETHER_FUNGALS)
+                .add(Items.WARPED_FUNGUS)
+                .add(Items.CRIMSON_FUNGUS);
+        tag(ModTags.Items.END_FUNGALS)
+                .add(Items.CHORUS_FLOWER);
+
+        tag(ModTags.Items.FUNGALS)
+                .addTags(ModTags.Items.OVERWORLD_FUNGALS, ModTags.Items.NETHER_FUNGALS, ModTags.Items.END_FUNGALS);
 
     }
 }

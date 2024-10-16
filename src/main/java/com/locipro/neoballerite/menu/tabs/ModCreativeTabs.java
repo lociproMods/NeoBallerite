@@ -149,6 +149,9 @@ public class ModCreativeTabs {
                 output.accept(CORN_KERNELS);
                 output.accept(CORN_COB);
                 output.accept(GRILLED_CORN_COB);
+
+                output.accept(MILK_VILE);
+                output.accept(MILK_CHEESE);
             }).build());
 
 }
