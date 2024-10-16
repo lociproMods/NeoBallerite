@@ -1,14 +1,31 @@
 {
   "entries": [
-    "neoballerite:corn_from_short_grass_modifier",
-    "neoballerite:eggplant_from_short_grass_modifier",
+    "neoballerite:iron_claymore_from_village_weaponsmith",
+    "neoballerite:star_sapling_from_spawn_chest",
+    "neoballerite:lead_axe_from_village_toolsmith",
+    "neoballerite:corn_kernels_from_village_savanna_house",
+    "neoballerite:lead_helmet_from_village_armorer",
+    "neoballerite:star_sapling_from_village_savanna_house",
+    "neoballerite:blueberries_from_village_taiga_house",
+    "neoballerite:eggplant_seeds_from_tall_grass_modifier",
+    "neoballerite:eggplant_seeds_from_village_savanna_house",
+    "neoballerite:eggplant_from_zombie",
+    "neoballerite:withered_sapling_from_village_plains_house",
+    "neoballerite:eggplant_seeds_from_village_plains_house",
     "neoballerite:ballerite_horse_armor_from_pyramid",
-    "neoballerite:eggplant_from_tall_grass_modifier",
-    "neoballerite:corn_from_tall_grass_modifier",
-    "neoballerite:ballerite_horse_armor_from_mineshaft",
+    "neoballerite:lead_sword_from_village_weaponsmith",
     "neoballerite:ballerite_horse_armor_from_dungeon",
+    "neoballerite:stone_claymore_from_spawn_chest",
+    "neoballerite:ballerite_pickaxe_from_village_toolsmith",
+    "neoballerite:corn_kernels_from_short_grass_modifier",
+    "neoballerite:corn_kernels_from_tall_grass_modifier",
+    "neoballerite:eggplant_seeds_from_short_grass_modifier",
+    "neoballerite:tomato_seeds_from_village_plains_house",
+    "neoballerite:tomato_seeds_from_village_savanna_house",
+    "neoballerite:blackberries_from_village_taiga_house",
+    "neoballerite:ballerite_horse_armor_from_mineshaft",
     "neoballerite:ballerite_horse_armor_from_jungle_temple",
-    "neoballerite:eggplant_from_zombie"
+    "neoballerite:ballerite_helmet_from_village_armorer"
   ],
   "replace": false
 }

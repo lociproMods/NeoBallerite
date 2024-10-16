@@ -51,14 +51,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         .unlockedBy("has_charred_ballerite_block", has(CHARRED_BALLERITE_BLOCK))
                         .save(recipeOutput);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, BALL_DOWSER)
+        // I dont want this item anymore man
+        /*ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, BALL_DOWSER)
                 .define('#', COOKED_BALLERITE_BLOCK)
                 .define('X', Items.STICK)
                 .pattern("###")
                 .pattern("#X#")
                 .pattern(" X ")
                 .unlockedBy("has_cooked_ballerite", has(COOKED_BALLERITE))
-                .save(recipeOutput);
+                .save(recipeOutput);*/
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, KNIFE)
                 .define('#', Items.IRON_INGOT)

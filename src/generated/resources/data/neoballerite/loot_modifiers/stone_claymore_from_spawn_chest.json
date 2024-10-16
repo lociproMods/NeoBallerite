@@ -3,14 +3,14 @@
   "conditions": [
     {
       "condition": "neoforge:loot_table_id",
-      "loot_table_id": "minecraft:chests/jungle_temple"
+      "loot_table_id": "minecraft:chests/spawn_bonus_chest"
     },
     {
-      "chance": 0.7,
+      "chance": 0.4,
       "condition": "minecraft:random_chance"
     }
   ],
-  "drop": "neoballerite:ballerite_horse_armor",
+  "drop": "neoballerite:stone_claymore",
   "maxBonusRolls": 0,
   "maxCount": 1,
   "minCount": 1

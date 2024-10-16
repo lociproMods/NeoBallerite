@@ -24,21 +24,24 @@ public class NeoItemLootModifier extends LootModifier {
      *
      * @param conditionsIn the ILootConditions that need to be matched before the loot is modified.
      */
-    public NeoItemLootModifier(LootItemCondition[] conditionsIn, int count1, int count2, Item drop) {
+    public NeoItemLootModifier(LootItemCondition[] conditionsIn, int count1, int count2, Item drop, int maxBonusRolls) {
         super(conditionsIn);
         this.drop = drop;
         this.count1 = count1;
         this.count2 = count2;
+        this.maxBonusRolls = maxBonusRolls;
     }
     private final Item drop;
     private final int count1;
     private final int count2;
+    private final int maxBonusRolls;
 
     public static final MapCodec<NeoItemLootModifier> CODEC = RecordCodecBuilder.mapCodec(inst ->
             LootModifier.codecStart(inst).and(inst.group(
-                    Codec.INT.fieldOf("count1").forGetter(e -> e.count1),
-                    Codec.INT.fieldOf("count2").forGetter(e -> e.count2),
-                    BuiltInRegistries.ITEM.byNameCodec().fieldOf("drop").forGetter(e -> e.drop)
+                    Codec.INT.fieldOf("minCount").forGetter(e -> e.count1),
+                    Codec.INT.fieldOf("maxCount").forGetter(e -> e.count2),
+                    BuiltInRegistries.ITEM.byNameCodec().fieldOf("drop").forGetter(e -> e.drop),
+                    Codec.INT.fieldOf("maxBonusRolls").forGetter(e -> e.maxBonusRolls)
             )).apply(inst, NeoItemLootModifier::new));
     @Override
     public MapCodec<? extends IGlobalLootModifier> codec() {
@@ -57,6 +60,16 @@ public class NeoItemLootModifier extends LootModifier {
 
         UniformGenerator count = UniformGenerator.between(count1, count2);
         generatedLoot.add(new ItemStack(drop, count.getInt(context)));
+
+
+        byte rolls = 0;
+        // 33% for bonus rolls i guess
+        while (rolls < maxBonusRolls) {
+            if (context.getRandom().nextFloat() <= 0.33f) {
+                generatedLoot.add(new ItemStack(drop, count.getInt(context)));
+            }
+            rolls++;
+        }
 
         return generatedLoot;
     }

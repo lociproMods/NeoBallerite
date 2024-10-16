@@ -2,7 +2,7 @@
   "type": "neoballerite:neo_item_loot_modifier",
   "conditions": [
     {
-      "block": "minecraft:tall_grass",
+      "block": "minecraft:short_grass",
       "condition": "minecraft:block_state_property"
     },
     {
@@ -10,7 +10,8 @@
       "condition": "minecraft:random_chance"
     }
   ],
-  "count1": 1,
-  "count2": 1,
-  "drop": "neoballerite:corn_kernels"
+  "drop": "neoballerite:corn_kernels",
+  "maxBonusRolls": 0,
+  "maxCount": 2,
+  "minCount": 1
 }

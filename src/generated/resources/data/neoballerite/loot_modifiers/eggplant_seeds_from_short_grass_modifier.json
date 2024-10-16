@@ -10,7 +10,8 @@
       "condition": "minecraft:random_chance"
     }
   ],
-  "count1": 1,
-  "count2": 1,
-  "drop": "neoballerite:eggplant_seeds"
+  "drop": "neoballerite:eggplant_seeds",
+  "maxBonusRolls": 0,
+  "maxCount": 1,
+  "minCount": 1
 }

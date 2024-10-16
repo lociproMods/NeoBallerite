@@ -3,15 +3,15 @@
   "conditions": [
     {
       "condition": "neoforge:loot_table_id",
-      "loot_table_id": "minecraft:chests/jungle_temple"
+      "loot_table_id": "minecraft:chests/village/village_savanna_house"
     },
     {
-      "chance": 0.7,
+      "chance": 0.4,
       "condition": "minecraft:random_chance"
     }
   ],
-  "drop": "neoballerite:ballerite_horse_armor",
-  "maxBonusRolls": 0,
-  "maxCount": 1,
+  "drop": "neoballerite:blueberries",
+  "maxBonusRolls": 3,
+  "maxCount": 4,
   "minCount": 1
 }

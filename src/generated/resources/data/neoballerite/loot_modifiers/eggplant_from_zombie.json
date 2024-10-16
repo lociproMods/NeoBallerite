@@ -24,7 +24,8 @@
       }
     }
   ],
-  "count1": 1,
-  "count2": 1,
-  "drop": "neoballerite:eggplant"
+  "drop": "neoballerite:eggplant",
+  "maxBonusRolls": 0,
+  "maxCount": 1,
+  "minCount": 1
 }

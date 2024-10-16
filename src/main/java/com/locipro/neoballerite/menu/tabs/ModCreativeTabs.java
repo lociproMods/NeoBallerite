@@ -25,7 +25,7 @@ public class ModCreativeTabs {
             .withTabsBefore(CreativeModeTabs.COMBAT) // After the last tab (combat)
             .icon(() -> BALL_DOWSER.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(BALL_DOWSER.get());
+                //output.accept(BALL_DOWSER.get());
                 output.accept(BALLERITE_SWORD.get());
                 output.accept(BALLERITE_PICKAXE.get());
                 output.accept(BALLERITE_AXE.get());
