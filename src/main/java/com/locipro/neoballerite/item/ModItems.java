@@ -7,6 +7,7 @@ import com.locipro.neoballerite.item.armor.*;
 import com.locipro.neoballerite.item.custom.*;
 import com.locipro.neoballerite.item.tool.*;
 import com.locipro.neoballerite.misc.food.*;
+import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.particles.ParticleTypes;
@@ -289,7 +290,7 @@ public class ModItems {
     public static final DeferredItem<NeoClaymoreItem> IRON_CLAYMORE = ITEMS.register("iron_claymore",
             () -> new NeoClaymoreItem(Tiers.IRON, new Item.Properties()));
     public static final DeferredItem<NeoClaymoreItem> LEAD_CLAYMORE = ITEMS.register("lead_claymore",
-            () -> new NeoClaymoreItem(ModTiers.LEAD_TIER, new Item.Properties()));
+            () -> new NeoClaymoreItem(ModTiers.LEAD_TIER, new Item.Properties()).doesPoison());
     public static final DeferredItem<NeoClaymoreItem> GOLD_CLAYMORE = ITEMS.register("gold_claymore",
             () -> new NeoClaymoreItem(Tiers.GOLD, new Item.Properties()));
     public static final DeferredItem<NeoClaymoreItem> DIAMOND_CLAYMORE = ITEMS.register("diamond_claymore",
@@ -434,7 +435,7 @@ public class ModItems {
     
     
     public static final DeferredItem<SandwichItem> FRIES_SANDWICH = ITEMS.register("fries_sandwich",
-            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.FRIES_SANDWICH), Optional.empty(), Optional.empty()));
+            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.FRIES_SANDWICH), Optional.empty(), Optional.empty()).tag(ModTags.Items.POTATOES));
     public static final DeferredItem<SandwichItem> CHEESE_SANDWICH = ITEMS.register("cheese_sandwich",
             () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.CHEESE_SANDWICH), Optional.of(MILK_CHEESE.get()), Optional.empty()));
 
@@ -448,7 +449,7 @@ public class ModItems {
             () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.CHICKEN_CHEESE_SANDWICH), Optional.of(Items.COOKED_CHICKEN), Optional.of(CHEESE_CHICKEN.get())));
 
     public static final DeferredItem<SandwichItem> CHEESE_FRIES_SANDWICH = ITEMS.register("cheese_fries_sandwich",
-            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.CHEESE_FRIES_SANDWICH), Optional.empty(), Optional.of(CHEESE_FRIES.get())));
+            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.CHEESE_FRIES_SANDWICH), Optional.empty(), Optional.of(CHEESE_FRIES.get())).tag(ModTags.Items.POTATOES));
 
 
 

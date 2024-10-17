@@ -1,6 +1,7 @@
 package com.locipro.neoballerite.item.custom;
 
 
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
@@ -14,6 +15,7 @@ public class SandwichItem extends Item {
         fillerItem.ifPresent(item -> FILLER_ITEM = item);
         cheesyFiller.ifPresent(item -> CHEESY_FILLER = item);
     }
+    private TagKey<Item> fillerTag;
     private final Item BREAD_ITEM = Items.BREAD;
     private Item FILLER_ITEM;
     private Item CHEESY_FILLER;
@@ -37,5 +39,13 @@ public class SandwichItem extends Item {
 
     public boolean hasCheese() {
         return CHEESY_FILLER != null;
+    }
+
+    public SandwichItem tag(TagKey<Item> fillerTag) {
+        this.fillerTag = fillerTag;
+        return this;
+    }
+    public TagKey<Item> getFillerTag() {
+        return fillerTag;
     }
 }

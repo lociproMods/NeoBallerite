@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:cooked_mutton"
+    },
+    {
+      "item": "neoballerite:milk_cheese"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "neoballerite:cheese_mutton"
+  }
+}

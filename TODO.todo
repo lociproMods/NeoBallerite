@@ -4,6 +4,10 @@ TODO -
    WARPED CHEESE (from mixing milk with nether mushrooms)
    fix creative tabs.
    .
+   cOMPRESSOR BLOCK ENTITY
+   lead lantern
+   WOODEN shields?
+   stronger newer shields?
    Enchantments. Wow they seem complicated. https://docs.neoforged.net/docs/resources/server/enchantments/
    Make torches turn off during rain :
         I think I might need a custom blockstate and model for this, this shi seems complex.
@@ -19,6 +23,7 @@ COSMETIC-TODO-
            RETEXTURE ALL COMPRESS BALLERITE TEXTURES. GIVE THEM A DAMN PALETTE
            RETEXTURE CROPS AND TOMATO BUSH.
            RETETURsdjks omlette and scrambled
+           delve into shaders
 
 TODO - dreams:
     Hypothetically we can have sandwiches that are fully procedural and use data components to determine texture.
@@ -32,4 +37,13 @@ wokring :
 
 Done :
    Sandwiches. (I'm just going to hard code these types, check dreams section tho)
+   Fixed claymore recipes
+       did i break raw beef furnace recipe
+       all raw foods dont cook in furnaces no more.
+       fixed that bug
+
+       fixed sandwich recipe bug
+
+       remove raw ballerite blocks from fancy withered tree feature, replace with podzol
+
 

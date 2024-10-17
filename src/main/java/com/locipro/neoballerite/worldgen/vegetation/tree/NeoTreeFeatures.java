@@ -67,7 +67,7 @@ public class NeoTreeFeatures {
                         new FancyFoliagePlacer(UniformInt.of(4, 6), ConstantInt.of(0), 3),
                         new TwoLayersFeatureSize(2, 0 ,2)
                 ).decorators(
-                        ImmutableList.of(new AlterGroundDecorator(BlockStateProvider.simple(RAW_BALLERITE_BLOCK.get())))
+                        ImmutableList.of(new AlterGroundDecorator(BlockStateProvider.simple(Blocks.PODZOL)))
                 ).build());
 
         FeatureUtils.register(context,

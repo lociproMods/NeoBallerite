@@ -1,5 +1,6 @@
 package com.locipro.neoballerite.item.tool;
 
+import com.locipro.neoballerite.NeoBallerite;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;

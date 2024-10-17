@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "neoballerite:knives"
+    },
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "tag": "neoballerite:potatoes"
+    },
+    {
+      "item": "neoballerite:milk_cheese"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "neoballerite:cheese_fries_sandwich"
+  }
+}

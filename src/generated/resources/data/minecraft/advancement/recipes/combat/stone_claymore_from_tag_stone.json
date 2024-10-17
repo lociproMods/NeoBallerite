@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:stone_claymore_from_tag_stone"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "hasstone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:stone_crafting_materials"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "hasstone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:stone_claymore_from_tag_stone"
+    ]
+  }
+}
