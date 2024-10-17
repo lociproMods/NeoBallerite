@@ -4,7 +4,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 
-public class CropFoodProperties {
+public abstract class CropFoodProperties {
     public static final FoodProperties TOMATO = new FoodProperties.Builder()
             .nutrition(3)
             .saturationModifier(0.5F)

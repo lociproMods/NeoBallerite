@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_milk_cheese": {
+      "conditions": {
+        "items": [
+          {
+            "items": "neoballerite:milk_cheese"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:cheese_sandwich"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_milk_cheese"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:cheese_sandwich"
+    ]
+  }
+}

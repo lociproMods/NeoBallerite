@@ -50,6 +50,9 @@ public class ModTags {
         public static final TagKey<Item> NETHER_FUNGALS = createTag("warped_fungals");
         public static final TagKey<Item> END_FUNGALS = createTag("end_fungals");
 
+        public static final TagKey<Item> KNIVES = createTag("knives");
+        public static final TagKey<Item> POTATOES = createTag("potatoes");
+
         private static TagKey<Item> createTag(String name){
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(MODID, name));
         }

@@ -20,6 +20,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
@@ -389,7 +390,7 @@ public class ModItems {
             () -> new MilkVileItem(new Item.Properties().food(DrinkFoodProperties.MILK)));
 
     public static final DeferredItem<CheeseItem> MILK_CHEESE = ITEMS.register("milk_cheese",
-            () -> new CheeseItem(new Item.Properties().food(FungalFoodProperties.CHEESE))
+            () -> new CheeseItem(new Item.Properties().food(CheeseFoodProperties.CHEESE))
                     .cheeseType(CheeseItem.CheeseTypes.OVERWORLD));
 
     public static final DeferredItem<Item> IRON_CARROT = ITEMS.register("iron_carrot",
@@ -407,6 +408,49 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(EggFoodProperties.SCRAMBLED)));
     public static final DeferredItem<Item> EGGS_OMLETTE = ITEMS.register("eggs_omlette",
             () -> new Item(new Item.Properties().food(EggFoodProperties.OMLETTE)));
+
+
+
+    // What a mess...
+    public static final DeferredItem<Item> CHEESE_STEAK = ITEMS.register("cheese_steak",
+            () -> new Item(new Item.Properties().food(CheeseFoodProperties.CHEESE_STEAK)));
+    public static final DeferredItem<Item> CHEESE_PORK = ITEMS.register("cheese_pork",
+            () -> new Item(new Item.Properties().food(CheeseFoodProperties.CHEESE_PORK)));
+    public static final DeferredItem<Item> CHEESE_MUTTON = ITEMS.register("cheese_mutton",
+            () -> new Item(new Item.Properties().food(CheeseFoodProperties.CHEESE_MUTTON)));
+    public static final DeferredItem<Item> CHEESE_CHICKEN = ITEMS.register("cheese_chicken",
+            () -> new Item(new Item.Properties().food(CheeseFoodProperties.CHEESE_CHICKEN)));
+    public static final DeferredItem<Item> CHEESE_FRIES = ITEMS.register("cheese_fries",
+            () -> new Item(new Item.Properties().food(CheeseFoodProperties.CHEESE_FRIES)));
+
+    public static final DeferredItem<SandwichItem> STEAK_SANDWICH = ITEMS.register("steak_sandwich",
+            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.STEAK_SANDWICH), Optional.of(Items.COOKED_BEEF), Optional.empty() ));
+    public static final DeferredItem<SandwichItem> PORK_SANDWICH = ITEMS.register("pork_sandwich",
+            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.PORK_SANDWICH), Optional.of(Items.COOKED_PORKCHOP), Optional.empty()));
+    public static final DeferredItem<SandwichItem> MUTTON_SANDWICH = ITEMS.register("mutton_sandwich",
+            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.MUTTON_SANDWICH), Optional.of(Items.COOKED_MUTTON), Optional.empty()));
+    public static final DeferredItem<SandwichItem> CHICKEN_SANDWICH = ITEMS.register("chicken_sandwich",
+            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.CHICKEN_SANDWICH), Optional.of(Items.COOKED_CHICKEN), Optional.empty()));
+    
+    
+    public static final DeferredItem<SandwichItem> FRIES_SANDWICH = ITEMS.register("fries_sandwich",
+            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.FRIES_SANDWICH), Optional.empty(), Optional.empty()));
+    public static final DeferredItem<SandwichItem> CHEESE_SANDWICH = ITEMS.register("cheese_sandwich",
+            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.CHEESE_SANDWICH), Optional.of(MILK_CHEESE.get()), Optional.empty()));
+
+    public static final DeferredItem<SandwichItem> CHEESE_STEAK_SANDWICH = ITEMS.register("cheese_steak_sandwich",
+            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.CHEESE_STEAK_SANDWICH), Optional.of(Items.COOKED_BEEF), Optional.of(CHEESE_STEAK.get())));
+    public static final DeferredItem<SandwichItem> CHEESE_PORK_SANDWICH = ITEMS.register("cheese_pork_sandwich",
+            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.CHEESE_PORK_SANDWICH), Optional.of(Items.COOKED_PORKCHOP), Optional.of(CHEESE_PORK.get())));
+    public static final DeferredItem<SandwichItem> CHEESE_MUTTON_SANDWICH = ITEMS.register("cheese_mutton_sandwich",
+            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.MUTTON_CHEESE_SANDWICH), Optional.of(Items.COOKED_MUTTON), Optional.of(CHEESE_MUTTON.get())));
+    public static final DeferredItem<SandwichItem> CHEESE_CHICKEN_SANDWICH = ITEMS.register("cheese_chicken_sandwich",
+            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.CHICKEN_CHEESE_SANDWICH), Optional.of(Items.COOKED_CHICKEN), Optional.of(CHEESE_CHICKEN.get())));
+
+    public static final DeferredItem<SandwichItem> CHEESE_FRIES_SANDWICH = ITEMS.register("cheese_fries_sandwich",
+            () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.CHEESE_FRIES_SANDWICH), Optional.empty(), Optional.of(CHEESE_FRIES.get())));
+
+
 
     //endregion
 

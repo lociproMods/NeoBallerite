@@ -14,11 +14,14 @@ public class NeoDataComponents {
             DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, NeoBallerite.MODID);
 
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> CAN_NEGATE_BUSH_SLOW = register(
-            "can_negate_bush_slow", builder -> builder.persistent(Codec.BOOL)
-    );
+            "can_negate_bush_slow", builder -> builder.persistent(Codec.BOOL));
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> ADDED_DURABILITY = register(
-            "added_durability", builder -> builder.persistent(Codec.INT)
-    );
+            "added_durability", builder -> builder.persistent(Codec.INT));
+
+    /*public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> HAS_MEAT = register(
+            "has_meat", booleanBuilder -> booleanBuilder.persistent(Codec.BOOL));
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> HAS_CHEESE = register(
+            "has_meat", booleanBuilder -> booleanBuilder.persistent(Codec.BOOL));*/
 
     private static <T>DeferredHolder<DataComponentType<?>, DataComponentType<T>> register(String name,
                                                                                        UnaryOperator<DataComponentType.Builder<T>> builderOperator) {

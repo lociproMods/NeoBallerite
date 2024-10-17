@@ -158,6 +158,28 @@ public class ModCreativeTabs {
                 output.accept(EGGS_OMLETTE);
 
                 output.accept(IRON_CARROT);
+
+
+                output.accept(CHEESE_STEAK);
+                output.accept(CHEESE_PORK);
+                output.accept(CHEESE_MUTTON);
+                output.accept(CHEESE_FRIES);
+                output.accept(CHEESE_CHICKEN);
+
+                output.accept(STEAK_SANDWICH);
+                output.accept(PORK_SANDWICH);
+                output.accept(MUTTON_SANDWICH);
+                output.accept(CHICKEN_SANDWICH);
+                output.accept(FRIES_SANDWICH);
+                output.accept(CHEESE_SANDWICH);
+
+
+                output.accept(CHEESE_STEAK_SANDWICH);
+                output.accept(CHEESE_PORK_SANDWICH);
+                output.accept(CHEESE_MUTTON_SANDWICH);
+                output.accept(CHEESE_CHICKEN_SANDWICH);
+                output.accept(CHEESE_FRIES_SANDWICH);
+
             }).build());
 
 }

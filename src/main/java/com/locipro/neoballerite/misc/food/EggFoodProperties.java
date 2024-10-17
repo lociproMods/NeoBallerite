@@ -2,7 +2,7 @@ package com.locipro.neoballerite.misc.food;
 
 import net.minecraft.world.food.FoodProperties;
 
-public class EggFoodProperties {
+public abstract class EggFoodProperties {
     public static final FoodProperties SUNNY = new FoodProperties.Builder()
             .nutrition(4)
             .saturationModifier(0.6F)

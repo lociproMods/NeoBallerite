@@ -1,7 +1,9 @@
 package com.locipro.neoballerite.datagen;
 
 import com.google.common.collect.ImmutableList;
+import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.custom.CheeseItem;
+import com.locipro.neoballerite.item.custom.SandwichItem;
 import com.locipro.neoballerite.item.tool.NeoClaymoreItem;
 import com.locipro.neoballerite.recipe.ShapelessRepairRecipe;
 import com.locipro.neoballerite.util.ModTags;
@@ -296,6 +298,26 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         offerEightCoveredRecipe(recipeOutput, RecipeCategory.FOOD, IRON_CARROT, Items.CARROT, ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "ingots/iron")), "common_iron_ingots");
 
 
+        offerCheesyItemRecipe(recipeOutput, CHEESE_STEAK.get(), MILK_CHEESE.get(), Items.COOKED_BEEF);
+        offerCheesyItemRecipe(recipeOutput, CHEESE_PORK.get(), MILK_CHEESE.get(), Items.COOKED_PORKCHOP);
+        offerCheesyItemRecipe(recipeOutput, CHEESE_MUTTON.get(), MILK_CHEESE.get(), Items.COOKED_MUTTON);
+        offerCheesyItemRecipe(recipeOutput, CHEESE_CHICKEN.get(), MILK_CHEESE.get(), Items.COOKED_CHICKEN);
+        offerCheesyItemRecipe(recipeOutput, CHEESE_FRIES.get(), MILK_CHEESE.get(), ModTags.Items.POTATOES, "potatoes");
+
+        offerSandwichRecipe(recipeOutput, STEAK_SANDWICH, MILK_CHEESE.get());
+        offerSandwichRecipe(recipeOutput, PORK_SANDWICH, MILK_CHEESE.get());
+        offerSandwichRecipe(recipeOutput, CHICKEN_SANDWICH, MILK_CHEESE.get());
+        offerSandwichRecipe(recipeOutput, FRIES_SANDWICH, MILK_CHEESE.get());
+        offerSandwichRecipe(recipeOutput, MUTTON_SANDWICH, MILK_CHEESE.get());
+        offerSandwichRecipe(recipeOutput, CHEESE_SANDWICH, MILK_CHEESE.get());
+
+        offerSandwichRecipe(recipeOutput, CHEESE_STEAK_SANDWICH, MILK_CHEESE.get());
+        offerSandwichRecipe(recipeOutput, CHEESE_PORK_SANDWICH, MILK_CHEESE.get());
+        offerSandwichRecipe(recipeOutput, CHEESE_MUTTON_SANDWICH, MILK_CHEESE.get());
+        offerSandwichRecipe(recipeOutput, CHEESE_CHICKEN_SANDWICH, MILK_CHEESE.get());
+        offerSandwichRecipe(recipeOutput, CHEESE_FRIES_SANDWICH, MILK_CHEESE.get());
+
+
         SpecialRecipeBuilder.special(ShapelessRepairRecipe::new)
                         .save(recipeOutput, getId("leaves_boots_repair"));
     }
@@ -484,6 +506,62 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput, MODID + ":" + getItemName(result) + "from_tag_" + tagName);
     }
 
+    protected static void offerSandwichRecipe(RecipeOutput recipeOutput, DeferredItem<SandwichItem> sandwichItem, Item cheeseType) {
+        // The only time fillerItem is null is when we want to use the potato tag, for default potato sandwiches, never the cheesy ones.
+        if (sandwichItem.get().getFillerItem() == null) {
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sandwichItem)
+                    .requires(ModTags.Items.KNIVES)
+                    .requires(sandwichItem.get().getBreadItem())
+                    .requires(cheeseType)
+                    .requires(ModTags.Items.POTATOES)
+                    .unlockedBy("has_potatoes", has(ModTags.Items.POTATOES))
+                    .save(recipeOutput, getItemName(sandwichItem) + "_from_filler_and_cheese");
+            if (sandwichItem.get().getCheesyFillerItem() != null) {
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sandwichItem)
+                        .requires(ModTags.Items.KNIVES)
+                        .requires(sandwichItem.get().getBreadItem())
+                        .requires(sandwichItem.get().getCheesyFillerItem())
+                        .unlockedBy("has_potatoes", has(ModTags.Items.POTATOES))
+                        .save(recipeOutput, getItemName(sandwichItem) + "_from_cheesy_filler");
+            }
+            return;
+        }
+        if (sandwichItem.get().hasCheese()) {
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sandwichItem)
+                    .requires(ModTags.Items.KNIVES)
+                    .requires(sandwichItem.get().getBreadItem())
+                    .requires(cheeseType)
+                    .requires(sandwichItem.get().getFillerItem())
+                    .unlockedBy(getHasName(sandwichItem.get().getFillerItem()), has(sandwichItem.get().getFillerItem()))
+                    .save(recipeOutput, getItemName(sandwichItem) + "_from_filler_and_cheese");
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sandwichItem)
+                    .requires(ModTags.Items.KNIVES)
+                    .requires(sandwichItem.get().getBreadItem())
+                    .requires(sandwichItem.get().getCheesyFillerItem())
+                    .unlockedBy(getHasName(sandwichItem.get().getFillerItem()), has(sandwichItem.get().getFillerItem()))
+                    .save(recipeOutput, getItemName(sandwichItem) + "_from_cheesy_filler");
+            return;
+        }
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sandwichItem)
+                .requires(ModTags.Items.KNIVES)
+                .requires(sandwichItem.get().getBreadItem())
+                .requires(sandwichItem.get().getFillerItem())
+                .unlockedBy(getHasName(sandwichItem.get().getFillerItem()), has(sandwichItem.get().getFillerItem()))
+                .save(recipeOutput, getItemName(sandwichItem));
 
-
+    }
+    protected void offerCheesyItemRecipe(RecipeOutput recipeOutput, Item cheesyItem, Item cheeseItem, ItemLike item) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, cheesyItem)
+                .requires(cheeseItem)
+                .requires(item)
+                .unlockedBy(getHasName(item), has(item))
+                .save(recipeOutput, getItemName(item));
+    }
+    protected void offerCheesyItemRecipe(RecipeOutput recipeOutput, Item cheesyItem, Item cheeseItem, TagKey<Item> item, String tagName) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, cheesyItem)
+                .requires(cheeseItem)
+                .requires(item)
+                .unlockedBy("has_tag_" + tagName, has(item))
+                .save(recipeOutput, getItemName(cheesyItem) + "_from_tag_" + tagName);
+    }
 }

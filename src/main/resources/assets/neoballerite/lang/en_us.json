@@ -91,6 +91,25 @@
 
   "item.neoballerite.iron_carrot" : "Iron Carrot",
 
+  "item.neoballerite.cheese_steak" : "Cheesy Steak",
+  "item.neoballerite.cheese_pork" : "Cheesy Bacon",
+  "item.neoballerite.cheese_mutton" : "Cheesy Mutton",
+  "item.neoballerite.cheese_chicken" : "Cheesy Chicken",
+  "item.neoballerite.cheese_fries" : "Cheesy fries",
+
+  "item.neoballerite.steak_sandwich" : "Sandwich O' Steak",
+  "item.neoballerite.pork_sandwich" : "Sandwich O' Pork",
+  "item.neoballerite.chicken_sandwich" : "Sandwich O' Chicken",
+  "item.neoballerite.mutton_sandwich" : "Sandwich O' Mutton",
+  "item.neoballerite.fries_sandwich" : "Sandwich O' Fries",
+  "item.neoballerite.cheese_sandwich" : "Sandwich O' Cheese",
+
+  "item.neoballerite.cheese_steak_sandwich" : "Cheesy Sandwich O' Steak",
+  "item.neoballerite.cheese_pork_sandwich" : "Cheesy Sandwich O' Pork",
+  "item.neoballerite.cheese_chicken_sandwich" : "Cheesy Sandwich O' Chicken",
+  "item.neoballerite.cheese_mutton_sandwich" : "Cheesy Sandwich O' Mutton",
+  "item.neoballerite.cheese_fries_sandwich" : "Cheesy Sandwich O' Fries",
+
 
 
   "block.neoballerite.raw_ballerite_block" : "Raw Ballerite Block",

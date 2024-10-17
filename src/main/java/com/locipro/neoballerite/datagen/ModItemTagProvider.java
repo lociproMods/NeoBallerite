@@ -1,5 +1,6 @@
 package com.locipro.neoballerite.datagen;
 
+import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -180,6 +181,14 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.FUNGALS)
                 .addTags(ModTags.Items.OVERWORLD_FUNGALS, ModTags.Items.NETHER_FUNGALS, ModTags.Items.END_FUNGALS);
 
+        tag(ModTags.Items.KNIVES)
+                .add(KNIFE.get());
+
+        tag(ModTags.Items.POTATOES)
+                .add(SWEET_POTATO.get())
+                .add(Items.POTATO)
+                .add(Items.BAKED_POTATO)
+                .add(BAKED_SWEET_POTATO.get());
 
 
 

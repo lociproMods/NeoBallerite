@@ -1,5 +1,4 @@
 TODO -
-   Sandwiches.
    Add sugar food components
    diamond carrot? haha
    WARPED CHEESE (from mixing milk with nether mushrooms)
@@ -20,3 +19,17 @@ COSMETIC-TODO-
            RETEXTURE ALL COMPRESS BALLERITE TEXTURES. GIVE THEM A DAMN PALETTE
            RETEXTURE CROPS AND TOMATO BUSH.
            RETETURsdjks omlette and scrambled
+
+TODO - dreams:
+    Hypothetically we can have sandwiches that are fully procedural and use data components to determine texture.
+    So we'd have only one sandwich singleton
+           rabbit and fish sandwwiches when u make these dont forget
+
+wokring :
+
+
+
+
+Done :
+   Sandwiches. (I'm just going to hard code these types, check dreams section tho)
+
