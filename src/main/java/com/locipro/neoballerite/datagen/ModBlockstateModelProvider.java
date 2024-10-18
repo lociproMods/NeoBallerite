@@ -4,6 +4,7 @@ package com.locipro.neoballerite.datagen;
 import com.locipro.neoballerite.block.custom.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -20,6 +21,7 @@ import oshi.util.tuples.Pair;
 import static com.locipro.neoballerite.block.ModBlocks.*;
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
+/** BLOCKMODELGENERATORS **/
 public class ModBlockstateModelProvider extends BlockStateProvider {
 
     public ModBlockstateModelProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -120,6 +122,11 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         pumpkinBlock(SWEET_POTATO_BLOCK);
 
         twoTallCrop(CORN_CROP, CornCropBlock.AGE, CornCropBlock.BECOMES_DOUBLE_BLOCK);
+
+
+        customLantern(LEAD_LANTERN);
+        customLantern(UNLIT_LANTERN);
+
 
     }
 
@@ -242,6 +249,13 @@ some dude in discord talm bout this
         simpleBlockItem(deferredBlock.get(), new ModelFile.UncheckedModelFile("neoballerite:block/" + deferredBlock.getId().getPath() + appendix));
     }
 
+    /** For item models that are different from their daddy, i.e. not just generated from the block. **/
+    private void customBlockItem(DeferredBlock<?> block) {
+        itemModels().getBuilder(block.getId().getPath())
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", modLoc("item/" + block.getId().getPath()));
+    }
+
     private void customBerryBushBlock(DeferredBlock<?> bush, IntegerProperty bushAgeProperty) {
         String bushName = bush.getId().getPath();
         getVariantBuilder(bush.get()).forAllStates( state -> {
@@ -250,6 +264,39 @@ some dude in discord talm bout this
                     ResourceLocation.fromNamespaceAndPath(MODID, "block/" + stateAndModelName)).renderType("cutout"))};
         });
     }
+
+    private void customLantern(DeferredBlock<LanternBlock> lantern) {
+
+        String blockName = lantern.getId().getPath();
+        getVariantBuilder(lantern.get()).forAllStatesExcept(state -> {
+            boolean hanging = state.getValue(LanternBlock.HANGING);
+
+            String hangingAppendix = hanging ? "_hanging" : "";
+            String modelName = "template" + hangingAppendix + "_lantern";
+
+            //ResourceLocation texture = ResourceLocation.fromNamespaceAndPath(MODID,"block/" + blockName + textureAppendix);
+            ResourceLocation texture = modLoc("block/" + blockName);
+
+
+            return new ConfiguredModel[] {
+                    new ConfiguredModel(models()
+                            .withExistingParent(blockName + hangingAppendix, mcLoc(modelName))
+                            .texture("lantern", texture)
+                            .renderType("cutout"))
+            };
+        }, LanternBlock.WATERLOGGED);
+        customBlockItem(lantern);
+    }
+    /*private void createLantern(Block lanternBlock) {
+        ResourceLocation resourcelocation = TexturedModel.LANTERN.create(lanternBlock, this.modelOutput);
+        ResourceLocation resourcelocation1 = TexturedModel.HANGING_LANTERN.create(lanternBlock, this.modelOutput);
+        this.createSimpleFlatItemModel(lanternBlock.asItem());
+        this.blockStateOutput
+            .accept(
+                MultiVariantGenerator.multiVariant(lanternBlock)
+                    .with(createBooleanModelDispatch(BlockStateProperties.HANGING, resourcelocation1, resourcelocation))
+            );
+    }*/
 
     private void crossBlock(DeferredBlock<?> block) {
         ResourceLocation crossTexture = modLoc("block/" + block.getId().getPath());

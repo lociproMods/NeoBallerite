@@ -101,11 +101,7 @@ public class ShapelessRepairRecipe extends CustomRecipe {
             // Remember, assemble gets executed even if you don't actually craft the item.
             return tool;
         }else {
-            if (currentDamage - addedDurability <= 0) {
-                tool.set(DataComponents.DAMAGE, 0);
-            }else {
-                tool.set(DataComponents.DAMAGE, currentDamage - addedDurability);
-            }
+            tool.set(DataComponents.DAMAGE, Math.max(currentDamage - addedDurability, 0));
         }
 
         return tool;

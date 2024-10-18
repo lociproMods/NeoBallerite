@@ -4,7 +4,6 @@ import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
@@ -28,8 +27,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(CHARRED_BALLERITE_BLOCK.get())
                 .add(COMPRESSED_BALLERITE_BLOCK.get())
                 .add(DEEPSLATE_LEAD_ORE.get())
+                .add(RAW_LEAD_BLOCK.get())
                 .add(LEAD_ORE.get())
-                .add(LEAD_BLOCK.get());
+                .add(LEAD_BLOCK.get())
+                .add(LEAD_LANTERN.get())
+                .add(UNLIT_LANTERN.get());
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(RAW_BALLERITE_BLOCK.get())
                 .add(COOKED_BALLERITE_BLOCK.get());
@@ -58,6 +60,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(EGGPLANT_CROP.get())
                 .add(SWEET_POTATO_CROP.get())
                 .add(CORN_CROP.get());
+
 
         tag(BlockTags.SAPLINGS)
                 .add(WITHERED_SAPLING.get())

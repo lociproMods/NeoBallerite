@@ -272,29 +272,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> STRAWBERRY_BUSH = registerBlockWithoutItem("strawberry_bush",
             () -> new StrawBerryBushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH),
                     ModItems.STRAWBERRY, ModItems.UNRIPE_STRAWBERRY, ModItems.STRAWBERRY_SEEDS));
-    /*public static final Block SWEET_BERRY_BUSH = register(
-        "sweet_berry_bush",
-        new SweetBerryBushBlock(
-            BlockBehaviour.Properties.of()
-                .mapColor(MapColor.PLANT)
-                .randomTicks()
-                .noCollission()
-                .sound(SoundType.SWEET_BERRY_BUSH)
-                .pushReaction(PushReaction.DESTROY)
-        )*/
-    /*public static final Block ROSE_BUSH = register(
-        "rose_bush",
-        new TallFlowerBlock(
-            BlockBehaviour.Properties.of()
-                .mapColor(MapColor.PLANT)
-                .noCollission()
-                .instabreak()
-                .sound(SoundType.GRASS)
-                .offsetType(BlockBehaviour.OffsetType.XZ)
-                .ignitedByLava()
-                .pushReaction(PushReaction.DESTROY)
-        )
-    );*/
+
     public static final DeferredBlock<Block> TOMATO_BUSH = registerBlockWithoutItem("tomato_bush",
             () -> new TomatoBushBlock(BlockBehaviour.Properties.of()
                     .noCollission()
@@ -318,4 +296,9 @@ public class ModBlocks {
 
     public static final DeferredBlock<Block> CORN_CROP = registerBlockWithoutItem("corn_crop",
             () -> new CornCropBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PITCHER_CROP)));
+
+    public static final DeferredBlock<LanternBlock> LEAD_LANTERN = registerBlock("lead_lantern",
+            () -> new LanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN).lightLevel(state -> 12)));
+    public static final DeferredBlock<LanternBlock> UNLIT_LANTERN = registerBlock("unlit_lantern",
+            () -> new LanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN).lightLevel(state -> 0)));
 }

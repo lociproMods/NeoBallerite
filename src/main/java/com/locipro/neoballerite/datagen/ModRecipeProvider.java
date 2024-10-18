@@ -1,7 +1,6 @@
 package com.locipro.neoballerite.datagen;
 
 import com.google.common.collect.ImmutableList;
-import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.custom.CheeseItem;
 import com.locipro.neoballerite.item.custom.SandwichItem;
 import com.locipro.neoballerite.item.tool.NeoClaymoreItem;

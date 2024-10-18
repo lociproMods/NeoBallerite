@@ -3,7 +3,6 @@ package com.locipro.neoballerite.mixin;
 
 import com.locipro.neoballerite.item.armor.BushNegatingArmorItem;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;

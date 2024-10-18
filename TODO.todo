@@ -1,5 +1,4 @@
 TODO -
-   lead lantern
    WARPED CHEESE (from mixing milk with nether mushrooms)
    cOMPRESSOR BLOCK ENTITY
    WOODEN shields?
@@ -21,10 +20,12 @@ TODO -
 
 
 TODO-COSMETIC-
-           RETEXTURE ALL COMPRESS BALLERITE TEXTURES. GIVE THEM A DAMN PALETTE
-           RETEXTURE CROPS AND TOMATO BUSH.
-           RETETURsdjks omlette and scrambled
-           delve into shaders
+       Top priority, re-texture lead and unlit lanterns.
+       RETETURE omlette and scrambled
+       .
+       RETEXTURE ALL COMPRESSED BALLERITE TEXTURES. GIVE THEM A DAMN PALETTE
+       RETEXTURE CROPS AND TOMATO BUSH.
+       delve into shaders
 
 TODO - dreams:
     Hypothetically we can have sandwiches that are fully procedural and use data components to determine texture.
@@ -47,7 +48,6 @@ TODO - cleaning :
 Working :
 
 
-
 Done :
    Sandwiches. (I'm just going to hard code these types, check dreams section tho)
    Fixed claymore recipes
@@ -66,4 +66,7 @@ Done :
   fix creative tabs.
 
   Add food recipes to campfires.
+
+  lead lantern and unlit lantern
+
 

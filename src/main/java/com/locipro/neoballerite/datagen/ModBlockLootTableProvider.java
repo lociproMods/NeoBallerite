@@ -134,6 +134,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                 CornCropBlock.HALF, CornCropBlock.AGE, 7, 3);
 
 
+        dropSelf(LEAD_LANTERN.get());
+        dropSelf(UNLIT_LANTERN.get());
 
     }
 
@@ -158,7 +160,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ageProperty, ageToDrop))));
     }
     /** When no seed item is specified, uses the carrot loot table. **/
-    protected void addCropDrops(DeferredBlock<?> crop, Item drop, IntegerProperty ageProperty, int ageToDrop) {
+    protected void addCropDrops(DeferredBlock<?> crop, ItemLike drop, IntegerProperty ageProperty, int ageToDrop) {
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
 
         add(
@@ -298,7 +300,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     /** For when you have variants of your drops based on age **/
     protected void addCustomBerryDrops(DeferredBlock<?> berryBlock,
-                                       DeferredItem<?> ripeBerryItem, DeferredItem<?> unripeBerryItem, DeferredItem<?> seedItem,
+                                       ItemLike ripeBerryItem, ItemLike unripeBerryItem, DeferredItem<?> seedItem,
                                        Property<Integer> ageProperty, int ageRipe, int ageUnripe) {
         HolderGetter<Enchantment> enchantmentReg = registries.lookupOrThrow(Registries.ENCHANTMENT);
 
@@ -331,7 +333,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         );
     }
 
-    protected void addCustomBerryDrops(DeferredBlock<?> berryBlock, DeferredItem<?> berryItem, Property<Integer> ageProperty, int maxAge4drop, int secondMaxAge4drop) {
+    protected void addCustomBerryDrops(DeferredBlock<?> berryBlock, ItemLike berryItem, Property<Integer> ageProperty, int maxAge4drop, int secondMaxAge4drop) {
         HolderGetter<Enchantment> enchantmentReg = registries.lookupOrThrow(Registries.ENCHANTMENT);
         add(
                 berryBlock.get(),

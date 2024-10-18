@@ -2,19 +2,15 @@ package com.locipro.neoballerite.menu.tabs;
 
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
-import com.google.common.collect.Lists;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.locipro.neoballerite.item.ModItems.*;
@@ -104,7 +100,9 @@ public class ModCreativeTabs {
             RAW_LEAD_BLOCK,
             LEAD_INGOT,
             LEAD_NUGGET,
-            SWEET_POTATO_BLOCK
+            SWEET_POTATO_BLOCK,
+            LEAD_LANTERN,
+            UNLIT_LANTERN
     );
 
     public static List<ItemLike> BALLERITE_STUFF_LIST = List.of(

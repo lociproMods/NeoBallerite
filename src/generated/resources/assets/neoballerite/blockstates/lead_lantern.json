@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "neoballerite:block/lead_lantern"
+    },
+    "hanging=true": {
+      "model": "neoballerite:block/lead_lantern_hanging"
+    }
+  }
+}

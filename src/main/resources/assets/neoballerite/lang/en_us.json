@@ -161,5 +161,8 @@
   "block.neoballerite.star_stairs" : "Star Stairs",
 
   "block.neoballerite.star_door" : "Star Door",
-  "block.neoballerite.star_trapdoor" : "Star Trapdoor"
+  "block.neoballerite.star_trapdoor" : "Star Trapdoor",
+
+  "block.neoballerite.lead_lantern" : "Lead Lantern",
+  "block.neoballerite.unlit_lantern" : "Unlit Lantern"
 }

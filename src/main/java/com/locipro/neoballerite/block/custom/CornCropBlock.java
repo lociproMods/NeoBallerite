@@ -210,9 +210,8 @@ public class CornCropBlock extends DoublePlantBlock implements BonemealableBlock
     @Override
     public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
         PosAndState posAndState = getLowerHalf(level, pos, state);
-        return posAndState == null
-                ? false
-                : canGrow(level, posAndState.pos, posAndState.state, posAndState.state.getValue(AGE) + 1);
+        return posAndState != null
+                && canGrow(level, posAndState.pos, posAndState.state, posAndState.state.getValue(AGE) + 1);
     }
 
     @Override

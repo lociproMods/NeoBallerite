@@ -1,14 +1,10 @@
 package com.locipro.neoballerite.datagen;
 
-import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
@@ -34,8 +30,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(CHARRED_BALLERITE.get())
                 .add(COMPRESSED_BALLERITE_INGOT.get());
 
-        
-        
+        tag(ItemTags.VILLAGER_PLANTABLE_SEEDS)
+                .add(EGGPLANT_SEEDS.get())
+                .add(TOMATO_SEEDS.get())
+                .add(CORN_KERNELS.get());
+
         
         tag(ItemTags.SWORD_ENCHANTABLE)
                 .add(WOODEN_CLAYMORE.get())
@@ -140,6 +139,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ItemTags.WOODEN_STAIRS)
                 .add(WITHERED_STAIRS.get().asItem())
                 .add(STAR_STAIRS.get().asItem());
+
+
 
 
         tag(ItemTags.HORSE_FOOD)

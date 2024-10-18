@@ -2,6 +2,7 @@ package com.locipro.neoballerite.recipe;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingInput;
+import net.minecraft.world.item.crafting.RecipeInput;
 
 import java.util.ArrayList;
 import java.util.BitSet;
@@ -11,7 +12,7 @@ import java.util.function.Predicate;
 // unused.
 public class NeoRecipeHelper {
     /** Thank you TeamPneuamatic **/
-    public static List<ItemStack> findItems(CraftingInput inv, List<Predicate<ItemStack>> predicates) {
+    public static List<ItemStack> findItems(RecipeInput inv, List<Predicate<ItemStack>> predicates) {
         List<ItemStack> res = new ArrayList<>();
         BitSet matchedSlots = new BitSet(inv.size());
 

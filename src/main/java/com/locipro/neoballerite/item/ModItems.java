@@ -1,13 +1,11 @@
 package com.locipro.neoballerite.item;
 
 
-import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.armor.*;
 import com.locipro.neoballerite.item.custom.*;
 import com.locipro.neoballerite.item.tool.*;
-import com.locipro.neoballerite.menu.tabs.ModCreativeTabs;
 import com.locipro.neoballerite.misc.food.*;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.ChatFormatting;
@@ -19,17 +17,12 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 

@@ -3,7 +3,6 @@ package com.locipro.neoballerite.item.armor;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
