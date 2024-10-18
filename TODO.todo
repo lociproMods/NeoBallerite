@@ -1,7 +1,5 @@
 TODO -
    WARPED CHEESE (from mixing milk with nether mushrooms)
-   fix creative tabs.
-   .
    make some of these custom carrots obtainable in glm like bastions for idmaond carrots
    cOMPRESSOR BLOCK ENTITY
    lead lantern
@@ -16,6 +14,7 @@ TODO -
    Add glm  to piglin bartering loot tables
    Add food recipes to campfires.
    Advancements
+   .
    Add stripped logs to the tags when neoforge gets updated (the pr got approved)
 
 
@@ -61,4 +60,7 @@ Done :
         Was pretty nifty to figure out how to edit default items.
 
   diamond carrot? haha
+
+ fix creative tabs.
+
 

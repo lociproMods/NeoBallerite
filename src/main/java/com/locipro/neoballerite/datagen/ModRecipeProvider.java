@@ -446,7 +446,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                                      DeferredItem<HoeItem> hoeItem,
                                      DeferredItem<?> repairItem) {
         String condition = getHasName(repairItem);
-        System.out.println(condition);
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, hoeItem)
                 .define('#', Items.STICK)
                 .define('X', repairItem)

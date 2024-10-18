@@ -4,184 +4,225 @@ import static com.locipro.neoballerite.NeoBallerite.MODID;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.List;
 
 import static com.locipro.neoballerite.item.ModItems.*;
 import static com.locipro.neoballerite.block.ModBlocks.*;
+
 
 public class ModCreativeTabs {
 
     // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "neoballerite" namespace
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
 
+    public static List<ItemLike> TOOL_LIST = List.of(
+            BALLERITE_SWORD,
+            BALLERITE_PICKAXE,
+            BALLERITE_AXE,
+            BALLERITE_SHOVEL,
+            BALLERITE_HOE,
+            BALLERITE_HELMET,
+            BALLERITE_CHESTPLATE,
+            BALLERITE_LEGGINGS,
+            BALLERITE_BOOTS,
 
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_TOOLS = CREATIVE_MODE_TABS.register("ballerite_tools", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.ballerite_tools"))
+            LEAD_SWORD,
+            LEAD_PICKAXE,
+            LEAD_AXE,
+            LEAD_SHOVEL,
+            LEAD_HOE,
+            LEAD_HELMET,
+            LEAD_CHESTPLATE,
+            LEAD_LEGGINGS,
+            LEAD_BOOTS,
+
+            BALLERITE_HORSE_ARMOR,
+
+            LEAVES_BOOTS,
+
+
+            WOODEN_CLAYMORE,
+            STONE_CLAYMORE,
+            IRON_CLAYMORE,
+            LEAD_CLAYMORE,
+            GOLD_CLAYMORE,
+            BALLERITE_CLAYMORE,
+            DIAMOND_CLAYMORE,
+            NETHERITE_CLAYMORE,
+            KNIFE
+    );
+
+
+    public static List<ItemLike> WOOD_LIST = List.of(
+            WITHERED_SAPLING,
+            WITHERED_LOG,
+            STRIPPED_WITHERED_LOG,
+            WITHERED_WOOD,
+            STRIPPED_WITHERED_WOOD,
+            WITHERED_LEAVES,
+            WITHERED_PLANKS,
+            WITHERED_DOOR,
+            WITHERED_FENCE_GATE,
+            WITHERED_BUTTON,
+            WITHERED_FENCE,
+            WITHERED_TRAPDOOR,
+            WITHERED_STAIRS,
+            WITHERED_SLAB,
+            WITHERED_PRESSURE_PLATE,
+
+            STAR_SAPLING,
+            STAR_LOG,
+            STRIPPED_STAR_LOG,
+            STAR_WOOD,
+            STRIPPED_STAR_WOOD,
+            STAR_LEAVES,
+            STAR_PLANKS,
+            STAR_DOOR,
+            STAR_FENCE_GATE,
+            STAR_BUTTON,
+            STAR_FENCE,
+            STAR_TRAPDOOR,
+            STAR_STAIRS,
+            STAR_SLAB,
+            STAR_PRESSURE_PLATE
+    );
+    public static List<ItemLike> OTHER_STUFF_LIST = List.of(
+            LEAD_ORE,
+            DEEPSLATE_LEAD_ORE,
+            LEAD_BLOCK,
+            RAW_LEAD_BLOCK,
+            LEAD_INGOT,
+            LEAD_NUGGET,
+            SWEET_POTATO_BLOCK
+    );
+
+    public static List<ItemLike> BALLERITE_STUFF_LIST = List.of(
+            RAW_BALLERITE_BLOCK,
+            COOKED_BALLERITE_BLOCK,
+            BURNT_BALLERITE_BLOCK,
+            CHARRED_BALLERITE_BLOCK,
+            COMPRESSED_BALLERITE_BLOCK,
+            BALLERITE_ORE,
+            RAW_BALLERITE,
+            COOKED_BALLERITE,
+            CHARRED_BALLERITE,
+            COMPRESSED_BALLERITE_INGOT
+    );
+
+    public static List<ItemLike> FOOD_LIST = List.of(
+            BLUEBERRIES,
+            BLACKBERRIES,
+            STRAWBERRY,
+            UNRIPE_STRAWBERRY,
+            STRAWBERRY_SEEDS,
+
+            SWEET_POTATO,
+            BAKED_SWEET_POTATO,
+
+            TOMATO,
+            GRILLED_TOMATO,
+            TOMATO_SEEDS,
+
+            EGGPLANT,
+            GRILLED_EGGPLANT,
+            EGGPLANT_SEEDS,
+
+
+            CORN_KERNELS,
+            CORN_COB,
+            GRILLED_CORN_COB,
+
+            MILK_VILE,
+            MILK_CHEESE,
+
+            EGGS_SUNNY,
+            EGGS_SCRAMBLED,
+            EGGS_OMLETTE,
+
+            IRON_CARROT,
+            DIAMOND_CARROT,
+            ENCHANTED_DIAMOND_CARROT,
+
+
+            CHEESE_STEAK,
+            CHEESE_PORK,
+            CHEESE_MUTTON,
+            CHEESE_FRIES,
+            CHEESE_CHICKEN,
+
+            STEAK_SANDWICH,
+            PORK_SANDWICH,
+            MUTTON_SANDWICH,
+            CHICKEN_SANDWICH,
+            FRIES_SANDWICH,
+            CHEESE_SANDWICH,
+
+
+            CHEESE_STEAK_SANDWICH,
+            CHEESE_PORK_SANDWICH,
+            CHEESE_MUTTON_SANDWICH,
+            CHEESE_CHICKEN_SANDWICH,
+            CHEESE_FRIES_SANDWICH
+    );
+    
+
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TOOLS = CREATIVE_MODE_TABS.register("tools", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.tools"))
             .withTabsBefore(CreativeModeTabs.COMBAT) // After the last tab (combat)
-            .icon(() -> BALL_DOWSER.get().getDefaultInstance())
+            .icon(() -> BALLERITE_PICKAXE.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                //output.accept(BALL_DOWSER.get());
-                output.accept(BALLERITE_SWORD.get());
-                output.accept(BALLERITE_PICKAXE.get());
-                output.accept(BALLERITE_AXE.get());
-                output.accept(BALLERITE_SHOVEL.get());
-                output.accept(BALLERITE_HOE.get()); 
-                output.accept(BALLERITE_HELMET.get());
-                output.accept(BALLERITE_CHESTPLATE.get());
-                output.accept(BALLERITE_LEGGINGS.get());
-                output.accept(BALLERITE_BOOTS.get());
-
-                output.accept(LEAD_SWORD.get());
-                output.accept(LEAD_PICKAXE.get());
-                output.accept(LEAD_AXE.get());
-                output.accept(LEAD_SHOVEL.get());
-                output.accept(LEAD_HOE.get());
-                output.accept(LEAD_HELMET.get());
-                output.accept(LEAD_CHESTPLATE.get());
-                output.accept(LEAD_LEGGINGS.get());
-                output.accept(LEAD_BOOTS.get());
-
-                output.accept(BALLERITE_HORSE_ARMOR.get());
-
-                output.accept(LEAVES_BOOTS.get());
-
-
-                output.accept(WOODEN_CLAYMORE.get());
-                output.accept(STONE_CLAYMORE.get());
-                output.accept(IRON_CLAYMORE.get());
-                output.accept(LEAD_CLAYMORE.get());
-                output.accept(GOLD_CLAYMORE.get());
-                output.accept(BALLERITE_CLAYMORE.get());
-                output.accept(DIAMOND_CLAYMORE.get());
-                output.accept(NETHERITE_CLAYMORE.get());
-                output.accept(KNIFE.get());
-
+                for (ItemLike item : TOOL_LIST) {
+                    output.accept(item);
+                }
             }).build());
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_BLOCKS = CREATIVE_MODE_TABS.register("ballerite_blocks", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.ballerite_blocks"))
-            .withTabsBefore(ResourceLocation.fromNamespaceAndPath(MODID, "ballerite_tools")) // After our first itemgroup
-            .icon(() -> new ItemStack(COMPRESSED_BALLERITE_BLOCK)) // You either `X_BLOCK.get().asItem().getDefaultInstance()` or just itemstack
+    
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WOOD_BLOCKS = CREATIVE_MODE_TABS.register("wood_blocks", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.wood_blocks"))
+            .withTabsBefore(TOOLS.getId()) // After our first itemgroup
+            .icon(() -> new ItemStack(STAR_WOOD)) // You either `X_BLOCK.get().asItem().getDefaultInstance()` or just itemstack
             .displayItems((parameters, output) -> {
-                output.accept(RAW_BALLERITE_BLOCK);
-                output.accept(COOKED_BALLERITE_BLOCK);
-                output.accept(BURNT_BALLERITE_BLOCK);
-                output.accept(CHARRED_BALLERITE_BLOCK);
-                output.accept(COMPRESSED_BALLERITE_BLOCK);
-                output.accept(BALLERITE_ORE);
-                output.accept(LEAD_ORE);
-                output.accept(DEEPSLATE_LEAD_ORE);
-                output.accept(LEAD_BLOCK);
-                output.accept(RAW_LEAD_BLOCK);
-                output.accept(SWEET_POTATO_BLOCK);
+                for (ItemLike item  : WOOD_LIST) {
+                    output.accept(item);
+                }
             }).build());
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WOODEN_BLOCKS = CREATIVE_MODE_TABS.register("wooden_blocks", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.wooden_blocks"))
-            .withTabsBefore(ResourceLocation.fromNamespaceAndPath(MODID, "ballerite_blocks"))
-            .icon(() -> new ItemStack(WITHERED_PLANKS)) // You either `X_BLOCK.get().asItem().getDefaultInstance()` or just itemstack
+    
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> OTHER_STUFF = CREATIVE_MODE_TABS.register("other_stuff", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.other_stuff"))
+            .withTabsBefore(WOOD_BLOCKS.getId())
+            .icon(() -> new ItemStack(RAW_LEAD_BLOCK)) // You either `X_BLOCK.get().asItem().getDefaultInstance()` or just itemstack
             .displayItems((parameters, output) -> {
-                output.accept(WITHERED_SAPLING);
-                output.accept(WITHERED_LOG);
-                output.accept(STRIPPED_WITHERED_LOG);
-                output.accept(WITHERED_WOOD);
-                output.accept(STRIPPED_WITHERED_WOOD);
-                output.accept(WITHERED_LEAVES);
-                output.accept(WITHERED_PLANKS);
-                output.accept(WITHERED_DOOR);
-                output.accept(WITHERED_FENCE_GATE);
-                output.accept(WITHERED_BUTTON);
-                output.accept(WITHERED_FENCE);
-                output.accept(WITHERED_TRAPDOOR);
-                output.accept(WITHERED_STAIRS);
-                output.accept(WITHERED_SLAB);
-                output.accept(WITHERED_PRESSURE_PLATE);
-                
-                output.accept(STAR_SAPLING);
-                output.accept(STAR_LOG);
-                output.accept(STRIPPED_STAR_LOG);
-                output.accept(STAR_WOOD);
-                output.accept(STRIPPED_STAR_WOOD);
-                output.accept(STAR_LEAVES);
-                output.accept(STAR_PLANKS);
-                output.accept(STAR_DOOR);
-                output.accept(STAR_FENCE_GATE);
-                output.accept(STAR_BUTTON);
-                output.accept(STAR_FENCE);
-                output.accept(STAR_TRAPDOOR);
-                output.accept(STAR_STAIRS);
-                output.accept(STAR_SLAB);
-                output.accept(STAR_PRESSURE_PLATE);
-
+                for (ItemLike item  : OTHER_STUFF_LIST) {
+                    output.accept(item);
+                }
             }).build());
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_ITEMS = CREATIVE_MODE_TABS.register("ballerite_items", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.ballerite_items"))
-            .withTabsBefore(ResourceLocation.fromNamespaceAndPath(MODID, "ballerite_blocks"))
-            .icon(() -> COMPRESSED_BALLERITE_INGOT.get().getDefaultInstance())
+
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_STUFF = CREATIVE_MODE_TABS.register("ballerite_stuff", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.ballerite_stuff"))
+            .withTabsBefore(OTHER_STUFF.getId())
+            .icon(() -> new ItemStack(CHARRED_BALLERITE_BLOCK))
             .displayItems((parameters, output) -> {
-                output.accept(RAW_BALLERITE);
-                output.accept(COOKED_BALLERITE);
-                output.accept(CHARRED_BALLERITE);
-                output.accept(COMPRESSED_BALLERITE_INGOT);
-                output.accept(LEAD_INGOT);
-                output.accept(LEAD_NUGGET);
-                output.accept(BLUEBERRIES);
-                output.accept(BLACKBERRIES);
-                output.accept(STRAWBERRY);
-                output.accept(UNRIPE_STRAWBERRY);
-                output.accept(STRAWBERRY_SEEDS);
-
-                output.accept(SWEET_POTATO);
-                output.accept(BAKED_SWEET_POTATO);
-
-                output.accept(TOMATO);
-                output.accept(GRILLED_TOMATO);
-                output.accept(TOMATO_SEEDS);
-                
-                output.accept(EGGPLANT);
-                output.accept(GRILLED_EGGPLANT);
-                output.accept(EGGPLANT_SEEDS);
+                for (ItemLike item : BALLERITE_STUFF_LIST) {
+                    output.accept(item);
+                }
+            }).build());
 
 
-                output.accept(CORN_KERNELS);
-                output.accept(CORN_COB);
-                output.accept(GRILLED_CORN_COB);
-
-                output.accept(MILK_VILE);
-                output.accept(MILK_CHEESE);
-
-                output.accept(EGGS_SUNNY);
-                output.accept(EGGS_SCRAMBLED);
-                output.accept(EGGS_OMLETTE);
-
-                output.accept(IRON_CARROT);
-                output.accept(DIAMOND_CARROT);
-                output.accept(ENCHANTED_DIAMOND_CARROT);
-
-
-                output.accept(CHEESE_STEAK);
-                output.accept(CHEESE_PORK);
-                output.accept(CHEESE_MUTTON);
-                output.accept(CHEESE_FRIES);
-                output.accept(CHEESE_CHICKEN);
-
-                output.accept(STEAK_SANDWICH);
-                output.accept(PORK_SANDWICH);
-                output.accept(MUTTON_SANDWICH);
-                output.accept(CHICKEN_SANDWICH);
-                output.accept(FRIES_SANDWICH);
-                output.accept(CHEESE_SANDWICH);
-
-
-                output.accept(CHEESE_STEAK_SANDWICH);
-                output.accept(CHEESE_PORK_SANDWICH);
-                output.accept(CHEESE_MUTTON_SANDWICH);
-                output.accept(CHEESE_CHICKEN_SANDWICH);
-                output.accept(CHEESE_FRIES_SANDWICH);
-
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> FOOD_STUFF = CREATIVE_MODE_TABS.register("food_stuff", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.food_stuff"))
+            .withTabsBefore(BALLERITE_STUFF.getId())
+            .icon(() -> BLACKBERRIES.get().getDefaultInstance())
+            .displayItems((parameters, output) -> {
+                for (ItemLike item : FOOD_LIST) {
+                    output.accept(item);
+                }
             }).build());
 
 }

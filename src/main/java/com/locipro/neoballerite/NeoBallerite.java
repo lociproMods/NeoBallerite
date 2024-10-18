@@ -47,6 +47,7 @@ public class NeoBallerite {
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
 
+
         NeoArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
         NeoDataComponents.DATA_COMPONENT_TYPES.register(modEventBus);
 
