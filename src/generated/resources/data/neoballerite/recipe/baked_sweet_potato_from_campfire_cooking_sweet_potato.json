@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.36,
+  "group": "eggplant",
+  "ingredient": {
+    "item": "neoballerite:sweet_potato"
+  },
+  "result": {
+    "count": 1,
+    "id": "neoballerite:baked_sweet_potato"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.3,
+  "group": "egg",
+  "ingredient": {
+    "item": "minecraft:egg"
+  },
+  "result": {
+    "count": 1,
+    "id": "neoballerite:eggs_omlette"
+  }
+}

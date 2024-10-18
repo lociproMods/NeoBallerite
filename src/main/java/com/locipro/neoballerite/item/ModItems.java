@@ -21,6 +21,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
@@ -37,10 +38,12 @@ public class ModItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MODID);
 
     // The problem is, creative tabs get initialized before items :( so this is too late.
-    // TODO : bug
+    // Actually false, the problem is that itemlike is nullable, so all the lists are null by default. they only ever get an actual value later, but else all elements are null
+    // Actually not false? I dont know anymore. Fuck this shit.
+    // T O D O : bug (one which I will not work on rn)
     // We could have multiple item deferred registers, and loop over those in our ModCreativeTabs, so We'd have a registery for every tab.
     // I'm just going to *not* do all this jazz.
-    public static <T extends Item> @NotNull DeferredItem<T> registerItem(String name, Supplier<T> itemSupplier, List<ItemLike> ... groups) {
+    /*public static <T extends Item> @NotNull DeferredItem<T> registerItem(String name, Supplier<T> itemSupplier, List<ItemLike> ... groups) {
         DeferredItem<T> item = ITEMS.register(name, itemSupplier);
         for (List<ItemLike> group : groups) {
             if (group != null) {
@@ -48,7 +51,7 @@ public class ModItems {
             }
         }
         return item;
-    }
+    }*/
 
     public static final DeferredItem<Item> BALL_DOWSER = ITEMS.register("ball_dowser",
             () -> new BallDowserItem(new Item.Properties()));
@@ -442,14 +445,14 @@ public class ModItems {
                 }
             });
 
-    /*public static final DeferredItem<Item> ENCHANTED_DIAMOND_CARROT = registerItem("enchanted_diamond_carrot",
+    /*public static final DeferredItem<Item> ENCHANTED_DIAMOND_CARROT = registerItemTest("enchanted_diamond_carrot",
             () -> new Item(new Item.Properties().food(CropFoodProperties.ENCHANTED_DIAMOND_CARROT).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)) {
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(Component.literal("Might be a little harder to bite into").withStyle(ChatFormatting.GRAY));
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
-            }, ModCreativeTabs.FOOD_LIST, ModCreativeTabs.OTHER_STUFF_LIST);*/
+            }, ModCreativeTabs.TEST);*/
 
     public static final DeferredItem<Item> EGGS_SUNNY = ITEMS.register("eggs_sunny",
             () -> new Item(new Item.Properties().food(EggFoodProperties.SUNNY)));

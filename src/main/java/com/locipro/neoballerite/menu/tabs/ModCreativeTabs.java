@@ -2,16 +2,19 @@ package com.locipro.neoballerite.menu.tabs;
 
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
+import com.google.common.collect.Lists;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.locipro.neoballerite.item.ModItems.*;
@@ -172,7 +175,7 @@ public class ModCreativeTabs {
             CHEESE_CHICKEN_SANDWICH,
             CHEESE_FRIES_SANDWICH
     );
-    
+
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TOOLS = CREATIVE_MODE_TABS.register("tools", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.tools"))
@@ -224,5 +227,6 @@ public class ModCreativeTabs {
                     output.accept(item);
                 }
             }).build());
+
 
 }

@@ -272,13 +272,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 0.7f, 200, "lead");
 
 
-        offerSmeltingAndSmoking(recipeOutput, List.of(TOMATO), RecipeCategory.FOOD, GRILLED_TOMATO,
+        offerFoodCooking(recipeOutput, List.of(TOMATO), RecipeCategory.FOOD, GRILLED_TOMATO,
                 0.3f, 200, "tomato");
-        offerSmeltingAndSmoking(recipeOutput, List.of(EGGPLANT), RecipeCategory.FOOD, GRILLED_EGGPLANT,
+        offerFoodCooking(recipeOutput, List.of(EGGPLANT), RecipeCategory.FOOD, GRILLED_EGGPLANT,
                 0.36f, 200, "eggplant");
-        offerSmeltingAndSmoking(recipeOutput, List.of(SWEET_POTATO), RecipeCategory.FOOD, BAKED_SWEET_POTATO,
+        offerFoodCooking(recipeOutput, List.of(SWEET_POTATO), RecipeCategory.FOOD, BAKED_SWEET_POTATO,
                 0.36f, 200, "eggplant");
-        offerSmeltingAndSmoking(recipeOutput, List.of(CORN_COB), RecipeCategory.FOOD, GRILLED_CORN_COB,
+        offerFoodCooking(recipeOutput, List.of(CORN_COB), RecipeCategory.FOOD, GRILLED_CORN_COB,
                 0.45f, 200, "corn");
 
 
@@ -286,6 +286,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 0.4f, 200, "egg");
         offerSmoking(recipeOutput, List.of(Items.EGG), RecipeCategory.FOOD, EGGS_SUNNY,
                 0.5f, 100, "egg");
+        // Campfires magically imbue eggs with milk and tomatoes. Fascinating.
+        offerCampfireCooking(recipeOutput, List.of(Items.EGG), RecipeCategory.FOOD, EGGS_OMLETTE,
+                0.3f, 600, "egg");
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, EGGS_OMLETTE)
                         .requires(Items.EGG)
@@ -354,6 +357,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         offerSmelting(recipeOutput, ingredients, category, result, experience, smeltingCookingTime, group);
         offerSmoking(recipeOutput, ingredients, category, result, experience, Math.round(((float) smeltingCookingTime /2)), group);
     }
+    /** Smelting, smoking, and campfire cooking.**/
+    protected void offerFoodCooking(RecipeOutput recipeOutput, List<ItemLike> ingredients, RecipeCategory category, ItemLike result, float experience, int smeltingCookingTime, String group) {
+        offerSmelting(recipeOutput, ingredients, category, result, experience, smeltingCookingTime, group);
+        offerSmoking(recipeOutput, ingredients, category, result, experience, Math.round(((float) smeltingCookingTime /2)), group);
+        offerCampfireCooking(recipeOutput, ingredients, category, result, experience, smeltingCookingTime * 3, group);
+    }
 
 
     // Custom helper methods because silly game methods would dump our jsons into the MINECRAFT recipes folder.
@@ -372,8 +381,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         cookingRecipe(recipeOutput, RecipeSerializer.SMOKING_RECIPE, SmokingRecipe::new, pIngredients, pCategory, pResult,
                 pExperience, pCookingTime, pGroup, "_from_smoking");
     }
+    /** default is 600 cooking time.**/
+    protected static void offerCampfireCooking(RecipeOutput recipeOutput, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult,
+                                       float pExperience, int pCookingTime, String pGroup) {
+        cookingRecipe(recipeOutput, RecipeSerializer.CAMPFIRE_COOKING_RECIPE, CampfireCookingRecipe::new, pIngredients, pCategory, pResult,
+                pExperience, pCookingTime, pGroup, "_from_campfire_cooking");
+    }
+
 
     // Custom generic cooking recipe to be saved under OUR mod's namespace.
+    // SimpleCookingRecipeBuilder has these methods but they get saved under minecraft's namespace. Which is why we make em.
     protected static <T extends AbstractCookingRecipe> void cookingRecipe(RecipeOutput recipeOutput, RecipeSerializer<T> pCookingSerializer, AbstractCookingRecipe.Factory<T> factory,
                                                                        List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup, String pRecipeName) {
         for(ItemLike itemlike : pIngredients) {
