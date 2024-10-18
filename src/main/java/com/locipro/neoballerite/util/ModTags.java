@@ -57,10 +57,11 @@ public class ModTags {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(MODID, name));
         }
     }
+    // Bro... Check neoforged/neoforge/common
     public static class Common {
-        public static final TagKey<Item> INGOTS = createCommonItemTagKey("ingots");
-        public static final TagKey<Item> NUGGETS = createCommonItemTagKey("nuggets");
-        public static final TagKey<Item> BERRIES = createCommonItemTagKey("fruits/berries");
+        //public static final TagKey<Item> INGOTS = createCommonItemTagKey("ingots");
+        //public static final TagKey<Item> NUGGETS = createCommonItemTagKey("nuggets");
+        //public static final TagKey<Item> BERRIES = createCommonItemTagKey("fruits/berries");
         public static final TagKey<Item> STRAWBERRIES = createCommonItemTagKey("strawberries");
 
         public static final TagKey<Block> BERRY_BUSHES = createCommonBlockTagKey("berry_bushes");

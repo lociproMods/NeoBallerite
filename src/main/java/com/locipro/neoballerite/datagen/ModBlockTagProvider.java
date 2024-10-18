@@ -117,6 +117,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(STRIPPED_STAR_LOG.get())
                 .add(STAR_WOOD.get())
                 .add(STRIPPED_STAR_WOOD.get());
+
         
         tag(ModTags.Blocks.WITHERED_BLOCKS)
                 .add(WITHERED_LOG.get())

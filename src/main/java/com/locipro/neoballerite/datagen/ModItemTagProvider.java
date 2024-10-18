@@ -11,6 +11,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import static com.locipro.neoballerite.NeoBallerite.MODID;
@@ -193,17 +194,17 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
 
 
-        tag(ModTags.Common.INGOTS)
+        tag(Tags.Items.INGOTS)
                 .add(LEAD_INGOT.get())
                 .add(COMPRESSED_BALLERITE_INGOT.get());
-        tag(ModTags.Common.NUGGETS)
+        tag(Tags.Items.NUGGETS)
                 .add(LEAD_NUGGET.get());
 
         tag(ModTags.Common.STRAWBERRIES)
                 .add(STRAWBERRY.get())
                 .add(UNRIPE_STRAWBERRY.get());
 
-        tag(ModTags.Common.BERRIES)
+        tag(Tags.Items.FOODS_BERRY)
                 .add(STRAWBERRY.get())
                 .add(UNRIPE_STRAWBERRY.get())
                 .add(BLUEBERRIES.get())
