@@ -1,8 +1,8 @@
 TODO -
-   diamond carrot? haha
    WARPED CHEESE (from mixing milk with nether mushrooms)
    fix creative tabs.
    .
+   make some of these custom carrots obtainable in glm like bastions for idmaond carrots
    cOMPRESSOR BLOCK ENTITY
    lead lantern
    WOODEN shields?
@@ -29,14 +29,20 @@ TODO - dreams:
     Hypothetically we can have sandwiches that are fully procedural and use data components to determine texture.
     So we'd have only one sandwich singleton
            rabbit and fish sandwwiches when u make these dont forget
+           https://youtu.be/dzsABHPozKI?si=iQX6TGU9IaAiXdec check this "item proeprties" tutorial
+           Also there's already a mod like that
 
 
 TODO - etc:
     Add berry bushes block tag to neoforged
 
 
-wokring :
+TODO - cleaning :
+    Make TwoTallCrop (model provider) not make redundant models
+    Make enchanted diamond carrots use the same texture as the diamond carrots
+    Remove literal components and make them translatable
 
+Working :
 
 
 
@@ -53,3 +59,6 @@ Done :
 
    Add sugar food components
         Was pretty nifty to figure out how to edit default items.
+
+  diamond carrot? haha
+

@@ -51,4 +51,20 @@ public abstract class CropFoodProperties {
             .saturationModifier(0.6f)
             .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 0), 1.0f)
             .build();
+    public static FoodProperties DIAMOND_CARROT = new FoodProperties.Builder()
+            .nutrition(10)
+            .saturationModifier(0.8f)
+            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 1), 1.0f)
+            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 1200, 0), 1.0f)
+            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 1200, 1), 1.0f)
+            .alwaysEdible()
+            .build();
+    public static FoodProperties ENCHANTED_DIAMOND_CARROT = new FoodProperties.Builder()
+            .nutrition(12)
+            .saturationModifier(1.0f)
+            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1200, 2), 1.0f)
+            .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 1200, 1), 1.0f)
+            .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 1200, 2), 1.0f)
+            .alwaysEdible()
+            .build();
 }

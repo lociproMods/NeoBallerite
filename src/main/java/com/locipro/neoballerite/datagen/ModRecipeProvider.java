@@ -297,6 +297,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         offerEightCoveredRecipe(recipeOutput, RecipeCategory.FOOD, IRON_CARROT, Items.CARROT, Items.IRON_INGOT);
         offerEightCoveredRecipe(recipeOutput, RecipeCategory.FOOD, IRON_CARROT, Items.CARROT, ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "ingots/iron")), "common_iron_ingots");
 
+        offerEightCoveredRecipe(recipeOutput, RecipeCategory.FOOD, DIAMOND_CARROT, Items.CARROT, Items.DIAMOND);
+        offerEightCoveredRecipe(recipeOutput, RecipeCategory.FOOD, ENCHANTED_DIAMOND_CARROT, Items.CARROT, Items.DIAMOND_BLOCK);
+
 
         offerCheesyItemRecipe(recipeOutput, CHEESE_STEAK.get(), MILK_CHEESE.get(), Items.COOKED_BEEF);
         offerCheesyItemRecipe(recipeOutput, CHEESE_PORK.get(), MILK_CHEESE.get(), Items.COOKED_PORKCHOP);

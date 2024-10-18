@@ -211,7 +211,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(BLACKBERRIES.get());
 
         tag(ModTags.Common.CARROTS)
-                .add(IRON_CARROT.get());
+                .add(IRON_CARROT.get())
+                .add(DIAMOND_CARROT.get())
+                .add(ENCHANTED_DIAMOND_CARROT.get());
 
     }
 }

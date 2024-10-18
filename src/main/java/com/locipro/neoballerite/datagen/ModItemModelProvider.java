@@ -118,6 +118,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(EGGS_OMLETTE.get());
 
         basicItem(IRON_CARROT.get());
+        basicItem(DIAMOND_CARROT.get());
+        basicItem(ENCHANTED_DIAMOND_CARROT.get());
 
 
         basicItem(CHEESE_CHICKEN.get());

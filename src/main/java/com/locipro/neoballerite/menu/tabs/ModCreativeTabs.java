@@ -158,6 +158,8 @@ public class ModCreativeTabs {
                 output.accept(EGGS_OMLETTE);
 
                 output.accept(IRON_CARROT);
+                output.accept(DIAMOND_CARROT);
+                output.accept(ENCHANTED_DIAMOND_CARROT);
 
 
                 output.accept(CHEESE_STEAK);

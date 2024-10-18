@@ -94,6 +94,10 @@ public class NeoGLMProvider extends GlobalLootModifierProvider {
         add("stone_claymore_from_spawn_chest", addItemToChest("spawn_bonus_chest", 1, 1, ModItems.STONE_CLAYMORE.get(), 0.4f, 0));
 
 
+        // fix this
+        //add("diamond_carrot_from_bastion")
+
+
     }
 
     private NeoItemLootModifier addItemToChest(String chestID, int count1, int count2, Item drop, float chance, int bonusRolls) {

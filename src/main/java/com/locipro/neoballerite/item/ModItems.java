@@ -10,6 +10,7 @@ import com.locipro.neoballerite.misc.food.*;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -399,6 +400,22 @@ public class ModItems {
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(Component.literal("Don't have to worry about anemia, heh.").withStyle(ChatFormatting.GRAY));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
+    public static final DeferredItem<Item> DIAMOND_CARROT = ITEMS.register("diamond_carrot",
+            () -> new Item(new Item.Properties().food(CropFoodProperties.DIAMOND_CARROT)) {
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.literal("Might be a little hard to bite into").withStyle(ChatFormatting.GRAY));
+                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+                }
+            });
+    public static final DeferredItem<Item> ENCHANTED_DIAMOND_CARROT = ITEMS.register("enchanted_diamond_carrot",
+            () -> new Item(new Item.Properties().food(CropFoodProperties.ENCHANTED_DIAMOND_CARROT).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)) {
+                @Override
+                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+                    tooltipComponents.add(Component.literal("Might be a little harder to bite into").withStyle(ChatFormatting.GRAY));
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             });
