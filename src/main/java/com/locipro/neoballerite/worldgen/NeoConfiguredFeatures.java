@@ -16,7 +16,7 @@ public class NeoConfiguredFeatures {
     public static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {
         return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(MODID, name));
     }
-    public static void boostrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+    public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         NeoOreFeatures.bootstrap(context);
         NeoTreeFeatures.bootstrap(context);
         NeoVegetationFeatures.bootstrap(context);

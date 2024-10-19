@@ -8,12 +8,14 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = MODID)
@@ -26,7 +28,6 @@ public class DataGenHandler {
         PackOutput output = generator.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-
 
 
 
@@ -84,14 +85,25 @@ public class DataGenHandler {
 
 
 
+        // World gen and enchantments
         generator.addProvider(
                 event.includeServer(),
-                new NeoWorldGenProvider(output, lookupProvider)
+                new NeoDatapackBuiltinProvider(output, lookupProvider)
+        );
+
+        // Since the enchantments are MY DATA under MY namespace, It needs access to them so we pass our datapack provider.
+        generator.addProvider(
+                event.includeServer(),
+                new NeoEnchantmentTagProvider(output,
+                        new NeoDatapackBuiltinProvider(output, lookupProvider).getRegistryProvider(),
+                        existingFileHelper)
         );
 
         generator.addProvider(
                 event.includeServer(),
                 new NeoGLMProvider(output, lookupProvider));
+
+
 
     }
 }

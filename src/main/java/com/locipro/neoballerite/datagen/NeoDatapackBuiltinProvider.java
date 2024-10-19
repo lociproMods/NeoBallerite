@@ -14,15 +14,16 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
-public class NeoWorldGenProvider extends DatapackBuiltinEntriesProvider {
+public class NeoDatapackBuiltinProvider extends DatapackBuiltinEntriesProvider {
 
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-            .add(Registries.CONFIGURED_FEATURE, NeoConfiguredFeatures::boostrap)
+            .add(Registries.CONFIGURED_FEATURE, NeoConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, NeoPlacedFeatures::bootstrap)
-            .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, NeoBiomeModifiers::bootstrap);
+            .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, NeoBiomeModifiers::bootstrap)
+            .add(Registries.ENCHANTMENT, NeoEnchantmentProvider::bootstrap);
 
 
-    public NeoWorldGenProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+    public NeoDatapackBuiltinProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, BUILDER, Set.of(MODID));
     }
 }

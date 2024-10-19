@@ -1,0 +1,17 @@
+{
+  "type": "neoballerite:neo_item_loot_modifier",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/abandoned_mineshaft"
+    },
+    {
+      "chance": 0.2,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "drop": "neoballerite:diamond_carrot",
+  "maxBonusRolls": 0,
+  "maxCount": 1,
+  "minCount": 1
+}

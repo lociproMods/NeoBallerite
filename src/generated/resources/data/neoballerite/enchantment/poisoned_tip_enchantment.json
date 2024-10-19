@@ -1,0 +1,29 @@
+{
+  "anvil_cost": 3,
+  "description": {
+    "translate": "neoballerite.enchantment.poisoned_tip_enchantment"
+  },
+  "effects": {
+    "neoballerite:mob_effect_enchantment": {
+      "amplifier": 60,
+      "duration": 60,
+      "effect": "minecraft:poison"
+    }
+  },
+  "exclusive_set": "minecraft:fire_aspect",
+  "max_cost": {
+    "base": 60,
+    "per_level_above_first": 20
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 20
+  },
+  "primary_items": "#minecraft:enchantable/sword",
+  "slots": [
+    "hand"
+  ],
+  "supported_items": "#minecraft:enchantable/sharp_weapon",
+  "weight": 6
+}

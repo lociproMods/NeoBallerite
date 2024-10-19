@@ -1,5 +1,6 @@
 {
   "entries": [
+    "neoballerite:enchanted_diamond_carrot_from_mineshaft",
     "neoballerite:iron_claymore_from_village_weaponsmith",
     "neoballerite:star_sapling_from_spawn_chest",
     "neoballerite:lead_axe_from_village_toolsmith",
@@ -16,6 +17,7 @@
     "neoballerite:lead_sword_from_village_weaponsmith",
     "neoballerite:ballerite_horse_armor_from_dungeon",
     "neoballerite:stone_claymore_from_spawn_chest",
+    "neoballerite:diamond_carrot_from_mineshaft",
     "neoballerite:ballerite_pickaxe_from_village_toolsmith",
     "neoballerite:corn_kernels_from_short_grass_modifier",
     "neoballerite:corn_kernels_from_tall_grass_modifier",
@@ -23,6 +25,7 @@
     "neoballerite:tomato_seeds_from_village_plains_house",
     "neoballerite:tomato_seeds_from_village_savanna_house",
     "neoballerite:blackberries_from_village_taiga_house",
+    "neoballerite:diamond_carrot_from_dungeon",
     "neoballerite:ballerite_horse_armor_from_mineshaft",
     "neoballerite:ballerite_horse_armor_from_jungle_temple",
     "neoballerite:ballerite_helmet_from_village_armorer"

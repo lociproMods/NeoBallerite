@@ -5,6 +5,8 @@
   "itemGroup.other_stuff" : "NeoBallerite Uncategorized",
   "itemGroup.food_stuff" : "NeoBallerite Foods",
 
+  "neoballerite.enchantment.poisoned_tip_enchantment" : "Poisoned Tip",
+
   "item.neoballerite.ball_dowser": "Ballerite Dowsing Rod",
   "item.neoballerite.raw_ballerite": "Raw Ballerite",
   "item.neoballerite.compressed_ballerite_ingot": "Compressed Ballerite Ingot",

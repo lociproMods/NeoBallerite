@@ -2,7 +2,9 @@ package com.locipro.neoballerite;
 
 import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.component.NeoDataComponents;
+import com.locipro.neoballerite.component.NeoEnchantmentComponents;
 import com.locipro.neoballerite.datagen.lootmodifier.GLMSerializers;
+import com.locipro.neoballerite.event.ServerEventListeners;
 import com.locipro.neoballerite.recipe.NeoRecipeSerializers;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.armor.NeoArmorMaterials;
@@ -54,6 +56,7 @@ public class NeoBallerite {
         NeoRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         GLMSerializers.GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(modEventBus);
 
+        NeoEnchantmentComponents.ENCHANTMENT_COMPONENT_TYPES.register(modEventBus);
 
 
         // Register ourselves for server and other game events we are interested in.

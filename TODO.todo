@@ -1,7 +1,7 @@
 TODO -
+   Thor's curse enchantment (now this one will actually need your own effect, unlike the mob effect one you IDIOT IDIOT IDIOT IDIOT IDIOT
    WARPED CHEESE (from mixing milk with nether mushrooms)
    COMPRESSOR BLOCK ENTITY
-   Enchantments. Wow they seem complicated. https://docs.neoforged.net/docs/resources/server/enchantments/
    Make torches turn off during rain :
         I think I might need a custom blockstate and model for this, this shi seems complex.
    USE DATA COMPONENTS TO LINK BACK TO THE ORIGINAL FRUIT ONCE YOU IMPLEMENT JAMS.
@@ -15,6 +15,7 @@ TODO -
    Add villager trades
    Add my special repair recipe to jei somehow
    Make lead and ballerite usable in trims
+   Check bug with some music disc groups being mine, also the translation key of the itemgroups should be namespace:key not just key.
 
 
 
@@ -77,5 +78,6 @@ Done :
 
 
    Add new carrots to glm
+   Enchantments. Wow they seem complicated. https://docs.neoforged.net/docs/resources/server/enchantments/
 
 

@@ -1,0 +1,17 @@
+{
+  "type": "neoballerite:neo_item_loot_modifier",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:chests/simple_dungeon"
+    },
+    {
+      "chance": 0.3,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "drop": "neoballerite:diamond_carrot",
+  "maxBonusRolls": 1,
+  "maxCount": 1,
+  "minCount": 1
+}
