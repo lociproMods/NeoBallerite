@@ -15,6 +15,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.neoforged.neoforge.registries.DeferredItem;
 
@@ -322,6 +323,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         offerSandwichRecipe(recipeOutput, CHEESE_CHICKEN_SANDWICH, MILK_CHEESE.get());
         offerSandwichRecipe(recipeOutput, CHEESE_FRIES_SANDWICH, MILK_CHEESE.get());
 
+        offerLantern(recipeOutput, LEAD_LANTERN, LEAD_NUGGET, LEAD_INGOT);
+        offerUnlitLantern(recipeOutput, UNLIT_LANTERN, Items.IRON_NUGGET, Items.IRON_INGOT);
+
 
         SpecialRecipeBuilder.special(ShapelessRepairRecipe::new)
                         .save(recipeOutput, getId("leaves_boots_repair"));
@@ -590,5 +594,27 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(item)
                 .unlockedBy("has_tag_" + tagName, has(item))
                 .save(recipeOutput, MODID + ":" + getItemName(cheesyItem) + "_from_tag_" + tagName);
+    }
+    protected void offerLantern(RecipeOutput recipeOutput, ItemLike lantern, ItemLike nugget, ItemLike ingot) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, lantern)
+                .define('#', Items.TORCH)
+                .define('X', nugget)
+                .pattern("XXX")
+                .pattern("X#X")
+                .pattern("XXX")
+                .unlockedBy(getHasName(nugget), has(nugget))
+                .unlockedBy(getHasName(ingot), has(ingot))
+                .save(recipeOutput);
+    }
+    protected void offerUnlitLantern(RecipeOutput recipeOutput, ItemLike lantern, ItemLike nugget, ItemLike ingot) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, lantern)
+                .define('#', Items.GLOWSTONE_DUST)
+                .define('X', nugget)
+                .pattern("XXX")
+                .pattern("X#X")
+                .pattern("XXX")
+                .unlockedBy(getHasName(nugget), has(nugget))
+                .unlockedBy(getHasName(ingot), has(ingot))
+                .save(recipeOutput);
     }
 }

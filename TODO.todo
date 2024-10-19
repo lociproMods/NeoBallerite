@@ -1,8 +1,6 @@
 TODO -
    WARPED CHEESE (from mixing milk with nether mushrooms)
-   cOMPRESSOR BLOCK ENTITY
-   WOODEN shields?
-   stronger newer shields?
+   COMPRESSOR BLOCK ENTITY
    Enchantments. Wow they seem complicated. https://docs.neoforged.net/docs/resources/server/enchantments/
    Make torches turn off during rain :
         I think I might need a custom blockstate and model for this, this shi seems complex.
@@ -12,10 +10,11 @@ TODO -
    Advancements
    Add stripped logs to the tags when neoforge gets updated (the pr got approved)
    .
-   Add new carrots to glm
    Add glm to trial chamber loot tables (loot table id is equipment/)
    Add glm to piglin bartering loot tables
    Add villager trades
+   Add my special repair recipe to jei somehow
+   Make lead and ballerite usable in trims
 
 
 
@@ -48,6 +47,11 @@ TODO - cleaning :
 Working :
 
 
+Failed / Gave up :
+    WOODEN shields? (nah not worth it)
+    stronger newer shields? (yes, let's make diamond and netherite shields.)
+        they wont render
+
 Done :
    Sandwiches. (I'm just going to hard code these types, check dreams section tho)
    Fixed claymore recipes
@@ -68,5 +72,10 @@ Done :
   Add food recipes to campfires.
 
   lead lantern and unlit lantern
+  Give lead lanterns recipes
+
+
+
+   Add new carrots to glm
 
 

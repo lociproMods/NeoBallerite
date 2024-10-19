@@ -91,6 +91,9 @@ public class NeoGLMProvider extends GlobalLootModifierProvider {
         add("stone_claymore_from_spawn_chest", addItemToChest("spawn_bonus_chest", 1, 1, ModItems.STONE_CLAYMORE.get(), 0.4f, 0));
 
 
+        add("diamond_carrot_from_mineshaft", addItemToChest("abandoned_mineshaft", 1, 1, ModItems.DIAMOND_CARROT.get(), 0.2f, 0));
+        add("enchanted_diamond_carrot_from_mineshaft", addItemToChest("abandoned_mineshaft", 1, 1, ModItems.ENCHANTED_DIAMOND_CARROT.get(), 0.1f, 0));
+        add("diamond_carrot_from_dungeon", addItemToChest("simple_dungeon", 1, 1, ModItems.DIAMOND_CARROT.get(), 0.3f, 1));
         // fix this
         //add("diamond_carrot_from_bastion")
 

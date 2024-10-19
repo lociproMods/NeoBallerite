@@ -18,6 +18,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -495,10 +496,11 @@ public class ModItems {
     public static final DeferredItem<SandwichItem> CHEESE_FRIES_SANDWICH = ITEMS.register("cheese_fries_sandwich",
             () -> new SandwichItem(new Item.Properties().food(SandwichFoodProperties.CHEESE_FRIES_SANDWICH), Optional.empty(), Optional.of(CHEESE_FRIES.get())).tag(ModTags.Items.POTATOES));
 
-
-
     //endregion
 
 
 
+    /*public static final DeferredItem<Item> LEAD_SHIELD = ITEMS.register("lead_shield",
+            () -> new ShieldItem(new Item.Properties().durability(420).component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)));
+*/
 }
