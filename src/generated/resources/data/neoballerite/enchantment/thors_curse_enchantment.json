@@ -1,0 +1,52 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.neoballerite.thors_curse_enchantment"
+  },
+  "effects": {
+    "minecraft:post_attack": [
+      {
+        "affected": "victim",
+        "effect": {
+          "type": "minecraft:all_of",
+          "effects": [
+            {
+              "type": "minecraft:summon_entity",
+              "entity": "minecraft:lightning_bolt"
+            }
+          ]
+        },
+        "enchanted": "attacker",
+        "requirements": {
+          "condition": "minecraft:all_of",
+          "terms": [
+            {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "location": {
+                  "can_see_sky": true
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 64,
+    "per_level_above_first": 24
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 24,
+    "per_level_above_first": 24
+  },
+  "primary_items": "#minecraft:enchantable/sword",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#minecraft:enchantable/sharp_weapon",
+  "weight": 16
+}
