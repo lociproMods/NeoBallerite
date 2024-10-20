@@ -300,5 +300,5 @@ public class ModBlocks {
     public static final DeferredBlock<LanternBlock> LEAD_LANTERN = registerBlock("lead_lantern",
             () -> new LanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN).lightLevel(state -> 12)));
     public static final DeferredBlock<LanternBlock> UNLIT_LANTERN = registerBlock("unlit_lantern",
-            () -> new LanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN).lightLevel(state -> 0)));
+            () -> new UnlitLanternBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LANTERN), () -> Blocks.LANTERN));
 }
