@@ -1,9 +1,9 @@
 {
-  "itemGroup.tools": "NeoBallerite Tools",
-  "itemGroup.ballerite_stuff" : "Ballerite Stuff",
-  "itemGroup.wood_blocks" : "NeoBallerite Wood",
-  "itemGroup.other_stuff" : "NeoBallerite Uncategorized",
-  "itemGroup.food_stuff" : "NeoBallerite Foods",
+  "itemGroup.neoballerite.tools": "NeoBallerite Tools",
+  "itemGroup.neoballerite.ballerite_stuff" : "Ballerite Stuff",
+  "itemGroup.neoballerite.wood_blocks" : "NeoBallerite Wood",
+  "itemGroup.neoballerite.other_stuff" : "NeoBallerite Uncategorized",
+  "itemGroup.neoballerite.food_stuff" : "NeoBallerite Foods",
 
   "neoballerite.enchantment.poisoned_tip_enchantment" : "Poisoned Tip",
   "neoballerite.enchantment.thors_curse_enchantment" : "Thor's Curse",

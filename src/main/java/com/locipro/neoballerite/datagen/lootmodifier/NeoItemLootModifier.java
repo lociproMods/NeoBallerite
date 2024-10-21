@@ -13,6 +13,9 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
 
+/** Note 1 : This class is good for chests, blocks, and entities.
+ *         I'm not really sure how to use it for, piglin bartering, trail chambers, stuff that uses a "weight" element.
+ *         Note 2 : Maybe the "chance" I add to the conditions (in the actual glm provider) is the weight? **/
 public class NeoItemLootModifier extends LootModifier {
 
     /**

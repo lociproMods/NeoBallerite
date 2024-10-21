@@ -2,6 +2,7 @@ package com.locipro.neoballerite.menu.tabs;
 
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
+import com.locipro.neoballerite.NeoBallerite;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -176,7 +177,7 @@ public class ModCreativeTabs {
 
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TOOLS = CREATIVE_MODE_TABS.register("tools", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.tools"))
+            .title(getTranslation("tools"))
             .withTabsBefore(CreativeModeTabs.COMBAT) // After the last tab (combat)
             .icon(() -> BALLERITE_PICKAXE.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
@@ -186,7 +187,7 @@ public class ModCreativeTabs {
             }).build());
     
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> WOOD_BLOCKS = CREATIVE_MODE_TABS.register("wood_blocks", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.wood_blocks"))
+            .title(getTranslation("wood_blocks"))
             .withTabsBefore(TOOLS.getId()) // After our first itemgroup
             .icon(() -> new ItemStack(STAR_WOOD)) // You either `X_BLOCK.get().asItem().getDefaultInstance()` or just itemstack
             .displayItems((parameters, output) -> {
@@ -196,7 +197,7 @@ public class ModCreativeTabs {
             }).build());
     
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> OTHER_STUFF = CREATIVE_MODE_TABS.register("other_stuff", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.other_stuff"))
+            .title(getTranslation("other_stuff"))
             .withTabsBefore(WOOD_BLOCKS.getId())
             .icon(() -> new ItemStack(RAW_LEAD_BLOCK)) // You either `X_BLOCK.get().asItem().getDefaultInstance()` or just itemstack
             .displayItems((parameters, output) -> {
@@ -206,7 +207,7 @@ public class ModCreativeTabs {
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BALLERITE_STUFF = CREATIVE_MODE_TABS.register("ballerite_stuff", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.ballerite_stuff"))
+            .title(getTranslation("ballerite_stuff"))
             .withTabsBefore(OTHER_STUFF.getId())
             .icon(() -> new ItemStack(CHARRED_BALLERITE_BLOCK))
             .displayItems((parameters, output) -> {
@@ -217,7 +218,7 @@ public class ModCreativeTabs {
 
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> FOOD_STUFF = CREATIVE_MODE_TABS.register("food_stuff", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.food_stuff"))
+            .title(getTranslation("food_stuff"))
             .withTabsBefore(BALLERITE_STUFF.getId())
             .icon(() -> BLACKBERRIES.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
@@ -227,4 +228,8 @@ public class ModCreativeTabs {
             }).build());
 
 
+
+    private static Component getTranslation(String key) {
+        return Component.translatable(String.format("itemGroup.%s.%s", MODID, key));
+    }
 }

@@ -47,6 +47,16 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(BALLERITE_CLAYMORE.get())
                 .add(NETHERITE_CLAYMORE.get());
 
+        tag(ItemTags.SHARP_WEAPON_ENCHANTABLE)
+                .add(WOODEN_CLAYMORE.get())
+                .add(STONE_CLAYMORE.get())
+                .add(IRON_CLAYMORE.get())
+                .add(LEAD_CLAYMORE.get())
+                .add(GOLD_CLAYMORE.get())
+                .add(DIAMOND_CLAYMORE.get())
+                .add(BALLERITE_CLAYMORE.get())
+                .add(NETHERITE_CLAYMORE.get());
+
         tag(ItemTags.SWORDS)
                 .add(BALLERITE_SWORD.get())
                 .add(LEAD_SWORD.get());
@@ -216,6 +226,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(IRON_CARROT.get())
                 .add(DIAMOND_CARROT.get())
                 .add(ENCHANTED_DIAMOND_CARROT.get());
+
+        tag(Tags.Items.RAW_MATERIALS)
+                .add(RAW_LEAD.get());
 
     }
 }

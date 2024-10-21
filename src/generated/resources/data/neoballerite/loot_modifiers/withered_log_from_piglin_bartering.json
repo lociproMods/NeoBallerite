@@ -1,0 +1,17 @@
+{
+  "type": "neoballerite:neo_item_loot_modifier",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:gameplay/piglin_bartering"
+    },
+    {
+      "chance": 0.2,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "drop": "neoballerite:withered_log",
+  "maxBonusRolls": 0,
+  "maxCount": 24,
+  "minCount": 8
+}

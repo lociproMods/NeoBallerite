@@ -171,5 +171,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(BLUEBERRY_BUSH.get())
                 .add(BLACKBERRY_BUSH.get())
                 .add(STRAWBERRY_BUSH.get());
+        tag(Tags.Blocks.STORAGE_BLOCKS)
+                .add(RAW_LEAD_BLOCK.get())
+                .add(COMPRESSED_BALLERITE_BLOCK.get());
     }
 }
