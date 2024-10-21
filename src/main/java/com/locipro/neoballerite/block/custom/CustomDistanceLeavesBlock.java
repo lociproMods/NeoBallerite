@@ -28,6 +28,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.OptionalInt;
 
+/** This is due to the simple fact that the default leaves will gtfo from their trees after they're 7 blocks away from a log. We can't have that with our big ass foliage. **/
 public class CustomDistanceLeavesBlock extends Block implements SimpleWaterloggedBlock, net.neoforged.neoforge.common.IShearable {
 
     public static final MapCodec<LeavesBlock> CODEC = simpleCodec(LeavesBlock::new);
