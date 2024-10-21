@@ -3,6 +3,7 @@ package com.locipro.neoballerite.item.armor;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -78,12 +79,19 @@ public class BushNegatingArmorItem extends ArmorItem {
                 itemStack.set(NeoDataComponents.CAN_NEGATE_BUSH_SLOW, true);
             }
 
+            if (!itemStack.has(DataComponents.ENCHANTMENT_GLINT_OVERRIDE)) {
+                if (itemStack.get(NeoDataComponents.ADDED_DURABILITY) > 0) {
+                    itemStack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
+                }
+            }
+
             super.inventoryTick(itemStack, level, entity, slotId, isSelected);
         }
     }
 
+    // Nah, you ain't repairing this in a damn anvil homie.
     @Override
     public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
-        return super.isValidRepairItem(toRepair, repair);
+        return false;
     }
 }

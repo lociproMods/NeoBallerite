@@ -104,6 +104,11 @@ public class ShapelessRepairRecipe extends CustomRecipe {
             tool.set(DataComponents.DAMAGE, Math.max(currentDamage - addedDurability, 0));
         }
 
+        // Not working. Using inventory tick in the item itself. FIX IT.
+        if (!tool.has(DataComponents.ENCHANTMENT_GLINT_OVERRIDE)) {
+            tool.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
+        }
+
         return tool;
 
     }
