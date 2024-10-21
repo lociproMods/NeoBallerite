@@ -1,6 +1,7 @@
 package com.locipro.neoballerite.item;
 
 
+import com.google.common.collect.ImmutableSet;
 import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.armor.*;
@@ -22,8 +23,10 @@ import net.minecraft.world.level.block.entity.BannerPatternLayers;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
@@ -361,7 +364,10 @@ public class ModItems {
 
     //region foods?
     public static final DeferredItem<Item> KNIFE = ITEMS.register("knife",
-            () -> new KnifeItem(new Item.Properties().setNoRepair().durability(32)));
+            () -> new KnifeItem(new Item.Properties().setNoRepair().durability(32), 3f));
+
+    public static final DeferredItem<Item> DIAMOND_KNIFE = ITEMS.register("diamond_knife",
+            () -> new KnifeItem(new Item.Properties().setNoRepair().durability(524), 4.5f));
 
 
     public static final DeferredItem<BlockItem> BLUEBERRIES = ITEMS.registerSimpleBlockItem("blueberries",

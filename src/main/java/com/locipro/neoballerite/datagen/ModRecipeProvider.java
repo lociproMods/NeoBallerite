@@ -16,6 +16,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.neoforged.neoforge.registries.DeferredItem;
 
@@ -63,11 +64,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput);*/
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, KNIFE)
-                .define('#', Items.IRON_INGOT)
+                .define('#', Tags.Items.INGOTS_IRON)
                 .define('X', Items.STICK)
                 .pattern(" #")
                 .pattern("X ")
-                .unlockedBy("has_iron_ingot", has(Items.IRON_INGOT))
+                .unlockedBy("has_iron_ingot_tag", has(Tags.Items.INGOTS_IRON))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, DIAMOND_KNIFE)
+                .define('#', Tags.Items.GEMS_DIAMOND)
+                .define('X', Items.STICK)
+                .pattern(" #")
+                .pattern("X ")
+                .unlockedBy("has_gems_diamond", has(Tags.Items.GEMS_DIAMOND))
                 .save(recipeOutput);
 
         

@@ -195,7 +195,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .addTags(ModTags.Items.OVERWORLD_FUNGALS, ModTags.Items.NETHER_FUNGALS, ModTags.Items.END_FUNGALS);
 
         tag(ModTags.Items.KNIVES)
-                .add(KNIFE.get());
+                .add(KNIFE.get())
+                .add(DIAMOND_KNIFE.get());
 
         tag(ModTags.Items.POTATOES)
                 .add(SWEET_POTATO.get())

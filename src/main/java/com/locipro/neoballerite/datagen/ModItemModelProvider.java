@@ -79,6 +79,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(LEAD_BOOTS.asItem());
 
         handheld(KNIFE);
+        handheld(DIAMOND_KNIFE);
 
         handheld(WOODEN_CLAYMORE);
         handheld(STONE_CLAYMORE);

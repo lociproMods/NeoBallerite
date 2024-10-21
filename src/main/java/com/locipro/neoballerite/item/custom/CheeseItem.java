@@ -5,6 +5,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
@@ -22,7 +23,8 @@ public class CheeseItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.literal("Cheese type is : " + cheeseType.toString().toLowerCase()).withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.literal("Cheese type is : " + StringUtils.capitalize(cheeseType.toString().toLowerCase())).withStyle(ChatFormatting.GRAY));
+
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 

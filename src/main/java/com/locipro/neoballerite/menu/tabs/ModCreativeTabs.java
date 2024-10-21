@@ -57,7 +57,8 @@ public class ModCreativeTabs {
             BALLERITE_CLAYMORE,
             DIAMOND_CLAYMORE,
             NETHERITE_CLAYMORE,
-            KNIFE
+            KNIFE,
+            DIAMOND_KNIFE
     );
 
 
