@@ -97,17 +97,19 @@ public class ShapelessRepairRecipe extends CustomRecipe {
             int newMaxDamage = maxDamage + addedDurability * count;
             tool.set(DataComponents.MAX_DAMAGE, maxDamage + addedDurability * count);
             tool.set(NeoDataComponents.ADDED_DURABILITY, newMaxDamage - originalMaxDamage);
+
             //repairIngredient.setCount(0); No, doesn't work, because removes items even if you don't actually craft.
             // Remember, assemble gets executed even if you don't actually craft the item.
+
+
+            if (!tool.has(DataComponents.ENCHANTMENT_GLINT_OVERRIDE)) {
+                tool.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
+            }
             return tool;
         }else {
             tool.set(DataComponents.DAMAGE, Math.max(currentDamage - addedDurability, 0));
         }
 
-        // Not working. Using inventory tick in the item itself. FIX IT.
-        if (!tool.has(DataComponents.ENCHANTMENT_GLINT_OVERRIDE)) {
-            tool.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
-        }
 
         return tool;
 

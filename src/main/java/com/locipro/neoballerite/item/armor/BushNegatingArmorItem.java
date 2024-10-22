@@ -79,11 +79,11 @@ public class BushNegatingArmorItem extends ArmorItem {
                 itemStack.set(NeoDataComponents.CAN_NEGATE_BUSH_SLOW, true);
             }
 
-            if (!itemStack.has(DataComponents.ENCHANTMENT_GLINT_OVERRIDE)) {
+            /*if (!itemStack.has(DataComponents.ENCHANTMENT_GLINT_OVERRIDE)) {
                 if (itemStack.get(NeoDataComponents.ADDED_DURABILITY) > 0) {
                     itemStack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true);
                 }
-            }
+            }*/
 
             super.inventoryTick(itemStack, level, entity, slotId, isSelected);
         }
