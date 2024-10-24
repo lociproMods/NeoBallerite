@@ -203,6 +203,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(Items.POTATO)
                 .add(Items.BAKED_POTATO)
                 .add(BAKED_SWEET_POTATO.get());
+        tag(ModTags.Items.JAMS)
+                .add(JAM_BLUEBERRIES.get())
+                .add(JAM_BLACKBERRIES.get())
+                .add(JAM_STRAWBERRIES.get())
+                .add(JAM_TOMATOES.get())
+                .add(JAM_SWEETBERRIES.get());
 
 
 
@@ -230,6 +236,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         tag(Tags.Items.RAW_MATERIALS)
                 .add(RAW_LEAD.get());
+
 
     }
 }

@@ -36,8 +36,7 @@ public class NeoBallerite {
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
-    public NeoBallerite(IEventBus modEventBus, ModContainer modContainer)
-    {
+    public NeoBallerite(IEventBus modEventBus, ModContainer modContainer) throws Exception {
         modEventBus.addListener(this::commonSetup);
 
 
@@ -48,7 +47,6 @@ public class NeoBallerite {
         //  ok uhm so, if we do blocks first mod berries break :/ fuck it we ball
         ModItems.ITEMS.register(modEventBus);
         ModBlocks.BLOCKS.register(modEventBus);
-
 
         NeoArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
         NeoDataComponents.DATA_COMPONENT_TYPES.register(modEventBus);

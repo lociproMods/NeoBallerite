@@ -2,6 +2,7 @@ package com.locipro.neoballerite.item;
 
 
 import com.google.common.collect.ImmutableSet;
+import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.armor.*;
@@ -20,6 +21,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BannerPatternLayers;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -505,6 +507,33 @@ public class ModItems {
     //endregion
 
 
+    //region jams
+    public static final DeferredItem<JamItem> JAM_BLUEBERRIES = ITEMS.register("jam_blueberries",
+            () -> new JamItem(BLUEBERRIES));
+    public static final DeferredItem<JamItem> JAM_BLACKBERRIES = ITEMS.register("jam_blackberries",
+            () -> new JamItem(BLACKBERRIES));
+    public static final DeferredItem<JamItem> JAM_SWEETBERRIES = ITEMS.register("jam_sweetberries",
+            () -> new JamItem(Items.SWEET_BERRIES));
+    public static final DeferredItem<JamItem> JAM_STRAWBERRIES = ITEMS.register("jam_strawberries",
+            () -> new JamItem(STRAWBERRY));
+    public static final DeferredItem<JamItem> JAM_TOMATOES = ITEMS.register("jam_tomatoes",
+            () -> new JamItem(TOMATO));
+    //enregion
+
+    /*private static boolean postRegisterRan = false;
+    public static void postRegister(){
+        NeoBallerite.LOGGER.debug("STARTED POST REGISTER");
+        if (postRegisterRan) {
+            NeoBallerite.LOGGER.error("CAN'T RUN postRegister() MORE THAN ONCE.");
+            return;
+        }
+        for (DeferredHolder<Item, ? extends Item> item : ITEMS.getEntries()) {
+            if (item.get() instanceof JamItem) {
+                NeoBallerite.LOGGER.debug("Added {} entry to NeoJams.JAMS list. Success == {}", item, NeoJams.JAMS.add(item.get()));
+            }
+        }
+        postRegisterRan = true;
+    }*/
 
     /*public static final DeferredItem<Item> LEAD_SHIELD = ITEMS.register("lead_shield",
             () -> new ShieldItem(new Item.Properties().durability(420).component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)));
