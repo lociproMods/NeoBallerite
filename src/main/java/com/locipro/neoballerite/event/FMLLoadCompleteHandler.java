@@ -1,7 +1,7 @@
 package com.locipro.neoballerite.event;
 
 import com.locipro.neoballerite.NeoBallerite;
-import com.locipro.neoballerite.item.ModItems;
+import com.locipro.neoballerite.item.NeoJams;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
@@ -10,6 +10,6 @@ import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 public class FMLLoadCompleteHandler {
     @SubscribeEvent
     public static void fmlLoadComplete(FMLLoadCompleteEvent event) {
-//        ModItems.postRegister();
+        NeoBallerite.LOGGER.debug("Jams list : {}", NeoJams.JAMS);
     }
 }

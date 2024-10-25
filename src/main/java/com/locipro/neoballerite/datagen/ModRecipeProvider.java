@@ -1,7 +1,9 @@
 package com.locipro.neoballerite.datagen;
 
 import com.google.common.collect.ImmutableList;
+import com.locipro.neoballerite.item.NeoJams;
 import com.locipro.neoballerite.item.custom.CheeseItem;
+import com.locipro.neoballerite.item.custom.JamItem;
 import com.locipro.neoballerite.item.custom.SandwichItem;
 import com.locipro.neoballerite.item.tool.NeoClaymoreItem;
 import com.locipro.neoballerite.recipe.ShapelessRepairRecipe;
@@ -334,6 +336,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         offerLantern(recipeOutput, LEAD_LANTERN, LEAD_NUGGET, LEAD_INGOT);
         offerUnlitLantern(recipeOutput, UNLIT_LANTERN, Items.IRON_NUGGET, Items.IRON_INGOT);
 
+        NeoJams.JAMS.iterator().forEachRemaining(item ->
+                offerJamRecipe(recipeOutput, item));
+
 
         SpecialRecipeBuilder.special(ShapelessRepairRecipe::new)
                         .save(recipeOutput, getId("leaves_boots_repair"));
@@ -623,6 +628,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("XXX")
                 .unlockedBy(getHasName(nugget), has(nugget))
                 .unlockedBy(getHasName(ingot), has(ingot))
+                .save(recipeOutput);
+    }
+    protected void offerJamRecipe(RecipeOutput recipeOutput, DeferredItem<JamItem> jamItem) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, jamItem)
+                .requires(jamItem.get().getBaseItem(), 2)
+                .requires(ModTags.Items.KNIVES)
+                .unlockedBy(getHasName(jamItem.get().getBaseItem()), has(jamItem.get().getBaseItem()))
                 .save(recipeOutput);
     }
 }

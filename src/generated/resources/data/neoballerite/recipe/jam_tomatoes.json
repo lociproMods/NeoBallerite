@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "neoballerite:tomato"
+    },
+    {
+      "item": "neoballerite:tomato"
+    },
+    {
+      "tag": "neoballerite:knives"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "neoballerite:jam_tomatoes"
+  }
+}

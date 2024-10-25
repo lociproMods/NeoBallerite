@@ -119,6 +119,13 @@
   "item.neoballerite.cheese_fries_sandwich" : "Cheesy Sandwich O' Fries",
 
 
+  "item.neoballerite.jam_sweetberries" : "Sweet Berry Jam",
+  "item.neoballerite.jam_blueberries" : "Blue Berry Jam",
+  "item.neoballerite.jam_blackberries" : "Black Berry Jam",
+  "item.neoballerite.jam_strawberries" : "Strawberry Jam",
+  "item.neoballerite.jam_tomatoes" : "Tomato Jam",
+
+
 
   "block.neoballerite.raw_ballerite_block" : "Raw Ballerite Block",
   "block.neoballerite.cooked_ballerite_block" : "Cooked Ballerite Block",

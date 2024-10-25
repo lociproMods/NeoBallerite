@@ -51,6 +51,11 @@ public class ModItems {
         }
         return item;
     }*/
+    private static DeferredItem<JamItem> registerJamItem(String name, Supplier<JamItem> itemSup) {
+        DeferredItem<JamItem> item = ITEMS.register(name, itemSup);
+        NeoJams.JAMS.add(item);
+        return item;
+    }
 
     public static final DeferredItem<Item> BALL_DOWSER = ITEMS.register("ball_dowser",
             () -> new BallDowserItem(new Item.Properties()));
@@ -508,15 +513,15 @@ public class ModItems {
 
 
     //region jams
-    public static final DeferredItem<JamItem> JAM_BLUEBERRIES = ITEMS.register("jam_blueberries",
+    public static final DeferredItem<JamItem> JAM_BLUEBERRIES = registerJamItem("jam_blueberries",
             () -> new JamItem(BLUEBERRIES));
-    public static final DeferredItem<JamItem> JAM_BLACKBERRIES = ITEMS.register("jam_blackberries",
+    public static final DeferredItem<JamItem> JAM_BLACKBERRIES = registerJamItem("jam_blackberries",
             () -> new JamItem(BLACKBERRIES));
-    public static final DeferredItem<JamItem> JAM_SWEETBERRIES = ITEMS.register("jam_sweetberries",
+    public static final DeferredItem<JamItem> JAM_SWEETBERRIES = registerJamItem("jam_sweetberries",
             () -> new JamItem(Items.SWEET_BERRIES));
-    public static final DeferredItem<JamItem> JAM_STRAWBERRIES = ITEMS.register("jam_strawberries",
+    public static final DeferredItem<JamItem> JAM_STRAWBERRIES = registerJamItem("jam_strawberries",
             () -> new JamItem(STRAWBERRY));
-    public static final DeferredItem<JamItem> JAM_TOMATOES = ITEMS.register("jam_tomatoes",
+    public static final DeferredItem<JamItem> JAM_TOMATOES = registerJamItem("jam_tomatoes",
             () -> new JamItem(TOMATO));
     //enregion
 

@@ -3,6 +3,7 @@ package com.locipro.neoballerite.menu.tabs;
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
 import com.locipro.neoballerite.NeoBallerite;
+import com.locipro.neoballerite.item.NeoJams;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -226,7 +227,10 @@ public class ModCreativeTabs {
                 for (ItemLike item : FOOD_LIST) {
                     output.accept(item);
                 }
-            }).build());
+                NeoJams.JAMS.iterator().forEachRemaining(item ->
+                        output.accept(item.get()));
+            })
+            .build());
 
 
 

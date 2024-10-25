@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "neoballerite:blackberries"
+    },
+    {
+      "item": "neoballerite:blackberries"
+    },
+    {
+      "tag": "neoballerite:knives"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "neoballerite:jam_blackberries"
+  }
+}

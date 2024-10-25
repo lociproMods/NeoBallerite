@@ -1,5 +1,6 @@
 package com.locipro.neoballerite.datagen;
 
+import com.locipro.neoballerite.item.NeoJams;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -203,12 +204,17 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(Items.POTATO)
                 .add(Items.BAKED_POTATO)
                 .add(BAKED_SWEET_POTATO.get());
+
         tag(ModTags.Items.JAMS)
                 .add(JAM_BLUEBERRIES.get())
                 .add(JAM_BLACKBERRIES.get())
                 .add(JAM_STRAWBERRIES.get())
                 .add(JAM_TOMATOES.get())
                 .add(JAM_SWEETBERRIES.get());
+
+        NeoJams.JAMS.iterator().forEachRemaining((item) ->
+                tag(ModTags.Items.JAMS)
+                        .add(item.get()));
 
 
 

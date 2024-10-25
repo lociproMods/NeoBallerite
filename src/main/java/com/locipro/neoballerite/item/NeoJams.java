@@ -11,9 +11,10 @@ import com.locipro.neoballerite.item.custom.JamItem;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.registries.DeferredItem;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public abstract class NeoJams {
-    public static Set<ItemLike> JAMS;
+    public static Set<DeferredItem<JamItem>> JAMS = new HashSet<>();
 }

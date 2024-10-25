@@ -1,5 +1,8 @@
 package com.locipro.neoballerite.datagen;
 
+import com.locipro.neoballerite.item.NeoJams;
+import com.locipro.neoballerite.item.custom.JamItem;
+import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -142,6 +145,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(PORK_SANDWICH.get());
         basicItem(MUTTON_SANDWICH.get());
         basicItem(FRIES_SANDWICH.get());
+
+        NeoJams.JAMS.iterator().forEachRemaining((item) ->
+                basicItem(item.get()));
 
     }
     
