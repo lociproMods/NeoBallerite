@@ -10,6 +10,6 @@ import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 public class FMLLoadCompleteHandler {
     @SubscribeEvent
     public static void fmlLoadComplete(FMLLoadCompleteEvent event) {
-        NeoBallerite.LOGGER.debug("Jams list : {}", NeoJams.JAMS);
+        //NeoBallerite.LOGGER.debug("Jams list : {}", NeoJams.JAMS);
     }
 }
