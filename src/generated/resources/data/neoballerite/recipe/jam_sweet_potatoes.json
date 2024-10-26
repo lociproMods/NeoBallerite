@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "neoballerite:sweet_potato"
+    },
+    {
+      "item": "neoballerite:sweet_potato"
+    },
+    {
+      "tag": "neoballerite:knives"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "neoballerite:jam_sweet_potatoes"
+  }
+}

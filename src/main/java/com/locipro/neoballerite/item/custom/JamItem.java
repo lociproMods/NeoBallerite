@@ -37,7 +37,7 @@ public class JamItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         tooltipComponents.add(
-                Component.literal("A jam from " + getBaseItemNamePlural(baseItem) + ".")
+                Component.literal("A jam made from " + getBaseItemNamePlural(baseItem) + ".")
                         .withStyle(ChatFormatting.GRAY)
                         .withStyle(ChatFormatting.ITALIC));
         if (Screen.hasShiftDown()) {

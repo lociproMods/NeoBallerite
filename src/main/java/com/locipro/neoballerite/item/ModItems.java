@@ -523,22 +523,11 @@ public class ModItems {
             () -> new JamItem(STRAWBERRY));
     public static final DeferredItem<JamItem> JAM_TOMATOES = registerJamItem("jam_tomatoes",
             () -> new JamItem(TOMATO));
+    public static final DeferredItem<JamItem> JAM_SWEET_POTATOES = registerJamItem("jam_sweet_potatoes",
+            () -> new JamItem(SWEET_POTATO));
     //enregion
 
-    /*private static boolean postRegisterRan = false;
-    public static void postRegister(){
-        NeoBallerite.LOGGER.debug("STARTED POST REGISTER");
-        if (postRegisterRan) {
-            NeoBallerite.LOGGER.error("CAN'T RUN postRegister() MORE THAN ONCE.");
-            return;
-        }
-        for (DeferredHolder<Item, ? extends Item> item : ITEMS.getEntries()) {
-            if (item.get() instanceof JamItem) {
-                NeoBallerite.LOGGER.debug("Added {} entry to NeoJams.JAMS list. Success == {}", item, NeoJams.JAMS.add(item.get()));
-            }
-        }
-        postRegisterRan = true;
-    }*/
+
 
     /*public static final DeferredItem<Item> LEAD_SHIELD = ITEMS.register("lead_shield",
             () -> new ShieldItem(new Item.Properties().durability(420).component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)));

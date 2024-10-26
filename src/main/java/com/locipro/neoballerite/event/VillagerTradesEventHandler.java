@@ -1,6 +1,7 @@
 package com.locipro.neoballerite.event;
 
 import com.locipro.neoballerite.NeoBallerite;
+import com.locipro.neoballerite.item.NeoJams;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -21,7 +22,7 @@ public class VillagerTradesEventHandler {
     @SubscribeEvent
     public static void villagerTradesEvent(VillagerTradesEvent event) {
         VillagerProfession profession = event.getType();
-        /* Pretty sure this is very unoptimized, but it looks pretty and only runs on reload. So don't care.
+        /* Pretty sure this is very unoptimized, but it looks pretty (doubt) and only runs on reload. So don't care.
          * Looks ARE more important !
          * Be vain! */
 
@@ -116,6 +117,12 @@ public class VillagerTradesEventHandler {
                             8,
                             4,
                             28
+                    ),
+                    emeraldsForItem(
+                            new ItemStack(JAM_SWEETBERRIES.get(), 2),
+                            1,
+                            32,
+                            3
                     ));
             
             addTrade(event, 2,
@@ -142,10 +149,22 @@ public class VillagerTradesEventHandler {
                             4,
                             8,
                             3
+                    ),
+                    emeraldsForItem(
+                            new ItemStack(JAM_BLUEBERRIES.get(), 2),
+                            2,
+                            32,
+                            4
+                    ),
+                    emeraldsForItem(
+                            new ItemStack(JAM_TOMATOES.get(), 3),
+                            2,
+                            32,
+                            3
                     ));
             addTrade(event, 3,
                     emeraldsForItem(
-                            new ItemStack(STRAWBERRY.get(), 6),
+                            new ItemStack(STRAWBERRY.get(), 8),
                             2,
                             20,
                             3
@@ -155,6 +174,27 @@ public class VillagerTradesEventHandler {
                             9,
                             4,
                             3
+                    ),
+                    emeraldsForItem(
+                            new ItemStack(JAM_BLACKBERRIES.get(), 2),
+                            3,
+                            24,
+                            4
+
+                    ),
+                    emeraldsForItem(
+                            new ItemStack(JAM_SWEET_POTATOES.get(), 3),
+                            2,
+                            32,
+                            3
+                    ));
+
+            addTrade(event, 4,
+                    emeraldsForItem(
+                            new ItemStack(JAM_STRAWBERRIES.get(), 2),
+                            4,
+                            32,
+                            5
                     ));
 
             addTrade(event, 5,
@@ -165,46 +205,6 @@ public class VillagerTradesEventHandler {
                             50
                     ));
         }
-
-        /*
-        TradeOfferHelper.registerVillagerOffers(VillagerProfession.FARMER, 2,
-                factories -> {
-
-                    factories.add((entity, random) -> new MerchantOffer(
-                            new ItemStack(TOMATO_JAM, 1),
-                            new ItemStack(Items.EMERALD, 1),
-                            16,3,0.02f));
-                    factories.add((entity, random) -> new MerchantOffer(
-                            new ItemStack(SWEET_BERRY_JAM, 1),
-                            new ItemStack(Items.EMERALD, 1),
-                            16,3,0.02f));
-                });
-        TradeOfferHelper.registerVillagerOffers(VillagerProfession.FARMER, 3,
-                factories -> {
-                    factories.add((entity, random) -> new MerchantOffer(
-                            new ItemStack(BLUEBERRY_JAM, 1),
-                            new ItemStack(Items.EMERALD, 1),
-                            16,4,0.02f));
-                    factories.add((entity, random) -> new MerchantOffer(
-                            new ItemStack(STRAWBERRY_JAM, 1),
-                            new ItemStack(Items.EMERALD, 2),
-                            16,4,0.02f));
-
-                });
-        TradeOfferHelper.registerVillagerOffers(VillagerProfession.FARMER, 4,
-                factories -> {
-                    factories.add((entity, random) -> new MerchantOffer(
-                            new ItemStack(BLACKBERRY_JAM, 1),
-                            new ItemStack(Items.EMERALD, 2),
-                            16,5,0.02f));
-                });
-        TradeOfferHelper.registerVillagerOffers(VillagerProfession.FARMER, 5,
-                factories -> {
-                    factories.add((entity, random) -> new MerchantOffer(
-                            new ItemStack(Items.EMERALD, 24),
-                            new ItemStack(PURPLE_CARROT, 1),
-                            1,6,0.02f));
-                });*/
 
         if (profession == VillagerProfession.WEAPONSMITH) {
             addTrade(event, 1,
