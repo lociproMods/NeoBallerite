@@ -46,8 +46,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         // dont do this wth List<ItemLike> BALLERITE_SMELTABLES = List.of(RAW_BALLERITE, RAW_BALLERITE_BLOCK, COOKED_BALLERITE_BLOCK, BURNT_BALLERITE_BLOCK, CHARRED_BALLERITE_BLOCK);
 
 
-        twoByTwoPacker(recipeOutput, RecipeCategory.MISC, RAW_BALLERITE_BLOCK, RAW_BALLERITE);
-        twoByTwoPacker(recipeOutput, RecipeCategory.MISC, COOKED_BALLERITE_BLOCK, COOKED_BALLERITE);
+        threeByThreePacker(recipeOutput, RecipeCategory.MISC, RAW_BALLERITE_BLOCK, RAW_BALLERITE);
+        threeByThreePacker(recipeOutput, RecipeCategory.MISC, COOKED_BALLERITE_BLOCK, COOKED_BALLERITE);
         twoByTwoPacker(recipeOutput, RecipeCategory.MISC, CHARRED_BALLERITE_BLOCK, CHARRED_BALLERITE);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, CHARRED_BALLERITE, 4)
                         .requires(CHARRED_BALLERITE_BLOCK)
@@ -238,7 +238,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, STRAWBERRY_SEEDS, 3)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, STRAWBERRY_SEEDS, 2)
                 .requires(STRAWBERRY)
                 .unlockedBy(getHasName(STRAWBERRY), has(STRAWBERRY))
                 .save(recipeOutput);
@@ -246,7 +246,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(TOMATO)
                 .unlockedBy(getHasName(TOMATO), has(TOMATO))
                 .save(recipeOutput);
-        offerSeeds(recipeOutput, CORN_KERNELS, CORN_COB, 3);
+        offerSeeds(recipeOutput, CORN_KERNELS, CORN_COB, 2);
 
         twoByTwoPacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, SWEET_POTATO_BLOCK, SWEET_POTATO);
 
@@ -270,7 +270,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         offerSmeltingAndBlasting(recipeOutput, List.of(BURNT_BALLERITE_BLOCK), RecipeCategory.MISC, CHARRED_BALLERITE_BLOCK,
                 0.7f, 260, "ballerite");
-        offerBlasting(recipeOutput, List.of(CHARRED_BALLERITE_BLOCK), RecipeCategory.MISC, COMPRESSED_BALLERITE_BLOCK,
+
+        /*offerBlasting(recipeOutput, List.of(CHARRED_BALLERITE_BLOCK), RecipeCategory.MISC, COMPRESSED_BALLERITE_BLOCK,
+                0.9f, 180, "ballerite");*/
+        offerBlasting(recipeOutput, List.of(CHARRED_BALLERITE), RecipeCategory.MISC, COMPRESSED_BALLERITE_INGOT,
                 0.9f, 180, "ballerite");
 
         offerSmeltingAndSmoking(recipeOutput, List.of(RAW_BALLERITE), RecipeCategory.FOOD, COOKED_BALLERITE,

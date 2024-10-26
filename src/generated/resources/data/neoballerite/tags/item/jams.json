@@ -1,10 +1,10 @@
 {
   "values": [
-    "neoballerite:jam_blackberries",
-    "neoballerite:jam_sweetberries",
-    "neoballerite:jam_tomatoes",
     "neoballerite:jam_blueberries",
+    "neoballerite:jam_strawberries",
+    "neoballerite:jam_sweetberries",
     "neoballerite:jam_sweet_potatoes",
-    "neoballerite:jam_strawberries"
+    "neoballerite:jam_tomatoes",
+    "neoballerite:jam_blackberries"
   ]
 }

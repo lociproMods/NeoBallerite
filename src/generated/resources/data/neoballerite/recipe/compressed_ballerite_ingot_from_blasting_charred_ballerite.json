@@ -1,14 +1,14 @@
 {
   "type": "minecraft:blasting",
-  "category": "blocks",
+  "category": "misc",
   "cookingtime": 180,
   "experience": 0.9,
   "group": "ballerite",
   "ingredient": {
-    "item": "neoballerite:charred_ballerite_block"
+    "item": "neoballerite:charred_ballerite"
   },
   "result": {
     "count": 1,
-    "id": "neoballerite:compressed_ballerite_block"
+    "id": "neoballerite:compressed_ballerite_ingot"
   }
 }

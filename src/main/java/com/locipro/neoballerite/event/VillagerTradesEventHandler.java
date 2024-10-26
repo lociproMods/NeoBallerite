@@ -154,13 +154,13 @@ public class VillagerTradesEventHandler {
                             new ItemStack(JAM_BLUEBERRIES.get(), 2),
                             2,
                             32,
-                            4
+                            2
                     ),
                     emeraldsForItem(
                             new ItemStack(JAM_TOMATOES.get(), 3),
                             2,
                             32,
-                            3
+                            2
                     ));
             addTrade(event, 3,
                     emeraldsForItem(
@@ -179,7 +179,7 @@ public class VillagerTradesEventHandler {
                             new ItemStack(JAM_BLACKBERRIES.get(), 2),
                             3,
                             24,
-                            4
+                            3
 
                     ),
                     emeraldsForItem(
@@ -194,7 +194,7 @@ public class VillagerTradesEventHandler {
                             new ItemStack(JAM_STRAWBERRIES.get(), 2),
                             4,
                             32,
-                            5
+                            4
                     ));
 
             addTrade(event, 5,

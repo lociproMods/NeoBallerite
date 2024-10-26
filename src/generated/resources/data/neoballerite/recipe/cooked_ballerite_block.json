@@ -1,14 +1,34 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "key": {
-    "#": {
+  "ingredients": [
+    {
+      "item": "neoballerite:cooked_ballerite"
+    },
+    {
+      "item": "neoballerite:cooked_ballerite"
+    },
+    {
+      "item": "neoballerite:cooked_ballerite"
+    },
+    {
+      "item": "neoballerite:cooked_ballerite"
+    },
+    {
+      "item": "neoballerite:cooked_ballerite"
+    },
+    {
+      "item": "neoballerite:cooked_ballerite"
+    },
+    {
+      "item": "neoballerite:cooked_ballerite"
+    },
+    {
+      "item": "neoballerite:cooked_ballerite"
+    },
+    {
       "item": "neoballerite:cooked_ballerite"
     }
-  },
-  "pattern": [
-    "##",
-    "##"
   ],
   "result": {
     "count": 1,
