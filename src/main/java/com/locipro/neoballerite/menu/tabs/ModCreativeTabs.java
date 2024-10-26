@@ -97,6 +97,7 @@ public class ModCreativeTabs {
             STAR_PRESSURE_PLATE
     );
     public static List<ItemLike> OTHER_STUFF_LIST = List.of(
+            RAW_LEAD,
             LEAD_ORE,
             DEEPSLATE_LEAD_ORE,
             LEAD_BLOCK,
