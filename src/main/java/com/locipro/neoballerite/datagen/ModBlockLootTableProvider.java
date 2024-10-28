@@ -48,7 +48,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
 
         add(BALLERITE_ORE.get(),
-                createVariableOreDrops(BALLERITE_ORE.get(), RAW_BALLERITE, UniformGenerator.between(1, 4)));
+                createVariableOreDrops(BALLERITE_ORE.get(), RAW_BALLERITE, UniformGenerator.between(1, 3)));
         add(LEAD_ORE.get(),
                 createVariableOreDrops(LEAD_ORE.get(), RAW_LEAD, UniformGenerator.between(1, 2)));
         add(DEEPSLATE_LEAD_ORE.get(),
