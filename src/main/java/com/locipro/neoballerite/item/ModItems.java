@@ -424,6 +424,9 @@ public class ModItems {
     public static final DeferredItem<CheeseItem> MILK_CHEESE = ITEMS.register("milk_cheese",
             () -> new CheeseItem(new Item.Properties().food(CheeseFoodProperties.CHEESE))
                     .cheeseType(CheeseItem.CheeseTypes.OVERWORLD));
+    public static final DeferredItem<CheeseItem> WARPED_CHEESE = ITEMS.register("warped_cheese",
+            () -> new CheeseItem(new Item.Properties().food(CheeseFoodProperties.WARPED))
+                    .cheeseType(CheeseItem.CheeseTypes.NETHER));
 
     public static final DeferredItem<Item> IRON_CARROT = ITEMS.register("iron_carrot",
             () -> new Item(new Item.Properties().food(CropFoodProperties.IRON_CARROT)) {

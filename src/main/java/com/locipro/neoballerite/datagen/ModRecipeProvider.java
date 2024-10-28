@@ -257,6 +257,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput);
 
         offerCheese(recipeOutput, MILK_CHEESE);
+        offerCheese(recipeOutput, WARPED_CHEESE);
 
 
 

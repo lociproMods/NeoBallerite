@@ -10,6 +10,13 @@ public abstract class CheeseFoodProperties {
             .saturationModifier(0.4F)
             .fast()
             .build();
+    public static final FoodProperties WARPED = new FoodProperties.Builder()
+            .nutrition(5)
+            .saturationModifier(0.4F)
+            .fast()
+            .effect(() -> new MobEffectInstance(MobEffects.DARKNESS, 15, 1, false, false), 1.0f)
+            .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 400, 1, true, true), 1.0f)
+            .build();
 
 
     public static final FoodProperties CHEESE_STEAK = new FoodProperties.Builder().nutrition(11).saturationModifier(0.8F)

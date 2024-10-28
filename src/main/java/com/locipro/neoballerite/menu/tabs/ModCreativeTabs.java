@@ -147,6 +147,7 @@ public class ModCreativeTabs {
 
             MILK_VILE,
             MILK_CHEESE,
+            WARPED_CHEESE,
 
             EGGS_SUNNY,
             EGGS_SCRAMBLED,
