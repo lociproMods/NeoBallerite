@@ -3,49 +3,49 @@ package com.locipro.neoballerite.item.custom;
 
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-
-import java.util.Optional;
 
 /** Currently only a helper class with some variables to assist in recipe generation.
  * Eventually will get dynamic item models to make all sandwiches just an instance of this singleton with some data components.**/
 public class SandwichItem extends Item {
-    public SandwichItem(Properties properties, Optional<Item> fillerItem, Optional<Item> cheesyFiller) {
-        super(properties);
-        fillerItem.ifPresent(item -> FILLER_ITEM = item);
-        cheesyFiller.ifPresent(item -> CHEESY_FILLER = item);
+    public SandwichItem() {
+        super(new Item.Properties());
     }
-    private TagKey<Item> fillerTag;
-    private final Item BREAD_ITEM = Items.BREAD;
-    private Item FILLER_ITEM;
-    private Item CHEESY_FILLER;
 
+    // ok but how does it get its model? and texture?
+
+    private Item BREAD_ITEM;
+    private Item MEAT_ITEM;
+    private Item CHEESE_ITEM;
+
+    // Just realized all this isn't gonna work
+    // Shit needs to be PER ITEMSTACK, not for the entire class.
+    // Shiiiii gotta check data components or item properties or smth like taht, check the vid in \to do
     public Item getBreadItem() {
-        return BREAD_ITEM;
+        if (BREAD_ITEM != null) {
+            return BREAD_ITEM;
+        }
+        throw new NullPointerException("Bread item is null (how did you make a sandwich without bread)");
+    }
+    public Item getMeatItem() {
+        if (MEAT_ITEM != null) {
+            return MEAT_ITEM;
+        }
+        throw new NullPointerException("Bread item is null");
+    }
+    public Item getCheeseItem() {
+        if (CHEESE_ITEM != null) {
+            return CHEESE_ITEM;
+        }
+        throw new NullPointerException("Cheese item is null");
     }
 
-    public Item getFillerItem() {
-        if (FILLER_ITEM != null) {
-            return FILLER_ITEM;
-        }
-        return null;
-    }
-    public Item getCheesyFillerItem() {
-        if (CHEESY_FILLER != null) {
-            return CHEESY_FILLER;
-        }
-        return null;
-    }
 
     public boolean hasCheese() {
-        return CHEESY_FILLER != null;
+        return CHEESE_ITEM != null;
     }
-
-    public SandwichItem tag(TagKey<Item> fillerTag) {
-        this.fillerTag = fillerTag;
-        return this;
-    }
-    public TagKey<Item> getFillerTag() {
-        return fillerTag;
+    public boolean hasMeat() {
+        return MEAT_ITEM != null;
     }
 }
