@@ -59,15 +59,8 @@ public class ShapelessRepairRecipe extends CustomRecipe {
     }
 
     private boolean canCombine(ItemStack tool, ItemStack repairIngredient) {
-        /*return tool.has(DataComponents.MAX_DAMAGE)
-                && tool.has(DataComponents.DAMAGE)
-                && tool.getCount() == 1
-                && tool.isRepairable()
-                && !repairIngredient.has(DataComponents.MAX_DAMAGE)
-                && !repairIngredient.has(DataComponents.DAMAGE)
-                && !repairIngredient.isRepairable();
-*/
-        return tool.is(ModItems.LEAVES_BOOTS) && repairIngredient.is(ItemTags.LEAVES);
+        return tool.is(ModItems.LEAVES_BOOTS)
+            && repairIngredient.is(ItemTags.LEAVES);
     }
 
     @Override

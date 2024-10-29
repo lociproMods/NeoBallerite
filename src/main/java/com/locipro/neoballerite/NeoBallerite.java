@@ -5,6 +5,7 @@ import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.component.NeoEnchantmentComponents;
 import com.locipro.neoballerite.datagen.lootmodifier.GLMSerializers;
 import com.locipro.neoballerite.event.ServerEventListeners;
+import com.locipro.neoballerite.item.util.SandwichProperties;
 import com.locipro.neoballerite.recipe.NeoRecipeSerializers;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.armor.NeoArmorMaterials;
@@ -104,9 +105,7 @@ public class NeoBallerite {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
-//            LOGGER.info("HELLO FROM CLIENT SETUP");
-//            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            SandwichProperties.addSandwichProperties();
         }
     }
 }

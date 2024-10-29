@@ -16,4 +16,8 @@ public class NeoRecipeSerializers {
     public static final Supplier<RecipeSerializer<ShapelessRepairRecipe>> SHAPELESS_REPAIR_SERIALIZER =
             RECIPE_SERIALIZERS.register("shapeless_repair_serializer",
                     () ->  new SimpleCraftingRecipeSerializer<>(ShapelessRepairRecipe::new));
+
+    public static final Supplier<RecipeSerializer<SandwichRecipe>> SANDWICH_RECIPE_SERIALIZER =
+            RECIPE_SERIALIZERS.register("sandwich_recipe_serializer",
+                    () ->  new SimpleCraftingRecipeSerializer<>(SandwichRecipe::new));
 }

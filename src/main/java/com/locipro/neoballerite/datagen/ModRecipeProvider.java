@@ -6,6 +6,7 @@ import com.locipro.neoballerite.item.custom.CheeseItem;
 import com.locipro.neoballerite.item.custom.JamItem;
 import com.locipro.neoballerite.item.custom.SandwichItem;
 import com.locipro.neoballerite.item.tool.NeoClaymoreItem;
+import com.locipro.neoballerite.recipe.SandwichRecipe;
 import com.locipro.neoballerite.recipe.ShapelessRepairRecipe;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
@@ -318,7 +319,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         offerEightCoveredRecipe(recipeOutput, RecipeCategory.FOOD, ENCHANTED_DIAMOND_CARROT, Items.CARROT, Items.DIAMOND_BLOCK);
 
 
-        offerCheesyItemRecipe(recipeOutput, CHEESE_STEAK.get(), MILK_CHEESE.get(), Items.COOKED_BEEF);
+        /*offerCheesyItemRecipe(recipeOutput, CHEESE_STEAK.get(), MILK_CHEESE.get(), Items.COOKED_BEEF);
         offerCheesyItemRecipe(recipeOutput, CHEESE_PORK.get(), MILK_CHEESE.get(), Items.COOKED_PORKCHOP);
         offerCheesyItemRecipe(recipeOutput, CHEESE_MUTTON.get(), MILK_CHEESE.get(), Items.COOKED_MUTTON);
         offerCheesyItemRecipe(recipeOutput, CHEESE_CHICKEN.get(), MILK_CHEESE.get(), Items.COOKED_CHICKEN);
@@ -335,7 +336,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         offerSandwichRecipe(recipeOutput, CHEESE_PORK_SANDWICH, MILK_CHEESE.get());
         offerSandwichRecipe(recipeOutput, CHEESE_MUTTON_SANDWICH, MILK_CHEESE.get());
         offerSandwichRecipe(recipeOutput, CHEESE_CHICKEN_SANDWICH, MILK_CHEESE.get());
-        offerSandwichRecipe(recipeOutput, CHEESE_FRIES_SANDWICH, MILK_CHEESE.get());
+        offerSandwichRecipe(recipeOutput, CHEESE_FRIES_SANDWICH, MILK_CHEESE.get());*/
 
         offerLantern(recipeOutput, LEAD_LANTERN, LEAD_NUGGET, LEAD_INGOT);
         offerUnlitLantern(recipeOutput, UNLIT_LANTERN, Items.IRON_NUGGET, Items.IRON_INGOT);
@@ -346,6 +347,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         SpecialRecipeBuilder.special(ShapelessRepairRecipe::new)
                         .save(recipeOutput, getId("leaves_boots_repair"));
+        SpecialRecipeBuilder.special(SandwichRecipe::new)
+                        .save(recipeOutput, getId("sandwich_recipe"));
     }
 
 //    protected static String getHasName(DeferredItem<?> item) {
@@ -547,7 +550,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput, MODID + ":" + getItemName(result) + "from_tag_" + tagName);
     }
 
-    protected static void offerSandwichRecipe(RecipeOutput recipeOutput, DeferredItem<SandwichItem> sandwichItem, Item cheeseType) {
+    /*protected static void offerSandwichRecipe(RecipeOutput recipeOutput, DeferredItem<SandwichItem> sandwichItem, Item cheeseType) {
         // Basically if the item uses a tag for the filler instead of one item
         if (sandwichItem.get().getFillerTag() != null) {
             if (sandwichItem.get().getCheesyFillerItem() != null) {
@@ -611,7 +614,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(item)
                 .unlockedBy("has_tag_" + tagName, has(item))
                 .save(recipeOutput, MODID + ":" + getItemName(cheesyItem) + "_from_tag_" + tagName);
-    }
+    }*/
     protected void offerLantern(RecipeOutput recipeOutput, ItemLike lantern, ItemLike nugget, ItemLike ingot) {
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, lantern)
                 .define('#', Items.TORCH)

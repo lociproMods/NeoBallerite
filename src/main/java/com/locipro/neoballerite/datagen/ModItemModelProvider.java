@@ -127,25 +127,25 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ENCHANTED_DIAMOND_CARROT.get());
 
 
-        basicItem(CHEESE_CHICKEN.get());
-        basicItem(CHEESE_STEAK.get());
-        basicItem(CHEESE_PORK.get());
-        basicItem(CHEESE_MUTTON.get());
-        basicItem(CHEESE_FRIES.get());
-
-        basicItem(CHEESE_CHICKEN_SANDWICH.get());
-        basicItem(CHEESE_STEAK_SANDWICH.get());
-        basicItem(CHEESE_PORK_SANDWICH.get());
-        basicItem(CHEESE_MUTTON_SANDWICH.get());
-        basicItem(CHEESE_FRIES_SANDWICH.get());
-
-
-        basicItem(CHEESE_SANDWICH.get());
-        basicItem(STEAK_SANDWICH.get());
-        basicItem(CHICKEN_SANDWICH.get());
-        basicItem(PORK_SANDWICH.get());
-        basicItem(MUTTON_SANDWICH.get());
-        basicItem(FRIES_SANDWICH.get());
+//        basicItem(CHEESE_CHICKEN.get());
+//        basicItem(CHEESE_STEAK.get());
+//        basicItem(CHEESE_PORK.get());
+//        basicItem(CHEESE_MUTTON.get());
+//        basicItem(CHEESE_FRIES.get());
+//
+//        basicItem(CHEESE_CHICKEN_SANDWICH.get());
+//        basicItem(CHEESE_STEAK_SANDWICH.get());
+//        basicItem(CHEESE_PORK_SANDWICH.get());
+//        basicItem(CHEESE_MUTTON_SANDWICH.get());
+//        basicItem(CHEESE_FRIES_SANDWICH.get());
+//
+//
+//        basicItem(CHEESE_SANDWICH.get());
+//        basicItem(STEAK_SANDWICH.get());
+//        basicItem(CHICKEN_SANDWICH.get());
+//        basicItem(PORK_SANDWICH.get());
+//        basicItem(MUTTON_SANDWICH.get());
+//        basicItem(FRIES_SANDWICH.get());
 
         NeoJams.JAMS.iterator().forEachRemaining((item) ->
                 basicItem(item.get()));
