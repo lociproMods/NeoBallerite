@@ -1,15 +1,12 @@
 package com.locipro.neoballerite.item;
 
 
-import com.google.common.collect.ImmutableSet;
-import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.armor.*;
 import com.locipro.neoballerite.item.custom.*;
 import com.locipro.neoballerite.item.tool.*;
 import com.locipro.neoballerite.misc.food.*;
-import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponents;
@@ -20,14 +17,10 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BannerPatternLayers;
-import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Optional;
 import java.util.function.Supplier;
 
 import static com.locipro.neoballerite.NeoBallerite.MODID;
@@ -486,7 +479,7 @@ public class ModItems {
     public static final DeferredItem<Item> CHEESE_FRIES = ITEMS.register("cheese_fries",
             () -> new Item(new Item.Properties().food(CheeseFoodProperties.CHEESE_FRIES)));*/
 
-    public static final DeferredItem<SandwichItem> DEFAULT_SANDWICH = ITEMS.register("default_sandwich", SandwichItem::new);
+    public static final DeferredItem<SandwichItem> SANDWICH = ITEMS.register("default_sandwich", SandwichItem::new);
     //endregion
 
 
