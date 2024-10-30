@@ -8,6 +8,7 @@ import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.food.FoodConstants;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -142,7 +143,10 @@ public class SandwichRecipe extends CustomRecipe {
         }
         List<FoodProperties.PossibleEffect> effects = new ArrayList<>(itemFood.size());
         int nutrition = 0;
-        float saturation = 0;
+        float saturation = 0f;
+        // This is SATURATION, not saturationModifier.
+        // Have to calculate modifier later in builder.
+
         // Add food properties.
         for (var x : itemFood) {
             if (x.isPresent()) {
@@ -160,8 +164,17 @@ public class SandwichRecipe extends CustomRecipe {
 
         if (items.getFirst().isPresent()) {
             assert canAddToSandwich(items.getFirst().get());
-            // Figure out logic
-
+            ItemStack sandwich = items.getFirst().get().copy();
+            // BUGGED, if you have a sandwich with bread and beef
+            // and you try adding beef, it fails (good)
+            // if you try adding cheese, it works (good)
+            // If you REPLACE cheese with beef it still thinks you're adding cheese? (wtf)
+            if (sandwich.has(NeoDataComponents.SANDWICH_CHEESE)) {
+                sandwich.set(NeoDataComponents.SANDWICH_MEAT, items.get(2).get().getItem()); // .get().get().get() :sob:
+            }else {
+                sandwich.set(NeoDataComponents.SANDWICH_CHEESE, items.get(3).get().getItem());
+            }
+            output = sandwich;
         }else {
             // If there's no sandwich to add to
             // Well, since there's no sandwich there HAS to be bread!
@@ -183,7 +196,8 @@ public class SandwichRecipe extends CustomRecipe {
 
 
         // Add food. For both cases.
-        addFoodProperties(nutrition, saturation, effects, output);
+        float saturationModifier = saturation / (2 * (float) nutrition); // Formula from "net.minecraft.world.food.FoodConstants.saturationByModifier", do algebra to find sat modifier based on saturation and nutrition.
+        addFoodProperties(nutrition, saturationModifier, effects, output);
         return output;
 
     }
