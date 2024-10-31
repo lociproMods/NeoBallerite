@@ -5,6 +5,7 @@ import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.component.NeoEnchantmentComponents;
 import com.locipro.neoballerite.datagen.lootmodifier.GLMSerializers;
 import com.locipro.neoballerite.event.ServerEventListeners;
+import com.locipro.neoballerite.item.NeoSandwiches;
 import com.locipro.neoballerite.item.util.SandwichProperties;
 import com.locipro.neoballerite.recipe.NeoRecipeSerializers;
 import com.locipro.neoballerite.item.ModItems;
@@ -81,6 +82,8 @@ public class NeoBallerite {
         LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
 
         Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));*/
+        LOGGER.info("POSSIBLE SANDWICH PERMUTATIONS FOR {} IS : {}", MODID, NeoSandwiches.POSSIBLE_SANDWICH_PERMUTATIONS);
+        NeoSandwiches.makeAllSandwichStacks();
     }
 
     // Add the example block item to the VANILLA building blocks tab

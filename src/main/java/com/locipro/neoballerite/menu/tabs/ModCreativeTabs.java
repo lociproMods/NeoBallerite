@@ -4,6 +4,7 @@ import static com.locipro.neoballerite.NeoBallerite.MODID;
 
 import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.item.NeoJams;
+import com.locipro.neoballerite.item.NeoSandwiches;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -231,6 +232,7 @@ public class ModCreativeTabs {
                 }
                 NeoJams.JAMS.iterator().forEachRemaining(item ->
                         output.accept(item.get()));
+                NeoSandwiches.POSSIBLE_SANDWICHES.iterator().forEachRemaining(output::accept);
             })
             .build());
 
