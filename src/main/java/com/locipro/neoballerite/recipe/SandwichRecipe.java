@@ -134,34 +134,6 @@ public class SandwichRecipe extends CustomRecipe {
     public @NotNull ItemStack assemble(CraftingInput input, HolderLookup.Provider registries) {
         List<Optional<ItemStack>> items = getItemsToCombine(input);
         assert items != null;
-        ArrayList<Optional<FoodProperties>> itemFood = new ArrayList<>(items.size());
-        for (var x : items) {
-            itemFood.add(Optional.empty());
-        }
-
-        // Get food properties where applicable.
-        for (int i = 0; i < items.size(); i ++) {
-            if (items.get(i).isPresent()) {
-                itemFood.add(i, Optional.ofNullable(items.get(i).get().get(DataComponents.FOOD)));
-            }
-        }
-        List<FoodProperties.PossibleEffect> effects = new ArrayList<>(itemFood.size());
-        int nutrition = 0;
-        float saturation = 0f;
-        // This is SATURATION, not saturationModifier.
-        // Have to calculate modifier later in builder.
-
-        // Add food properties.
-        for (var x : itemFood) {
-            if (x.isPresent()) {
-                var properties = x.get();
-                nutrition += properties.nutrition();
-                saturation += properties.saturation();
-                if (!properties.effects().isEmpty()) {
-                    effects.addAll(properties.effects());
-                }
-            }
-        }
 
         ItemStack output = ModItems.SANDWICH.get().getDefaultInstance();
 
@@ -196,25 +168,10 @@ public class SandwichRecipe extends CustomRecipe {
         }
 
 
-
-
-
-        // Add food. For both cases.
-        float saturationModifier = saturation / (2 * (float) nutrition); // Formula from "net.minecraft.world.food.FoodConstants.saturationByModifier", do algebra to find sat modifier based on saturation and nutrition.
-        addFoodProperties(nutrition, saturationModifier, effects, output);
         return output;
 
     }
 
-    private static void addFoodProperties(int nutrition, float saturation, List<FoodProperties.PossibleEffect> effects, ItemStack output) {
-        FoodProperties.Builder foodBuilder = new FoodProperties.Builder();
-        foodBuilder.nutrition(nutrition);
-        foodBuilder.saturationModifier(saturation);
-        for (var effect : effects) {
-            foodBuilder.effect(effect.effectSupplier(), effect.probability());
-        }
-        output.set(DataComponents.FOOD, foodBuilder.build());
-    }
 
     @Override
     public boolean canCraftInDimensions(int width, int height) {
