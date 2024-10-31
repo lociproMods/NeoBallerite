@@ -1,9 +1,12 @@
 package com.locipro.neoballerite.item.custom;
 
 
+import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.component.NeoDataComponents;
+import com.locipro.neoballerite.item.NeoSandwiches;
 import com.locipro.neoballerite.item.util.FoodMath;
-import net.minecraft.core.component.DataComponents;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
@@ -13,6 +16,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +34,40 @@ public class SandwichItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        for (var x : getIngredientsOfSandwich(stack)) {
-            if (x.isPresent()) {
-                tooltipComponents.add(Component.literal(x.toString()));
+        String bread = "";
+        String meat = "";
+        String cheese = "";
+
+        for (var oIngredient : getIngredientsOfSandwich(stack)) {
+            if (oIngredient.isPresent()) {
+                Item ingredient = oIngredient.get();
+                if (NeoSandwiches.BREAD_MAP.containsKey(ingredient)) {
+                    bread = ingredient.getName(ingredient.getDefaultInstance()).getString();
+                }
+                if (NeoSandwiches.MEAT_MAP.containsKey(ingredient)) {
+                    meat = ingredient.getName(ingredient.getDefaultInstance()).getString();
+                }
+                if (NeoSandwiches.CHEESE_MAP.containsKey(ingredient)) {
+                    cheese = ingredient.getName(ingredient.getDefaultInstance()).getString();
+                }
             }
         }
+        if (!bread.isEmpty()) {
+            tooltipComponents.add(Component.literal("Bread type : " + bread).withStyle(
+                    ChatFormatting.GRAY, ChatFormatting.ITALIC
+            ));
+        }
+        if (!meat.isEmpty()) {
+            tooltipComponents.add(Component.literal("Meat type : " + meat).withStyle(
+                    ChatFormatting.GRAY, ChatFormatting.ITALIC
+            ));
+        }
+        if (!cheese.isEmpty()) {
+            tooltipComponents.add(Component.literal("Cheese type : " + cheese).withStyle(
+                    ChatFormatting.GRAY, ChatFormatting.ITALIC));
+        }
+
+
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
@@ -48,11 +82,114 @@ public class SandwichItem extends Item {
         return UseAnim.EAT;
     }
 
+    /**
+        BEWARE : BPD CODING STYLE
+     **/
+    @Override
+    public Component getName(ItemStack stack) {
+        // Resolve existing translation keys first.
+        Component currentComponent = Component.translatable(getDescriptionId(stack));
+        if (!currentComponent.getString().startsWith("item.")) {
+            return currentComponent;
+        }
+        /*if (!Component.translatable(getDescriptionId(stack)).getString().isEmpty()) {
+            return Component.literal(Component.translatable(getDescriptionId(stack)).getString());
+        }*/
+        // Will never be empty, because if there's no translation value
+        // it defaults to a string literal of the translation key.
+        // We have to check another way.
+
+
+        List<Optional<Item>> ingredients = getIngredientsOfSandwich(stack);
+
+        String name = "";
+
+        String bread = "";
+        String meat = "";
+        String cheese = "";
+
+        boolean defaultBread = false;
+
+        for (var oIngredient : ingredients) {
+            if (oIngredient.isPresent()) {
+                Item ingredient = oIngredient.get();
+                if (NeoSandwiches.BREAD_MAP.containsKey(ingredient)) {
+                    bread = ingredient.getName(ingredient.getDefaultInstance()).getString();
+                    if (NeoSandwiches.BREAD_MAP.get(ingredient) == 1) {
+                        defaultBread = true;
+                    }
+                }
+                if (NeoSandwiches.MEAT_MAP.containsKey(ingredient)) {
+                    meat = ingredient.getName(ingredient.getDefaultInstance()).getString()
+                            .replace("Cooked ", "");
+                }
+                if (NeoSandwiches.CHEESE_MAP.containsKey(ingredient)) {
+                    cheese = ingredient.getName(ingredient.getDefaultInstance()).getString();
+                }
+            }
+        }
+
+        // this is some weird ass style bro
+        if (defaultBread) {
+            name = "Sandwich O' ";
+            if (!meat.isEmpty() && cheese.isEmpty()) {
+                name += meat;
+            }
+            else if (!cheese.isEmpty() && meat.isEmpty()) {
+                name += cheese;
+            }else {
+                name += cheese + " " + meat;
+            }
+            return Component.literal(name);
+        }
+
+
+        // why are you coding like this
+        if (!cheese.isEmpty()) {
+            name += cheese + " ";
+        }
+        if (!meat.isEmpty()) {
+            name += meat + " ";
+        }
+        if (!bread.isEmpty()) {
+            // how do I translate ON to every possible language? fuck it yall gotta cope. Pain au chocolat type shi.
+            name += "on " + bread;
+        }
+        return Component.literal(name);
+    }
+
+
+
+    // Just in case you want it ig
+    @Override
+    public String getDescriptionId(ItemStack stack) {
+        String id = "item." + NeoBallerite.MODID + ".sandwich.";
+
+
+        Optional<Item> bread = Optional.ofNullable(stack.get(NeoDataComponents.SANDWICH_BREAD));
+        Optional<Item> meat =  Optional.ofNullable(stack.get(NeoDataComponents.SANDWICH_MEAT));
+        Optional<Item> cheese = Optional.ofNullable(stack.get(NeoDataComponents.SANDWICH_CHEESE));
+
+        if (bread.isPresent()) {
+            id += BuiltInRegistries.ITEM.getKey(bread.get()).getPath().replace('/', '.');
+        }
+        if (meat.isPresent()) {
+            id += "_" + BuiltInRegistries.ITEM.getKey(meat.get()).getPath().replace('/', '.');
+        }
+        if (cheese.isPresent()) {
+            id += "_" + BuiltInRegistries.ITEM.getKey(cheese.get()).getPath().replace('/', '.');
+        }
+        //NeoBallerite.LOGGER.debug("id is {}", id);
+
+        return id;
+    }
+
+
     // Returns a FoodProperties instance that has the combined properties of all present items. (Uses default ItemStack.)
     public static FoodProperties getCombinedFoodProperties(List<Optional<Item>> items, LivingEntity entity) {
         // Initialize a list with empty optionals
         List<Optional<FoodProperties>> properties = new ArrayList<>(items.size());
-        for (var x : items) {
+        for (var ignored : items) {
             properties.add(Optional.empty());
         }
 
