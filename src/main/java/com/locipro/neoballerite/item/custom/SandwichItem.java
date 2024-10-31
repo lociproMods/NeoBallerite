@@ -32,6 +32,8 @@ public class SandwichItem extends Item {
         super(new Item.Properties());
     }
 
+
+
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         String bread = "";
@@ -234,6 +236,27 @@ public class SandwichItem extends Item {
 
 
         return foodBuilder.build();
+    }
+    /* Returns the sandwiches texture path (sandwich_bread_meat_cheese)*/
+    public static String getPath(ItemStack sandwich) {
+        String path = "sandwich_";
+
+
+        Optional<Item> bread = Optional.ofNullable(sandwich.get(NeoDataComponents.SANDWICH_BREAD));
+        Optional<Item> meat =  Optional.ofNullable(sandwich.get(NeoDataComponents.SANDWICH_MEAT));
+        Optional<Item> cheese = Optional.ofNullable(sandwich.get(NeoDataComponents.SANDWICH_CHEESE));
+
+        if (bread.isPresent()) {
+            path += BuiltInRegistries.ITEM.getKey(bread.get()).getPath().replace('/', '.');
+        }
+        if (meat.isPresent()) {
+            path += "_" + BuiltInRegistries.ITEM.getKey(meat.get()).getPath().replace('/', '.');
+        }
+        if (cheese.isPresent()) {
+            path += "_" + BuiltInRegistries.ITEM.getKey(cheese.get()).getPath().replace('/', '.');
+        }
+
+        return path;
     }
     public static List<Optional<Item>> getIngredientsOfSandwich(ItemStack stack) {
         List<Optional<Item>> list = new ArrayList<>(3);

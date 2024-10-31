@@ -24,9 +24,13 @@ public class NeoSandwiches {
             Items.COOKED_MUTTON, 3f,
             Items.COOKED_CHICKEN, 4f
     );
-    public static final Map<Item, Float> CHEESE_MAP = Map.of(
+    // TODO FOR TESTING I WILL REMOVE WARPED CHEESE
+    /*public static final Map<Item, Float> CHEESE_MAP = Map.of(
             ModItems.MILK_CHEESE.get(), 1f,
             ModItems.WARPED_CHEESE.get(), 2f
+    );*/
+    public static final Map<Item, Float> CHEESE_MAP = Map.of(
+            ModItems.MILK_CHEESE.get(), 1f
     );
     // Nuh uh, doesn't account for bread-cheese or bread-warpedcheese
     //public static final int POSSIBLE_SANDWICH_PERMUTATIONS = BREAD_MAP.size() * MEAT_MAP.size() * CHEESE_MAP.size();
@@ -43,6 +47,7 @@ public class NeoSandwiches {
                     MEAT_MAP.size()) +
                     CHEESE_MAP.size() +
                     MEAT_MAP.size() * CHEESE_MAP.size(); // Checks out!
+    public static ItemStack TEST;
 
     public static final Set<ItemStack> POSSIBLE_SANDWICHES = new HashSet<>(POSSIBLE_SANDWICH_PERMUTATIONS);
 
@@ -87,5 +92,11 @@ public class NeoSandwiches {
             }
         }
         return null;
+    }
+    public static void initTest() {
+        ItemStack sandwich = new ItemStack(ModItems.SANDWICH.get(), 1);
+        sandwich.set(NeoDataComponents.SANDWICH_BREAD, Items.BREAD);
+        sandwich.set(NeoDataComponents.SANDWICH_MEAT, Items.COOKED_BEEF);
+        TEST = sandwich.copy();
     }
 }

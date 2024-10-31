@@ -16,15 +16,27 @@ public class SandwichProperties {
         // For the RENDERER. Check package of ItemProperties
         ItemProperties.register(ModItems.SANDWICH.get(),
                 ResourceLocation.fromNamespaceAndPath(NeoBallerite.MODID, "bread"),
-                (itemStack, clientLevel, livingEntity, i) ->
-                        NeoSandwiches.BREAD_MAP.get(itemStack.get(NeoDataComponents.SANDWICH_BREAD)));
+                (itemStack, clientLevel, livingEntity, i) -> {
+                    if (itemStack.has(NeoDataComponents.SANDWICH_BREAD)) {
+                        return NeoSandwiches.BREAD_MAP.get(itemStack.get(NeoDataComponents.SANDWICH_BREAD));
+                    }
+                    return 0f;
+                });
         ItemProperties.register(ModItems.SANDWICH.get(),
                 ResourceLocation.fromNamespaceAndPath(NeoBallerite.MODID, "meat"),
-                (itemStack, clientLevel, livingEntity, i) ->
-                        NeoSandwiches.MEAT_MAP.get(itemStack.get(NeoDataComponents.SANDWICH_MEAT)));
+                (itemStack, clientLevel, livingEntity, i) -> {
+                    if (itemStack.has(NeoDataComponents.SANDWICH_MEAT)) {
+                        return NeoSandwiches.MEAT_MAP.get(itemStack.get(NeoDataComponents.SANDWICH_MEAT));
+                    }
+                    return 0f;
+                });
         ItemProperties.register(ModItems.SANDWICH.get(),
                 ResourceLocation.fromNamespaceAndPath(NeoBallerite.MODID, "cheese"),
-                (itemStack, clientLevel, livingEntity, i) ->
-                        NeoSandwiches.CHEESE_MAP.get(itemStack.get(NeoDataComponents.SANDWICH_CHEESE)));
+                (itemStack, clientLevel, livingEntity, i) -> {
+                    if (itemStack.has(NeoDataComponents.SANDWICH_CHEESE)) {
+                        return NeoSandwiches.CHEESE_MAP.get(itemStack.get(NeoDataComponents.SANDWICH_CHEESE));
+                    }
+                    return 0f;
+                });
     }
 }

@@ -1,16 +1,25 @@
 package com.locipro.neoballerite.datagen;
 
 import com.locipro.neoballerite.item.NeoJams;
-import com.locipro.neoballerite.item.custom.JamItem;
-import com.locipro.neoballerite.util.ModTags;
+import com.locipro.neoballerite.item.NeoSandwiches;
+import com.locipro.neoballerite.item.custom.SandwichItem;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.ItemModelGenerators;
+import net.minecraft.data.models.model.ModelLocationUtils;
+import net.minecraft.data.models.model.ModelTemplates;
+import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ArmorMaterials;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -26,6 +35,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+
         basicItem(RAW_BALLERITE.get());
         basicItem(RAW_BALLERITE.get());
         basicItem(COOKED_BALLERITE.get());
@@ -150,7 +160,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         NeoJams.JAMS.iterator().forEachRemaining((item) ->
                 basicItem(item.get()));
-
+        NeoSandwiches.POSSIBLE_SANDWICHES.iterator().forEachRemaining(this::sandwichStackModel);
     }
     
     
@@ -172,30 +182,39 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .texture("wall",  ResourceLocation.fromNamespaceAndPath(MODID,
                         "block/" + baseBlock.getId().getPath()));
     }
-    
-    /** new ModelFile.UncheckedModelFile("item/generated")**/
-//    public ItemModelBuilder basicItemWithModel(DeferredItem<?> item, ModelFile modelFile) {
-//        String resourceLocation = Objects.requireNonNull(item.getKey()).toString();
-//        System.out.println(resourceLocation);
-//        return getBuilder(resourceLocation)
-//                .parent(modelFile)
-//                .texture("layer0", ResourceLocation.fromNamespaceAndPath(item.getId().getNamespace(), "item/" + item.getId().getPath()));
-//    }
-//    public ItemModelBuilder handheld(DeferredItem<?> item) {
-//        return basicItemWithModel(item, new ModelFile.UncheckedModelFile("item/handheld"));
-//    }
+    public void sandwichStackModel(ItemStack sandwich) {
+        getBuilder(MODID + ":" + SandwichItem.getPath(sandwich))
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(MODID, "item/sandwich/" + SandwichItem.getPath(sandwich)));
+    }
+    public void baseSandwichModel(Item sandwichItem) {
+        /*
+            for (ItemModelGenerators.TrimModelData itemmodelgenerators$trimmodeldata : GENERATED_TRIM_MODELS) {
+                String s = itemmodelgenerators$trimmodeldata.name(armorItem.getMaterial());
+                ResourceLocation resourcelocation3 = this.getItemModelForTrimMaterial(resourcelocation, s);
+                String s1 = armorItem.getType().getName() + "_trim_" + s;
+                ResourceLocation resourcelocation4 = ResourceLocation.withDefaultNamespace(s1).withPrefix("trims/items/");
+                if (armorItem.getMaterial().is(ArmorMaterials.LEATHER)) {
+                    this.generateLayeredItem(resourcelocation3, resourcelocation1, resourcelocation2, resourcelocation4);
+                } else {
+                    this.generateLayeredItem(resourcelocation3, resourcelocation1, resourcelocation4);
+                }
+            }
+        }*/
+    }
+    /*public ItemModelBuilder basicItem(ResourceLocation item) {
+        return getBuilder(item.toString())
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(item.getNamespace(), "item/" + item.getPath()));
+    }*/
+
+
+
+
     public ItemModelBuilder handheld(DeferredItem<?> item) {
         String itemPath = item.getId().getPath();
         return withExistingParent(
                 itemPath,
                 mcLoc("item/handheld")).texture("layer0", "item/" + itemPath);
     }
-    /*public ItemModelBuilder generateTools(DeferredItem<SwordItem> swordItem,
-                                          DeferredItem<PickaxeItem> pickaxeItem,
-                                          DeferredItem<AxeItem> axeItem,
-                                          DeferredItem<ShovelItem> shovelItem,
-                                          DeferredItem<HoeItem> hoeItem) {
-        basicItemWithModel(swordItem, new ModelFile.UncheckedModelFile("item/handheld"));
-        
-    }*/
 }
