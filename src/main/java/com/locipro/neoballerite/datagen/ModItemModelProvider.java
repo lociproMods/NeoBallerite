@@ -1,5 +1,6 @@
 package com.locipro.neoballerite.datagen;
 
+import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.NeoJams;
 import com.locipro.neoballerite.item.NeoSandwiches;
@@ -19,6 +20,9 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.locipro.neoballerite.item.ModItems.*;
 import static com.locipro.neoballerite.block.ModBlocks.*;
@@ -160,36 +164,41 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .texture("wall",  ResourceLocation.fromNamespaceAndPath(MODID,
                         "block/" + baseBlock.getId().getPath()));
     }
-    public ItemModelBuilder sandwichModel(ItemStack sandwich) {
+    protected ItemModelBuilder sandwichModel(ItemStack sandwich) {
         return getBuilder(MODID + ":" + SandwichItem.getPath(sandwich))
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", ResourceLocation.fromNamespaceAndPath(MODID, "item/sandwich/" + SandwichItem.getPath(sandwich)));
     }
-    public void sandwichVariants(Item baseItem) {
+    protected void sandwichVariants(Item baseItem) {
         ResourceLocation path = BuiltInRegistries.ITEM.getKey(baseItem);
+
+        // Base texture is normally un-reachable without commands.
         ItemModelBuilder base = getBuilder(path.toString())
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", ResourceLocation.fromNamespaceAndPath(MODID, "item/sandwich/" + path.getPath()));
+
+        int index = 0;
+        // Using a Set instead of an ArrayList jumbles shit up. ArrayLists maintain order.
+        // POSSIBLE_SANDWICHES is a list of all possible permutations with bread, meat, and cheese, excluding sandwiches with *just* bread.
         for (ItemStack sandwich : NeoSandwiches.POSSIBLE_SANDWICHES) {
+            // sandwichModel returns a generated model with a texture path that depends on the sandwich's components
             ItemModelBuilder model = sandwichModel(sandwich);
 
+            // Components are of type Item
+            // BREAD/MEAT/CHEESE_MAP maps an Item to a float value
             float bread = sandwich.has(NeoDataComponents.SANDWICH_BREAD) ? NeoSandwiches.BREAD_MAP.get(sandwich.get(NeoDataComponents.SANDWICH_BREAD)) : 0;
             float meat = sandwich.has(NeoDataComponents.SANDWICH_MEAT) ? NeoSandwiches.MEAT_MAP.get(sandwich.get(NeoDataComponents.SANDWICH_MEAT)) : 0;
             float cheese = sandwich.has(NeoDataComponents.SANDWICH_CHEESE) ? NeoSandwiches.CHEESE_MAP.get(sandwich.get(NeoDataComponents.SANDWICH_CHEESE)) : 0;
 
+            // Item properties are all valid
             base.override()
                     .predicate(ResourceLocation.fromNamespaceAndPath(MODID, "bread"), bread)
                     .predicate(ResourceLocation.fromNamespaceAndPath(MODID, "meat"), meat)
                     .predicate(ResourceLocation.fromNamespaceAndPath(MODID, "cheese"), cheese)
                     .model(model);
+            index++;
         }
     }
-    /*public ItemModelBuilder basicItem(ResourceLocation item) {
-        return getBuilder(item.toString())
-                .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                .texture("layer0", ResourceLocation.fromNamespaceAndPath(item.getNamespace(), "item/" + item.getPath()));
-    }*/
-
 
 
 

@@ -83,7 +83,7 @@ public class NeoBallerite {
 
         Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));*/
         LOGGER.info("POSSIBLE SANDWICH PERMUTATIONS FOR {} IS : {}", MODID, NeoSandwiches.POSSIBLE_SANDWICH_PERMUTATIONS);
-        NeoSandwiches.makeAllSandwichStacks();
+        NeoSandwiches.init();
     }
 
     // Add the example block item to the VANILLA building blocks tab

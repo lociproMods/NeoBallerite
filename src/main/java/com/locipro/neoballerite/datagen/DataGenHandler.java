@@ -30,7 +30,7 @@ public class DataGenHandler {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-        NeoSandwiches.makeAllSandwichStacks();
+        NeoSandwiches.init();
 
         /*// Register the provider.
         generator.addProvider(

@@ -9,10 +9,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.checkerframework.checker.units.qual.K;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.lang.reflect.Array;
+import java.util.*;
 
 public class NeoSandwiches {
     public static final Map<Item, Float> BREAD_MAP = Map.of(
@@ -28,10 +28,9 @@ public class NeoSandwiches {
             ModItems.MILK_CHEESE.get(), 1f,
             ModItems.WARPED_CHEESE.get(), 2f
     );
+
     // Nuh uh, doesn't account for bread-cheese or bread-warpedcheese
     //public static final int POSSIBLE_SANDWICH_PERMUTATIONS = BREAD_MAP.size() * MEAT_MAP.size() * CHEESE_MAP.size();
-
-
     // Bread map size is a common factor yo!
     /*public static final int POSSIBLE_SANDWICH_PERMUTATIONS =
                      BREAD_MAP.size() * MEAT_MAP.size() +
@@ -44,10 +43,9 @@ public class NeoSandwiches {
                     CHEESE_MAP.size() +
                     MEAT_MAP.size() * CHEESE_MAP.size(); // Checks out!
 
-    public static final Set<ItemStack> POSSIBLE_SANDWICHES = new HashSet<>(POSSIBLE_SANDWICH_PERMUTATIONS);
+    public static ArrayList<ItemStack> POSSIBLE_SANDWICHES = new ArrayList<>(POSSIBLE_SANDWICH_PERMUTATIONS);
 
-    /** TODO massive stinky optimization **/
-    public static void makeAllSandwichStacks() {
+    /*public static void makeAllSandwichStacks() {
         NeoBallerite.LOGGER.info("ATTEMPTING TO MAKE ALL {} SANDWICH PERMUTATIONS", POSSIBLE_SANDWICH_PERMUTATIONS);
         int count = 0;
         for (int i = 0; i < BREAD_MAP.size(); i++) {
@@ -80,7 +78,59 @@ public class NeoSandwiches {
         }else {
             NeoBallerite.LOGGER.info("SUCCESSFULLY INITIALIZED ALL {} SANDWICH COMBOS", POSSIBLE_SANDWICH_PERMUTATIONS);
         }
+    }*/
+
+    // Still broken. AAAAAAAAAAAAAAAAAAA7a
+    public static ArrayList<ItemStack> getAllSandwiches(int possiblePermutations) {
+        ArrayList<ItemStack> res = new ArrayList<>(possiblePermutations);
+        int count = 0;
+
+        int bread = 0;
+        int meat = 0;
+        int cheese = 0;
+
+        // Hope this works...
+        for (int i = 0; i < BREAD_MAP.size(); i++) {
+            bread = i + 1;
+            for (int j = 0; j <= MEAT_MAP.size(); j++) {
+                meat = j;
+                for (int k = 0; k <= CHEESE_MAP.size(); k ++) {
+                    cheese = k;
+                    if (res.contains(makeSandwichFromProperties(bread, meat, cheese))) {
+                        throw new IllegalStateException("TRIED MAKING A SANDWICH INSTANCE WHICH ALREADY EXISTS IN THE LIST.");
+                    }
+                    count = res.add(makeSandwichFromProperties(bread, meat, cheese)) ? count + 1 : count;
+                }
+            }
+        }
+        // The first is bread and no meat no cheese.
+        res.removeFirst();
+        count--;
+
+
+        if (count != possiblePermutations) {
+            NeoBallerite.LOGGER.error("FAILURE TO INSTANTIATE ALL {} SANDWICH COMBOS. current count : {}", possiblePermutations, count);
+            NeoBallerite.LOGGER.error("RETURNING FAULTY SET : {}", res);
+            return res;
+        }
+        NeoBallerite.LOGGER.info("SUCCESSFULLY INITIALIZED ALL {} SANDWICH COMBOS", possiblePermutations);
+        return res;
     }
+
+    public static ItemStack makeSandwichFromProperties(int bread, int meat, int cheese) {
+        ItemStack stack = new ItemStack(ModItems.SANDWICH.get(), 1);
+        if (bread != 0) {
+            stack.set(NeoDataComponents.SANDWICH_BREAD, getKey(BREAD_MAP, (float) bread));
+        }
+        if (meat != 0) {
+            stack.set(NeoDataComponents.SANDWICH_MEAT, getKey(MEAT_MAP, (float) meat));
+        }
+        if (cheese != 0) {
+            stack.set(NeoDataComponents.SANDWICH_CHEESE, getKey(CHEESE_MAP, (float) cheese));
+        }
+        return stack;
+    }
+
 
     private static <K, V> K getKey(Map<K, V> map, V value) {
         for (Map.Entry<K, V> entry : map.entrySet()) {
@@ -89,5 +139,9 @@ public class NeoSandwiches {
             }
         }
         return null;
+    }
+
+    public static void init() {
+        POSSIBLE_SANDWICHES = getAllSandwiches(POSSIBLE_SANDWICH_PERMUTATIONS);
     }
 }
