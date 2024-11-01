@@ -39,21 +39,6 @@ public class ShapelessRepairRecipe extends CustomRecipe {
                 }
             }
         }
-        /*for (int i = 0; i < input.size(); i++ ){
-            ItemStack iterating = input.getItem(i);
-            if (!iterating.isEmpty()) {
-                if (tool == null && Ingredient.of(iterating).test(ModItems.LEAVES_BOOTS.toStack())) {
-                    tool = iterating;
-                }else {
-                    if (repairIngredient != null) {
-                        return null;
-                    }
-                    if (iterating.is(ModBlocks.STAR_LEAVES.asItem())) {
-                        repairIngredient = iterating;
-                    }
-                }
-            }
-        }*/
         return tool != null && repairIngredient != null && canCombine(tool, repairIngredient)
                 ? Pair.of(tool, repairIngredient) : null;
     }

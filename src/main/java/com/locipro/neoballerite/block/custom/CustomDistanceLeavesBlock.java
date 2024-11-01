@@ -32,7 +32,7 @@ import java.util.OptionalInt;
 public class CustomDistanceLeavesBlock extends Block implements SimpleWaterloggedBlock, net.neoforged.neoforge.common.IShearable {
 
     public static final MapCodec<LeavesBlock> CODEC = simpleCodec(LeavesBlock::new);
-    public static int DECAY_DISTANCE = 12;
+    public int DECAY_DISTANCE = 12;
     public static final IntegerProperty DISTANCE = IntegerProperty.create("star_leaves_distance", 1, 12);
     public static final BooleanProperty PERSISTENT = BlockStateProperties.PERSISTENT;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -109,7 +109,7 @@ public class CustomDistanceLeavesBlock extends Block implements SimpleWaterlogge
         return state;
     }
 
-    private static BlockState updateDistance(BlockState state, LevelAccessor level, BlockPos pos) {
+    private BlockState updateDistance(BlockState state, LevelAccessor level, BlockPos pos) {
         int i = DECAY_DISTANCE;
         BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();
 

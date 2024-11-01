@@ -5,7 +5,6 @@ import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -205,12 +204,6 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(Items.BAKED_POTATO)
                 .add(BAKED_SWEET_POTATO.get());
 
-        /*tag(ModTags.Items.JAMS)
-                .add(JAM_BLUEBERRIES.get())
-                .add(JAM_BLACKBERRIES.get())
-                .add(JAM_STRAWBERRIES.get())
-                .add(JAM_TOMATOES.get())
-                .add(JAM_SWEETBERRIES.get());*/
 
         NeoJams.JAMS.iterator().forEachRemaining((item) ->
                 tag(ModTags.Items.JAMS)

@@ -36,9 +36,6 @@ import static com.locipro.neoballerite.worldgen.NeoConfiguredFeatures.createKey;
 // You make the individual feature, i.e. a singular tree. Then you say how it's placed, NeoTreePlacements.
 public class NeoTreeFeatures {
 
-//    public static List<Block> MOD_SAPLINGS = List.of(
-//            WITHERED_SAPLING.get()
-//    );
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> WITHERED_TREE = createKey("withered_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FANCY_WITHERED_TREE = createKey("fancy_withered_tree");
@@ -48,7 +45,6 @@ public class NeoTreeFeatures {
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>>context) {
         HolderGetter<Block> holderGetter = context.lookup(Registries.BLOCK);
-//        BlockPredicate matchesBlock = BlockPredicate.matchesBlocks(MOD_SAPLINGS);
 
         FeatureUtils.register(context,
                 WITHERED_TREE,

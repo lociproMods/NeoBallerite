@@ -4,14 +4,12 @@ import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.component.NeoEnchantmentComponents;
 import com.locipro.neoballerite.datagen.lootmodifier.GLMSerializers;
-import com.locipro.neoballerite.event.ServerEventListeners;
 import com.locipro.neoballerite.item.NeoSandwiches;
 import com.locipro.neoballerite.item.util.SandwichProperties;
 import com.locipro.neoballerite.recipe.NeoRecipeSerializers;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.armor.NeoArmorMaterials;
 import com.locipro.neoballerite.menu.tabs.ModCreativeTabs;
-import net.minecraft.client.Minecraft;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;

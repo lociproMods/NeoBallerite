@@ -22,7 +22,7 @@ import java.util.List;
 /** Very similar to &HoneyBottleItem but with different sounds and different effect cures. **/
 public class MilkVileItem extends Item {
     public MilkVileItem(Properties properties) {
-        super(properties.stacksTo(16).craftRemainder(Items.GLASS_BOTTLE));
+        super(properties.stacksTo(32).craftRemainder(Items.GLASS_BOTTLE));
     }
 
     @Override

@@ -20,11 +20,6 @@ public class NeoDataComponents {
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> ADDED_DURABILITY = register(
             "added_durability", builder -> builder.persistent(Codec.INT));
 
-    /*public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> HAS_MEAT = register(
-            "has_meat", booleanBuilder -> booleanBuilder.persistent(Codec.BOOL));
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> HAS_CHEESE = register(
-            "has_meat", booleanBuilder -> booleanBuilder.persistent(Codec.BOOL));*/
-
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Item>> SANDWICH_BREAD = register(
             "sandwich_bread", itemBuilder -> itemBuilder.persistent(BuiltInRegistries.ITEM.byNameCodec())
     );

@@ -1,7 +1,5 @@
 package com.locipro.neoballerite.recipe;
 
-import com.locipro.neoballerite.NeoBallerite;
-import com.locipro.neoballerite.item.NeoSandwiches;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingInput;
 import net.minecraft.world.item.crafting.RecipeInput;
@@ -23,25 +21,18 @@ public class NeoRecipeHelper {
 
 
         for (var pred : predicates) {
-            //boolean found = false;
             for (int i = 0; i < inv.size(); i++) {
                 if (!matchedSlots.get(i)) { // If the item hasn't already been added.
                     ItemStack stack = inv.getItem(i);
-                    if (pred.test(stack)) { // Predicate always fails for some reason.
+                    if (pred.test(stack)) {
                         res.add(stack);
                         matchedSlots.set(i);
-                        //found = true;
                         break;
                     }
                 }
             }
-            //if (!found) return List.of();
         }
 
-        /*// check any unmatched slots for extraneous items
-        for (int i = 0; i < inv.size(); i++) {
-            if (!matchedSlots.get(i) && !inv.getItem(i).isEmpty()) return List.of();
-        }*/
 
         return res;
     }

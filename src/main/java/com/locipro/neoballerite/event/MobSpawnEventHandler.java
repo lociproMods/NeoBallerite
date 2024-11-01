@@ -5,22 +5,15 @@ import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.monster.AbstractSkeleton;
 import net.minecraft.world.entity.monster.Pillager;
-import net.minecraft.world.entity.monster.Vindicator;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
-import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.FinalizeSpawnEvent;
-import net.neoforged.neoforge.registries.DeferredItem;
-
-import java.util.HashMap;
 
 @EventBusSubscriber(modid = NeoBallerite.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class MobSpawnEventHandler {

@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.locipro.neoballerite.item.NeoJams;
 import com.locipro.neoballerite.item.custom.CheeseItem;
 import com.locipro.neoballerite.item.custom.JamItem;
-import com.locipro.neoballerite.item.custom.SandwichItem;
 import com.locipro.neoballerite.item.tool.NeoClaymoreItem;
 import com.locipro.neoballerite.recipe.SandwichRecipe;
 import com.locipro.neoballerite.recipe.ShapelessRepairRecipe;
@@ -18,7 +17,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.IConditionBuilder;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -56,15 +54,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         .unlockedBy("has_charred_ballerite_block", has(CHARRED_BALLERITE_BLOCK))
                         .save(recipeOutput);
 
-        // I dont want this item anymore man
-        /*ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, BALL_DOWSER)
-                .define('#', COOKED_BALLERITE_BLOCK)
-                .define('X', Items.STICK)
-                .pattern("###")
-                .pattern("#X#")
-                .pattern(" X ")
-                .unlockedBy("has_cooked_ballerite", has(COOKED_BALLERITE))
-                .save(recipeOutput);*/
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, KNIFE)
                 .define('#', Tags.Items.INGOTS_IRON)
@@ -190,13 +179,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
-//        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, COMPRESSED_BALLERITE_BLOCK.get())
-//                .pattern("BBB")
-//                .pattern("BBB")
-//                .pattern("BBB")
-//                .define('B', COMPRESSED_BALLERITE_INGOT)
-//                .unlockedBy("has_compressed_ballerite", has(COMPRESSED_BALLERITE_INGOT))
-//                .save(recipeOutput);
+
         threeByThreePacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, COMPRESSED_BALLERITE_BLOCK, COMPRESSED_BALLERITE_INGOT);
         threeByThreePacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, LEAD_BLOCK, LEAD_INGOT);
         threeByThreePacker(recipeOutput, RecipeCategory.BUILDING_BLOCKS, RAW_LEAD_BLOCK, RAW_LEAD);
@@ -273,8 +256,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         offerSmeltingAndBlasting(recipeOutput, List.of(BURNT_BALLERITE_BLOCK), RecipeCategory.MISC, CHARRED_BALLERITE_BLOCK,
                 0.7f, 260, "ballerite");
 
-        /*offerBlasting(recipeOutput, List.of(CHARRED_BALLERITE_BLOCK), RecipeCategory.MISC, COMPRESSED_BALLERITE_BLOCK,
-                0.9f, 180, "ballerite");*/
+
         offerBlasting(recipeOutput, List.of(CHARRED_BALLERITE), RecipeCategory.MISC, COMPRESSED_BALLERITE_INGOT,
                 0.9f, 180, "ballerite");
 
@@ -324,19 +306,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         offerCheesyItemRecipe(recipeOutput, CHEESE_MUTTON.get(), MILK_CHEESE.get(), Items.COOKED_MUTTON);
         offerCheesyItemRecipe(recipeOutput, CHEESE_CHICKEN.get(), MILK_CHEESE.get(), Items.COOKED_CHICKEN);
         offerCheesyItemRecipe(recipeOutput, CHEESE_FRIES.get(), MILK_CHEESE.get(), ModTags.Items.POTATOES, "potatoes");
-
-        offerSandwichRecipe(recipeOutput, STEAK_SANDWICH, MILK_CHEESE.get());
-        offerSandwichRecipe(recipeOutput, PORK_SANDWICH, MILK_CHEESE.get());
-        offerSandwichRecipe(recipeOutput, CHICKEN_SANDWICH, MILK_CHEESE.get());
-        offerSandwichRecipe(recipeOutput, FRIES_SANDWICH, MILK_CHEESE.get());
-        offerSandwichRecipe(recipeOutput, MUTTON_SANDWICH, MILK_CHEESE.get());
-        offerSandwichRecipe(recipeOutput, CHEESE_SANDWICH, MILK_CHEESE.get());
-
-        offerSandwichRecipe(recipeOutput, CHEESE_STEAK_SANDWICH, MILK_CHEESE.get());
-        offerSandwichRecipe(recipeOutput, CHEESE_PORK_SANDWICH, MILK_CHEESE.get());
-        offerSandwichRecipe(recipeOutput, CHEESE_MUTTON_SANDWICH, MILK_CHEESE.get());
-        offerSandwichRecipe(recipeOutput, CHEESE_CHICKEN_SANDWICH, MILK_CHEESE.get());
-        offerSandwichRecipe(recipeOutput, CHEESE_FRIES_SANDWICH, MILK_CHEESE.get());*/
+        */
 
         offerLantern(recipeOutput, LEAD_LANTERN, LEAD_NUGGET, LEAD_INGOT);
         offerUnlitLantern(recipeOutput, UNLIT_LANTERN, Items.IRON_NUGGET, Items.IRON_INGOT);
@@ -346,14 +316,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
         SpecialRecipeBuilder.special(ShapelessRepairRecipe::new)
-                        .save(recipeOutput, getId("leaves_boots_repair"));
+                .save(recipeOutput, getId("leaves_boots_repair"));
         SpecialRecipeBuilder.special(SandwichRecipe::new)
-                        .save(recipeOutput, getId("sandwich_recipe"));
+                .save(recipeOutput, getId("sandwich_recipe"));
     }
 
-//    protected static String getHasName(DeferredItem<?> item) {
-//        return item.getId().getPath();
-//    }
+
     private ResourceLocation getId(String path) {
         return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
@@ -415,7 +383,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     // Custom generic cooking recipe to be saved under OUR mod's namespace.
     // SimpleCookingRecipeBuilder has these methods but they get saved under minecraft's namespace. Which is why we make em.
     protected static <T extends AbstractCookingRecipe> void cookingRecipe(RecipeOutput recipeOutput, RecipeSerializer<T> pCookingSerializer, AbstractCookingRecipe.Factory<T> factory,
-                                                                       List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup, String pRecipeName) {
+                                                                          Iterable<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup, String pRecipeName) {
         for(ItemLike itemlike : pIngredients) {
             SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime, pCookingSerializer, factory).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike))
                     .save(recipeOutput, MODID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
@@ -484,7 +452,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                                      DeferredItem<AxeItem> axeItem,
                                      DeferredItem<ShovelItem> shovelItem,
                                      DeferredItem<HoeItem> hoeItem,
-                                     DeferredItem<?> repairItem) {
+                                     ItemLike repairItem) {
         String condition = getHasName(repairItem);
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, hoeItem)
                 .define('#', Items.STICK)
@@ -550,71 +518,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput, MODID + ":" + getItemName(result) + "from_tag_" + tagName);
     }
 
-    /*protected static void offerSandwichRecipe(RecipeOutput recipeOutput, DeferredItem<SandwichItem> sandwichItem, Item cheeseType) {
-        // Basically if the item uses a tag for the filler instead of one item
-        if (sandwichItem.get().getFillerTag() != null) {
-            if (sandwichItem.get().getCheesyFillerItem() != null) {
-                ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sandwichItem)
-                        .requires(ModTags.Items.KNIVES)
-                        .requires(sandwichItem.get().getBreadItem())
-                        .requires(sandwichItem.get().getCheesyFillerItem())
-                        .unlockedBy("has_potatoes", has(ModTags.Items.POTATOES))
-                        .save(recipeOutput, MODID + ":" + getItemName(sandwichItem) + "_from_cheesy_filler");
-                ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sandwichItem)
-                        .requires(ModTags.Items.KNIVES)
-                        .requires(sandwichItem.get().getBreadItem())
-                        .requires(ModTags.Items.POTATOES)
-                        .requires(cheeseType)
-                        .unlockedBy("has_potatoes", has(ModTags.Items.POTATOES))
-                        .save(recipeOutput, MODID + ":" + getItemName(sandwichItem) + "_from_filler_and_cheese");
-                return;
-            }
-            ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sandwichItem)
-                    .requires(ModTags.Items.KNIVES)
-                    .requires(sandwichItem.get().getBreadItem())
-                    .requires(ModTags.Items.POTATOES)
-                    .unlockedBy("has_potatoes", has(ModTags.Items.POTATOES))
-                    .save(recipeOutput, MODID + ":" + getItemName(sandwichItem) + "_from_filler");
-            return;
-        }
-        if (sandwichItem.get().hasCheese()) {
-            ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sandwichItem)
-                    .requires(ModTags.Items.KNIVES)
-                    .requires(sandwichItem.get().getBreadItem())
-                    .requires(cheeseType)
-                    .requires(sandwichItem.get().getFillerItem())
-                    .unlockedBy(getHasName(sandwichItem.get().getFillerItem()), has(sandwichItem.get().getFillerItem()))
-                    .save(recipeOutput, MODID + ":" + getItemName(sandwichItem) + "_from_filler_and_cheese");
-            ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sandwichItem)
-                    .requires(ModTags.Items.KNIVES)
-                    .requires(sandwichItem.get().getBreadItem())
-                    .requires(sandwichItem.get().getCheesyFillerItem())
-                    .unlockedBy(getHasName(sandwichItem.get().getFillerItem()), has(sandwichItem.get().getFillerItem()))
-                    .save(recipeOutput, MODID + ":" + getItemName(sandwichItem) + "_from_cheesy_filler");
-            return;
-        }
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, sandwichItem)
-                .requires(ModTags.Items.KNIVES)
-                .requires(sandwichItem.get().getBreadItem())
-                .requires(sandwichItem.get().getFillerItem())
-                .unlockedBy(getHasName(sandwichItem.get().getFillerItem()), has(sandwichItem.get().getFillerItem()))
-                .save(recipeOutput);
-
-    }
-    protected void offerCheesyItemRecipe(RecipeOutput recipeOutput, Item cheesyItem, Item cheeseItem, ItemLike item) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, cheesyItem)
-                .requires(item)
-                .requires(cheeseItem)
-                .unlockedBy(getHasName(item), has(item))
-                .save(recipeOutput);
-    }
-    protected void offerCheesyItemRecipe(RecipeOutput recipeOutput, Item cheesyItem, Item cheeseItem, TagKey<Item> item, String tagName) {
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, cheesyItem)
-                .requires(cheeseItem)
-                .requires(item)
-                .unlockedBy("has_tag_" + tagName, has(item))
-                .save(recipeOutput, MODID + ":" + getItemName(cheesyItem) + "_from_tag_" + tagName);
-    }*/
     protected void offerLantern(RecipeOutput recipeOutput, ItemLike lantern, ItemLike nugget, ItemLike ingot) {
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, lantern)
                 .define('#', Items.TORCH)

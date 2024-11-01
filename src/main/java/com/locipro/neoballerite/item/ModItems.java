@@ -50,8 +50,8 @@ public class ModItems {
         return item;
     }
 
-    public static final DeferredItem<Item> BALL_DOWSER = ITEMS.register("ball_dowser",
-            () -> new BallDowserItem(new Item.Properties()));
+/*    public static final DeferredItem<Item> BALL_DOWSER = ITEMS.register("ball_dowser",
+            () -> new BallDowserItem(new Item.Properties()));*/
     public static final DeferredItem<Item> COMPRESSED_BALLERITE_INGOT = ITEMS.register("compressed_ballerite_ingot",
             () -> new Item(new Item.Properties()));
 
@@ -172,7 +172,7 @@ public class ModItems {
                             .withStyle(ChatFormatting.GREEN));
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
-            });
+            }.effectParticles().ambient());
     public static final DeferredItem<ArmorItem> BALLERITE_CHESTPLATE = ITEMS.register("ballerite_chestplate",
             () -> new BalleriteArmorItem(
                     ArmorItem.Type.CHESTPLATE,
@@ -284,7 +284,7 @@ public class ModItems {
                             .withStyle(ChatFormatting.DARK_BLUE));
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
-            });
+            }.effectParticles().ambient());
     public static final DeferredItem<ArmorItem> LEAD_CHESTPLATE = ITEMS.register("lead_chestplate",
             () -> new LeadArmorItem(
                     ArmorItem.Type.CHESTPLATE,

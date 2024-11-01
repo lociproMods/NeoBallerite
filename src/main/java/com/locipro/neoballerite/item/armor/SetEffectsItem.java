@@ -18,8 +18,8 @@ public class SetEffectsItem extends ArmorItem {
     private final int durationTicks;
     private final int amplifier;
     private boolean hasEffect;
-    private boolean visibleParticles = true;
-    private boolean ambient = true;
+    private boolean visibleParticles = false;
+    private boolean ambient = false;
 //    private int ticksPassed = 0;
 
     public SetEffectsItem(Holder<ArmorMaterial> material, Type type, Properties properties, Holder<MobEffect> mobEffect, int durationTicks, int amplifier) {
@@ -28,12 +28,12 @@ public class SetEffectsItem extends ArmorItem {
         this.durationTicks = durationTicks;
         this.amplifier = amplifier;
     }
-    public SetEffectsItem effectParticles(boolean visible) {
-        this.visibleParticles = visible;
+    public SetEffectsItem effectParticles() {
+        this.visibleParticles = true;
         return this;
     }
-    public SetEffectsItem ambient(boolean isAmbient) {
-        this.ambient = isAmbient;
+    public SetEffectsItem ambient() {
+        this.ambient = true;
         return this;
     }
 
@@ -43,11 +43,6 @@ public class SetEffectsItem extends ArmorItem {
 
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-//        ticksPassed++;
-//        if (ticksPassed >= durationTicks) {
-//            hasEffect = false;
-//            ticksPassed = 0;
-//        }
 
         if (entity instanceof ServerPlayer player) {
             if (canGetEffect(player, mobEffect, amplifier)) {

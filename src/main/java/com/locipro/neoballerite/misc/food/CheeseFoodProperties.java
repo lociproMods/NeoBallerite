@@ -7,10 +7,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
-import org.checkerframework.checker.units.qual.C;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 
 public abstract class CheeseFoodProperties {

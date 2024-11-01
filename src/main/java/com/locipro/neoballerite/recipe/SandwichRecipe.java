@@ -6,8 +6,6 @@ import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.NeoSandwiches;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
-import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CraftingInput;
@@ -27,10 +25,10 @@ public class SandwichRecipe extends CustomRecipe {
     private static final Predicate<ItemStack> pMEAT = stack -> NeoSandwiches.MEAT_MAP.containsKey(stack.getItem());
     private static final Predicate<ItemStack> pCHEESE = stack -> NeoSandwiches.CHEESE_MAP.containsKey(stack.getItem());
     private static final Predicate<ItemStack> pKNIFE = stack -> stack.is(ModTags.Items.KNIVES);
-    private static final Predicate<ItemStack> pSandwich = stack -> stack.is(ModItems.SANDWICH);
+    private static final Predicate<ItemStack> pSANDWICH = stack -> stack.is(ModItems.SANDWICH);
 
     private static final List<Predicate<ItemStack>> MATCH_PREDICATE = List.of(
-            pBREAD, pMEAT, pCHEESE, pSandwich
+            pBREAD, pMEAT, pCHEESE, pSANDWICH
     );
 
 
@@ -54,7 +52,7 @@ public class SandwichRecipe extends CustomRecipe {
 
         // Set indexes of list.
         for (ItemStack stack : inputs) {
-            if (output.getFirst().isEmpty() && pSandwich.test(stack)) {
+            if (output.getFirst().isEmpty() && pSANDWICH.test(stack)) {
                 output.set(0, Optional.ofNullable(stack));
             }
             else if (output.get(1).isEmpty() && pBREAD.test(stack)) {
@@ -167,7 +165,6 @@ public class SandwichRecipe extends CustomRecipe {
             }
         }
 
-
         return output;
 
     }
@@ -184,63 +181,3 @@ public class SandwichRecipe extends CustomRecipe {
         return NeoRecipeSerializers.SANDWICH_RECIPE_SERIALIZER.get();
     }
 }
-// Working sandwich maker (from bread and ingredients)
-/*if (items.get(0) == ItemStack.EMPTY) {
-            // Well, since there's no sandwich there HAS to be bread!
-            // If there's bread but no meat or cheese... What are we to do?
-            if (items.get(1) == ItemStack.EMPTY ||
-                    (items.get(2) == ItemStack.EMPTY && items.get(3) == ItemStack.EMPTY)) {
-                return ItemStack.EMPTY;
-            }
-
-            ItemStack sammich = ModItems.SANDWICH.get().getDefaultInstance();
-            FoodProperties.Builder sammichF = new FoodProperties.Builder();
-
-            // TODO make list of mob effect instances to take from items.
-            int nutrition = 0;
-            float saturation = 0;
-
-            // there HAS to be bread if there's no sandwich, so this will always have something.
-            ItemStack bread = items.get(1).copy();
-            // There will always be at least one of these
-            ItemStack meat = items.get(2).copy() != ItemStack.EMPTY ? items.get(2) : null;
-            ItemStack cheese = items.get(3).copy() != ItemStack.EMPTY ? items.get(3) : null;
-
-            FoodProperties breadF = bread.has(DataComponents.FOOD) ? bread.get(DataComponents.FOOD) : null;
-            FoodProperties meatF = null;
-            FoodProperties cheeseF = null;
-            if (meat != null) {
-                 meatF = meat.has(DataComponents.FOOD) ? meat.get(DataComponents.FOOD) : null;
-            }
-            if (cheese != null) {
-               cheeseF = cheese.has(DataComponents.FOOD) ? cheese.get(DataComponents.FOOD) : null;
-            }
-
-
-            sammich.set(NeoDataComponents.SANDWICH_BREAD, bread.getItem());
-            if (breadF != null) {
-                nutrition += breadF.nutrition();
-                saturation += breadF.saturation();
-            }
-
-            if (meat != null) {
-                sammich.set(NeoDataComponents.SANDWICH_MEAT, meat.getItem());
-                if (meatF != null) {
-                    nutrition += meatF.nutrition();
-                    saturation += meatF.saturation();
-                }
-            }
-            if (cheese != null) {
-                sammich.set(NeoDataComponents.SANDWICH_CHEESE, cheese.getItem());
-                if (cheeseF != null) {
-                    nutrition += cheeseF.nutrition();
-                    saturation += cheeseF.saturation();
-                }
-            }
-
-            sammichF.nutrition(nutrition);
-            sammichF.saturationModifier(saturation);
-            sammich.set(DataComponents.FOOD, sammichF.build());
-
-            return sammich;
-        }*/

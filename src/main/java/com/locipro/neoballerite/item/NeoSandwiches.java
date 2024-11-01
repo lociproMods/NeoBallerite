@@ -2,16 +2,10 @@ package com.locipro.neoballerite.item;
 
 import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.component.NeoDataComponents;
-import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponentPatch;
-import net.minecraft.core.component.PatchedDataComponentMap;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import org.checkerframework.checker.units.qual.K;
-import org.jetbrains.annotations.Nullable;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class NeoSandwiches {
@@ -43,7 +37,7 @@ public class NeoSandwiches {
                     CHEESE_MAP.size() +
                     MEAT_MAP.size() * CHEESE_MAP.size(); // Checks out!
 
-    public static ArrayList<ItemStack> POSSIBLE_SANDWICHES = new ArrayList<>(POSSIBLE_SANDWICH_PERMUTATIONS);
+    public static List<ItemStack> POSSIBLE_SANDWICHES = new ArrayList<>(POSSIBLE_SANDWICH_PERMUTATIONS);
 
     /*public static void makeAllSandwichStacks() {
         NeoBallerite.LOGGER.info("ATTEMPTING TO MAKE ALL {} SANDWICH PERMUTATIONS", POSSIBLE_SANDWICH_PERMUTATIONS);

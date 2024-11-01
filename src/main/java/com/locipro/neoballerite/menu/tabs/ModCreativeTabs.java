@@ -2,7 +2,6 @@ package com.locipro.neoballerite.menu.tabs;
 
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
-import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.item.NeoJams;
 import com.locipro.neoballerite.item.NeoSandwiches;
 import net.minecraft.core.registries.Registries;

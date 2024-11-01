@@ -3,7 +3,6 @@ package com.locipro.neoballerite.item.custom;
 import com.locipro.neoballerite.item.util.FoodMath;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
@@ -58,11 +57,6 @@ public class JamItem extends Item {
     }
 
     public static String getBaseItemNamePlural(ItemLike item) {
-        /*String itemName = item
-                .toString()
-                .toLowerCase()
-                .replace('_', ' ');*/
-//        String itemName = item.asItem().getDescriptionId();
         String itemName = item.asItem()
                 .toString()
                 .toLowerCase()

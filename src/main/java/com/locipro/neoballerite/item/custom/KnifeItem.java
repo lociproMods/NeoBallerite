@@ -1,7 +1,5 @@
 package com.locipro.neoballerite.item.custom;
 
-import com.google.common.collect.ImmutableSet;
-import com.ibm.icu.impl.locale.XCldrStub;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;

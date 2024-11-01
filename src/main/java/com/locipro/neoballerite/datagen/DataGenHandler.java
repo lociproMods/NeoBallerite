@@ -9,14 +9,12 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = MODID)
@@ -32,17 +30,7 @@ public class DataGenHandler {
 
         NeoSandwiches.init();
 
-        /*// Register the provider.
-        generator.addProvider(
-                // A boolean that determines whether the data should actually be generated.
-                // The event provides methods that determine this:
-                // event.includeClient(), event.includeServer(),
-                // event.includeDev() and event.includeReports().
-                // Since recipes are server data, we only run them in a server datagen.
-                event.includeServer(),
-                // Our provider.
-                new ModRecipeProvider(output, lookupProvider)
-        );*/
+
 
         generator.addProvider(
                 event.includeServer(),

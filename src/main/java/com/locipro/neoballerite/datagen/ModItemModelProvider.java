@@ -1,6 +1,5 @@
 package com.locipro.neoballerite.datagen;
 
-import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.NeoJams;
 import com.locipro.neoballerite.item.NeoSandwiches;
@@ -21,9 +20,6 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static com.locipro.neoballerite.item.ModItems.*;
 import static com.locipro.neoballerite.block.ModBlocks.*;
 import static com.locipro.neoballerite.NeoBallerite.MODID;
@@ -41,17 +37,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(COOKED_BALLERITE.get());
         basicItem(CHARRED_BALLERITE.get());
         basicItem(COMPRESSED_BALLERITE_INGOT.get());
-        basicItem(BALL_DOWSER.get());
 
 
         basicItem(RAW_LEAD.get());
         basicItem(LEAD_INGOT.get());
         basicItem(LEAD_NUGGET.get());
 
-//        basicItem(WITHERED_LOG.asItem());
-//        basicItem(STRIPPED_WITHERED_LOG.asItem());
-//        basicItem(WITHERED_WOOD.asItem());
-//        basicItem(STRIPPED_WITHERED_WOOD.asItem());
+
 
         buttonItem(WITHERED_BUTTON, WITHERED_PLANKS);
         fenceItem(WITHERED_FENCE, WITHERED_PLANKS);
