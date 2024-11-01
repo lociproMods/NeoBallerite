@@ -135,6 +135,8 @@ public class ModItemModelProvider extends ItemModelProvider {
                 basicItem(item.get()));
 
         sandwichVariants(SANDWICH.get());
+
+        basicItem(CORN_BREAD.get());
     }
     
     

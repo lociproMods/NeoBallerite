@@ -215,6 +215,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(Tags.Items.INGOTS)
                 .add(LEAD_INGOT.get())
                 .add(COMPRESSED_BALLERITE_INGOT.get());
+
         tag(Tags.Items.NUGGETS)
                 .add(LEAD_NUGGET.get());
 
@@ -235,6 +236,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         tag(Tags.Items.RAW_MATERIALS)
                 .add(RAW_LEAD.get());
+
+        tag(Tags.Items.FOODS_BREAD)
+                .add(CORN_BREAD.get());
 
 
     }

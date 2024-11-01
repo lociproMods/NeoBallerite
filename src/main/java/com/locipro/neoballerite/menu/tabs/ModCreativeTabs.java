@@ -155,7 +155,9 @@ public class ModCreativeTabs {
 
             IRON_CARROT,
             DIAMOND_CARROT,
-            ENCHANTED_DIAMOND_CARROT
+            ENCHANTED_DIAMOND_CARROT,
+
+            CORN_BREAD
 
 
 //            CHEESE_STEAK,

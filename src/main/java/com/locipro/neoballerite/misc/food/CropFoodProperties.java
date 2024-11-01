@@ -45,6 +45,10 @@ public abstract class CropFoodProperties {
             .saturationModifier(0.0F)
             .fast()
             .build();
+    public static final FoodProperties CORN_BREAD = new FoodProperties.Builder()
+            .nutrition(7)
+            .saturationModifier(0.7f)
+            .build();
 
     public static FoodProperties IRON_CARROT = new FoodProperties.Builder()
             .nutrition(4)

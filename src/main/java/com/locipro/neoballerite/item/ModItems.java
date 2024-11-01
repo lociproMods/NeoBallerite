@@ -385,7 +385,7 @@ public class ModItems {
     public static final DeferredItem<Item> TOMATO = ITEMS.register("tomato",
             () -> new Item(new Item.Properties().food(CropFoodProperties.TOMATO)));
     public static final DeferredItem<Item> GRILLED_TOMATO = ITEMS.register("grilled_tomato",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.TOMATO)));
+            () -> new Item(new Item.Properties().food(CropFoodProperties.GRILLED_TOMATO)));
     public static final DeferredItem<BlockItem> TOMATO_SEEDS = ITEMS.registerSimpleBlockItem("tomato_seeds",
             ModBlocks.TOMATO_CROP, new Item.Properties());
 
@@ -480,6 +480,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(CheeseFoodProperties.CHEESE_FRIES)));*/
 
     public static final DeferredItem<SandwichItem> SANDWICH = ITEMS.register("default_sandwich", SandwichItem::new);
+    public static final DeferredItem<Item> CORN_BREAD = ITEMS.register("corn_bread",
+            () -> new Item(new Item.Properties().food(CropFoodProperties.CORN_BREAD)));
     //endregion
 
 
