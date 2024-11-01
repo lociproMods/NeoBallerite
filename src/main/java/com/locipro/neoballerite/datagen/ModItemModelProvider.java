@@ -1,7 +1,6 @@
 package com.locipro.neoballerite.datagen;
 
 import com.locipro.neoballerite.component.NeoDataComponents;
-import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.NeoJams;
 import com.locipro.neoballerite.item.NeoSandwiches;
 import com.locipro.neoballerite.item.custom.SandwichItem;
@@ -16,7 +15,6 @@ import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
-import net.neoforged.neoforge.client.model.generators.ModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -136,30 +134,11 @@ public class ModItemModelProvider extends ItemModelProvider {
 
 
 
-//        basicItem(CHEESE_CHICKEN.get());
-//        basicItem(CHEESE_STEAK.get());
-//        basicItem(CHEESE_PORK.get());
-//        basicItem(CHEESE_MUTTON.get());
-//        basicItem(CHEESE_FRIES.get());
-//
-//        basicItem(CHEESE_CHICKEN_SANDWICH.get());
-//        basicItem(CHEESE_STEAK_SANDWICH.get());
-//        basicItem(CHEESE_PORK_SANDWICH.get());
-//        basicItem(CHEESE_MUTTON_SANDWICH.get());
-//        basicItem(CHEESE_FRIES_SANDWICH.get());
-//
-//
-//        basicItem(CHEESE_SANDWICH.get());
-//        basicItem(STEAK_SANDWICH.get());
-//        basicItem(CHICKEN_SANDWICH.get());
-//        basicItem(PORK_SANDWICH.get());
-//        basicItem(MUTTON_SANDWICH.get());
-//        basicItem(FRIES_SANDWICH.get());
 
         NeoJams.JAMS.iterator().forEachRemaining((item) ->
                 basicItem(item.get()));
-        //NeoSandwiches.POSSIBLE_SANDWICHES.iterator().forEachRemaining(this::sandwichModel);
-        baseSandwichModel(SANDWICH.get());
+
+        sandwichVariants(SANDWICH.get());
     }
     
     
@@ -181,20 +160,18 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .texture("wall",  ResourceLocation.fromNamespaceAndPath(MODID,
                         "block/" + baseBlock.getId().getPath()));
     }
-    public void sandwichModel(ItemStack sandwich) {
-        getBuilder(MODID + ":" + SandwichItem.getPath(sandwich))
+    public ItemModelBuilder sandwichModel(ItemStack sandwich) {
+        return getBuilder(MODID + ":" + SandwichItem.getPath(sandwich))
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", ResourceLocation.fromNamespaceAndPath(MODID, "item/sandwich/" + SandwichItem.getPath(sandwich)));
     }
-    public void baseSandwichModel(Item sandwichItem) {
-        ResourceLocation path = BuiltInRegistries.ITEM.getKey(sandwichItem);
+    public void sandwichVariants(Item baseItem) {
+        ResourceLocation path = BuiltInRegistries.ITEM.getKey(baseItem);
         ItemModelBuilder base = getBuilder(path.toString())
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                .texture("layer0", ResourceLocation.fromNamespaceAndPath(MODID, "item/" + path.getPath()));
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(MODID, "item/sandwich/" + path.getPath()));
         for (ItemStack sandwich : NeoSandwiches.POSSIBLE_SANDWICHES) {
-            ItemModelBuilder model = getBuilder(MODID + ":" + SandwichItem.getPath(sandwich))
-                    .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                    .texture("layer0", ResourceLocation.fromNamespaceAndPath(MODID, "item/sandwich/" + SandwichItem.getPath(sandwich)));
+            ItemModelBuilder model = sandwichModel(sandwich);
 
             float bread = sandwich.has(NeoDataComponents.SANDWICH_BREAD) ? NeoSandwiches.BREAD_MAP.get(sandwich.get(NeoDataComponents.SANDWICH_BREAD)) : 0;
             float meat = sandwich.has(NeoDataComponents.SANDWICH_MEAT) ? NeoSandwiches.MEAT_MAP.get(sandwich.get(NeoDataComponents.SANDWICH_MEAT)) : 0;

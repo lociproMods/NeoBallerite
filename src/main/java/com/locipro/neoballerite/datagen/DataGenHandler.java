@@ -31,8 +31,6 @@ public class DataGenHandler {
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
         NeoSandwiches.makeAllSandwichStacks();
-        NeoSandwiches.initTest();
-
 
         /*// Register the provider.
         generator.addProvider(

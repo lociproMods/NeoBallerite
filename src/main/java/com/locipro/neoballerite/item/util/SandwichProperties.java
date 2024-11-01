@@ -18,6 +18,7 @@ public class SandwichProperties {
                 ResourceLocation.fromNamespaceAndPath(NeoBallerite.MODID, "bread"),
                 (itemStack, clientLevel, livingEntity, i) -> {
                     if (itemStack.has(NeoDataComponents.SANDWICH_BREAD)) {
+                        //NeoBallerite.LOGGER.debug("Item stack has bread property, returning {}", NeoSandwiches.BREAD_MAP.get(itemStack.get(NeoDataComponents.SANDWICH_BREAD)));
                         return NeoSandwiches.BREAD_MAP.get(itemStack.get(NeoDataComponents.SANDWICH_BREAD));
                     }
                     return 0f;
@@ -26,6 +27,7 @@ public class SandwichProperties {
                 ResourceLocation.fromNamespaceAndPath(NeoBallerite.MODID, "meat"),
                 (itemStack, clientLevel, livingEntity, i) -> {
                     if (itemStack.has(NeoDataComponents.SANDWICH_MEAT)) {
+                        //NeoBallerite.LOGGER.debug("Item stack has meat property, returning {}", NeoSandwiches.MEAT_MAP.get(itemStack.get(NeoDataComponents.SANDWICH_MEAT)));
                         return NeoSandwiches.MEAT_MAP.get(itemStack.get(NeoDataComponents.SANDWICH_MEAT));
                     }
                     return 0f;
@@ -34,6 +36,7 @@ public class SandwichProperties {
                 ResourceLocation.fromNamespaceAndPath(NeoBallerite.MODID, "cheese"),
                 (itemStack, clientLevel, livingEntity, i) -> {
                     if (itemStack.has(NeoDataComponents.SANDWICH_CHEESE)) {
+                        //NeoBallerite.LOGGER.debug("Item stack has cheese property, returning {}", NeoSandwiches.CHEESE_MAP.get(itemStack.get(NeoDataComponents.SANDWICH_CHEESE)));
                         return NeoSandwiches.CHEESE_MAP.get(itemStack.get(NeoDataComponents.SANDWICH_CHEESE));
                     }
                     return 0f;
