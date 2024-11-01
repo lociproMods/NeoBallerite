@@ -9,19 +9,21 @@ import net.minecraft.world.item.Items;
 import java.util.*;
 
 public class NeoSandwiches {
-    public static final Map<Item, Float> BREAD_MAP = Map.of(
-            Items.BREAD, 1f
-    );
-    public static final Map<Item, Float> MEAT_MAP = Map.of(
-            Items.COOKED_BEEF, 1f,
-            Items.COOKED_PORKCHOP, 2f,
-            Items.COOKED_MUTTON, 3f,
-            Items.COOKED_CHICKEN, 4f
-    );
-    public static final Map<Item, Float> CHEESE_MAP = Map.of(
-            ModItems.MILK_CHEESE.get(), 1f,
-            ModItems.WARPED_CHEESE.get(), 2f
-    );
+    public static final Set<Item> BREAD_MAP = new LinkedHashSet<>(List.of(
+            Items.BREAD));
+    public static final Set<Item> MEAT_MAP = new LinkedHashSet<>(List.of(
+            Items.COOKED_BEEF,
+            Items.COOKED_PORKCHOP,
+            Items.COOKED_MUTTON,
+            Items.COOKED_CHICKEN,
+            Items.COOKED_RABBIT,
+            Items.COOKED_COD,
+            Items.COOKED_SALMON
+    ));
+    public static final Set<Item> CHEESE_MAP = new LinkedHashSet<>(List.of(
+            ModItems.MILK_CHEESE.get(),
+            ModItems.WARPED_CHEESE.get()
+    ));
 
     // Nuh uh, doesn't account for bread-cheese or bread-warpedcheese
     //public static final int POSSIBLE_SANDWICH_PERMUTATIONS = BREAD_MAP.size() * MEAT_MAP.size() * CHEESE_MAP.size();
@@ -113,13 +115,13 @@ public class NeoSandwiches {
     public static ItemStack makeSandwichFromProperties(int bread, int meat, int cheese) {
         ItemStack stack = new ItemStack(ModItems.SANDWICH.get(), 1);
         if (bread != 0) {
-            stack.set(NeoDataComponents.SANDWICH_BREAD, getKey(BREAD_MAP, (float) bread));
+            stack.set(NeoDataComponents.SANDWICH_BREAD, get(BREAD_MAP, bread - 1));
         }
         if (meat != 0) {
-            stack.set(NeoDataComponents.SANDWICH_MEAT, getKey(MEAT_MAP, (float) meat));
+            stack.set(NeoDataComponents.SANDWICH_MEAT, get(MEAT_MAP, meat - 1));
         }
         if (cheese != 0) {
-            stack.set(NeoDataComponents.SANDWICH_CHEESE, getKey(CHEESE_MAP, (float) cheese));
+            stack.set(NeoDataComponents.SANDWICH_CHEESE, get(CHEESE_MAP, cheese - 1));
         }
         return stack;
     }
@@ -131,6 +133,23 @@ public class NeoSandwiches {
             }
         }
         return null;
+    }
+    // Prolly should make a util class and make my implementation of set have these
+    public static <T> int getIndex(Set<T> set, T element) {
+        if (set.contains(element)) {
+            int result = 0;
+            for (var x : set) {
+                if (x.equals(element)) {
+                    return result;
+                }
+                result++;
+            }
+        }
+        return -1;
+    }
+    public static <T> T get(Set<T> set, int index) {
+        List<T> list = new ArrayList<>(set);
+        return list.get(index);
     }
 
     public static void init() {

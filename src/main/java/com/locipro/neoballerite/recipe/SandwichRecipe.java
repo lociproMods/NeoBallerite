@@ -21,9 +21,9 @@ import java.util.function.Predicate;
 public class SandwichRecipe extends CustomRecipe {
 
 
-    private static final Predicate<ItemStack> pBREAD = stack -> NeoSandwiches.BREAD_MAP.containsKey(stack.getItem());
-    private static final Predicate<ItemStack> pMEAT = stack -> NeoSandwiches.MEAT_MAP.containsKey(stack.getItem());
-    private static final Predicate<ItemStack> pCHEESE = stack -> NeoSandwiches.CHEESE_MAP.containsKey(stack.getItem());
+    private static final Predicate<ItemStack> pBREAD = stack -> NeoSandwiches.BREAD_MAP.contains(stack.getItem());
+    private static final Predicate<ItemStack> pMEAT = stack -> NeoSandwiches.MEAT_MAP.contains(stack.getItem());
+    private static final Predicate<ItemStack> pCHEESE = stack -> NeoSandwiches.CHEESE_MAP.contains(stack.getItem());
     private static final Predicate<ItemStack> pKNIFE = stack -> stack.is(ModTags.Items.KNIVES);
     private static final Predicate<ItemStack> pSANDWICH = stack -> stack.is(ModItems.SANDWICH);
 

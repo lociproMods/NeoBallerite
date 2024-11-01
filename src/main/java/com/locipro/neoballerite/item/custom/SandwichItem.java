@@ -42,13 +42,13 @@ public class SandwichItem extends Item {
         for (var oIngredient : getIngredientsOfSandwich(stack)) {
             if (oIngredient.isPresent()) {
                 Item ingredient = oIngredient.get();
-                if (NeoSandwiches.BREAD_MAP.containsKey(ingredient)) {
+                if (NeoSandwiches.BREAD_MAP.contains(ingredient)) {
                     bread = ingredient.getName(ingredient.getDefaultInstance()).getString();
                 }
-                if (NeoSandwiches.MEAT_MAP.containsKey(ingredient)) {
+                if (NeoSandwiches.MEAT_MAP.contains(ingredient)) {
                     meat = ingredient.getName(ingredient.getDefaultInstance()).getString();
                 }
-                if (NeoSandwiches.CHEESE_MAP.containsKey(ingredient)) {
+                if (NeoSandwiches.CHEESE_MAP.contains(ingredient)) {
                     cheese = ingredient.getName(ingredient.getDefaultInstance()).getString();
                 }
             }
@@ -132,17 +132,18 @@ public class SandwichItem extends Item {
         for (var oIngredient : ingredients) {
             if (oIngredient.isPresent()) {
                 Item ingredient = oIngredient.get();
-                if (NeoSandwiches.BREAD_MAP.containsKey(ingredient)) {
+                if (NeoSandwiches.BREAD_MAP.contains(ingredient)) {
                     bread = ingredient.getName(ingredient.getDefaultInstance()).getString();
-                    if (NeoSandwiches.BREAD_MAP.get(ingredient) == 1) {
+                    // If it's the first bread, or DEFAULT bread
+                    if (NeoSandwiches.getIndex(NeoSandwiches.BREAD_MAP, ingredient) == 0) {
                         defaultBread = true;
                     }
                 }
-                if (NeoSandwiches.MEAT_MAP.containsKey(ingredient)) {
+                if (NeoSandwiches.MEAT_MAP.contains(ingredient)) {
                     meat = ingredient.getName(ingredient.getDefaultInstance()).getString()
                             .replace("Cooked ", "");
                 }
-                if (NeoSandwiches.CHEESE_MAP.containsKey(ingredient)) {
+                if (NeoSandwiches.CHEESE_MAP.contains(ingredient)) {
                     cheese = ingredient.getName(ingredient.getDefaultInstance()).getString();
                 }
             }

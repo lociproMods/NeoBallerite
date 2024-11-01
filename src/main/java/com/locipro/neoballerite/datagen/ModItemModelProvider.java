@@ -178,9 +178,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
             // Components are of type Item
             // BREAD/MEAT/CHEESE_MAP maps an Item to a float value
-            float bread = sandwich.has(NeoDataComponents.SANDWICH_BREAD) ? NeoSandwiches.BREAD_MAP.get(sandwich.get(NeoDataComponents.SANDWICH_BREAD)) : 0;
-            float meat = sandwich.has(NeoDataComponents.SANDWICH_MEAT) ? NeoSandwiches.MEAT_MAP.get(sandwich.get(NeoDataComponents.SANDWICH_MEAT)) : 0;
-            float cheese = sandwich.has(NeoDataComponents.SANDWICH_CHEESE) ? NeoSandwiches.CHEESE_MAP.get(sandwich.get(NeoDataComponents.SANDWICH_CHEESE)) : 0;
+            float bread = sandwich.has(NeoDataComponents.SANDWICH_BREAD) ? NeoSandwiches.getIndex(NeoSandwiches.BREAD_MAP, sandwich.get(NeoDataComponents.SANDWICH_BREAD)) + 1 : 0;
+            float meat = sandwich.has(NeoDataComponents.SANDWICH_MEAT) ? NeoSandwiches.getIndex(NeoSandwiches.MEAT_MAP, sandwich.get(NeoDataComponents.SANDWICH_MEAT)) + 1 : 0;
+            float cheese = sandwich.has(NeoDataComponents.SANDWICH_CHEESE) ? NeoSandwiches.getIndex(NeoSandwiches.CHEESE_MAP, sandwich.get(NeoDataComponents.SANDWICH_CHEESE)) + 1 : 0;
 
             // Item properties are all valid
             base.override()
