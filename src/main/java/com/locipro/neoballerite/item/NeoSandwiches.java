@@ -80,14 +80,13 @@ public class NeoSandwiches {
         }
     }*/
 
-    // Still broken. AAAAAAAAAAAAAAAAAAA7a
     public static ArrayList<ItemStack> getAllSandwiches(int possiblePermutations) {
         ArrayList<ItemStack> res = new ArrayList<>(possiblePermutations);
         int count = 0;
 
-        int bread = 0;
-        int meat = 0;
-        int cheese = 0;
+        int bread;
+        int meat;
+        int cheese;
 
         // Hope this works...
         for (int i = 0; i < BREAD_MAP.size(); i++) {
@@ -130,7 +129,6 @@ public class NeoSandwiches {
         }
         return stack;
     }
-
 
     private static <K, V> K getKey(Map<K, V> map, V value) {
         for (Map.Entry<K, V> entry : map.entrySet()) {

@@ -8,6 +8,8 @@ import com.locipro.neoballerite.item.util.FoodMath;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -16,17 +18,14 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/** Currently only a helper class with some variables to assist in recipe generation.
- * Eventually will get dynamic item models to make all sandwiches just an instance of this singleton with some data components.**/
+
 public class SandwichItem extends Item {
-    private final static int MAX_SANDWICH_EFFECTS = 8;
+    private final static int MAX_SANDWICH_EFFECTS = 4;
 
     public SandwichItem() {
         super(new Item.Properties());
@@ -76,7 +75,25 @@ public class SandwichItem extends Item {
     // Calculate food here broooo.
     @Override
     public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
-        return getCombinedFoodProperties(getIngredientsOfSandwich(stack), entity);
+        var listOfIngredients = getIngredientsOfSandwich(stack);
+        int count = 0;
+        for (var o : listOfIngredients) {
+            if (o.isPresent()) {
+                count++;
+            }
+        }
+
+        FoodProperties.Builder builder = getCombinedFoodPropertiesBuilder(listOfIngredients, entity);
+        switch (count) {
+            case 2:
+                builder.effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 400), 1.0f);
+            case 3:
+                builder.effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 1200, 1), 1.0f);
+                builder.effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 800, 1), 1.0f);
+        }
+
+
+        return builder.build();
     }
 
     @Override
@@ -188,7 +205,7 @@ public class SandwichItem extends Item {
 
 
     // Returns a FoodProperties instance that has the combined properties of all present items. (Uses default ItemStack.)
-    public static FoodProperties getCombinedFoodProperties(List<Optional<Item>> items, LivingEntity entity) {
+    public static FoodProperties.Builder getCombinedFoodPropertiesBuilder(List<Optional<Item>> items, LivingEntity entity) {
         // Initialize a list with empty optionals
         List<Optional<FoodProperties>> properties = new ArrayList<>(items.size());
         for (var ignored : items) {
@@ -235,7 +252,7 @@ public class SandwichItem extends Item {
         }
 
 
-        return foodBuilder.build();
+        return foodBuilder;
     }
     /* Returns the sandwiches texture path (sandwich_bread_meat_cheese)*/
     public static String getPath(ItemStack sandwich) {
