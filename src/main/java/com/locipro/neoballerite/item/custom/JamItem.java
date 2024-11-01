@@ -1,14 +1,19 @@
 package com.locipro.neoballerite.item.custom;
 
+import com.locipro.neoballerite.item.util.FoodMath;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.ItemLike;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -16,20 +21,7 @@ import java.util.List;
 public class JamItem extends Item {
     private final ItemLike baseItem;
     public JamItem(ItemLike baseItem) {
-        super(new Item.Properties()
-                .food(new FoodProperties.Builder()
-                        .nutrition(baseItem.asItem().components().get(DataComponents.FOOD).nutrition() * 2)
-                        .saturationModifier(baseItem.asItem().components().get(DataComponents.FOOD).saturation() * 2)
-                        .build())
-                .stacksTo(32));
-
-        /*// Doesn't work.
-        FoodProperties originalFood = baseItem.asItem().components().get(DataComponents.FOOD);
-        FoodProperties newFood = new FoodProperties.Builder()
-                .saturationModifier(originalFood.saturation() * 2)
-                .nutrition(originalFood.nutrition() * 2)
-                .build();
-        this.getDefaultInstance().set(DataComponents.FOOD, newFood); // <- ?*/
+        super(new Item.Properties());
 
         this.baseItem = baseItem;
     }
@@ -45,6 +37,24 @@ public class JamItem extends Item {
             tooltipComponents.add(Component.literal("--Valuable Trade").withStyle(ChatFormatting.GREEN));
         }
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    }
+
+    @Override
+    public @NotNull UseAnim getUseAnimation(ItemStack stack) {
+        return UseAnim.EAT;
+    }
+
+    @Override
+    public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
+        FoodProperties baseItem = getBaseItem().asItem().getFoodProperties(getBaseItem().asItem().getDefaultInstance(), entity);
+        assert baseItem != null;
+        float saturationModifier = FoodMath.saturationModifierFromSaturationAndNutrition(
+                baseItem.nutrition(), baseItem.saturation()
+        );
+        return new FoodProperties.Builder()
+                .nutrition(baseItem.nutrition() * 2)
+                .saturationModifier((float) (saturationModifier * 1.25))
+                .build();
     }
 
     public static String getBaseItemNamePlural(ItemLike item) {

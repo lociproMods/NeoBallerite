@@ -1,19 +1,28 @@
 package com.locipro.neoballerite.datagen;
 
+import com.locipro.neoballerite.NeoBallerite;
+import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.NeoJams;
-import com.locipro.neoballerite.item.custom.JamItem;
-import com.locipro.neoballerite.util.ModTags;
+import com.locipro.neoballerite.item.NeoSandwiches;
+import com.locipro.neoballerite.item.custom.SandwichItem;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.FenceBlock;
 import net.minecraft.world.level.block.WallBlock;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.locipro.neoballerite.item.ModItems.*;
 import static com.locipro.neoballerite.block.ModBlocks.*;
@@ -26,6 +35,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+
         basicItem(RAW_BALLERITE.get());
         basicItem(RAW_BALLERITE.get());
         basicItem(COOKED_BALLERITE.get());
@@ -127,29 +137,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ENCHANTED_DIAMOND_CARROT.get());
 
 
-        basicItem(CHEESE_CHICKEN.get());
-        basicItem(CHEESE_STEAK.get());
-        basicItem(CHEESE_PORK.get());
-        basicItem(CHEESE_MUTTON.get());
-        basicItem(CHEESE_FRIES.get());
 
-        basicItem(CHEESE_CHICKEN_SANDWICH.get());
-        basicItem(CHEESE_STEAK_SANDWICH.get());
-        basicItem(CHEESE_PORK_SANDWICH.get());
-        basicItem(CHEESE_MUTTON_SANDWICH.get());
-        basicItem(CHEESE_FRIES_SANDWICH.get());
-
-
-        basicItem(CHEESE_SANDWICH.get());
-        basicItem(STEAK_SANDWICH.get());
-        basicItem(CHICKEN_SANDWICH.get());
-        basicItem(PORK_SANDWICH.get());
-        basicItem(MUTTON_SANDWICH.get());
-        basicItem(FRIES_SANDWICH.get());
 
         NeoJams.JAMS.iterator().forEachRemaining((item) ->
                 basicItem(item.get()));
 
+        sandwichVariants(SANDWICH.get());
     }
     
     
@@ -171,30 +164,48 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .texture("wall",  ResourceLocation.fromNamespaceAndPath(MODID,
                         "block/" + baseBlock.getId().getPath()));
     }
-    
-    /** new ModelFile.UncheckedModelFile("item/generated")**/
-//    public ItemModelBuilder basicItemWithModel(DeferredItem<?> item, ModelFile modelFile) {
-//        String resourceLocation = Objects.requireNonNull(item.getKey()).toString();
-//        System.out.println(resourceLocation);
-//        return getBuilder(resourceLocation)
-//                .parent(modelFile)
-//                .texture("layer0", ResourceLocation.fromNamespaceAndPath(item.getId().getNamespace(), "item/" + item.getId().getPath()));
-//    }
-//    public ItemModelBuilder handheld(DeferredItem<?> item) {
-//        return basicItemWithModel(item, new ModelFile.UncheckedModelFile("item/handheld"));
-//    }
+    protected ItemModelBuilder sandwichModel(ItemStack sandwich) {
+        return getBuilder(MODID + ":" + SandwichItem.getPath(sandwich))
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(MODID, "item/sandwich/" + SandwichItem.getPath(sandwich)));
+    }
+    protected void sandwichVariants(Item baseItem) {
+        ResourceLocation path = BuiltInRegistries.ITEM.getKey(baseItem);
+
+        // Base texture is normally un-reachable without commands.
+        ItemModelBuilder base = getBuilder(path.toString())
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(MODID, "item/sandwich/" + path.getPath()));
+
+        int index = 0;
+        // Using a Set instead of an ArrayList jumbles shit up. ArrayLists maintain order.
+        // POSSIBLE_SANDWICHES is a list of all possible permutations with bread, meat, and cheese, excluding sandwiches with *just* bread.
+        for (ItemStack sandwich : NeoSandwiches.POSSIBLE_SANDWICHES) {
+            // sandwichModel returns a generated model with a texture path that depends on the sandwich's components
+            ItemModelBuilder model = sandwichModel(sandwich);
+
+            // Components are of type Item
+            // BREAD/MEAT/CHEESE_MAP maps an Item to a float value
+            float bread = sandwich.has(NeoDataComponents.SANDWICH_BREAD) ? NeoSandwiches.BREAD_MAP.get(sandwich.get(NeoDataComponents.SANDWICH_BREAD)) : 0;
+            float meat = sandwich.has(NeoDataComponents.SANDWICH_MEAT) ? NeoSandwiches.MEAT_MAP.get(sandwich.get(NeoDataComponents.SANDWICH_MEAT)) : 0;
+            float cheese = sandwich.has(NeoDataComponents.SANDWICH_CHEESE) ? NeoSandwiches.CHEESE_MAP.get(sandwich.get(NeoDataComponents.SANDWICH_CHEESE)) : 0;
+
+            // Item properties are all valid
+            base.override()
+                    .predicate(ResourceLocation.fromNamespaceAndPath(MODID, "bread"), bread)
+                    .predicate(ResourceLocation.fromNamespaceAndPath(MODID, "meat"), meat)
+                    .predicate(ResourceLocation.fromNamespaceAndPath(MODID, "cheese"), cheese)
+                    .model(model);
+            index++;
+        }
+    }
+
+
+
     public ItemModelBuilder handheld(DeferredItem<?> item) {
         String itemPath = item.getId().getPath();
         return withExistingParent(
                 itemPath,
                 mcLoc("item/handheld")).texture("layer0", "item/" + itemPath);
     }
-    /*public ItemModelBuilder generateTools(DeferredItem<SwordItem> swordItem,
-                                          DeferredItem<PickaxeItem> pickaxeItem,
-                                          DeferredItem<AxeItem> axeItem,
-                                          DeferredItem<ShovelItem> shovelItem,
-                                          DeferredItem<HoeItem> hoeItem) {
-        basicItemWithModel(swordItem, new ModelFile.UncheckedModelFile("item/handheld"));
-        
-    }*/
 }

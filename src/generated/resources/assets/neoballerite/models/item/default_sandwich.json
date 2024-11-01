@@ -1,0 +1,120 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "neoballerite:item/sandwich_bread_milk_cheese",
+      "predicate": {
+        "neoballerite:bread": 1.0,
+        "neoballerite:cheese": 1.0,
+        "neoballerite:meat": 0.0
+      }
+    },
+    {
+      "model": "neoballerite:item/sandwich_bread_warped_cheese",
+      "predicate": {
+        "neoballerite:bread": 1.0,
+        "neoballerite:cheese": 2.0,
+        "neoballerite:meat": 0.0
+      }
+    },
+    {
+      "model": "neoballerite:item/sandwich_bread_cooked_beef",
+      "predicate": {
+        "neoballerite:bread": 1.0,
+        "neoballerite:cheese": 0.0,
+        "neoballerite:meat": 1.0
+      }
+    },
+    {
+      "model": "neoballerite:item/sandwich_bread_cooked_beef_milk_cheese",
+      "predicate": {
+        "neoballerite:bread": 1.0,
+        "neoballerite:cheese": 1.0,
+        "neoballerite:meat": 1.0
+      }
+    },
+    {
+      "model": "neoballerite:item/sandwich_bread_cooked_beef_warped_cheese",
+      "predicate": {
+        "neoballerite:bread": 1.0,
+        "neoballerite:cheese": 2.0,
+        "neoballerite:meat": 1.0
+      }
+    },
+    {
+      "model": "neoballerite:item/sandwich_bread_cooked_porkchop",
+      "predicate": {
+        "neoballerite:bread": 1.0,
+        "neoballerite:cheese": 0.0,
+        "neoballerite:meat": 2.0
+      }
+    },
+    {
+      "model": "neoballerite:item/sandwich_bread_cooked_porkchop_milk_cheese",
+      "predicate": {
+        "neoballerite:bread": 1.0,
+        "neoballerite:cheese": 1.0,
+        "neoballerite:meat": 2.0
+      }
+    },
+    {
+      "model": "neoballerite:item/sandwich_bread_cooked_porkchop_warped_cheese",
+      "predicate": {
+        "neoballerite:bread": 1.0,
+        "neoballerite:cheese": 2.0,
+        "neoballerite:meat": 2.0
+      }
+    },
+    {
+      "model": "neoballerite:item/sandwich_bread_cooked_mutton",
+      "predicate": {
+        "neoballerite:bread": 1.0,
+        "neoballerite:cheese": 0.0,
+        "neoballerite:meat": 3.0
+      }
+    },
+    {
+      "model": "neoballerite:item/sandwich_bread_cooked_mutton_milk_cheese",
+      "predicate": {
+        "neoballerite:bread": 1.0,
+        "neoballerite:cheese": 1.0,
+        "neoballerite:meat": 3.0
+      }
+    },
+    {
+      "model": "neoballerite:item/sandwich_bread_cooked_mutton_warped_cheese",
+      "predicate": {
+        "neoballerite:bread": 1.0,
+        "neoballerite:cheese": 2.0,
+        "neoballerite:meat": 3.0
+      }
+    },
+    {
+      "model": "neoballerite:item/sandwich_bread_cooked_chicken",
+      "predicate": {
+        "neoballerite:bread": 1.0,
+        "neoballerite:cheese": 0.0,
+        "neoballerite:meat": 4.0
+      }
+    },
+    {
+      "model": "neoballerite:item/sandwich_bread_cooked_chicken_milk_cheese",
+      "predicate": {
+        "neoballerite:bread": 1.0,
+        "neoballerite:cheese": 1.0,
+        "neoballerite:meat": 4.0
+      }
+    },
+    {
+      "model": "neoballerite:item/sandwich_bread_cooked_chicken_warped_cheese",
+      "predicate": {
+        "neoballerite:bread": 1.0,
+        "neoballerite:cheese": 2.0,
+        "neoballerite:meat": 4.0
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "neoballerite:item/sandwich/default_sandwich"
+  }
+}

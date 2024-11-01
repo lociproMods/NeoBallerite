@@ -4,6 +4,7 @@ import static com.locipro.neoballerite.NeoBallerite.MODID;
 
 import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.item.NeoJams;
+import com.locipro.neoballerite.item.NeoSandwiches;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -155,28 +156,28 @@ public class ModCreativeTabs {
 
             IRON_CARROT,
             DIAMOND_CARROT,
-            ENCHANTED_DIAMOND_CARROT,
+            ENCHANTED_DIAMOND_CARROT
 
 
-            CHEESE_STEAK,
-            CHEESE_PORK,
-            CHEESE_MUTTON,
-            CHEESE_FRIES,
-            CHEESE_CHICKEN,
-
-            STEAK_SANDWICH,
-            PORK_SANDWICH,
-            MUTTON_SANDWICH,
-            CHICKEN_SANDWICH,
-            FRIES_SANDWICH,
-            CHEESE_SANDWICH,
-
-
-            CHEESE_STEAK_SANDWICH,
-            CHEESE_PORK_SANDWICH,
-            CHEESE_MUTTON_SANDWICH,
-            CHEESE_CHICKEN_SANDWICH,
-            CHEESE_FRIES_SANDWICH
+//            CHEESE_STEAK,
+//            CHEESE_PORK,
+//            CHEESE_MUTTON,
+//            CHEESE_FRIES,
+//            CHEESE_CHICKEN,
+//
+//            STEAK_SANDWICH,
+//            PORK_SANDWICH,
+//            MUTTON_SANDWICH,
+//            CHICKEN_SANDWICH,
+//            FRIES_SANDWICH,
+//            CHEESE_SANDWICH,
+//
+//
+//            CHEESE_STEAK_SANDWICH,
+//            CHEESE_PORK_SANDWICH,
+//            CHEESE_MUTTON_SANDWICH,
+//            CHEESE_CHICKEN_SANDWICH,
+//            CHEESE_FRIES_SANDWICH
     );
 
 
@@ -231,6 +232,7 @@ public class ModCreativeTabs {
                 }
                 NeoJams.JAMS.iterator().forEachRemaining(item ->
                         output.accept(item.get()));
+                NeoSandwiches.POSSIBLE_SANDWICHES.iterator().forEachRemaining(output::accept);
             })
             .build());
 

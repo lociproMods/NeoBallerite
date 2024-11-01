@@ -3,7 +3,9 @@ package com.locipro.neoballerite.component;
 import com.locipro.neoballerite.NeoBallerite;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -23,9 +25,20 @@ public class NeoDataComponents {
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> HAS_CHEESE = register(
             "has_meat", booleanBuilder -> booleanBuilder.persistent(Codec.BOOL));*/
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Item>> SANDWICH_BREAD = register(
+            "sandwich_bread", itemBuilder -> itemBuilder.persistent(BuiltInRegistries.ITEM.byNameCodec())
+    );
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Item>> SANDWICH_CHEESE = register(
+            "sandwich_cheese", itemBuilder -> itemBuilder.persistent(BuiltInRegistries.ITEM.byNameCodec())
+    );
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Item>> SANDWICH_MEAT = register(
+            "sandwich_meat", itemBuilder -> itemBuilder.persistent(BuiltInRegistries.ITEM.byNameCodec())
+    );
+
     private static <T>DeferredHolder<DataComponentType<?>, DataComponentType<T>> register(String name,
                                                                                        UnaryOperator<DataComponentType.Builder<T>> builderOperator) {
-        return DATA_COMPONENT_TYPES.register(name, () -> builderOperator.apply(DataComponentType.builder()).build());
+        return DATA_COMPONENT_TYPES.register(name, () -> builderOperator
+                .apply(DataComponentType.builder()).build());
 
     }
 }

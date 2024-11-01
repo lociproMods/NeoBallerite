@@ -1,5 +1,6 @@
 package com.locipro.neoballerite.datagen;
 
+import com.locipro.neoballerite.item.NeoSandwiches;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -29,7 +30,7 @@ public class DataGenHandler {
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 
-
+        NeoSandwiches.init();
 
         /*// Register the provider.
         generator.addProvider(

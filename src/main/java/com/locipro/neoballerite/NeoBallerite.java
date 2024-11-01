@@ -5,6 +5,8 @@ import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.component.NeoEnchantmentComponents;
 import com.locipro.neoballerite.datagen.lootmodifier.GLMSerializers;
 import com.locipro.neoballerite.event.ServerEventListeners;
+import com.locipro.neoballerite.item.NeoSandwiches;
+import com.locipro.neoballerite.item.util.SandwichProperties;
 import com.locipro.neoballerite.recipe.NeoRecipeSerializers;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.armor.NeoArmorMaterials;
@@ -80,6 +82,8 @@ public class NeoBallerite {
         LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
 
         Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));*/
+        LOGGER.info("POSSIBLE SANDWICH PERMUTATIONS FOR {} IS : {}", MODID, NeoSandwiches.POSSIBLE_SANDWICH_PERMUTATIONS);
+        NeoSandwiches.init();
     }
 
     // Add the example block item to the VANILLA building blocks tab
@@ -104,9 +108,7 @@ public class NeoBallerite {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
-//            LOGGER.info("HELLO FROM CLIENT SETUP");
-//            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            SandwichProperties.addSandwichProperties();
         }
     }
 }
