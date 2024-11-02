@@ -300,6 +300,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(CORN_COB)
                 .unlockedBy(getHasName(CORN_COB), has(CORN_COB))
                 .save(recipeOutput);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CORN_BREAD_SLICE, 1)
+                .requires(CORN_BREAD)
+                .requires(ModTags.Items.KNIVES)
+                .unlockedBy(getHasName(CORN_BREAD), has(CORN_BREAD))
+                .save(recipeOutput);
 
         offerEightCoveredRecipe(recipeOutput, RecipeCategory.FOOD, IRON_CARROT, Items.CARROT, Items.IRON_INGOT);
         offerEightCoveredRecipe(recipeOutput, RecipeCategory.FOOD, IRON_CARROT, Items.CARROT, ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", "ingots/iron")), "common_iron_ingots");

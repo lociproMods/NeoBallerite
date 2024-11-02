@@ -238,7 +238,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(RAW_LEAD.get());
 
         tag(Tags.Items.FOODS_BREAD)
-                .add(CORN_BREAD.get());
+                .add(CORN_BREAD.get())
+                .add(CORN_BREAD_SLICE.get());
 
 
     }

@@ -482,6 +482,8 @@ public class ModItems {
     public static final DeferredItem<SandwichItem> SANDWICH = ITEMS.register("default_sandwich", SandwichItem::new);
     public static final DeferredItem<Item> CORN_BREAD = ITEMS.register("corn_bread",
             () -> new Item(new Item.Properties().food(CropFoodProperties.CORN_BREAD)));
+    public static final DeferredItem<Item> CORN_BREAD_SLICE = ITEMS.register("corn_bread_slice",
+            () -> new Item(new Item.Properties().food(CropFoodProperties.CORN_BREAD)));
     //endregion
 
 

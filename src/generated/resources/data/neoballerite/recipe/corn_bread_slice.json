@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "neoballerite:corn_bread"
+    },
+    {
+      "tag": "neoballerite:knives"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "neoballerite:corn_bread_slice"
+  }
+}
