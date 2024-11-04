@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "neoballerite:item/sandwich/sandwich_corn_bread_slice_cooked_chicken_milk_cheese"
+  }
+}

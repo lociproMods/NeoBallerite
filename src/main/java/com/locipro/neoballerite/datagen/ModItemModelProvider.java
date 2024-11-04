@@ -172,7 +172,6 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", ResourceLocation.fromNamespaceAndPath(MODID, "item/sandwich/" + path.getPath()));
 
-        int index = 0;
         // Using a Set instead of an ArrayList jumbles shit up. ArrayLists maintain order.
         // POSSIBLE_SANDWICHES is a list of all possible permutations with bread, meat, and cheese, excluding sandwiches with *just* bread.
         for (ItemStack sandwich : NeoSandwiches.POSSIBLE_SANDWICHES) {
@@ -191,7 +190,6 @@ public class ModItemModelProvider extends ItemModelProvider {
                     .predicate(ResourceLocation.fromNamespaceAndPath(MODID, "meat"), meat)
                     .predicate(ResourceLocation.fromNamespaceAndPath(MODID, "cheese"), cheese)
                     .model(model);
-            index++;
         }
     }
 

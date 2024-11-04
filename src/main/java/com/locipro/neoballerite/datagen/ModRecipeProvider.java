@@ -1,6 +1,7 @@
 package com.locipro.neoballerite.datagen;
 
 import com.google.common.collect.ImmutableList;
+import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.NeoJams;
 import com.locipro.neoballerite.item.custom.CheeseItem;
 import com.locipro.neoballerite.item.custom.JamItem;
@@ -246,6 +247,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
+
+
         offerSmeltingAndBlasting(recipeOutput, List.of(BALLERITE_ORE), RecipeCategory.MISC, COOKED_BALLERITE_BLOCK,
                 0.7f, 260, "ballerite");
         offerSmeltingAndBlasting(recipeOutput, List.of(COOKED_BALLERITE_BLOCK), RecipeCategory.MISC, BURNT_BALLERITE_BLOCK,
@@ -294,16 +297,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         .unlockedBy(getHasName(Items.EGG), has(Items.EGG))
                         .save(recipeOutput);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CORN_BREAD, 2)
-                .requires(CORN_COB)
-                .requires(CORN_COB)
-                .requires(CORN_COB)
-                .unlockedBy(getHasName(CORN_COB), has(CORN_COB))
-                .save(recipeOutput);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CORN_BREAD_SLICE, 1)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CORN_BREAD_SLICE, 3)
+                .requires(CORN_BREAD)
                 .requires(CORN_BREAD)
                 .requires(ModTags.Items.KNIVES)
                 .unlockedBy(getHasName(CORN_BREAD), has(CORN_BREAD))
+                .save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, CORN_BREAD, 1)
+                .requires(ModTags.Items.KNIVES)
+                .requires(CORN_COB)
+                .requires(CORN_COB)
+                .unlockedBy(getHasName(CORN_COB), has(CORN_COB))
                 .save(recipeOutput);
 
         offerEightCoveredRecipe(recipeOutput, RecipeCategory.FOOD, IRON_CARROT, Items.CARROT, Items.IRON_INGOT);

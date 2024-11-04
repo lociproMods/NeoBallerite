@@ -6,11 +6,14 @@
       "item": "neoballerite:corn_bread"
     },
     {
+      "item": "neoballerite:corn_bread"
+    },
+    {
       "tag": "neoballerite:knives"
     }
   ],
   "result": {
-    "count": 1,
+    "count": 3,
     "id": "neoballerite:corn_bread_slice"
   }
 }

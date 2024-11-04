@@ -10,7 +10,8 @@ import java.util.*;
 
 public class NeoSandwiches {
     public static final Set<Item> BREAD_MAP = new LinkedHashSet<>(List.of(
-            Items.BREAD));
+            Items.BREAD,
+            ModItems.CORN_BREAD_SLICE.get()));
     public static final Set<Item> MEAT_MAP = new LinkedHashSet<>(List.of(
             Items.COOKED_BEEF,
             Items.COOKED_PORKCHOP,
@@ -38,7 +39,6 @@ public class NeoSandwiches {
                     MEAT_MAP.size()) +
                     CHEESE_MAP.size() +
                     MEAT_MAP.size() * CHEESE_MAP.size(); // Checks out!
-
     public static List<ItemStack> POSSIBLE_SANDWICHES = new ArrayList<>(POSSIBLE_SANDWICH_PERMUTATIONS);
 
     /*public static void makeAllSandwichStacks() {
@@ -91,21 +91,25 @@ public class NeoSandwiches {
                 meat = j;
                 for (int k = 0; k <= CHEESE_MAP.size(); k ++) {
                     cheese = k;
-                    if (res.contains(makeSandwichFromProperties(bread, meat, cheese))) {
+                    ItemStack constructed = makeSandwichFromProperties(bread, meat, cheese);
+                    if (res.contains(constructed)) {
                         throw new IllegalStateException("TRIED MAKING A SANDWICH INSTANCE WHICH ALREADY EXISTS IN THE LIST.");
                     }
-                    count = res.add(makeSandwichFromProperties(bread, meat, cheese)) ? count + 1 : count;
+                    if (constructed != ItemStack.EMPTY) {
+                        count = res.add(makeSandwichFromProperties(bread, meat, cheese)) ? count + 1 : count;
+                    }
                 }
             }
         }
-        // The first is bread and no meat no cheese.
+
+        // You goofball.. What a stupid hard-coded bodge.
+        /*// The first is bread and no meat no cheese.
         res.removeFirst();
-        count--;
+        count--;*/
 
 
         if (count != possiblePermutations) {
             NeoBallerite.LOGGER.error("FAILURE TO INSTANTIATE ALL {} SANDWICH COMBOS. current count : {}", possiblePermutations, count);
-            NeoBallerite.LOGGER.error("RETURNING FAULTY SET : {}", res);
             return res;
         }
         NeoBallerite.LOGGER.info("SUCCESSFULLY INITIALIZED ALL {} SANDWICH COMBOS", possiblePermutations);
@@ -114,6 +118,10 @@ public class NeoSandwiches {
 
     public static ItemStack makeSandwichFromProperties(int bread, int meat, int cheese) {
         ItemStack stack = new ItemStack(ModItems.SANDWICH.get(), 1);
+        if (bread != 0 && meat == 0 && cheese == 0) {
+            return ItemStack.EMPTY;
+        }
+
         if (bread != 0) {
             stack.set(NeoDataComponents.SANDWICH_BREAD, get(BREAD_MAP, bread - 1));
         }

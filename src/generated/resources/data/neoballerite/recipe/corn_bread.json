@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "neoballerite:corn_cob"
+      "tag": "neoballerite:knives"
     },
     {
       "item": "neoballerite:corn_cob"
@@ -13,7 +13,7 @@
     }
   ],
   "result": {
-    "count": 2,
+    "count": 1,
     "id": "neoballerite:corn_bread"
   }
 }
