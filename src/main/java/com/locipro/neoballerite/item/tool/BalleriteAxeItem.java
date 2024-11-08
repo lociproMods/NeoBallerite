@@ -1,5 +1,6 @@
 package com.locipro.neoballerite.item.tool;
 
+import com.locipro.neoballerite.Config;
 import com.locipro.neoballerite.block.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
@@ -20,7 +21,7 @@ public class BalleriteAxeItem extends AxeItem {
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity miningEntity) {
 
-        if (level instanceof ServerLevel serverLevel) {
+        if (level instanceof ServerLevel serverLevel && Config.ballerite_tools_emit_particles) {
             serverLevel.sendParticles(
                     new BlockParticleOption(ParticleTypes.BLOCK, ModBlocks.COMPRESSED_BALLERITE_BLOCK.get().defaultBlockState()),
                     pos.getX() + 0.5,

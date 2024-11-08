@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
@@ -19,7 +20,22 @@ public class Config
 {
     private static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
 
-    private static final ModConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
+    private static final ModConfigSpec.BooleanValue LEAD_ARMOR_SET_EFFECTS = BUILDER
+            .comment("Whether wearing a full set of lead armor gives bonus status effects or not")
+            .define("leadArmorSetEffects", true);
+    private static final ModConfigSpec.BooleanValue BALLERITE_ARMOR_SET_EFFECTS = BUILDER
+            .comment("Whether wearing a full set of ballerite armor gives bonus status effects or not")
+            .define("balleriteArmorSetEffects", true);
+
+    private static final ModConfigSpec.BooleanValue LEAD_SWORD_DOES_POISON = BUILDER
+            .define("leadSwordDoesPoison", true);
+
+    private static final ModConfigSpec.BooleanValue BALLERITE_TOOL_PARTICLES = BUILDER
+            .comment("Whether using ballerite tools emits particles or not")
+            .define("balleriteToolsEmitParticles", true);
+
+
+    /*private static final ModConfigSpec.BooleanValue LOG_DIRT_BLOCK = BUILDER
             .comment("Whether to log the dirt block on common setup")
             .define("logDirtBlock", true);
 
@@ -35,29 +51,39 @@ public class Config
     private static final ModConfigSpec.ConfigValue<List<? extends String>> ITEM_STRINGS = BUILDER
             .comment("A list of items to log on common setup.")
             .defineListAllowEmpty("items", List.of("minecraft:iron_ingot"), Config::validateItemName);
-
+*/
     static final ModConfigSpec SPEC = BUILDER.build();
 
-    public static boolean logDirtBlock;
+    /*public static boolean logDirtBlock;
     public static int magicNumber;
     public static String magicNumberIntroduction;
-    public static Set<Item> items;
+    public static Set<Item> items;*/
 
-    private static boolean validateItemName(final Object obj)
+    public static boolean lead_armor_set_effects;
+    public static boolean ballerite_armor_set_effects;
+    public static boolean lead_sword_does_poison;
+    public static boolean ballerite_tools_emit_particles;
+
+    /*private static boolean validateItemName(final Object obj)
     {
         return obj instanceof String itemName && BuiltInRegistries.ITEM.containsKey(ResourceLocation.parse(itemName));
-    }
+    }*/
 
     @SubscribeEvent
     static void onLoad(final ModConfigEvent event)
     {
-        logDirtBlock = LOG_DIRT_BLOCK.get();
+        /*logDirtBlock = LOG_DIRT_BLOCK.get();
         magicNumber = MAGIC_NUMBER.get();
         magicNumberIntroduction = MAGIC_NUMBER_INTRODUCTION.get();
+
 
         // convert the list of strings into a set of items
         items = ITEM_STRINGS.get().stream()
                 .map(itemName -> BuiltInRegistries.ITEM.get(ResourceLocation.parse(itemName)))
-                .collect(Collectors.toSet());
+                .collect(Collectors.toSet());*/
+        lead_armor_set_effects = LEAD_ARMOR_SET_EFFECTS.get();
+        ballerite_armor_set_effects = BALLERITE_ARMOR_SET_EFFECTS.get();
+        lead_sword_does_poison = LEAD_SWORD_DOES_POISON.get();
+        ballerite_tools_emit_particles = BALLERITE_TOOL_PARTICLES.get();
     }
 }

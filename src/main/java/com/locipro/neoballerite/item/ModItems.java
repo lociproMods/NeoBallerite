@@ -1,6 +1,7 @@
 package com.locipro.neoballerite.item;
 
 
+import com.locipro.neoballerite.Config;
 import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.armor.*;
@@ -218,7 +219,7 @@ public class ModItems {
                                     -2.4f
                             )
                     )
-            ));
+            , Config.lead_sword_does_poison));
     public static final DeferredItem<PickaxeItem> LEAD_PICKAXE = ITEMS.register("lead_pickaxe",
             () -> new PickaxeItem(
                     ModTiers.LEAD_TIER,

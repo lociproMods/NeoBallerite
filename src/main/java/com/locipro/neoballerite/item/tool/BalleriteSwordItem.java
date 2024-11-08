@@ -1,5 +1,6 @@
 package com.locipro.neoballerite.item.tool;
 
+import com.locipro.neoballerite.Config;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,7 +17,7 @@ public class BalleriteSwordItem extends SwordItem {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         Level level = attacker.level();
-        if (level instanceof ServerLevel serverLevel) {
+        if (level instanceof ServerLevel serverLevel && Config.ballerite_tools_emit_particles) {
             serverLevel.sendParticles(
                     ParticleTypes.GLOW,
                     target.getX(),

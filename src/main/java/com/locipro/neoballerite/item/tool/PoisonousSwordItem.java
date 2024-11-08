@@ -14,8 +14,10 @@ import net.minecraft.world.item.TooltipFlag;
 import java.util.List;
 
 public class PoisonousSwordItem extends SwordItem {
-    public PoisonousSwordItem(Tier tier, Properties properties) {
+    private boolean allowed = false;
+    public PoisonousSwordItem(Tier tier, Properties properties, boolean configValue) {
         super(tier, properties);
+        allowed = configValue;
     }
 
     @Override
@@ -26,7 +28,7 @@ public class PoisonousSwordItem extends SwordItem {
 
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (attacker instanceof ServerPlayer serverPlayer) {
+        if (attacker instanceof ServerPlayer serverPlayer && allowed) {
             target.addEffect(new MobEffectInstance(MobEffects.POISON, 60, 1));
             if (target instanceof ServerPlayer serverTarget) {
                 serverTarget.displayClientMessage(Component.literal(

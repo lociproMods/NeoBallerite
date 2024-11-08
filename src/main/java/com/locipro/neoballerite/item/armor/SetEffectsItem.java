@@ -1,5 +1,6 @@
 package com.locipro.neoballerite.item.armor;
 
+import com.locipro.neoballerite.Config;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
@@ -10,6 +11,7 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+import java.util.Map;
 import java.util.Objects;
 
 
@@ -21,6 +23,11 @@ public class SetEffectsItem extends ArmorItem {
     private boolean visibleParticles = false;
     private boolean ambient = false;
 //    private int ticksPassed = 0;
+
+    private static final Map<Holder<ArmorMaterial>, Boolean> materialToConfigValue = Map.of(
+            NeoArmorMaterials.LEAD, Config.lead_armor_set_effects,
+            NeoArmorMaterials.BALLERITE, Config.ballerite_armor_set_effects
+    );
 
     public SetEffectsItem(Holder<ArmorMaterial> material, Type type, Properties properties, Holder<MobEffect> mobEffect, int durationTicks, int amplifier) {
         super(material, type, properties);
@@ -44,18 +51,20 @@ public class SetEffectsItem extends ArmorItem {
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
 
-        if (entity instanceof ServerPlayer player) {
-            if (canGetEffect(player, mobEffect, amplifier)) {
-                byte count = 0;
-                for (ItemStack armorItemStack : player.getArmorSlots()) {
-                    if (armorItemStack.getItem() instanceof ArmorItem armorItem) {
-                        if (armorItem.getMaterial() == material) {
-                            count++;
-                        };
+        if (materialToConfigValue.containsKey(material) && materialToConfigValue.get(material)) {
+            if (entity instanceof ServerPlayer player) {
+                if (canGetEffect(player, mobEffect, amplifier)) {
+                    byte count = 0;
+                    for (ItemStack armorItemStack : player.getArmorSlots()) {
+                        if (armorItemStack.getItem() instanceof ArmorItem armorItem) {
+                            if (armorItem.getMaterial() == material) {
+                                count++;
+                            };
+                        }
                     }
-                }
-                if (count == 4) {
-                    player.addEffect(getSetEffectInstance());
+                    if (count == 4) {
+                        player.addEffect(getSetEffectInstance());
+                    }
                 }
             }
         }
