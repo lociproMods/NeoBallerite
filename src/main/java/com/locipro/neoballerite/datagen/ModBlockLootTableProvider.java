@@ -82,6 +82,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(WITHERED_BUTTON.get());
         dropSelf(WITHERED_PRESSURE_PLATE.get());
         add(WITHERED_DOOR.get(), createDoorTable(WITHERED_DOOR.get()));
+        
+        dropSelf(WITHERED_SIGN.get());
+        dropSelf(WITHERED_WALL_SIGN.get());
+        dropSelf(WITHERED_HANGING_SIGN.get());
+        dropSelf(WITHERED_WALL_HANGING_SIGN.get());
 
 
         dropSelf(STAR_SAPLING.get());
@@ -101,6 +106,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(STAR_BUTTON.get());
         dropSelf(STAR_PRESSURE_PLATE.get());
         add(STAR_DOOR.get(), createDoorTable(STAR_DOOR.get()));
+
+        dropSelf(STAR_SIGN.get());
+        dropSelf(STAR_WALL_SIGN.get());
+        dropSelf(STAR_HANGING_SIGN.get());
+        dropSelf(STAR_WALL_HANGING_SIGN.get());
 
 
         addCustomBerryDrops(

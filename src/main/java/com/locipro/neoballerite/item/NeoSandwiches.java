@@ -36,9 +36,9 @@ public class NeoSandwiches {
 
     public static final int POSSIBLE_SANDWICH_PERMUTATIONS =
             BREAD_MAP.size() * (
-                    MEAT_MAP.size()) +
+                    MEAT_MAP.size() +
                     CHEESE_MAP.size() +
-                    MEAT_MAP.size() * CHEESE_MAP.size(); // Checks out!
+                    MEAT_MAP.size() * CHEESE_MAP.size()); // Checks out!
     public static List<ItemStack> POSSIBLE_SANDWICHES = new ArrayList<>(POSSIBLE_SANDWICH_PERMUTATIONS);
 
     /*public static void makeAllSandwichStacks() {
@@ -96,7 +96,7 @@ public class NeoSandwiches {
                         throw new IllegalStateException("TRIED MAKING A SANDWICH INSTANCE WHICH ALREADY EXISTS IN THE LIST.");
                     }
                     if (constructed != ItemStack.EMPTY) {
-                        count = res.add(makeSandwichFromProperties(bread, meat, cheese)) ? count + 1 : count;
+                        count = res.add(constructed) ? count + 1 : count;
                     }
                 }
             }

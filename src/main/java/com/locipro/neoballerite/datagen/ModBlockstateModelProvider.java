@@ -1,6 +1,7 @@
 package com.locipro.neoballerite.datagen;
 
 
+import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.block.custom.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -74,6 +75,10 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         blockItem(WITHERED_PRESSURE_PLATE);
         blockItem(WITHERED_FENCE_GATE);
         blockItem(WITHERED_TRAPDOOR, "_bottom");
+        
+        signBlock(WITHERED_SIGN.get(), WITHERED_WALL_SIGN.get(), blockTexture(WITHERED_PLANKS.get()));
+        hangingSignBlock(WITHERED_HANGING_SIGN.get(), WITHERED_WALL_HANGING_SIGN.get(), blockTexture(WITHERED_PLANKS.get()));
+        
 
 
 
@@ -106,6 +111,9 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         blockItem(STAR_PRESSURE_PLATE);
         blockItem(STAR_FENCE_GATE);
         blockItem(STAR_TRAPDOOR, "_bottom");
+
+        signBlock(STAR_SIGN.get(), STAR_WALL_SIGN.get(), blockTexture(STAR_PLANKS.get()));
+        hangingSignBlock(STAR_HANGING_SIGN.get(), STAR_WALL_HANGING_SIGN.get(), blockTexture(STAR_PLANKS.get()));
 
 
 

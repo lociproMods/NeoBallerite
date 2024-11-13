@@ -5,6 +5,7 @@ import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
@@ -169,11 +170,22 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(TOMATO.get(), EGGPLANT.get(), SWEET_POTATO.get());
 
 
-
+        tag(ItemTags.SIGNS)
+                .add(WITHERED_SIGN.get().asItem())
+                .add(STAR_SIGN.get().asItem())
+                .add(WITHERED_WALL_SIGN.get().asItem())
+                .add(STAR_WALL_SIGN.get().asItem());
+        
+        tag(ItemTags.HANGING_SIGNS)
+                .add(WITHERED_HANGING_SIGN.get().asItem())
+                .add(STAR_HANGING_SIGN.get().asItem())
+                .add(WITHERED_WALL_HANGING_SIGN.get().asItem())
+                .add(STAR_WALL_HANGING_SIGN.get().asItem());
 
 
         copy(ModTags.Blocks.WITHERED_BLOCKS, ModTags.Items.WITHERED_BLOCKS);
         copy(ModTags.Blocks.STAR_BLOCKS, ModTags.Items.STAR_BLOCKS);
+        
 
         tag(ModTags.Items.CLAYMORES)
                 .add(WOODEN_CLAYMORE.get())

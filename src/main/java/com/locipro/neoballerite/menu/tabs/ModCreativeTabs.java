@@ -79,6 +79,8 @@ public class ModCreativeTabs {
             WITHERED_STAIRS,
             WITHERED_SLAB,
             WITHERED_PRESSURE_PLATE,
+            WITHERED_SIGN,
+            WITHERED_HANGING_SIGN,
 
             STAR_SAPLING,
             STAR_LOG,
@@ -94,7 +96,9 @@ public class ModCreativeTabs {
             STAR_TRAPDOOR,
             STAR_STAIRS,
             STAR_SLAB,
-            STAR_PRESSURE_PLATE
+            STAR_PRESSURE_PLATE,
+            STAR_SIGN,
+            STAR_HANGING_SIGN
     );
     public static List<ItemLike> OTHER_STUFF_LIST = List.of(
             RAW_LEAD,

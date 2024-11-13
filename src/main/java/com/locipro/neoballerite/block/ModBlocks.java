@@ -194,8 +194,35 @@ public class ModBlocks {
     public static final DeferredBlock<TrapDoorBlock> WITHERED_TRAPDOOR = registerBlock("withered_trapdoor",
             () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE).noOcclusion()));
 
+    public static final DeferredBlock<StandingSignBlock> WITHERED_SIGN = registerBlock("withered_sign",
+            () -> new StandingSignBlock(
+                    WoodType.OAK,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN)
+            ));
+    public static final DeferredBlock<CeilingHangingSignBlock> WITHERED_HANGING_SIGN = registerBlock("withered_hanging_sign",
+            () -> new CeilingHangingSignBlock(
+                    WoodType.OAK,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)
+            ));
+    
+    
+    public static final DeferredBlock<WallSignBlock> WITHERED_WALL_SIGN = registerBlock("withered_wall_sign",
+            () -> new WallSignBlock(
+                    WoodType.OAK,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN)
+            ));
+
+    public static final DeferredBlock<WallHangingSignBlock> WITHERED_WALL_HANGING_SIGN = registerBlock("withered_wall_hanging_sign",
+            () -> new WallHangingSignBlock(
+                    WoodType.OAK,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)
+            ));
+    
 
 
+    /* 
+    *  
+    );*/
 
 
 
@@ -214,10 +241,10 @@ public class ModBlocks {
                 }
             });
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_STAR_LOG = registerBlock("stripped_star_log",
-            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG)));
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_ACACIA_LOG)));
 
     public static final DeferredBlock<RotatedPillarBlock> STAR_WOOD = registerBlock("star_wood",
-            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)) {
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)) {
                 @Override
                 public @Nullable BlockState getToolModifiedState(BlockState state, UseOnContext context, ItemAbility itemAbility, boolean simulate) {
                     if (ItemAbilities.AXE_STRIP == itemAbility) {
@@ -227,37 +254,61 @@ public class ModBlocks {
                 }
             });
     public static final DeferredBlock<RotatedPillarBlock> STRIPPED_STAR_WOOD = registerBlock("stripped_star_wood",
-            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)));
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_ACACIA_WOOD)));
 
 
     public static final DeferredBlock<Block> STAR_LEAVES = registerBlock("star_leaves",
-            () -> new CustomDistanceLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).noCollission().noOcclusion().lightLevel(state -> 10), 12));
+            () -> new CustomDistanceLeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_LEAVES).noCollission().noOcclusion().lightLevel(state -> 10), 12));
 //    public static final DeferredBlock<SaplingBlock> STAR_SAPLING = registerBlock("star_sapling",
 //            () -> new SaplingBlock())
 
     public static final DeferredBlock<Block> STAR_PLANKS = registerBlock("star_planks",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_PLANKS)));
 
     public static final DeferredBlock<StairBlock> STAR_STAIRS = registerBlock("star_stairs",
-            () -> new StairBlock(STAR_PLANKS.get().defaultBlockState(),  BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS)));
+            () -> new StairBlock(STAR_PLANKS.get().defaultBlockState(),  BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_STAIRS)));
     public static final DeferredBlock<SlabBlock> STAR_SLAB = registerBlock("star_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS)));
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_STAIRS)));
 
     public static final DeferredBlock<PressurePlateBlock> STAR_PRESSURE_PLATE = registerBlock("star_pressure_plate",
-            () -> new PressurePlateBlock(BlockSetType.OAK,  BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB)));
+            () -> new PressurePlateBlock(BlockSetType.ACACIA,  BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_SLAB)));
     public static final DeferredBlock<ButtonBlock> STAR_BUTTON = registerBlock("star_button",
-            () -> new ButtonBlock(BlockSetType.OAK, 20, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON).noCollission()));
+            () -> new ButtonBlock(BlockSetType.ACACIA, 20, BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_BUTTON).noCollission()));
 
     public static final DeferredBlock<FenceBlock> STAR_FENCE = registerBlock("star_fence",
-            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE)));
+            () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_FENCE)));
     public static final DeferredBlock<FenceGateBlock> STAR_FENCE_GATE = registerBlock("star_fence_gate",
-            () -> new FenceGateBlock(WoodType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE)));
+            () -> new FenceGateBlock(WoodType.ACACIA, BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_FENCE_GATE)));
 
 
     public static final DeferredBlock<DoorBlock> STAR_DOOR = registerBlock("star_door",
-            () -> new DoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_DOOR).noOcclusion()));
+            () -> new DoorBlock(BlockSetType.ACACIA, BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_DOOR).noOcclusion()));
     public static final DeferredBlock<TrapDoorBlock> STAR_TRAPDOOR = registerBlock("star_trapdoor",
-            () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE).noOcclusion()));
+            () -> new TrapDoorBlock(BlockSetType.ACACIA, BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_FENCE_GATE).noOcclusion()));
+
+    public static final DeferredBlock<StandingSignBlock> STAR_SIGN = registerBlock("star_sign",
+            () -> new StandingSignBlock(
+                    WoodType.ACACIA,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_SIGN)
+            ));
+    public static final DeferredBlock<CeilingHangingSignBlock> STAR_HANGING_SIGN = registerBlock("star_hanging_sign",
+            () -> new CeilingHangingSignBlock(
+                    WoodType.ACACIA,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_HANGING_SIGN)
+            ));
+
+
+    public static final DeferredBlock<WallSignBlock> STAR_WALL_SIGN = registerBlock("star_wall_sign",
+            () -> new WallSignBlock(
+                    WoodType.ACACIA,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WALL_SIGN)
+            ));
+
+    public static final DeferredBlock<WallHangingSignBlock> STAR_WALL_HANGING_SIGN = registerBlock("star_wall_hanging_sign",
+            () -> new WallHangingSignBlock(
+                    WoodType.ACACIA,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WALL_HANGING_SIGN)
+            ));
 
 
 

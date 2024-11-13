@@ -94,6 +94,19 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(WITHERED_STAIRS.get())
                 .add(STAR_STAIRS.get());
 
+        tag(BlockTags.STANDING_SIGNS)
+                .add(WITHERED_SIGN.get())
+                .add(STAR_SIGN.get());
+        tag(BlockTags.WALL_SIGNS)
+                .add(WITHERED_WALL_SIGN.get())
+                .add(STAR_WALL_SIGN.get());
+        tag(BlockTags.CEILING_HANGING_SIGNS)
+                .add(WITHERED_HANGING_SIGN.get())
+                .add(STAR_HANGING_SIGN.get());
+        tag(BlockTags.WALL_HANGING_SIGNS)
+                .add(WITHERED_WALL_HANGING_SIGN.get())
+                .add(STAR_WALL_HANGING_SIGN.get());
+
         tag(ModTags.Blocks.BALLERITE_BLOCKS)
                 .add(BALLERITE_ORE.get())
                 .add(RAW_BALLERITE_BLOCK.get())
