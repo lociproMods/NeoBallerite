@@ -1,5 +1,6 @@
 package com.locipro.neoballerite.datagen;
 
+import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.item.NeoJams;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
@@ -171,14 +172,14 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
 
         tag(ItemTags.SIGNS)
-                .add(WITHERED_SIGN.get().asItem())
-                .add(STAR_SIGN.get().asItem())
+                .add(ModBlocks.WITHERED_SIGN.get().asItem())
+                .add(ModBlocks.STAR_SIGN.get().asItem())
                 .add(WITHERED_WALL_SIGN.get().asItem())
                 .add(STAR_WALL_SIGN.get().asItem());
         
         tag(ItemTags.HANGING_SIGNS)
-                .add(WITHERED_HANGING_SIGN.get().asItem())
-                .add(STAR_HANGING_SIGN.get().asItem())
+                .add(ModBlocks.WITHERED_HANGING_SIGN.get().asItem())
+                .add(ModBlocks.STAR_HANGING_SIGN.get().asItem())
                 .add(WITHERED_WALL_HANGING_SIGN.get().asItem())
                 .add(STAR_WALL_HANGING_SIGN.get().asItem());
 

@@ -98,8 +98,20 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
 
-    
-    
+
+
+    public static final DeferredItem<SignItem> WITHERED_SIGN = ITEMS.register("withered_sign_item",
+            () -> new SignItem(new Item.Properties(), ModBlocks.WITHERED_SIGN.get(), ModBlocks.WITHERED_WALL_SIGN.get()));
+    public static final DeferredItem<SignItem> WITHERED_HANGING_SIGN = ITEMS.register("withered_hanging_sign_item",
+            () -> new HangingSignItem(ModBlocks.WITHERED_HANGING_SIGN.get(), ModBlocks.WITHERED_WALL_HANGING_SIGN.get(), new Item.Properties()));
+
+
+    public static final DeferredItem<SignItem> STAR_SIGN = ITEMS.register("star_sign_item",
+            () -> new SignItem(new Item.Properties(), ModBlocks.STAR_SIGN.get(), ModBlocks.STAR_WALL_SIGN.get()));
+    public static final DeferredItem<SignItem> STAR_HANGING_SIGN = ITEMS.register("star_hanging_sign_item",
+            () -> new HangingSignItem(ModBlocks.STAR_HANGING_SIGN.get(), ModBlocks.STAR_WALL_HANGING_SIGN.get(), new Item.Properties()));
+
+
     //region ballerite tools
     public static final DeferredItem<SwordItem> BALLERITE_SWORD = ITEMS.register("ballerite_sword",
             () -> new BalleriteSwordItem(

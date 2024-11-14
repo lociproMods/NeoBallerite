@@ -51,12 +51,23 @@ public class ModBlocks {
     private static <T extends Block> DeferredBlock<T> registerBlockWithoutItem(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);
     }
+    
 
-    // PRESS SHIFT TWICE TO SEARCH FOR NON PROJECT STUFF LIKE net.minecraft.blocks
-    /*    public static final DeferredBlock<Block> X = registerBlock("x",
-            () -> new Block(BlockBehaviour.Properties.of()
-                    .strength()
-                    .mapColor()));*/
+    // Wood Types should have a mod id qualifier
+    // I think block set types are "a combined place where mojang can define the sounds and behaviour of a block set" (Dr.gigaherz 8/12/23 neoforge discord)
+    
+    //public static final BlockSetType WITHERED_SET = BlockSetType.register(new BlockSetType("withered"));
+            
+    public static final WoodType WITHERED = WoodType.register(new WoodType(MODID + ":withered", BlockSetType.OAK));
+            
+    //public static final BlockSetType STAR_SET = BlockSetType.register(new BlockSetType("star"));
+            
+    public static final WoodType STAR = WoodType.register(new WoodType(MODID + ":star", BlockSetType.ACACIA));
+
+
+
+
+
     public static final DeferredBlock<Block> RAW_BALLERITE_BLOCK = registerBlock("raw_ballerite_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.MUD).strength(0.5f, 0.5f).sound(SoundType.FUNGUS)) {
                 @Override
@@ -79,7 +90,7 @@ public class ModBlocks {
                     tooltipComponents.add( Component.literal("Warm block from this weird mineral called ballerite...").withStyle(ChatFormatting.GRAY));
                     tooltipComponents.add( Component.literal("Maybe try cooking it again? OR, just eat it..").withStyle(ChatFormatting.GRAY));
                     if (Screen.hasShiftDown()) {
-                        tooltipComponents.add( Component.literal("-Running speed faster than grass").withStyle(ChatFormatting.AQUA));
+                        tooltipComponents.add( Component.literal("-Running speed faster than grass").withStyle(ChatFormatting.BLACK));
                     }
                 }
             }, new Item.Properties().food(BalleriteFoodProperties.COOKED_BALLERITE_BLOCK)); // BlockItem properties
@@ -186,7 +197,7 @@ public class ModBlocks {
     public static final DeferredBlock<FenceBlock> WITHERED_FENCE = registerBlock("withered_fence",
             () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE)));
     public static final DeferredBlock<FenceGateBlock> WITHERED_FENCE_GATE = registerBlock("withered_fence_gate",
-            () -> new FenceGateBlock(WoodType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE)));
+            () -> new FenceGateBlock(WITHERED, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE)));
 
 
     public static final DeferredBlock<DoorBlock> WITHERED_DOOR = registerBlock("withered_door",
@@ -196,25 +207,25 @@ public class ModBlocks {
 
     public static final DeferredBlock<StandingSignBlock> WITHERED_SIGN = registerBlock("withered_sign",
             () -> new StandingSignBlock(
-                    WoodType.OAK,
+                    WITHERED,
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN)
             ));
     public static final DeferredBlock<CeilingHangingSignBlock> WITHERED_HANGING_SIGN = registerBlock("withered_hanging_sign",
             () -> new CeilingHangingSignBlock(
-                    WoodType.OAK,
+                    WITHERED,
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)
             ));
     
     
     public static final DeferredBlock<WallSignBlock> WITHERED_WALL_SIGN = registerBlock("withered_wall_sign",
             () -> new WallSignBlock(
-                    WoodType.OAK,
+                    WITHERED,
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN)
             ));
 
     public static final DeferredBlock<WallHangingSignBlock> WITHERED_WALL_HANGING_SIGN = registerBlock("withered_wall_hanging_sign",
             () -> new WallHangingSignBlock(
-                    WoodType.OAK,
+                    WITHERED,
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)
             ));
     
@@ -278,7 +289,7 @@ public class ModBlocks {
     public static final DeferredBlock<FenceBlock> STAR_FENCE = registerBlock("star_fence",
             () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_FENCE)));
     public static final DeferredBlock<FenceGateBlock> STAR_FENCE_GATE = registerBlock("star_fence_gate",
-            () -> new FenceGateBlock(WoodType.ACACIA, BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_FENCE_GATE)));
+            () -> new FenceGateBlock(STAR, BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_FENCE_GATE)));
 
 
     public static final DeferredBlock<DoorBlock> STAR_DOOR = registerBlock("star_door",
@@ -288,25 +299,25 @@ public class ModBlocks {
 
     public static final DeferredBlock<StandingSignBlock> STAR_SIGN = registerBlock("star_sign",
             () -> new StandingSignBlock(
-                    WoodType.ACACIA,
+                    STAR,
                     BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_SIGN)
             ));
     public static final DeferredBlock<CeilingHangingSignBlock> STAR_HANGING_SIGN = registerBlock("star_hanging_sign",
             () -> new CeilingHangingSignBlock(
-                    WoodType.ACACIA,
+                    STAR,
                     BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_HANGING_SIGN)
             ));
 
 
     public static final DeferredBlock<WallSignBlock> STAR_WALL_SIGN = registerBlock("star_wall_sign",
             () -> new WallSignBlock(
-                    WoodType.ACACIA,
+                    STAR,
                     BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WALL_SIGN)
             ));
 
     public static final DeferredBlock<WallHangingSignBlock> STAR_WALL_HANGING_SIGN = registerBlock("star_wall_hanging_sign",
             () -> new WallHangingSignBlock(
-                    WoodType.ACACIA,
+                    STAR,
                     BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WALL_HANGING_SIGN)
             ));
 
