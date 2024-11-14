@@ -10,6 +10,11 @@ import com.locipro.neoballerite.recipe.NeoRecipeSerializers;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.armor.NeoArmorMaterials;
 import com.locipro.neoballerite.menu.tabs.ModCreativeTabs;
+import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
+import net.minecraft.client.renderer.blockentity.SignRenderer;
+import net.minecraft.world.level.block.state.properties.WoodType;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -82,6 +87,11 @@ public class NeoBallerite {
         LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
 
         Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));*/
+
+        // Honestly I don't fucking know why. I'm just putting this in because the neoforge test has it. (check github)
+        event.enqueueWork(() -> WoodType.register(ModBlocks.WITHERED));
+        event.enqueueWork(() -> WoodType.register(ModBlocks.STAR));
+
         LOGGER.info("POSSIBLE SANDWICH PERMUTATIONS FOR {} IS : {}", MODID, NeoSandwiches.POSSIBLE_SANDWICH_PERMUTATIONS);
         NeoSandwiches.init();
     }
@@ -109,6 +119,9 @@ public class NeoBallerite {
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             SandwichProperties.addSandwichProperties();
+
+            Sheets.addWoodType(ModBlocks.WITHERED);
+            Sheets.addWoodType(ModBlocks.STAR);
         }
     }
 }
