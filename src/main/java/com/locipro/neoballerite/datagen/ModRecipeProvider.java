@@ -1,6 +1,7 @@
 package com.locipro.neoballerite.datagen;
 
 import com.google.common.collect.ImmutableList;
+import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.NeoJams;
 import com.locipro.neoballerite.item.custom.CheeseItem;
@@ -143,8 +144,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         trapdoorBuilder(WITHERED_TRAPDOOR, Ingredient.of(WITHERED_PLANKS))
                 .group("withered")
                 .unlockedBy("has_withered_planks", has(WITHERED_PLANKS)).save(recipeOutput);
-
-
+        signBuilder(ModItems.WITHERED_SIGN, Ingredient.of(WITHERED_PLANKS))
+                .group("withered")
+                .unlockedBy("has_withered_planks", has(WITHERED_PLANKS)).save(recipeOutput);
+        hangingSign(recipeOutput, ModItems.WITHERED_HANGING_SIGN, STRIPPED_WITHERED_LOG);
 
 
         planksFromLogs(recipeOutput, STAR_PLANKS, ModTags.Items.STAR_LOGS, 4);
@@ -177,6 +180,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .group("star")
                 .unlockedBy("has_star_planks", has(STAR_PLANKS)).save(recipeOutput);
 
+        signBuilder(ModItems.STAR_SIGN, Ingredient.of(STAR_PLANKS))
+                .group("star")
+                .unlockedBy("has_star_planks", has(STAR_PLANKS)).save(recipeOutput);
+        hangingSign(recipeOutput, ModItems.STAR_HANGING_SIGN, STRIPPED_STAR_LOG);
 
 
 

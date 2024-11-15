@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "neoballerite:withered_sign_item"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_withered_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "neoballerite:withered_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_withered_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "neoballerite:withered_sign_item"
+    ]
+  }
+}

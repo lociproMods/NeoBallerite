@@ -112,6 +112,7 @@ public class ModBlockstateModelProvider extends BlockStateProvider {
         blockItem(STAR_FENCE_GATE);
         blockItem(STAR_TRAPDOOR, "_bottom");
 
+        // The blockTexture is for the PARTICLES!
         signBlock(STAR_SIGN.get(), STAR_WALL_SIGN.get(), blockTexture(STAR_PLANKS.get()));
         hangingSignBlock(STAR_HANGING_SIGN.get(), STAR_WALL_HANGING_SIGN.get(), blockTexture(STAR_PLANKS.get()));
 

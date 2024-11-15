@@ -1,6 +1,8 @@
 package com.locipro.neoballerite.datagen;
 
+import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.component.NeoDataComponents;
+import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.NeoJams;
 import com.locipro.neoballerite.item.NeoSandwiches;
 import com.locipro.neoballerite.item.custom.SandwichItem;
@@ -9,6 +11,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SignItem;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ButtonBlock;
 import net.minecraft.world.level.block.FenceBlock;
@@ -49,12 +52,19 @@ public class ModItemModelProvider extends ItemModelProvider {
         fenceItem(WITHERED_FENCE, WITHERED_PLANKS);
 
         basicItem(WITHERED_DOOR.asItem());
-        
+
+        basicItem(ModItems.WITHERED_SIGN.get());
+        basicItem(ModItems.WITHERED_HANGING_SIGN.get());
+
         buttonItem(STAR_BUTTON, STAR_PLANKS);
         fenceItem(STAR_FENCE, STAR_PLANKS);
 
         basicItem(STAR_DOOR.asItem());
-//        basicItem(WITHERED_SAPLING.asItem());
+
+
+        basicItem(ModItems.STAR_SIGN.get());
+        basicItem(ModItems.STAR_HANGING_SIGN.get());
+
 
         
         handheld(BALLERITE_SWORD);
@@ -201,4 +211,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                 itemPath,
                 mcLoc("item/handheld")).texture("layer0", "item/" + itemPath);
     }
+
+    //protected ItemModelBuilder fixSignItems(SignItem i1, SignItem i2)
+
 }

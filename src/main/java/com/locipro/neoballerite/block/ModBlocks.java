@@ -224,7 +224,7 @@ public class ModBlocks {
             ));
 
     public static final DeferredBlock<WallHangingSignBlock> WITHERED_WALL_HANGING_SIGN = registerBlock("withered_wall_hanging_sign",
-            () -> new WallHangingSignBlock(
+            () -> new WallHangingSignBlockFix(
                     WITHERED,
                     BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)
             ));
@@ -316,7 +316,7 @@ public class ModBlocks {
             ));
 
     public static final DeferredBlock<WallHangingSignBlock> STAR_WALL_HANGING_SIGN = registerBlock("star_wall_hanging_sign",
-            () -> new WallHangingSignBlock(
+            () -> new WallHangingSignBlockFix(
                     STAR,
                     BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WALL_HANGING_SIGN)
             ));
