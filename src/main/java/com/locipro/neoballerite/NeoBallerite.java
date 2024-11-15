@@ -120,8 +120,8 @@ public class NeoBallerite {
         {
             SandwichProperties.addSandwichProperties();
 
-            Sheets.addWoodType(ModBlocks.WITHERED);
-            Sheets.addWoodType(ModBlocks.STAR);
+            event.enqueueWork(() -> Sheets.addWoodType(ModBlocks.WITHERED));
+            event.enqueueWork(() -> Sheets.addWoodType(ModBlocks.STAR));
         }
     }
 }

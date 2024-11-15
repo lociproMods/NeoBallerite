@@ -149,7 +149,10 @@
 
   "block.neoballerite.withered_door" : "Withered Door",
   "block.neoballerite.withered_trapdoor" : "Withered Trapdoor",
-  
+
+  "block.neoballerite.withered_sign" : "Withered Sign",
+  "block.neoballerite.withered_hanging_sign" : "Hanging Withered Sign",
+
   
   
   "block.neoballerite.star_sapling" : "Star Sapling",
@@ -170,6 +173,9 @@
 
   "block.neoballerite.star_door" : "Star Door",
   "block.neoballerite.star_trapdoor" : "Star Trapdoor",
+
+  "block.neoballerite.star_sign" : "Star Sign",
+  "block.neoballerite.star_hanging_sign" : "Hanging Star Sign",
 
   "block.neoballerite.lead_lantern" : "Lead Lantern",
   "block.neoballerite.unlit_lantern" : "Unlit Lantern"

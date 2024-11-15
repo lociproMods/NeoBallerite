@@ -182,7 +182,7 @@ public class SandwichItem extends Item {
 
     // Just in case you want it ig
     @Override
-    public String getDescriptionId(ItemStack stack) {
+    public @NotNull String getDescriptionId(ItemStack stack) {
         String id = "item." + NeoBallerite.MODID + ".sandwich.";
 
 
