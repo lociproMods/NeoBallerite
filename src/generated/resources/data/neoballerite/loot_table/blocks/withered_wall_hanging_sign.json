@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "neoballerite:withered_wall_hanging_sign"
+          "name": "neoballerite:withered_hanging_sign_item"
         }
       ],
       "rolls": 1.0

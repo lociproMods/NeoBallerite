@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "neoballerite:star_wall_sign"
+          "name": "neoballerite:star_sign_item"
         }
       ],
       "rolls": 1.0

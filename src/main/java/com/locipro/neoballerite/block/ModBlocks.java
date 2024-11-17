@@ -206,27 +206,31 @@ public class ModBlocks {
             () -> new TrapDoorBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE_GATE).noOcclusion()));
 
     public static final DeferredBlock<StandingSignBlock> WITHERED_SIGN = registerBlock("withered_sign",
-            () -> new StandingSignBlock(
+            () -> new StandingSignBlockFix(
                     WITHERED,
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN)
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SIGN),
+                    ModItems.WITHERED_SIGN::get
             ));
     public static final DeferredBlock<CeilingHangingSignBlock> WITHERED_HANGING_SIGN = registerBlock("withered_hanging_sign",
-            () -> new CeilingHangingSignBlock(
+            () -> new CeilingHangingSignBlockFix(
                     WITHERED,
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN)
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_HANGING_SIGN),
+                    ModItems.WITHERED_HANGING_SIGN::get
             ));
     
     
     public static final DeferredBlock<WallSignBlock> WITHERED_WALL_SIGN = registerBlock("withered_wall_sign",
             () -> new WallSignBlockFix(
                     WITHERED,
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN)
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_SIGN),
+                    ModItems.WITHERED_SIGN::get
             ));
 
     public static final DeferredBlock<WallHangingSignBlock> WITHERED_WALL_HANGING_SIGN = registerBlock("withered_wall_hanging_sign",
             () -> new WallHangingSignBlockFix(
                     WITHERED,
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN)
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WALL_HANGING_SIGN),
+                    ModItems.WITHERED_HANGING_SIGN::get
             ));
     
 
@@ -298,27 +302,31 @@ public class ModBlocks {
             () -> new TrapDoorBlock(BlockSetType.ACACIA, BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_FENCE_GATE).noOcclusion()));
 
     public static final DeferredBlock<StandingSignBlock> STAR_SIGN = registerBlock("star_sign",
-            () -> new StandingSignBlock(
+            () -> new StandingSignBlockFix(
                     STAR,
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_SIGN)
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_SIGN),
+                    ModItems.STAR_SIGN::get
             ));
     public static final DeferredBlock<CeilingHangingSignBlock> STAR_HANGING_SIGN = registerBlock("star_hanging_sign",
-            () -> new CeilingHangingSignBlock(
+            () -> new CeilingHangingSignBlockFix(
                     STAR,
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_HANGING_SIGN)
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_HANGING_SIGN),
+                    ModItems.STAR_HANGING_SIGN::get
             ));
 
 
     public static final DeferredBlock<WallSignBlock> STAR_WALL_SIGN = registerBlock("star_wall_sign",
             () -> new WallSignBlockFix(
                     STAR,
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WALL_SIGN)
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WALL_SIGN),
+                    ModItems.STAR_SIGN::get
             ));
 
     public static final DeferredBlock<WallHangingSignBlock> STAR_WALL_HANGING_SIGN = registerBlock("star_wall_hanging_sign",
             () -> new WallHangingSignBlockFix(
                     STAR,
-                    BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WALL_HANGING_SIGN)
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WALL_HANGING_SIGN),
+                    ModItems.STAR_HANGING_SIGN::get
             ));
 
 

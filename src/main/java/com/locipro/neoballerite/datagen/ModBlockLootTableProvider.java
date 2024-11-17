@@ -2,6 +2,7 @@ package com.locipro.neoballerite.datagen;
 
 import com.locipro.neoballerite.block.ModBlocks;
 import com.locipro.neoballerite.block.custom.*;
+import com.locipro.neoballerite.item.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -107,10 +108,30 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         dropSelf(STAR_PRESSURE_PLATE.get());
         add(STAR_DOOR.get(), createDoorTable(STAR_DOOR.get()));
 
-        dropSelf(ModBlocks.STAR_SIGN.get());
+        /*dropSelf(ModBlocks.STAR_SIGN.get());
         dropSelf(STAR_WALL_SIGN.get());
         dropSelf(ModBlocks.STAR_HANGING_SIGN.get());
-        dropSelf(STAR_WALL_HANGING_SIGN.get());
+        dropSelf(STAR_WALL_HANGING_SIGN.get());*/
+
+        add(ModBlocks.STAR_SIGN.get(), block ->
+                createSingleItemTable(ModItems.STAR_SIGN));
+        add(STAR_WALL_SIGN.get(), block ->
+                createSingleItemTable(ModItems.STAR_SIGN));
+        
+        add(ModBlocks.STAR_HANGING_SIGN.get(), block ->
+                createSingleItemTable(ModItems.STAR_HANGING_SIGN));
+        add(STAR_WALL_HANGING_SIGN.get(), block ->
+                createSingleItemTable(ModItems.STAR_HANGING_SIGN));
+        
+        add(ModBlocks.WITHERED_SIGN.get(), block ->
+                createSingleItemTable(ModItems.WITHERED_SIGN));
+        add(WITHERED_WALL_SIGN.get(), block ->
+                createSingleItemTable(ModItems.WITHERED_SIGN));
+        
+        add(ModBlocks.WITHERED_HANGING_SIGN.get(), block ->
+                createSingleItemTable(ModItems.WITHERED_HANGING_SIGN));
+        add(WITHERED_WALL_HANGING_SIGN.get(), block ->
+                createSingleItemTable(ModItems.WITHERED_HANGING_SIGN));
 
 
         addCustomBerryDrops(
