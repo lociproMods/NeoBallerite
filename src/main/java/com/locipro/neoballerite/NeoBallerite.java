@@ -11,9 +11,6 @@ import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.armor.NeoArmorMaterials;
 import com.locipro.neoballerite.menu.tabs.ModCreativeTabs;
 import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
-import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
-import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import org.slf4j.Logger;
 
@@ -73,7 +70,8 @@ public class NeoBallerite {
         modEventBus.addListener(this::addCreative);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.SERVER, Config.SERVER_SPEC);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

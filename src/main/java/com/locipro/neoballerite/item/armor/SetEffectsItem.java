@@ -10,23 +10,24 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Supplier;
 
 
 public class SetEffectsItem extends ArmorItem {
     private final Holder<MobEffect> mobEffect;
     private final int durationTicks;
     private final int amplifier;
-    private boolean hasEffect;
     private boolean visibleParticles = false;
     private boolean ambient = false;
 //    private int ticksPassed = 0;
 
-    private static final Map<Holder<ArmorMaterial>, Boolean> materialToConfigValue = Map.of(
-            NeoArmorMaterials.LEAD, Config.lead_armor_set_effects,
-            NeoArmorMaterials.BALLERITE, Config.ballerite_armor_set_effects
+    private static final Map<Holder<ArmorMaterial>, Supplier<Boolean>> materialToConfigValue = Map.of(
+            NeoArmorMaterials.LEAD, () -> Config.lead_armor_set_effects,
+            NeoArmorMaterials.BALLERITE, () -> Config.ballerite_armor_set_effects
     );
 
     public SetEffectsItem(Holder<ArmorMaterial> material, Type type, Properties properties, Holder<MobEffect> mobEffect, int durationTicks, int amplifier) {
@@ -49,9 +50,8 @@ public class SetEffectsItem extends ArmorItem {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
-
-        if (materialToConfigValue.containsKey(material) && materialToConfigValue.get(material)) {
+    public void inventoryTick(@NotNull ItemStack stack, @NotNull Level level, @NotNull Entity entity, int slotId, boolean isSelected) {
+        if (materialToConfigValue.containsKey(material) && materialToConfigValue.get(material).get()) {
             if (entity instanceof ServerPlayer player) {
                 if (canGetEffect(player, mobEffect, amplifier)) {
                     byte count = 0;
@@ -59,7 +59,7 @@ public class SetEffectsItem extends ArmorItem {
                         if (armorItemStack.getItem() instanceof ArmorItem armorItem) {
                             if (armorItem.getMaterial() == material) {
                                 count++;
-                            };
+                            }
                         }
                     }
                     if (count == 4) {

@@ -6,7 +6,7 @@
   "itemGroup.neoballerite.food_stuff" : "NB Foods",
 
   "neoballerite.enchantment.poisoned_tip_enchantment" : "Poisoned Tip",
-  "neoballerite.enchantment.thors_curse_enchantment" : "Thor's Curse",
+  "enchantment.neoballerite.thors_curse_enchantment" : "Thor's Curse",
 
   "item.neoballerite.ball_dowser": "Ballerite Dowsing Rod",
   "item.neoballerite.raw_ballerite": "Raw Ballerite",
