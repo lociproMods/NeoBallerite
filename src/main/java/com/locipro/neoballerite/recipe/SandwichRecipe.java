@@ -138,7 +138,7 @@ public class SandwichRecipe extends CustomRecipe {
 
         if (items.getFirst().isPresent()) {
             assert canAddToSandwich(items.getFirst().get());
-            ItemStack sandwich = items.getFirst().get().copy();
+            ItemStack sandwich = items.getFirst().get().copyWithCount(1);
             // Because of getItemsToCombine filtering, it either doesn't have this, or that.
             // If it doesn't have meat, then there HAS to be cheese in the list.
             if (sandwich.has(NeoDataComponents.SANDWICH_MEAT)) {

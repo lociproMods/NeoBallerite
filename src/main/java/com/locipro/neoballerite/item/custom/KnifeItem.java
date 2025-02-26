@@ -1,5 +1,6 @@
 package com.locipro.neoballerite.item.custom;
 
+import com.locipro.neoballerite.NeoBallerite;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -60,8 +61,16 @@ public class KnifeItem extends Item {
         return stack;
     }
 
-    @Override
+    // Broken, so we need to revert to damaging it at hurtEnemy
+    /*@Override
     public void postHurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        NeoBallerite.LOGGER.debug("FAT JUICY MEN IN YOUR AREA.");
+        stack.hurtAndBreak(2, attacker, EquipmentSlot.MAINHAND);
+    }*/
+
+    @Override
+    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         stack.hurtAndBreak(1, attacker, EquipmentSlot.MAINHAND);
+        return super.hurtEnemy(stack, target, attacker);
     }
 }
