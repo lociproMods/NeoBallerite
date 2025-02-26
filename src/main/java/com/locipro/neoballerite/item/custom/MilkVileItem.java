@@ -5,16 +5,13 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.common.EffectCures;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -43,10 +40,6 @@ public class MilkVileItem extends Item {
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
-
-        if (!level.isClientSide) {
-            livingEntity.removeEffectsCuredBy(EffectCures.MILK);
-        }
         if (stack.isEmpty()) {
             return new ItemStack(Items.GLASS_BOTTLE);
         }else {
@@ -61,8 +54,8 @@ public class MilkVileItem extends Item {
     }
 
     @Override
-    public @NotNull UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.DRINK;
+    public @NotNull ItemUseAnimation getUseAnimation(ItemStack stack) {
+        return ItemUseAnimation.DRINK;
     }
 
     @Override
@@ -70,18 +63,10 @@ public class MilkVileItem extends Item {
         return 40;
     }
 
-    @Override
-    public @NotNull SoundEvent getDrinkingSound() {
-        return SoundEvents.WANDERING_TRADER_DRINK_MILK;
-    }
+
 
     @Override
-    public @NotNull SoundEvent getEatingSound() {
-        return SoundEvents.WANDERING_TRADER_DRINK_MILK;
-    }
-
-    @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+    public @NotNull InteractionResult use(Level level, Player player, InteractionHand usedHand) {
         return ItemUtils.startUsingInstantly(level, player, usedHand);
     }
 }

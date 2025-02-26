@@ -41,17 +41,10 @@ public class KnifeItem extends Item {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
-    // This works but apparently it's getting removed soon and also returning true is safer?
-    // Yeah people r saying this is getting removed and getCraftingRemainingItem will just return
-    // an empty itemstack.
-    @Override
-    public boolean hasCraftingRemainingItem(ItemStack stack) {
-//        return stack.getDamageValue() + 1 < stack.getMaxDamage();
-        return true;
-    }
+
 
     @Override
-    public @NotNull ItemStack getCraftingRemainingItem(ItemStack itemStack) {
+    public ItemStack getCraftingRemainder(ItemStack itemStack) {
         ItemStack stack = itemStack.copy();
         if (stack.getDamageValue() + 1 >= stack.getMaxDamage()) {
             return new ItemStack(Items.AIR);

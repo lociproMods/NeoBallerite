@@ -1,13 +1,10 @@
 package com.locipro.neoballerite.item.tool;
 
-import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.neoforged.neoforge.common.SimpleTier;
+import net.minecraft.world.item.ToolMaterial;
 
-public class ModTiers {
+public class NeoToolMaterials {
     /*  WOOD(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 59, 2.0F, 0.0F, 15, () -> Ingredient.of(ItemTags.PLANKS)),
     STONE(BlockTags.INCORRECT_FOR_STONE_TOOL, 131, 4.0F, 1.0F, 5, () -> Ingredient.of(ItemTags.STONE_TOOL_MATERIALS)),
     IRON(BlockTags.INCORRECT_FOR_IRON_TOOL, 250, 6.0F, 2.0F, 14, () -> Ingredient.of(Items.IRON_INGOT)),
@@ -17,20 +14,20 @@ public class ModTiers {
 */
 /*COMPRESSED_BALLERITE(3, 956, 8.0f, 2.0f, 24, ModItems.COMPRESSED_BALLERITE),
     LEAD(2, 300, 6.0f, 2.0f, 20, ModItems.LEAD_INGOT);*/
-    public static final Tier BALLERITE_TIER = new SimpleTier(
+    public static final ToolMaterial BALLERITE_TIER = new ToolMaterial(
             ModTags.Blocks.INCORRECT_FOR_BALLERITE_TOOL,
             956,
             7.5f,
             2.5f,
             19,
-            () -> Ingredient.of(ModItems.COMPRESSED_BALLERITE_INGOT.get())
+            ModTags.Items.BALLERITE_REPAIR_MATERIALS
     );
-    public static final Tier LEAD_TIER = new SimpleTier(
+    public static final ToolMaterial LEAD_TIER = new ToolMaterial(
             BlockTags.INCORRECT_FOR_IRON_TOOL,
             400,
             6.0f,
             1.5f,
-            19,
-            () -> Ingredient.of(ModItems.LEAD_INGOT.get())
+            14,
+            ModTags.Items.LEAD_REPAIR_MATERIALS
     );
 }

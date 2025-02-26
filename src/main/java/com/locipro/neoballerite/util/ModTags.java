@@ -37,6 +37,7 @@ public class ModTags {
     }
     public static class Items {
         public static final TagKey<Item> BALLERITE_BLOCKS = createTag("ballerite_items");
+        public static final TagKey<Item> BALLERITE_REPAIR_MATERIALS = createTag("ballerite_repair_materials");
         public static final TagKey<Item> WITHERED_LOGS = createTag("withered_logs");
         public static final TagKey<Item> STAR_LOGS = createTag("star_logs");
 
@@ -54,6 +55,8 @@ public class ModTags {
         public static final TagKey<Item> POTATOES = createTag("potatoes");
 
         public static final TagKey<Item> JAMS = createTag("jams");
+
+        public static final TagKey<Item> LEAD_REPAIR_MATERIALS = createTag("lead_repair_materials");
 
         private static TagKey<Item> createTag(String name){
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(MODID, name));

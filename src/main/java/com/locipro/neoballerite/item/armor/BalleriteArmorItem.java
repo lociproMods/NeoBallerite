@@ -5,11 +5,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.equipment.ArmorType;
 
 import java.util.List;
 
 public class BalleriteArmorItem extends ArmorItem {
-    public BalleriteArmorItem(Type type, Properties properties) {
+    public BalleriteArmorItem(ArmorType type, Properties properties) {
         super(NeoArmorMaterials.BALLERITE, type, properties);
     }
 

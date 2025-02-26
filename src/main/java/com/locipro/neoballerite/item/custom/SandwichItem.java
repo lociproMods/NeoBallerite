@@ -14,6 +14,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import org.jetbrains.annotations.NotNull;
@@ -97,8 +98,8 @@ public class SandwichItem extends Item {
     }
 
     @Override
-    public @NotNull UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.EAT;
+    public @NotNull ItemUseAnimation getUseAnimation(ItemStack stack) {
+        return ItemUseAnimation.EAT;
     }
 
     /**
@@ -180,7 +181,7 @@ public class SandwichItem extends Item {
 
 
 
-    // Just in case you want it ig
+    /*// Just in case you want it ig
     @Override
     public @NotNull String getDescriptionId(ItemStack stack) {
         String id = "item." + NeoBallerite.MODID + ".sandwich.";
@@ -202,7 +203,7 @@ public class SandwichItem extends Item {
         //NeoBallerite.LOGGER.debug("id is {}", id);
 
         return id;
-    }
+    }*/
 
 
     // Returns a FoodProperties instance that has the combined properties of all present items. (Uses default ItemStack.)

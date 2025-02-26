@@ -7,10 +7,11 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.level.Level;
 
 public class BalleriteSwordItem extends SwordItem {
-    public BalleriteSwordItem(Tier tier, Properties properties) {
+    public BalleriteSwordItem(ToolMaterial tier, Properties properties) {
         super(tier, properties);
     }
 

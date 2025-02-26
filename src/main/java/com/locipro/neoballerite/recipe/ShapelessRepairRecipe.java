@@ -8,12 +8,11 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.CraftingBookCategory;
-import net.minecraft.world.item.crafting.CraftingInput;
-import net.minecraft.world.item.crafting.CustomRecipe;
-import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 // Hmm... Maybe I should've extended ShapelessRecipe instead.
 // Most of these "custom" recipes in vanilla are hardcoded. No need to make our own builder, just hard code that bitch. check hierarchy of CustomRecipe
@@ -22,6 +21,9 @@ public class ShapelessRepairRecipe extends CustomRecipe {
     public ShapelessRepairRecipe(CraftingBookCategory category) {
         super(category);
     }
+
+
+
     private Pair<ItemStack, ItemStack> getItemsToCombine(CraftingInput input) {
         ItemStack tool = null;
         ItemStack repairIngredient = null;
@@ -50,7 +52,8 @@ public class ShapelessRepairRecipe extends CustomRecipe {
 
     @Override
     public boolean matches(CraftingInput input, Level level) {
-        return getItemsToCombine(input) != null;
+        boolean dimensionsMatch = input.width() * input.height() >= 2;
+        return getItemsToCombine(input) != null && dimensionsMatch;
     }
 
     @Override
@@ -110,13 +113,15 @@ public class ShapelessRepairRecipe extends CustomRecipe {
         return super.getRemainingItems(input);
     }
 
-    @Override
+    /*@Override
     public boolean canCraftInDimensions(int width, int height) {
         return width * height >= 2;
     }
+*/
+
 
     @Override
-    public RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<? extends CustomRecipe> getSerializer() {
         return NeoRecipeSerializers.SHAPELESS_REPAIR_SERIALIZER.get();
     }
 }

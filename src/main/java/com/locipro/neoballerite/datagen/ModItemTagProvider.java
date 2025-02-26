@@ -33,6 +33,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(CHARRED_BALLERITE.get())
                 .add(COMPRESSED_BALLERITE_INGOT.get());
 
+        tag(ModTags.Items.BALLERITE_REPAIR_MATERIALS)
+                .add(COMPRESSED_BALLERITE_INGOT.get());
+        tag(ModTags.Items.LEAD_REPAIR_MATERIALS)
+                .add(LEAD_INGOT.get());
+
         tag(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 .add(EGGPLANT_SEEDS.get())
                 .add(TOMATO_SEEDS.get())

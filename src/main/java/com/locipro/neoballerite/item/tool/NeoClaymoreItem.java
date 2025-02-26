@@ -13,6 +13,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 
@@ -22,7 +23,7 @@ public class NeoClaymoreItem extends SwordItem {
 
     private boolean doesPoison = false;
 
-    public NeoClaymoreItem(Tier tier, Properties properties) {
+    public NeoClaymoreItem(ToolMaterial tier, Properties properties) {
         super(tier, properties.attributes(createAttributes(tier)));
     }
     public NeoClaymoreItem doesPoison() {
@@ -45,7 +46,7 @@ public class NeoClaymoreItem extends SwordItem {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
-    private static ItemAttributeModifiers createAttributes(Tier tier) {
+    private static ItemAttributeModifiers createAttributes(ToolMaterial tier) {
         return ItemAttributeModifiers.builder()
                 .add(
                         Attributes.ATTACK_DAMAGE,

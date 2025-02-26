@@ -5,9 +5,9 @@ import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.monster.Pillager;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.monster.piglin.AbstractPiglin;
@@ -39,7 +39,7 @@ public class MobSpawnEventHandler {
             return;
         }
         if (KNIFE_WIELDING.stream().anyMatch(clazz -> clazz.isInstance(mob))
-                && event.getSpawnType() != MobSpawnType.CONVERSION) {
+                && event.getSpawnType() != EntitySpawnReason.CONVERSION) {
             float chanceToWield = 0f;
             if (mob.getMainHandItem().isEmpty()) {
                 chanceToWield = event.getLevel().getDifficulty() == Difficulty.HARD ? 0.1f : 0.05f;

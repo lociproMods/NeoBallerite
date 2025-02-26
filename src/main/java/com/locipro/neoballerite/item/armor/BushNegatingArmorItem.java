@@ -11,6 +11,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
@@ -20,7 +21,7 @@ import java.util.List;
 
 
 public class BushNegatingArmorItem extends ArmorItem {
-    public BushNegatingArmorItem(Holder<ArmorMaterial> material, Type type, Properties properties) {
+    public BushNegatingArmorItem(Holder<ArmorMaterial> material, ArmorType type, Properties properties) {
         super(material, type, properties);
     }
 

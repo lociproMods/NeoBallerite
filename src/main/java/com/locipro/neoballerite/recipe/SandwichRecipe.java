@@ -123,9 +123,11 @@ public class SandwichRecipe extends CustomRecipe {
     @Override
     public boolean matches(CraftingInput input, Level level) {
         boolean hasKnife = NeoRecipeHelper.anyPresent(input, List.of(pKNIFE));
+        boolean dimensionsMatch = input.width() * input.height() >= 4;
 
         return hasKnife
-            && getItemsToCombine(input) != null;
+            && getItemsToCombine(input) != null
+                && dimensionsMatch;
     }
 
     @Override
@@ -171,13 +173,7 @@ public class SandwichRecipe extends CustomRecipe {
 
 
     @Override
-    public boolean canCraftInDimensions(int width, int height) {
-        return width * height >= 4;
-    }
-
-
-    @Override
-    public @NotNull RecipeSerializer<?> getSerializer() {
+    public @NotNull RecipeSerializer<? extends CustomRecipe> getSerializer() {
         return NeoRecipeSerializers.SANDWICH_RECIPE_SERIALIZER.get();
     }
 }

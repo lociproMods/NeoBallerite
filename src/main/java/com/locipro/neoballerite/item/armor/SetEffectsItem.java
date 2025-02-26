@@ -9,6 +9,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,7 +31,7 @@ public class SetEffectsItem extends ArmorItem {
             NeoArmorMaterials.BALLERITE, () -> Config.ballerite_armor_set_effects
     );
 
-    public SetEffectsItem(Holder<ArmorMaterial> material, Type type, Properties properties, Holder<MobEffect> mobEffect, int durationTicks, int amplifier) {
+    public SetEffectsItem(Holder<ArmorMaterial> material, ArmorType type, Properties properties, Holder<MobEffect> mobEffect, int durationTicks, int amplifier) {
         super(material, type, properties);
         this.mobEffect = mobEffect;
         this.durationTicks = durationTicks;

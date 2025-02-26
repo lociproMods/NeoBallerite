@@ -8,14 +8,14 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
 public class PoisonousSwordItem extends SwordItem {
     private boolean allowed = false;
-    public PoisonousSwordItem(Tier tier, Properties properties, boolean configValue) {
+    public PoisonousSwordItem(ToolMaterial tier, Properties properties, boolean configValue) {
         super(tier, properties);
         allowed = configValue;
     }
