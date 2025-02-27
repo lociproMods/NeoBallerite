@@ -15,8 +15,9 @@ import java.util.List;
 
 public class PoisonousSwordItem extends SwordItem {
     private boolean allowed = false;
-    public PoisonousSwordItem(ToolMaterial tier, Properties properties, boolean configValue) {
-        super(tier, properties);
+
+    public PoisonousSwordItem(ToolMaterial material, float attackDamage, float attackSpeed, Properties properties, boolean configValue) {
+        super(material, attackDamage, attackSpeed, properties);
         allowed = configValue;
     }
 

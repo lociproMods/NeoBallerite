@@ -7,8 +7,8 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
@@ -26,12 +26,12 @@ public class SetEffectsItem extends ArmorItem {
     private boolean ambient = false;
 //    private int ticksPassed = 0;
 
-    private static final Map<Holder<ArmorMaterial>, Supplier<Boolean>> materialToConfigValue = Map.of(
+    private static final Map<ArmorMaterial, Supplier<Boolean>> materialToConfigValue = Map.of(
             NeoArmorMaterials.LEAD, () -> Config.lead_armor_set_effects,
             NeoArmorMaterials.BALLERITE, () -> Config.ballerite_armor_set_effects
     );
 
-    public SetEffectsItem(Holder<ArmorMaterial> material, ArmorType type, Properties properties, Holder<MobEffect> mobEffect, int durationTicks, int amplifier) {
+    public SetEffectsItem(ArmorMaterial material, ArmorType type, Properties properties, Holder<MobEffect> mobEffect, int durationTicks, int amplifier) {
         super(material, type, properties);
         this.mobEffect = mobEffect;
         this.durationTicks = durationTicks;

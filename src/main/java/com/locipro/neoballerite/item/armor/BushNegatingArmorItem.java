@@ -2,15 +2,14 @@ package com.locipro.neoballerite.item.armor;
 
 import com.locipro.neoballerite.component.NeoDataComponents;
 import net.minecraft.ChatFormatting;
-import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.equipment.ArmorMaterial;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -21,8 +20,10 @@ import java.util.List;
 
 
 public class BushNegatingArmorItem extends ArmorItem {
-    public BushNegatingArmorItem(Holder<ArmorMaterial> material, ArmorType type, Properties properties) {
-        super(material, type, properties);
+
+
+    public BushNegatingArmorItem(ArmorMaterial material, ArmorType armorType, Properties properties) {
+        super(material, armorType, properties);
     }
 
     @Override
@@ -84,9 +85,9 @@ public class BushNegatingArmorItem extends ArmorItem {
         }
     }
 
-    // Nah, you ain't repairing this in a damn anvil homie.
     @Override
-    public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
+    public boolean isCombineRepairable(ItemStack stack) {
         return false;
     }
+
 }

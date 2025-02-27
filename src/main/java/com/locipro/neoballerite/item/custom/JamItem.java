@@ -10,7 +10,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -63,7 +62,7 @@ public class JamItem extends Item {
                 .toLowerCase()
                 .replace('_', ' ')
                 .replace(":", "")
-                .replace(item.asItem().getCreatorModId(item.asItem().getDefaultInstance()), "");
+                .replace(item.asItem().getCreatorModId(), ""); // Remove mod id
         char lastCharacter = itemName.charAt(itemName.length() - 1);
         return
             switch (lastCharacter) {

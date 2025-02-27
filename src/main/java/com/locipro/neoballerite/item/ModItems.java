@@ -17,6 +17,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -101,14 +102,14 @@ public class ModItems {
 
 
     public static final DeferredItem<SignItem> WITHERED_SIGN = ITEMS.register("withered_sign_item",
-            () -> new SignItem(new Item.Properties().stacksTo(16), ModBlocks.WITHERED_SIGN.get(), ModBlocks.WITHERED_WALL_SIGN.get()));
+            () -> new SignItem(ModBlocks.WITHERED_SIGN.get(), ModBlocks.WITHERED_WALL_SIGN.get(), new Item.Properties().stacksTo(16)));
 
     public static final DeferredItem<SignItem> WITHERED_HANGING_SIGN = ITEMS.register("withered_hanging_sign_item",
             () -> new HangingSignItem(ModBlocks.WITHERED_HANGING_SIGN.get(), ModBlocks.WITHERED_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
 
 
     public static final DeferredItem<SignItem> STAR_SIGN = ITEMS.register("star_sign_item",
-            () -> new SignItem(new Item.Properties().stacksTo(16), ModBlocks.STAR_SIGN.get(), ModBlocks.STAR_WALL_SIGN.get()));
+            () -> new SignItem(ModBlocks.STAR_SIGN.get(), ModBlocks.STAR_WALL_SIGN.get(), new Item.Properties().stacksTo(16)));
     public static final DeferredItem<SignItem> STAR_HANGING_SIGN = ITEMS.register("star_hanging_sign_item",
             () -> new HangingSignItem(ModBlocks.STAR_HANGING_SIGN.get(), ModBlocks.STAR_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16 )));
 
@@ -116,64 +117,45 @@ public class ModItems {
     public static final DeferredItem<SwordItem> BALLERITE_SWORD = ITEMS.register("ballerite_sword",
             () -> new BalleriteSwordItem(
                     NeoToolMaterials.BALLERITE_TIER,
-                    new Item.Properties().attributes(
-                            SwordItem.createAttributes(
-                                    NeoToolMaterials.BALLERITE_TIER,
-                                    3f,
-                                    -2.4f
-                            )
-                    )
+                    3,
+                    -2.4f,
+                    new Item.Properties()
             ));
     public static final DeferredItem<PickaxeItem> BALLERITE_PICKAXE = ITEMS.register("ballerite_pickaxe",
             () -> new BalleritePickaxeItem(
                     NeoToolMaterials.BALLERITE_TIER,
-                    new Item.Properties().attributes(
-                            PickaxeItem.createAttributes(
-                                    NeoToolMaterials.BALLERITE_TIER,
-                                    1,
-                                    -2.8f)
-                    )
+                    -2.8f,
+                    1,
+                    new Item.Properties()
             ));
     public static final DeferredItem<AxeItem> BALLERITE_AXE = ITEMS.register("ballerite_axe",
             () -> new BalleriteAxeItem(
                     NeoToolMaterials.BALLERITE_TIER,
-                    new Item.Properties().attributes(
-                            AxeItem.createAttributes(
-                                    NeoToolMaterials.BALLERITE_TIER,
-                                    6f,
-                                    -3f
-                            )
-                    )
+                    6f,
+                    -3f,
+                    new Item.Properties()
             ));
     public static final DeferredItem<ShovelItem> BALLERITE_SHOVEL = ITEMS.register("ballerite_shovel",
             () -> new BalleriteShovelItem(
                     NeoToolMaterials.BALLERITE_TIER,
-                    new Item.Properties().attributes(
-                            ShovelItem.createAttributes(
-                                    NeoToolMaterials.BALLERITE_TIER,
-                                    1.6f,
-                                    -2.9f
-                            )
-                    )
+                    1.6f,
+                    -2.9f,
+                    new Item.Properties()
             ));
     public static final DeferredItem<HoeItem> BALLERITE_HOE = ITEMS.register("ballerite_hoe",
             () -> new HoeItem(
                     NeoToolMaterials.BALLERITE_TIER,
-                    new Item.Properties().attributes(
-                            HoeItem.createAttributes(
-                                    NeoToolMaterials.BALLERITE_TIER,
-                                    -1f,
-                                    -1f
-                            )
-                    )
+                    -1f,
+                    1f,
+                    new Item.Properties()
             ));
 
 
     public static final DeferredItem<ArmorItem> BALLERITE_HELMET = ITEMS.register("ballerite_helmet",
             () -> new SetEffectsItem(
                     NeoArmorMaterials.BALLERITE,
-                    ArmorItem.Type.HELMET,
-                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(35)),
+                    ArmorType.HELMET,
+                    new Item.Properties(),
                     MobEffects.LUCK,
                     80,
                     2
@@ -188,29 +170,29 @@ public class ModItems {
             }.effectParticles().ambient());
     public static final DeferredItem<ArmorItem> BALLERITE_CHESTPLATE = ITEMS.register("ballerite_chestplate",
             () -> new BalleriteArmorItem(
-                    ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(35))
+                    ArmorType.CHESTPLATE,
+                    new Item.Properties()
             ));
     public static final DeferredItem<ArmorItem> BALLERITE_LEGGINGS = ITEMS.register("ballerite_leggings",
             () -> new BalleriteArmorItem(
-                    ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(35))
+                    ArmorType.LEGGINGS,
+                    new Item.Properties()
             ));
     public static final DeferredItem<ArmorItem> BALLERITE_BOOTS = ITEMS.register("ballerite_boots",
             () -> new BalleriteArmorItem(
-                    ArmorItem.Type.BOOTS,
-                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(35))
+                    ArmorType.BOOTS,
+                    new Item.Properties()
             ));
 
-    // I think this will look for "textures/entity/horse/armor/horse_armor_ballerite_horse_armor"
-    // nvm it just looks for "horse_armor_ballerite", it doesn't use the item's key, it uses the material's key for the texture.
+
+    //TODO  https://docs.neoforged.net/docs/items/armor/#:~:text=render%20the%20equipment.-,.setAsset,-(ResourceKey.
     public static final DeferredItem<Item> BALLERITE_HORSE_ARMOR = ITEMS.register("ballerite_horse_armor",
-            () -> new AnimalArmorItem(NeoArmorMaterials.BALLERITE, AnimalArmorItem.BodyType.EQUESTRIAN, true, new Item.Properties().stacksTo(1)));
+            () -> new AnimalArmorItem(NeoArmorMaterials.BALLERITE, AnimalArmorItem.BodyType.EQUESTRIAN, new Item.Properties()));
 
     public static final DeferredItem<ArmorItem> LEAVES_BOOTS = ITEMS.register("leaves_boots",
             () -> new BushNegatingArmorItem(
                     NeoArmorMaterials.LEAVES,
-                    ArmorItem.Type.BOOTS,
+                    ArmorType.BOOTS,
                     new Item.Properties()
                             .durability(77)
                             .component(NeoDataComponents.CAN_NEGATE_BUSH_SLOW.value(), true)
@@ -224,56 +206,38 @@ public class ModItems {
     public static final DeferredItem<SwordItem> LEAD_SWORD = ITEMS.register("lead_sword",
             () -> new PoisonousSwordItem(
                     NeoToolMaterials.LEAD_TIER,
-                    new Item.Properties().attributes(
-                            SwordItem.createAttributes(
-                                    NeoToolMaterials.LEAD_TIER,
-                                    3f,
-                                    -2.4f
-                            )
-                    )
-            , Config.lead_sword_does_poison));
+                    3f,
+                    -2.4f,
+                    new Item.Properties(),
+                    Config.lead_sword_does_poison));
+
     public static final DeferredItem<PickaxeItem> LEAD_PICKAXE = ITEMS.register("lead_pickaxe",
             () -> new PickaxeItem(
                     NeoToolMaterials.LEAD_TIER,
-                    new Item.Properties().attributes(
-                            PickaxeItem.createAttributes(
-                                    NeoToolMaterials.LEAD_TIER,
-                                    1,
-                                    -2.8f)
-                    )
+                    1,
+                    -2.8f,
+                    new Item.Properties()
             ));
     public static final DeferredItem<AxeItem> LEAD_AXE = ITEMS.register("lead_axe",
             () -> new AxeItem(
                     NeoToolMaterials.LEAD_TIER,
-                    new Item.Properties().attributes(
-                            AxeItem.createAttributes(
-                                    NeoToolMaterials.LEAD_TIER,
-                                    6f,
-                                    -3f
-                            )
-                    )
+                    6f,
+                    -3f,
+                    new Item.Properties()
             ));
     public static final DeferredItem<ShovelItem> LEAD_SHOVEL = ITEMS.register("lead_shovel",
             () -> new ShovelItem(
                     NeoToolMaterials.LEAD_TIER,
-                    new Item.Properties().attributes(
-                            ShovelItem.createAttributes(
-                                    NeoToolMaterials.LEAD_TIER,
-                                    1.4f,
-                                    -3.1f
-                            )
-                    )
+                    1.4f,
+                    -3.1f,
+                    new Item.Properties()
             ));
     public static final DeferredItem<HoeItem> LEAD_HOE = ITEMS.register("lead_hoe",
             () -> new HoeItem(
                     NeoToolMaterials.LEAD_TIER,
-                    new Item.Properties().attributes(
-                            HoeItem.createAttributes(
-                                    NeoToolMaterials.LEAD_TIER,
-                                    0f,
-                                    -2f
-                            )
-                    )
+                    0f,
+                    -2f,
+                    new Item.Properties()
             ));
 
 
@@ -281,8 +245,8 @@ public class ModItems {
     public static final DeferredItem<ArmorItem> LEAD_HELMET = ITEMS.register("lead_helmet",
             () -> new SetEffectsItem(
                     NeoArmorMaterials.LEAD,
-                    ArmorItem.Type.HELMET,
-                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(23)),
+                    ArmorType.HELMET,
+                    new Item.Properties(),
                     MobEffects.MOVEMENT_SLOWDOWN,
                     80,
                     0
@@ -300,35 +264,35 @@ public class ModItems {
             }.effectParticles().ambient());
     public static final DeferredItem<ArmorItem> LEAD_CHESTPLATE = ITEMS.register("lead_chestplate",
             () -> new LeadArmorItem(
-                    ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(23))
+                    ArmorType.CHESTPLATE,
+                    new Item.Properties()
             ));
     public static final DeferredItem<ArmorItem> LEAD_LEGGINGS = ITEMS.register("lead_leggings",
             () -> new LeadArmorItem(
-                    ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(23))
+                    ArmorType.LEGGINGS,
+                    new Item.Properties()
             ));
     public static final DeferredItem<ArmorItem> LEAD_BOOTS = ITEMS.register("lead_boots",
             () -> new LeadArmorItem(
-                    ArmorItem.Type.BOOTS,
-                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(23))
+                    ArmorType.BOOTS,
+                    new Item.Properties()
             ));
 
     //endregion
     
     //region CLAYMORES
     public static final DeferredItem<NeoClaymoreItem> WOODEN_CLAYMORE = ITEMS.register("wooden_claymore",
-            () -> new NeoClaymoreItem(Tiers.WOOD, new Item.Properties()));
+            () -> new NeoClaymoreItem(ToolMaterial.WOOD, new Item.Properties()));
     public static final DeferredItem<NeoClaymoreItem> STONE_CLAYMORE = ITEMS.register("stone_claymore",
-            () -> new NeoClaymoreItem(Tiers.STONE, new Item.Properties()));
+            () -> new NeoClaymoreItem(ToolMaterial.STONE, new Item.Properties()));
     public static final DeferredItem<NeoClaymoreItem> IRON_CLAYMORE = ITEMS.register("iron_claymore",
-            () -> new NeoClaymoreItem(Tiers.IRON, new Item.Properties()));
+            () -> new NeoClaymoreItem(ToolMaterial.IRON, new Item.Properties()));
     public static final DeferredItem<NeoClaymoreItem> LEAD_CLAYMORE = ITEMS.register("lead_claymore",
             () -> new NeoClaymoreItem(NeoToolMaterials.LEAD_TIER, new Item.Properties()).doesPoison());
     public static final DeferredItem<NeoClaymoreItem> GOLD_CLAYMORE = ITEMS.register("gold_claymore",
-            () -> new NeoClaymoreItem(Tiers.GOLD, new Item.Properties()));
+            () -> new NeoClaymoreItem(ToolMaterial.GOLD, new Item.Properties()));
     public static final DeferredItem<NeoClaymoreItem> DIAMOND_CLAYMORE = ITEMS.register("diamond_claymore",
-            () -> new NeoClaymoreItem(Tiers.DIAMOND, new Item.Properties()) {
+            () -> new NeoClaymoreItem(ToolMaterial.DIAMOND, new Item.Properties()) {
                 @Override
                 public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
                     Level level = attacker.level();
@@ -349,7 +313,7 @@ public class ModItems {
                 }
             });
     public static final DeferredItem<NeoClaymoreItem> NETHERITE_CLAYMORE = ITEMS.register("netherite_claymore",
-            () -> new NeoClaymoreItem(Tiers.NETHERITE, new Item.Properties()));
+            () -> new NeoClaymoreItem(ToolMaterial.NETHERITE, new Item.Properties()));
     public static final DeferredItem<NeoClaymoreItem> BALLERITE_CLAYMORE = ITEMS.register("ballerite_claymore",
             () -> new NeoClaymoreItem(NeoToolMaterials.BALLERITE_TIER, new Item.Properties()) {
                 @Override
@@ -377,10 +341,10 @@ public class ModItems {
 
     //region foods?
     public static final DeferredItem<Item> KNIFE = ITEMS.register("knife",
-            () -> new KnifeItem(new Item.Properties().setNoRepair().durability(32), 3f));
+            () -> new KnifeItem(new Item.Properties().durability(32).setNoCombineRepair(), 3f));
 
     public static final DeferredItem<Item> DIAMOND_KNIFE = ITEMS.register("diamond_knife",
-            () -> new KnifeItem(new Item.Properties().setNoRepair().durability(524), 4.5f));
+            () -> new KnifeItem(new Item.Properties().durability(524).setNoCombineRepair(), 4.5f));
 
 
     public static final DeferredItem<BlockItem> BLUEBERRIES = ITEMS.registerSimpleBlockItem("blueberries",
