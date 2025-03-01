@@ -9,9 +9,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -108,6 +106,7 @@ public class CustomDistanceLeavesBlock extends Block implements SimpleWaterlogge
 
         return state;
     }
+
 
     private BlockState updateDistance(BlockState state, LevelAccessor level, BlockPos pos) {
         int i = DECAY_DISTANCE;

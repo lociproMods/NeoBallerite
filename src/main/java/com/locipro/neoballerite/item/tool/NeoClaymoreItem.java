@@ -6,16 +6,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
 
 import java.util.List;
 
@@ -23,9 +18,11 @@ public class NeoClaymoreItem extends SwordItem {
 
     private boolean doesPoison = false;
 
-    public NeoClaymoreItem(ToolMaterial tier, Properties properties) {
-        super(tier, properties.attributes(createAttributes(tier)));
+    public NeoClaymoreItem(ToolMaterial material, Properties properties) {
+        super(material, 5.25f + material.attackDamageBonus(), -2.8f, properties);
     }
+
+
     public NeoClaymoreItem doesPoison() {
         this.doesPoison = true;
         return this;
@@ -46,23 +43,6 @@ public class NeoClaymoreItem extends SwordItem {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
-    private static ItemAttributeModifiers createAttributes(ToolMaterial tier) {
-        return ItemAttributeModifiers.builder()
-                .add(
-                        Attributes.ATTACK_DAMAGE,
-                        new AttributeModifier(
-                                BASE_ATTACK_DAMAGE_ID, 5.25f + tier.getAttackDamageBonus(), AttributeModifier.Operation.ADD_VALUE
-                        ),
-                        EquipmentSlotGroup.MAINHAND
-                )
-                .add(
-                        Attributes.ATTACK_SPEED,
-                        new AttributeModifier(BASE_ATTACK_SPEED_ID, -2.8, AttributeModifier.Operation.ADD_VALUE),
-                        EquipmentSlotGroup.MAINHAND
-                )
-                .build();
-    }
-
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if (attacker instanceof ServerPlayer serverAttacker) {
@@ -71,7 +51,7 @@ public class NeoClaymoreItem extends SwordItem {
                 target.addEffect(new MobEffectInstance(MobEffects.POISON, 60, 1));
                 if (target instanceof ServerPlayer serverTarget) {
                     serverTarget.displayClientMessage(Component.literal(
-                                        "You've been poisoned by " + serverAttacker.getDisplayName() + "!")
+                                        "You've been poisoned by " + serverAttacker.getScoreboardName() + "!")
                                 .withStyle(ChatFormatting.RED)
                                 .withStyle(ChatFormatting.BOLD), true);
                 }

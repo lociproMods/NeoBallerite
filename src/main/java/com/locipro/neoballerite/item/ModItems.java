@@ -17,6 +17,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.equipment.ArmorType;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -58,7 +59,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> RAW_BALLERITE = ITEMS.register("raw_ballerite",
-            () -> new Item(new Item.Properties().food(BalleriteFoodProperties.RAW_BALLERITE)){
+            () -> new Item(new Item.Properties().food(BalleriteFoodProperties.RAW_BALLERITE)
+                    .component(DataComponents.CONSUMABLE, BalleriteFoodProperties.RAW_BALLERITE_CONSUMABLE)){
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add( Component.literal("Raw ballerite... Suspicious mineral").withStyle(ChatFormatting.GRAY));
@@ -70,7 +72,8 @@ public class ModItems {
                 }
             });
     public static final DeferredItem<Item> COOKED_BALLERITE = ITEMS.register("cooked_ballerite",
-            () -> new Item(new Item.Properties().food(BalleriteFoodProperties.COOKED_BALLERITE)){
+            () -> new Item(new Item.Properties().food(BalleriteFoodProperties.COOKED_BALLERITE)
+                    .component(DataComponents.CONSUMABLE, BalleriteFoodProperties.COOKED_BALLERITE_CONSUMABLE)){
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(  Component.literal("Cooked ballerite... still weird.").withStyle(ChatFormatting.GRAY));
@@ -348,14 +351,18 @@ public class ModItems {
 
 
     public static final DeferredItem<BlockItem> BLUEBERRIES = ITEMS.registerSimpleBlockItem("blueberries",
-            ModBlocks.BLUEBERRY_BUSH, new Item.Properties().food(BerryFoodProperties.BLUE));
+            ModBlocks.BLUEBERRY_BUSH, new Item.Properties().food(BerryFoodProperties.BLUE)
+                    .component(DataComponents.CONSUMABLE, BerryFoodProperties.DEFAULT_BERRY));
     public static final DeferredItem<BlockItem> BLACKBERRIES = ITEMS.registerSimpleBlockItem("blackberries",
-            ModBlocks.BLACKBERRY_BUSH, new Item.Properties().food(BerryFoodProperties.BLACK));
+            ModBlocks.BLACKBERRY_BUSH, new Item.Properties().food(BerryFoodProperties.BLACK)
+                    .component(DataComponents.CONSUMABLE, BerryFoodProperties.DEFAULT_BERRY));
 
     public static final DeferredItem<Item> STRAWBERRY = ITEMS.register("strawberry",
-            () -> new Item(new Item.Properties().food(BerryFoodProperties.STRAWBERRIES)));
+            () -> new Item(new Item.Properties().food(BerryFoodProperties.STRAWBERRIES)
+                    .component(DataComponents.CONSUMABLE, BerryFoodProperties.DEFAULT_BERRY)));
     public static final DeferredItem<Item> UNRIPE_STRAWBERRY = ITEMS.register("unripe_strawberry",
-            () -> new Item(new Item.Properties().food(BerryFoodProperties.UNRIPE_STRAWBERRIES)));
+            () -> new Item(new Item.Properties().food(BerryFoodProperties.UNRIPE_STRAWBERRIES)
+                    .component(DataComponents.CONSUMABLE, BerryFoodProperties.UNRIPE_STRAWBERIES_CONSUMABLE)));
     public static final DeferredItem<BlockItem> STRAWBERRY_SEEDS = ITEMS.registerSimpleBlockItem("strawberry_seeds",
             ModBlocks.STRAWBERRY_BUSH, new Item.Properties());
 
@@ -380,7 +387,8 @@ public class ModItems {
 
 
     public static final DeferredItem<BlockItem> CORN_KERNELS = ITEMS.registerSimpleBlockItem("corn_kernels",
-            ModBlocks.CORN_CROP, new Item.Properties().food(CropFoodProperties.KERNELS));
+            ModBlocks.CORN_CROP, new Item.Properties().food(CropFoodProperties.KERNELS)
+                    .component(DataComponents.CONSUMABLE, BerryFoodProperties.DEFAULT_BERRY));
     public static final DeferredItem<Item> CORN_COB = ITEMS.register("corn_cob",
             () -> new Item(new Item.Properties().food(CropFoodProperties.COB)));
     public static final DeferredItem<Item> GRILLED_CORN_COB = ITEMS.register("grilled_corn_cob",
@@ -389,17 +397,24 @@ public class ModItems {
 
 
     public static final DeferredItem<Item> MILK_VILE = ITEMS.register("milk_vile",
-            () -> new MilkVileItem(new Item.Properties().food(DrinkFoodProperties.MILK)));
+            () -> new Item(new Item.Properties()
+                    .food(DrinkFoodProperties.MILK_VILE)
+                    .craftRemainder(Items.GLASS_BOTTLE)
+                    .component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET)
+                    .usingConvertsTo(Items.GLASS_BOTTLE)));
 
     public static final DeferredItem<CheeseItem> MILK_CHEESE = ITEMS.register("milk_cheese",
-            () -> new CheeseItem(new Item.Properties().food(CheeseFoodProperties.CHEESE))
+            () -> new CheeseItem(new Item.Properties().food(CheeseFoodProperties.CHEESE)
+                    .component(DataComponents.CONSUMABLE, BerryFoodProperties.DEFAULT_BERRY))
                     .cheeseType(CheeseItem.CheeseTypes.OVERWORLD));
     public static final DeferredItem<CheeseItem> WARPED_CHEESE = ITEMS.register("warped_cheese",
-            () -> new CheeseItem(new Item.Properties().food(CheeseFoodProperties.WARPED))
+            () -> new CheeseItem(new Item.Properties().food(CheeseFoodProperties.WARPED)
+                    .component(DataComponents.CONSUMABLE, CheeseFoodProperties.WARPED_C))
                     .cheeseType(CheeseItem.CheeseTypes.NETHER));
 
     public static final DeferredItem<Item> IRON_CARROT = ITEMS.register("iron_carrot",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.IRON_CARROT)) {
+            () -> new Item(new Item.Properties().food(CropFoodProperties.IRON_CARROT)
+                    .component(DataComponents.CONSUMABLE, CropFoodProperties.IRON_CARROT_C)) {
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(Component.literal("Don't have to worry about anemia, heh.").withStyle(ChatFormatting.GRAY));
@@ -407,7 +422,8 @@ public class ModItems {
                 }
             });
     public static final DeferredItem<Item> DIAMOND_CARROT = ITEMS.register("diamond_carrot",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.DIAMOND_CARROT)) {
+            () -> new Item(new Item.Properties().food(CropFoodProperties.DIAMOND_CARROT)
+                    .component(DataComponents.CONSUMABLE, CropFoodProperties.DIAMOND_CARROT_C)) {
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(Component.literal("Might be a little hard to bite into").withStyle(ChatFormatting.GRAY));
@@ -417,7 +433,9 @@ public class ModItems {
 
 
     public static final DeferredItem<Item> ENCHANTED_DIAMOND_CARROT = ITEMS.register("enchanted_diamond_carrot",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.ENCHANTED_DIAMOND_CARROT).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)) {
+            () -> new Item(new Item.Properties().food(CropFoodProperties.ENCHANTED_DIAMOND_CARROT)
+                    .component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
+                    .component(DataComponents.CONSUMABLE, CropFoodProperties.ENCHANTED_DIAMOND_CARROT_C)) {
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(Component.literal("Might be a little harder to bite into").withStyle(ChatFormatting.GRAY));
@@ -425,14 +443,6 @@ public class ModItems {
                 }
             });
 
-    /*public static final DeferredItem<Item> ENCHANTED_DIAMOND_CARROT = registerItemTest("enchanted_diamond_carrot",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.ENCHANTED_DIAMOND_CARROT).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)) {
-                @Override
-                public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-                    tooltipComponents.add(Component.literal("Might be a little harder to bite into").withStyle(ChatFormatting.GRAY));
-                    super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-                }
-            }, ModCreativeTabs.TEST);*/
 
     public static final DeferredItem<Item> EGGS_SUNNY = ITEMS.register("eggs_sunny",
             () -> new Item(new Item.Properties().food(EggFoodProperties.SUNNY)));
@@ -442,19 +452,6 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(EggFoodProperties.OMLETTE)));
 
 
-
-    // What a mess...
-    // Update : fuck this, removed for now.
-    /*public static final DeferredItem<Item> CHEESE_STEAK = ITEMS.register("cheese_steak",
-            () -> new Item(new Item.Properties().food(CheeseFoodProperties.CHEESE_STEAK)));
-    public static final DeferredItem<Item> CHEESE_PORK = ITEMS.register("cheese_pork",
-            () -> new Item(new Item.Properties().food(CheeseFoodProperties.CHEESE_PORK)));
-    public static final DeferredItem<Item> CHEESE_MUTTON = ITEMS.register("cheese_mutton",
-            () -> new Item(new Item.Properties().food(CheeseFoodProperties.CHEESE_MUTTON)));
-    public static final DeferredItem<Item> CHEESE_CHICKEN = ITEMS.register("cheese_chicken",
-            () -> new Item(new Item.Properties().food(CheeseFoodProperties.CHEESE_CHICKEN)));
-    public static final DeferredItem<Item> CHEESE_FRIES = ITEMS.register("cheese_fries",
-            () -> new Item(new Item.Properties().food(CheeseFoodProperties.CHEESE_FRIES)));*/
 
     public static final DeferredItem<SandwichItem> SANDWICH = ITEMS.register("default_sandwich", SandwichItem::new);
     public static final DeferredItem<Item> CORN_BREAD = ITEMS.register("corn_bread",

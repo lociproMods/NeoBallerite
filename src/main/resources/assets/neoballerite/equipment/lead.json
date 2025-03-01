@@ -1,0 +1,27 @@
+{
+  "layers": {
+
+    "humanoid": [
+      {
+        "texture": "neoballerite:lead/outer"
+      },
+      {
+        "texture": "neoballerite:lead/outer_overlay"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "neoballerite:lead/inner"
+      },
+      {
+        "texture": "neoballerite:lead/inner_overlay"
+      }
+    ],
+    "horse_body": [
+      {
+        "texture": "neoballerite:lead/horse",
+        "use_player_texture": true
+      }
+    ]
+  }
+}

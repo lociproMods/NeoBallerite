@@ -9,6 +9,7 @@ import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.misc.food.BalleriteFoodProperties;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.*;
@@ -78,7 +79,8 @@ public class ModBlocks {
                         tooltipComponents.add( Component.literal("--Cookable").withStyle(ChatFormatting.AQUA));
                     }
                 }
-            }, new Item.Properties().food(BalleriteFoodProperties.RAW_BALLERITE_BLOCK));
+            }, new Item.Properties().food(BalleriteFoodProperties.RAW_BALLERITE_BLOCK)
+                    .component(DataComponents.CONSUMABLE, BalleriteFoodProperties.RAW_BALLERITE_BLOCK_CONSUMABLE));
 
     public static final DeferredBlock<Block> COOKED_BALLERITE_BLOCK = registerBlock("cooked_ballerite_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.MUD)
@@ -93,7 +95,8 @@ public class ModBlocks {
                         tooltipComponents.add( Component.literal("-Running speed faster than grass").withStyle(ChatFormatting.BLACK));
                     }
                 }
-            }, new Item.Properties().food(BalleriteFoodProperties.COOKED_BALLERITE_BLOCK)); // BlockItem properties
+            }, new Item.Properties().food(BalleriteFoodProperties.COOKED_BALLERITE_BLOCK)
+                    .component(DataComponents.CONSUMABLE, BalleriteFoodProperties.COOKED_BALLERITE_BLOCK_CONSUMABLE)); // BlockItem properties
 
     public static final DeferredBlock<Block> BURNT_BALLERITE_BLOCK = registerBlock("burnt_ballerite_block",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.COAL_BLOCK)
