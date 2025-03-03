@@ -1,7 +1,6 @@
 package com.locipro.neoballerite.item.custom;
 
 
-import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.NeoSandwiches;
 import com.locipro.neoballerite.item.util.FoodMath;
@@ -16,7 +15,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -96,6 +94,7 @@ public class SandwichItem extends Item {
 
         return builder.build();
     }
+
 
     @Override
     public @NotNull ItemUseAnimation getUseAnimation(ItemStack stack) {

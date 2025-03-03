@@ -20,6 +20,7 @@ import java.util.function.Supplier;
 
 public class SetEffectsItem extends ArmorItem {
     private final Holder<MobEffect> mobEffect;
+    private final ArmorMaterial material;
     private final int durationTicks;
     private final int amplifier;
     private boolean visibleParticles = false;
@@ -33,6 +34,7 @@ public class SetEffectsItem extends ArmorItem {
 
     public SetEffectsItem(ArmorMaterial material, ArmorType type, Properties properties, Holder<MobEffect> mobEffect, int durationTicks, int amplifier) {
         super(material, type, properties);
+        this.material = material;
         this.mobEffect = mobEffect;
         this.durationTicks = durationTicks;
         this.amplifier = amplifier;
@@ -61,6 +63,14 @@ public class SetEffectsItem extends ArmorItem {
                             if (armorItem.getMaterial() == material) {
                                 count++;
                             }
+                            // CHECK KAUPEN VIDEO
+                            /*
+                            *  Equippable equippableComponentBoots = player.getInventory().getArmor(0).getComponents().get(DataComponents.EQUIPPABLE);
+        Equippable equippableComponentLeggings = player.getInventory().getArmor(1).getComponents().get(DataComponents.EQUIPPABLE);
+        Equippable equippableComponentBreastplate = player.getInventory().getArmor(2).getComponents().get(DataComponents.EQUIPPABLE);
+        Equippable equippableComponentHelmet = player.getInventory().getArmor(3).getComponents().get(DataComponents.EQUIPPABLE);
+        * return equippableComponentBoots.model().equals(mapArmorMaterial.modelId()) && equippableComponentLeggings.model().equals(mapArmorMaterial.modelId()) &&
+                equippableComponentBreastplate.model().equals(mapArmorMaterial.modelId()) && equippableComponentHelmet.model().equals(mapArmorMaterial.modelId());*/
                         }
                     }
                     if (count == 4) {

@@ -6,6 +6,7 @@ import net.minecraft.advancements.critereon.EntityEquipmentPredicate;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
@@ -45,6 +46,7 @@ public class NeoGLMProvider extends GlobalLootModifierProvider {
 
 
 
+
         add("eggplant_from_zombie",
                 new NeoItemLootModifier(new LootItemCondition[]{
                         new LootTableIdCondition.Builder(ResourceLocation.withDefaultNamespace("entities/zombie")).build(),
@@ -53,7 +55,7 @@ public class NeoGLMProvider extends GlobalLootModifierProvider {
                         LootItemEntityPropertyCondition.hasProperties(
                                 LootContext.EntityTarget.ATTACKER,
                                 new EntityPredicate.Builder().equipment(EntityEquipmentPredicate.Builder.equipment().mainhand(
-                                        ItemPredicate.Builder.item().of(Items.STICK)
+                                        ItemPredicate.Builder.item().of(registries.lookupOrThrow(Registries.ITEM), Items.STICK)
                                 ).build()).build()).build()
 
                 }, 1, 1, EGGPLANT.get(), 0));

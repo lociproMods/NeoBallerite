@@ -84,7 +84,7 @@ public class CustomDistanceLeavesBlock extends Block implements SimpleWaterlogge
     }
 
     @Override
-    protected int getLightBlock(BlockState state, BlockGetter level, BlockPos pos) {
+    protected int getLightBlock(BlockState state) {
         return 1;
     }
 
@@ -94,19 +94,17 @@ public class CustomDistanceLeavesBlock extends Block implements SimpleWaterlogge
      * Note that this method should ideally consider only the specific direction passed in.
      */
     @Override
-    protected BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
+    protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess scheduledTickAccess, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
         if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+            scheduledTickAccess.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
-        int i = getDistanceAt(facingState) + 1;
+        int i = getDistanceAt(neighborState) + 1;
         if (i != 1 || state.getValue(DISTANCE) != i) {
-            level.scheduleTick(currentPos, this, 1);
+            scheduledTickAccess.scheduleTick(pos, this, 1);
         }
 
-        return state;
-    }
-
+        return state;    }
 
     private BlockState updateDistance(BlockState state, LevelAccessor level, BlockPos pos) {
         int i = DECAY_DISTANCE;

@@ -33,11 +33,9 @@ public class NeoBerryBushBlock extends SweetBerryBushBlock {
     }
 
     @Override
-    public @NotNull ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
         return new ItemStack(berryDrops.get());
     }
-
-
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
@@ -52,7 +50,8 @@ public class NeoBerryBushBlock extends SweetBerryBushBlock {
             BlockState blockstate = state.setValue(AGE, 1);
             level.setBlock(pos, blockstate, 2);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockstate));
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            if (level.isClientSide) return InteractionResult.SUCCESS;
+            else return InteractionResult.SUCCESS_SERVER;
         } else {
             return super.useWithoutItem(state, level, pos, player, hitResult);
         }

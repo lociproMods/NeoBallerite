@@ -18,7 +18,7 @@ public class ModDataMapProvider extends DataMapProvider {
     }
 
     @Override
-    protected void gather() {
+    protected void gather(HolderLookup.Provider provider) {
         builder(NeoForgeDataMaps.FURNACE_FUELS)
                 .add(CHARRED_BALLERITE.getId(), new FurnaceFuel(888), false)
                 .add(CHARRED_BALLERITE_BLOCK.getId(), new FurnaceFuel(8000), false);

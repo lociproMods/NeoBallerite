@@ -69,8 +69,9 @@ public class CornCropBlock extends DoublePlantBlock implements BonemealableBlock
         super.createBlockStateDefinition(builder);
     }
 
+
     @Override
-    public @NotNull ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
         return new ItemStack(ModItems.CORN_KERNELS.get());
     }
 
@@ -90,16 +91,16 @@ public class CornCropBlock extends DoublePlantBlock implements BonemealableBlock
         }
     }
 
+
     @Override
-    public BlockState updateShape(
-            BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos
-    ) {
+    protected @NotNull BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess scheduledTickAccess, BlockPos currentPos, Direction facing, BlockPos facingPos, BlockState facingState, RandomSource p_374454_) {
         if (isDoubleBlock(state)) {
-            return super.updateShape(state, facing, facingState, level, currentPos, facingPos);
+            return super.updateShape(state, level, scheduledTickAccess, currentPos, facing, facingPos, facingState, p_374454_);
         } else {
             return state.canSurvive(level, currentPos) ? state : Blocks.AIR.defaultBlockState();
         }
     }
+
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         TriState soilDecision = level.getBlockState(pos.below()).canSustainPlant(level, pos.below(), Direction.UP, state);
@@ -114,10 +115,11 @@ public class CornCropBlock extends DoublePlantBlock implements BonemealableBlock
     }
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
-        if (entity instanceof Ravager && level.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING)) {
-            level.destroyBlock(pos, true, entity);
+        if (level instanceof ServerLevel serverLevel) {
+            if (entity instanceof Ravager && serverLevel.getGameRules().getBoolean(GameRules.RULE_MOBGRIEFING)) {
+                level.destroyBlock(pos, true, entity);
+            }
         }
-
         super.entityInside(state, level, pos, entity);
     }
     @Override
