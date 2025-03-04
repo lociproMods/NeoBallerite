@@ -23,11 +23,13 @@ public class WallHangingSignBlockFix extends WallHangingSignBlock {
         this.pickStack = pickStack;
     }
 
-    // this used to be a fix for some silly behaviour, now what do I do... This is what happens when you bodge shit.
+    /*// this used to be a fix for some silly behaviour, now what do I do... This is what happens when you bodge shit.
     @Override
     public @NotNull String getDescriptionId() {
         return Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(this)).replace("wall_", "");
-    }
+    }*/
+
+    // I think this is a DataCompoennt something like DataCompoennt.ITEM_NAME check it out idk
 
 
 

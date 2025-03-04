@@ -23,10 +23,12 @@ public class WallSignBlockFix extends WallSignBlock {
         this.pickStack = pickStack;
     }
 
-    @Override
+  /*  @Override
     public @NotNull String getDescriptionId() {
         return Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(this)).replace("wall_", "");
-    }
+    }*/
+    // I think this is a DataCompoennt something like DataCompoennt.ITEM_NAME check it out idk
+
 
 
 

@@ -153,7 +153,7 @@ public class StrawBerryBushBlock extends BushBlock implements BonemealableBlock 
             BlockState blockstate = state.setValue(AGE, 1);
             level.setBlock(pos, blockstate, 2);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockstate));
-            return level.isClientSide ? InteractionResult.SUCCESS : InteractionResult.SUCCESS_SERVER;
+            return InteractionResult.SUCCESS_SERVER;
         }
         else if (i == 5) {
             int j = 1 + level.random.nextInt(2);
@@ -162,7 +162,7 @@ public class StrawBerryBushBlock extends BushBlock implements BonemealableBlock 
             BlockState blockState = state.setValue(AGE, 1);
             level.setBlock(pos, blockState, 2);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
-            return level.isClientSide ? InteractionResult.SUCCESS : InteractionResult.SUCCESS_SERVER;
+            return InteractionResult.SUCCESS_SERVER;
         }
         else {
             return super.useWithoutItem(state, level, pos, player, hitResult);

@@ -39,7 +39,7 @@ public class UnlitLanternBlock extends LanternBlock {
                 stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
             }
             level.setBlock(pos, litLantern.get().defaultBlockState(), 1);
-            return level.isClientSide ? InteractionResult.SUCCESS : InteractionResult.SUCCESS_SERVER;
+            return InteractionResult.SUCCESS_SERVER;
         }
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }

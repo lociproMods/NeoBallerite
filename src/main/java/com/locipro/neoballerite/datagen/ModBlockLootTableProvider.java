@@ -38,7 +38,7 @@ import static com.locipro.neoballerite.item.ModItems.*;
 public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
     protected ModBlockLootTableProvider(HolderLookup.Provider registries) {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), registries);
+        super(Set.of(), FeatureFlags.DEFAULT_FLAGS, registries);
     }
     protected static final float[] NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
     protected static final float[] HIGHER_LEAVES_SAPLING_CHANCES = new float[]{0.06F, 0.0725F, 0.093333336F, 0.12F};
