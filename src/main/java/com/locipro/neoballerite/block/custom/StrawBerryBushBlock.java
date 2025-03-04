@@ -1,5 +1,6 @@
 package com.locipro.neoballerite.block.custom;
 
+import com.google.common.collect.ImmutableMap;
 import com.locipro.neoballerite.item.armor.BushNegatingArmorItem;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
@@ -9,7 +10,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -35,6 +35,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.registries.DeferredItem;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.function.Function;
 
 import static net.neoforged.neoforge.common.CommonHooks.canCropGrow;
 
@@ -73,15 +75,16 @@ public class StrawBerryBushBlock extends BushBlock implements BonemealableBlock 
 
 
     @Override
-    public @NotNull ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+    public @NotNull ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
         return new ItemStack(SEED_SUPPLIER.get());
     }
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        Vec3 offset = state.getOffset(level, pos);
+        Vec3 offset = state.getOffset(pos);
         return AGE_TO_SHAPE[state.getValue(AGE)].move(offset.x, offset.y, offset.z);
     }
+
 
     @Override
     protected boolean isRandomlyTicking(BlockState state) {
@@ -130,15 +133,12 @@ public class StrawBerryBushBlock extends BushBlock implements BonemealableBlock 
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(
-            ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult
-    ) {
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         int i = state.getValue(AGE);
         boolean fullyGrown = i == MAX_AGE;
         return !fullyGrown && stack.is(Items.BONE_MEAL)
-                ? ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION
-                : super.useItemOn(stack, state, level, pos, player, hand, hitResult);
-    }
+                ? InteractionResult.PASS
+                : super.useItemOn(stack, state, level, pos, player, hand, hitResult);    }
 
     @Override
     protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
@@ -153,7 +153,7 @@ public class StrawBerryBushBlock extends BushBlock implements BonemealableBlock 
             BlockState blockstate = state.setValue(AGE, 1);
             level.setBlock(pos, blockstate, 2);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockstate));
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return level.isClientSide ? InteractionResult.SUCCESS : InteractionResult.SUCCESS_SERVER;
         }
         else if (i == 5) {
             int j = 1 + level.random.nextInt(2);
@@ -162,7 +162,7 @@ public class StrawBerryBushBlock extends BushBlock implements BonemealableBlock 
             BlockState blockState = state.setValue(AGE, 1);
             level.setBlock(pos, blockState, 2);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, blockState));
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return level.isClientSide ? InteractionResult.SUCCESS : InteractionResult.SUCCESS_SERVER;
         }
         else {
             return super.useWithoutItem(state, level, pos, player, hitResult);

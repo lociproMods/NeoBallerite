@@ -23,13 +23,16 @@ public class WallHangingSignBlockFix extends WallHangingSignBlock {
         this.pickStack = pickStack;
     }
 
+    // this used to be a fix for some silly behaviour, now what do I do... This is what happens when you bodge shit.
     @Override
     public @NotNull String getDescriptionId() {
         return Util.makeDescriptionId("block", BuiltInRegistries.BLOCK.getKey(this)).replace("wall_", "");
     }
 
+
+
     @Override
-    public @NotNull ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+    public @NotNull ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
         return new ItemStack(pickStack.get());
     }
 }

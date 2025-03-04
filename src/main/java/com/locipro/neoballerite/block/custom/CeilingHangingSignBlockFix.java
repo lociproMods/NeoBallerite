@@ -20,8 +20,9 @@ public class CeilingHangingSignBlockFix extends CeilingHangingSignBlock {
         this.pickStack = pickStack;
     }
 
+
     @Override
-    public @NotNull ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+    public @NotNull ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
         return new ItemStack(pickStack.get());
     }
 }

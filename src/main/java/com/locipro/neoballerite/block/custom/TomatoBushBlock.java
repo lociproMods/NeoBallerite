@@ -27,7 +27,7 @@ public class TomatoBushBlock extends BushBlock {
             1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter world, BlockPos pPos, CollisionContext context) {
-        Vec3 vec3 = pState.getOffset(world, pPos);
+        Vec3 vec3 = pState.getOffset(pPos);
         return BUSH_SHAPE.move(vec3.x, vec3.y, vec3.z);
     }
 }

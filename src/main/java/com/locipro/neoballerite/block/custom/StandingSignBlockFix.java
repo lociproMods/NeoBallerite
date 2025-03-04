@@ -23,7 +23,7 @@ public class StandingSignBlockFix extends StandingSignBlock {
 
 
     @Override
-    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
+    public @NotNull ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state, boolean includeData, Player player) {
         return new ItemStack(pickStack.get());
     }
 }
