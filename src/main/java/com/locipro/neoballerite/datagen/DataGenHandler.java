@@ -31,7 +31,6 @@ public class DataGenHandler {
 
         NeoSandwiches.init();
 
-        //event.createProvider(recipeprovider::new)
 
         event.createProvider((output, lookupProvider) -> new LootTableProvider(
                 output,
@@ -45,61 +44,24 @@ public class DataGenHandler {
 
         event.createProvider(ModRecipeProvider.Runner::new);
 
-        /*
 
-        generator.addProvider(
-                event.includeServer(),
-                new ModRecipeProvider(output, lookupProvider)
-        );
+        ModBlockTagProvider modBlockTagProvider = new ModBlockTagProvider(generator.getPackOutput(), event.getLookupProvider());
+        event.createProvider(ModBlockTagProvider::new);
+        event.createProvider(((output, lookupProvider) ->
+                new ModItemTagProvider(output, lookupProvider, modBlockTagProvider.contentsGetter())));
 
+        event.createProvider(ModDataMapProvider::new);
 
+        //blockstateBLOCKSTATE GEN GOES HERE BLOCKSTATE GEN MISSING
 
-        BlockTagsProvider blockTagsProvider = new ModBlockTagProvider(output, lookupProvider, existingFileHelper);
-        generator.addProvider(
-                event.includeServer(),
-                blockTagsProvider
-        );
-        generator.addProvider(
-                event.includeServer(),
-                new ModItemTagProvider(output, lookupProvider, blockTagsProvider.contentsGetter(), existingFileHelper)
-        );
+        event.createProvider(ModItemModelProvider::new);
 
-        generator.addProvider(
-                event.includeServer(),
-                new ModDataMapProvider(output, lookupProvider)
-        );
+        event.createProvider(NeoDatapackBuiltinProvider::new);
+        event.createProvider((output, lookupProvider) ->
+            new NeoEnchantmentTagProvider(output,
+                    new NeoDatapackBuiltinProvider(output, lookupProvider).getRegistryProvider()));
 
-
-        generator.addProvider(
-                event.includeClient(),
-                new ModBlockstateModelProvider(output, event.getExistingFileHelper())
-        );
-        generator.addProvider(
-                event.includeClient(),
-                new ModItemModelProvider(output, event.getExistingFileHelper())
-        );
-
-
-
-        // World gen and enchantments
-        generator.addProvider(
-                event.includeServer(),
-                new NeoDatapackBuiltinProvider(output, lookupProvider)
-        );
-
-        // Since the enchantments are MY DATA under MY namespace, It needs access to them so we pass our datapack provider.
-        generator.addProvider(
-                event.includeServer(),
-                new NeoEnchantmentTagProvider(output,
-                        new NeoDatapackBuiltinProvider(output, lookupProvider).getRegistryProvider(),
-                        existingFileHelper)
-        );
-
-        generator.addProvider(
-                event.includeServer(),
-                new NeoGLMProvider(output, lookupProvider));*/
-
-
+        event.createProvider(NeoGLMProvider::new);
 
     }
 }

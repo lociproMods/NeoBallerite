@@ -3,6 +3,7 @@ package com.locipro.neoballerite.datagen;
 
 import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.block.custom.*;
+import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.LanternBlock;
@@ -23,11 +24,14 @@ import static com.locipro.neoballerite.block.ModBlocks.*;
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
 /** BLOCKMODELGENERATORS **/
-public class ModBlockstateModelProvider extends BlockStateProvider {
+public class ModBlockstateModelProvider extends ModelProvider {
 
-    public ModBlockstateModelProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, MODID, exFileHelper);
+
+    public ModBlockstateModelProvider(PackOutput output) {
+        super(output, MODID);
     }
+
+
 
     @Override
     protected void registerStatesAndModels() {

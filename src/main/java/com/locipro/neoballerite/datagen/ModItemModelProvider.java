@@ -1,174 +1,157 @@
 package com.locipro.neoballerite.datagen;
 
-import com.locipro.neoballerite.block.ModBlocks;
-import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.NeoJams;
-import com.locipro.neoballerite.item.NeoSandwiches;
-import com.locipro.neoballerite.item.custom.SandwichItem;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.client.data.models.BlockModelGenerators;
+import net.minecraft.client.data.models.ItemModelGenerators;
+import net.minecraft.client.data.models.ModelProvider;
+import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SignItem;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.ButtonBlock;
-import net.minecraft.world.level.block.FenceBlock;
-import net.minecraft.world.level.block.WallBlock;
-import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
-import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.DeferredBlock;
-import net.neoforged.neoforge.registries.DeferredItem;
 
 import static com.locipro.neoballerite.item.ModItems.*;
 import static com.locipro.neoballerite.block.ModBlocks.*;
 import static com.locipro.neoballerite.NeoBallerite.MODID;
 
-public class ModItemModelProvider extends ItemModelProvider {
-    public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, MODID, existingFileHelper);
+public class ModItemModelProvider extends ModelProvider {
+    public ModItemModelProvider(PackOutput output) {
+        super(output, MODID);
     }
 
     @Override
-    protected void registerModels() {
+    protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
+        itemModels.generateFlatItem(RAW_BALLERITE.get(), ModelTemplates.FLAT_ITEM);
 
-        basicItem(RAW_BALLERITE.get());
-        basicItem(RAW_BALLERITE.get());
-        basicItem(COOKED_BALLERITE.get());
-        basicItem(CHARRED_BALLERITE.get());
-        basicItem(COMPRESSED_BALLERITE_INGOT.get());
-
-
-        basicItem(RAW_LEAD.get());
-        basicItem(LEAD_INGOT.get());
-        basicItem(LEAD_NUGGET.get());
+        itemModels.generateFlatItem(RAW_BALLERITE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(COOKED_BALLERITE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(CHARRED_BALLERITE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(COMPRESSED_BALLERITE_INGOT.get(), ModelTemplates.FLAT_ITEM);
 
 
+        itemModels.generateFlatItem(RAW_LEAD.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(LEAD_INGOT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(LEAD_NUGGET.get(), ModelTemplates.FLAT_ITEM);
 
-        buttonItem(WITHERED_BUTTON, WITHERED_PLANKS);
-        fenceItem(WITHERED_FENCE, WITHERED_PLANKS);
+        itemModels.generateFlatItem(WITHERED_DOOR.asItem(), ModelTemplates.FLAT_ITEM);
 
-        basicItem(WITHERED_DOOR.asItem());
+        itemModels.generateFlatItem(ModItems.WITHERED_SIGN.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.WITHERED_HANGING_SIGN.get(), ModelTemplates.FLAT_ITEM);
 
-        basicItem(ModItems.WITHERED_SIGN.get());
-        basicItem(ModItems.WITHERED_HANGING_SIGN.get());
-
-        buttonItem(STAR_BUTTON, STAR_PLANKS);
-        fenceItem(STAR_FENCE, STAR_PLANKS);
-
-        basicItem(STAR_DOOR.asItem());
+        itemModels.generateFlatItem(STAR_DOOR.asItem(), ModelTemplates.FLAT_ITEM);
 
 
-        basicItem(ModItems.STAR_SIGN.get());
-        basicItem(ModItems.STAR_HANGING_SIGN.get());
+        itemModels.generateFlatItem(ModItems.STAR_SIGN.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ModItems.STAR_HANGING_SIGN.get(), ModelTemplates.FLAT_ITEM);
 
+        itemModels.generateFlatItem(BALLERITE_HELMET.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(BALLERITE_CHESTPLATE.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(BALLERITE_LEGGINGS.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(BALLERITE_BOOTS.asItem(), ModelTemplates.FLAT_ITEM);
 
-        
-        handheld(BALLERITE_SWORD);
-        handheld(BALLERITE_PICKAXE);
-        handheld(BALLERITE_AXE);
-        handheld(BALLERITE_SHOVEL);
-        handheld(BALLERITE_HOE);
-        
-        basicItem(BALLERITE_HELMET.asItem());
-        basicItem(BALLERITE_CHESTPLATE.asItem());
-        basicItem(BALLERITE_LEGGINGS.asItem());
-        basicItem(BALLERITE_BOOTS.asItem());
+        itemModels.generateFlatItem(BALLERITE_HORSE_ARMOR.asItem(), ModelTemplates.FLAT_ITEM);
 
-        basicItem(BALLERITE_HORSE_ARMOR.asItem());
+        itemModels.generateFlatItem(LEAVES_BOOTS.asItem(), ModelTemplates.FLAT_ITEM);
 
-        basicItem(LEAVES_BOOTS.asItem());
+        itemModels.generateFlatItem(LEAD_HELMET.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(LEAD_CHESTPLATE.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(LEAD_LEGGINGS.asItem(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(LEAD_BOOTS.asItem(), ModelTemplates.FLAT_ITEM);
 
-        handheld(LEAD_SWORD);
-        handheld(LEAD_PICKAXE);
-        handheld(LEAD_AXE);
-        handheld(LEAD_SHOVEL);
-        handheld(LEAD_HOE);
+        itemModels.generateFlatItem(BLUEBERRIES.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(BLACKBERRIES.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(STRAWBERRY.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(UNRIPE_STRAWBERRY.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(STRAWBERRY_SEEDS.get(), ModelTemplates.FLAT_ITEM);
 
-        basicItem(LEAD_HELMET.asItem());
-        basicItem(LEAD_CHESTPLATE.asItem());
-        basicItem(LEAD_LEGGINGS.asItem());
-        basicItem(LEAD_BOOTS.asItem());
+        itemModels.generateFlatItem(TOMATO.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(GRILLED_TOMATO.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(TOMATO_SEEDS.get(), ModelTemplates.FLAT_ITEM);
 
-        handheld(KNIFE);
-        handheld(DIAMOND_KNIFE);
+        itemModels.generateFlatItem(EGGPLANT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(GRILLED_EGGPLANT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EGGPLANT_SEEDS.get(), ModelTemplates.FLAT_ITEM);
 
-        handheld(WOODEN_CLAYMORE);
-        handheld(STONE_CLAYMORE);
-        handheld(IRON_CLAYMORE);
-        handheld(LEAD_CLAYMORE);
-        handheld(GOLD_CLAYMORE);
-        handheld(BALLERITE_CLAYMORE);
-        handheld(DIAMOND_CLAYMORE);
-        handheld(NETHERITE_CLAYMORE);
+        itemModels.generateFlatItem(SWEET_POTATO.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(BAKED_SWEET_POTATO.get(), ModelTemplates.FLAT_ITEM);
 
-        basicItem(BLUEBERRIES.get());
-        basicItem(BLACKBERRIES.get());
-        basicItem(STRAWBERRY.get());
-        basicItem(UNRIPE_STRAWBERRY.get());
-        basicItem(STRAWBERRY_SEEDS.get());
+        itemModels.generateFlatItem(CORN_COB.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(GRILLED_CORN_COB.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(CORN_KERNELS.get(), ModelTemplates.FLAT_ITEM);
 
-        basicItem(TOMATO.get());
-        basicItem(GRILLED_TOMATO.get());
-        basicItem(TOMATO_SEEDS.get());
-        
-        basicItem(EGGPLANT.get());
-        basicItem(GRILLED_EGGPLANT.get());
-        basicItem(EGGPLANT_SEEDS.get());
+        itemModels.generateFlatItem(MILK_VILE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(MILK_CHEESE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(WARPED_CHEESE.get(), ModelTemplates.FLAT_ITEM);
 
-        basicItem(SWEET_POTATO.get());
-        basicItem(BAKED_SWEET_POTATO.get());
+        itemModels.generateFlatItem(EGGS_SUNNY.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EGGS_SCRAMBLED.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(EGGS_OMLETTE.get(), ModelTemplates.FLAT_ITEM);
 
-        basicItem(CORN_COB.get());
-        basicItem(GRILLED_CORN_COB.get());
-        basicItem(CORN_KERNELS.get());
-
-        basicItem(MILK_VILE.get());
-        basicItem(MILK_CHEESE.get());
-        basicItem(WARPED_CHEESE.get());
-
-        basicItem(EGGS_SUNNY.get());
-        basicItem(EGGS_SCRAMBLED.get());
-        basicItem(EGGS_OMLETTE.get());
-
-        basicItem(IRON_CARROT.get());
-        basicItem(DIAMOND_CARROT.get());
-        basicItem(ENCHANTED_DIAMOND_CARROT.get());
-
-
-
+        itemModels.generateFlatItem(IRON_CARROT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(DIAMOND_CARROT.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(ENCHANTED_DIAMOND_CARROT.get(), ModelTemplates.FLAT_ITEM);
 
         NeoJams.JAMS.iterator().forEachRemaining((item) ->
-                basicItem(item.get()));
+                itemModels.generateFlatItem(item.get(), ModelTemplates.FLAT_ITEM));
+        itemModels.generateFlatItem(CORN_BREAD.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(CORN_BREAD_SLICE.get(), ModelTemplates.FLAT_ITEM);
+
+
+
+
+        itemModels.generateFlatItem(BALLERITE_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+
+
+        itemModels.generateFlatItem(BALLERITE_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(BALLERITE_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(BALLERITE_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(BALLERITE_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(BALLERITE_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+
+
+
+        itemModels.generateFlatItem(LEAD_SWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(LEAD_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(LEAD_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(LEAD_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(LEAD_HOE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+
+
+
+        itemModels.generateFlatItem(KNIFE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(DIAMOND_KNIFE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+
+        itemModels.generateFlatItem(WOODEN_CLAYMORE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(STONE_CLAYMORE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(IRON_CLAYMORE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(LEAD_CLAYMORE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(GOLD_CLAYMORE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(BALLERITE_CLAYMORE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(DIAMOND_CLAYMORE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        itemModels.generateFlatItem(NETHERITE_CLAYMORE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+
+        itemModels.generateFlatItem(WITHERED_BUTTON.asItem(), ModelTemplates.BUTTON_INVENTORY);
+        itemModels.generateFlatItem(STAR_BUTTON.asItem(), ModelTemplates.BUTTON_INVENTORY);
+
+
+        itemModels.generateFlatItem(WITHERED_FENCE.asItem(), ModelTemplates.FENCE_INVENTORY);
+        itemModels.generateFlatItem(STAR_FENCE.asItem(), ModelTemplates.FENCE_INVENTORY);
+
+
+    }
+
+    /*
+    @Override
+    protected void registerModels() {
 
         sandwichVariants(SANDWICH.get());
 
-        basicItem(CORN_BREAD.get());
-        basicItem(CORN_BREAD_SLICE.get());
-    }
+        
+    }*/
     
     
 
-    public void buttonItem(DeferredBlock<ButtonBlock> block, DeferredBlock<Block> baseBlock) {
-        this.withExistingParent(block.getId().getPath(), mcLoc("block/button_inventory"))
-                .texture("texture",  ResourceLocation.fromNamespaceAndPath(MODID,
-                        "block/" + baseBlock.getId().getPath()));
-    }
 
-    public void fenceItem(DeferredBlock<FenceBlock> block, DeferredBlock<Block> baseBlock) {
-        this.withExistingParent(block.getId().getPath(), mcLoc("block/fence_inventory"))
-                .texture("texture",  ResourceLocation.fromNamespaceAndPath(MODID,
-                        "block/" + baseBlock.getId().getPath()));
-    }
 
-    public void wallItem(DeferredBlock<WallBlock> block, DeferredBlock<Block> baseBlock) {
-        this.withExistingParent(block.getId().getPath(), mcLoc("block/wall_inventory"))
-                .texture("wall",  ResourceLocation.fromNamespaceAndPath(MODID,
-                        "block/" + baseBlock.getId().getPath()));
-    }
+/*
     protected ItemModelBuilder sandwichModel(ItemStack sandwich) {
         return getBuilder(MODID + ":" + SandwichItem.getPath(sandwich))
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
@@ -201,17 +184,6 @@ public class ModItemModelProvider extends ItemModelProvider {
                     .predicate(ResourceLocation.fromNamespaceAndPath(MODID, "cheese"), cheese)
                     .model(model);
         }
-    }
-
-
-
-    public ItemModelBuilder handheld(DeferredItem<?> item) {
-        String itemPath = item.getId().getPath();
-        return withExistingParent(
-                itemPath,
-                mcLoc("item/handheld")).texture("layer0", "item/" + itemPath);
-    }
-
-    //protected ItemModelBuilder fixSignItems(SignItem i1, SignItem i2)
+    }*/
 
 }

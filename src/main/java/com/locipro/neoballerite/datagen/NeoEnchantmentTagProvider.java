@@ -16,8 +16,8 @@ import static com.locipro.neoballerite.component.enchantment.NeoEnchantments.THO
 public class NeoEnchantmentTagProvider extends EnchantmentTagsProvider {
 
 
-    public NeoEnchantmentTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, String modId) {
-        super(output, lookupProvider, modId);
+    public NeoEnchantmentTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, NeoBallerite.MODID);
     }
 
     @Override

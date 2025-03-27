@@ -1,5 +1,6 @@
 package com.locipro.neoballerite.datagen;
 
+import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -13,8 +14,8 @@ import java.util.concurrent.CompletableFuture;
 public class ModBlockTagProvider extends BlockTagsProvider {
 
 
-    public ModBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, String modId) {
-        super(output, lookupProvider, modId);
+    public ModBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, NeoBallerite.MODID);
     }
 
     @Override
