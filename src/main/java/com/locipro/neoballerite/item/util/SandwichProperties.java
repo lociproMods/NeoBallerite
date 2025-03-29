@@ -13,6 +13,8 @@ import net.neoforged.fml.common.Mod;
 public class SandwichProperties {
     public static void addSandwichProperties() {
         // For the RENDERER. Check package of ItemProperties
+
+        /*
         ItemProperties.register(ModItems.SANDWICH.get(),
                 ResourceLocation.fromNamespaceAndPath(NeoBallerite.MODID, "bread"),
                 (itemStack, clientLevel, livingEntity, i) -> {
@@ -40,5 +42,6 @@ public class SandwichProperties {
                     }
                     return 0f;
                 });
+        */
     }
 }

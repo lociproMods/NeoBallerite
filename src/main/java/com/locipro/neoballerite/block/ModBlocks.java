@@ -33,6 +33,7 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(MODID);
 
+    /*
     private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
@@ -51,7 +52,7 @@ public class ModBlocks {
     }
     private static <T extends Block> DeferredBlock<T> registerBlockWithoutItem(String name, Supplier<T> block) {
         return BLOCKS.register(name, block);
-    }
+    }*/
     
 
     // Wood Types should have a mod id qualifier
