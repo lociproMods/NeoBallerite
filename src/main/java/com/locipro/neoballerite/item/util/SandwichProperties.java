@@ -4,7 +4,6 @@ import com.locipro.neoballerite.NeoBallerite;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.ModItems;
 import com.locipro.neoballerite.item.NeoSandwiches;
-import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.Mod;

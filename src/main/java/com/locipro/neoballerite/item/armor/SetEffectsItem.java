@@ -2,6 +2,7 @@ package com.locipro.neoballerite.item.armor;
 
 import com.locipro.neoballerite.Config;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -60,20 +61,13 @@ public class SetEffectsItem extends ArmorItem {
                     byte count = 0;
                     for (ItemStack armorItemStack : player.getArmorSlots()) {
                         if (armorItemStack.getItem() instanceof ArmorItem armorItem) {
-                            if (armorItem.getMaterial() == material) {
-                                count++;
+                            if (Objects.requireNonNull(armorItemStack.getComponents().get(DataComponents.EQUIPPABLE)).assetId().isPresent()) {
+                                if (armorItemStack.getComponents().get(DataComponents.EQUIPPABLE).assetId().get().equals(material.assetId())) count++;
                             }
-                            // CHECK KAUPEN VIDEO
-                            /*
-                            *  Equippable equippableComponentBoots = player.getInventory().getArmor(0).getComponents().get(DataComponents.EQUIPPABLE);
-        Equippable equippableComponentLeggings = player.getInventory().getArmor(1).getComponents().get(DataComponents.EQUIPPABLE);
-        Equippable equippableComponentBreastplate = player.getInventory().getArmor(2).getComponents().get(DataComponents.EQUIPPABLE);
-        Equippable equippableComponentHelmet = player.getInventory().getArmor(3).getComponents().get(DataComponents.EQUIPPABLE);
-        * return equippableComponentBoots.model().equals(mapArmorMaterial.modelId()) && equippableComponentLeggings.model().equals(mapArmorMaterial.modelId()) &&
-                equippableComponentBreastplate.model().equals(mapArmorMaterial.modelId()) && equippableComponentHelmet.model().equals(mapArmorMaterial.modelId());*/
                         }
                     }
-                    if (count == 4) {
+
+                    if (count >= 4) {
                         player.addEffect(getSetEffectInstance());
                     }
                 }

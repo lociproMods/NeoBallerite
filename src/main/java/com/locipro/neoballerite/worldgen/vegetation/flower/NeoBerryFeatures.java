@@ -49,7 +49,7 @@ public class NeoBerryFeatures {
                                         .defaultBlockState().setValue(NeoBerryBushBlock.AGE, 3))),
                                 BlockPredicate.allOf(
                                         BlockPredicate.replaceable(), BlockPredicate.noFluid(),
-                                        BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(),
+                                        BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
                                                 Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.PODZOL, Blocks.COARSE_DIRT)
                                 ))));
         FeatureUtils.register(bootstrapContext,
@@ -61,7 +61,7 @@ public class NeoBerryFeatures {
                                         .defaultBlockState().setValue(NeoBerryBushBlock.AGE, 3))),
                                 BlockPredicate.allOf(
                                         BlockPredicate.replaceable(), BlockPredicate.noFluid(),
-                                        BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(),
+                                        BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
                                                 Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.PODZOL, Blocks.COARSE_DIRT)
                                 ))));
 /*//I, J, K FOR "RandomPatchFeatureConfig" ARE AS FOLLOWING : tries, xz_spread, y_spread.
@@ -69,7 +69,7 @@ public class NeoBerryFeatures {
                 new RandomPatchConfiguration(48, 7, 3, PlacementUtils.filtered(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.TOMATO_FLOWER)),
                         BlockPredicate.allOf(BlockPredicate.replaceable(), BlockPredicate.noFluid(),
-                                BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(), Blocks.GRASS_BLOCK, Blocks.PODZOL, Blocks.DIRT)))));
+                                BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(), Blocks.GRASS_BLOCK, Blocks.PODZOL, Blocks.DIRT)))));
 */
         FeatureUtils.register(bootstrapContext,
                 STRAWBERRY_BUSH,
@@ -80,7 +80,7 @@ public class NeoBerryFeatures {
                                         .defaultBlockState().setValue(StrawBerryBushBlock.AGE, 5))),
                                 BlockPredicate.allOf(
                                         BlockPredicate.replaceable(), BlockPredicate.noFluid(),
-                                        BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(),
+                                        BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
                                                 Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.PODZOL, Blocks.COARSE_DIRT)
                                 ))));
 
@@ -93,7 +93,7 @@ public class NeoBerryFeatures {
                                         .defaultBlockState())),
                                 BlockPredicate.allOf(
                                         BlockPredicate.noFluid(), BlockPredicate.replaceable(),
-                                        BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(),
+                                        BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
                                                 Blocks.GRASS_BLOCK, Blocks.DIRT)
                                 ))));
 
@@ -106,7 +106,7 @@ public class NeoBerryFeatures {
                                         .defaultBlockState())),
                                 BlockPredicate.allOf(
                                         BlockPredicate.noFluid(), BlockPredicate.replaceable(),
-                                        BlockPredicate.matchesBlocks(Direction.DOWN.getNormal(),
+                                        BlockPredicate.matchesBlocks(Direction.DOWN.getUnitVec3i(),
                                                 Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.RED_SAND)
                                 ))));
     }

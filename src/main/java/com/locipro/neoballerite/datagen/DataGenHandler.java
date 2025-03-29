@@ -54,7 +54,6 @@ public class DataGenHandler {
 
         //blockstateBLOCKSTATE GEN GOES HERE BLOCKSTATE GEN MISSING
 
-        event.createProvider(ModItemModelProvider::new);
 
         event.createProvider(NeoDatapackBuiltinProvider::new);
         event.createProvider((output, lookupProvider) ->

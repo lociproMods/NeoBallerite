@@ -4,19 +4,25 @@ package com.locipro.neoballerite.item.custom;
 import com.locipro.neoballerite.component.NeoDataComponents;
 import com.locipro.neoballerite.item.NeoSandwiches;
 import com.locipro.neoballerite.item.util.FoodMath;
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.Consumable;
+import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +77,44 @@ public class SandwichItem extends Item {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
 
+    @Override
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+        int countOfIngredients = 0;
+        var listOfIngredients = getIngredientsOfSandwich(stack);
+        for (var o : listOfIngredients) if (o.isPresent()) countOfIngredients++;
+
+        Pair<FoodProperties, Consumable.Builder> combinedComponents = getCombinedProperties(listOfIngredients);
+        stack.set(DataComponents.FOOD, combinedComponents.getFirst());
+
+        Consumable.Builder consumableBuilder = getConsumableBuilder(combinedComponents, countOfIngredients);
+        stack.set(DataComponents.CONSUMABLE, consumableBuilder.build());
+        return super.use(level, player, hand);
+    }
+
+    private static Consumable.Builder getConsumableBuilder(Pair<FoodProperties, Consumable.Builder> combinedComponents, int countOfIngredients) {
+        Consumable.Builder consumableBuilder = combinedComponents.getSecond();
+        switch (countOfIngredients) {
+            case 2:
+                consumableBuilder.onConsume(
+                        new ApplyStatusEffectsConsumeEffect(
+                                new MobEffectInstance(MobEffects.ABSORPTION, 400)
+                        )
+                );
+            case 3:
+                consumableBuilder.onConsume(
+                        new ApplyStatusEffectsConsumeEffect(
+                                List.of(
+                                        new MobEffectInstance(MobEffects.ABSORPTION, 1200, 1),
+                                        new MobEffectInstance(MobEffects.REGENERATION, 800, 1)
+                                )
+                        )
+                );
+        }
+        return consumableBuilder;
+    }
+
+    /*
     // Calculate food here broooo.
     @Override
     public @Nullable FoodProperties getFoodProperties(ItemStack stack, @Nullable LivingEntity entity) {
@@ -93,7 +137,7 @@ public class SandwichItem extends Item {
 
 
         return builder.build();
-    }
+    }*/
 
 
     @Override
@@ -105,9 +149,9 @@ public class SandwichItem extends Item {
         BEWARE : BPD CODING STYLE
      **/
     @Override
-    public Component getName(ItemStack stack) {
+    public @NotNull Component getName(ItemStack stack) {
         // Resolve existing translation keys first.
-        Component currentComponent = Component.translatable(getDescriptionId(stack));
+        Component currentComponent = Component.translatable(getDescriptionId());
         if (!currentComponent.getString().startsWith("item.")) {
             return currentComponent;
         }
@@ -180,81 +224,48 @@ public class SandwichItem extends Item {
 
 
 
-    /*// Just in case you want it ig
-    @Override
-    public @NotNull String getDescriptionId(ItemStack stack) {
-        String id = "item." + NeoBallerite.MODID + ".sandwich.";
+    public static Pair<FoodProperties, Consumable.Builder> getCombinedProperties(List<Optional<Item>> items) {
+        List<FoodProperties> properties = new ArrayList<>(items.size());
+        List<Consumable> consumables = new ArrayList<>(items.size());
 
+        for (var item : items) {
+            if (item.isPresent()) {
+                FoodProperties p = item.get().components().get(DataComponents.FOOD);
+                if (p != null) properties.add(p);
 
-        Optional<Item> bread = Optional.ofNullable(stack.get(NeoDataComponents.SANDWICH_BREAD));
-        Optional<Item> meat =  Optional.ofNullable(stack.get(NeoDataComponents.SANDWICH_MEAT));
-        Optional<Item> cheese = Optional.ofNullable(stack.get(NeoDataComponents.SANDWICH_CHEESE));
-
-        if (bread.isPresent()) {
-            id += BuiltInRegistries.ITEM.getKey(bread.get()).getPath().replace('/', '.');
-        }
-        if (meat.isPresent()) {
-            id += "_" + BuiltInRegistries.ITEM.getKey(meat.get()).getPath().replace('/', '.');
-        }
-        if (cheese.isPresent()) {
-            id += "_" + BuiltInRegistries.ITEM.getKey(cheese.get()).getPath().replace('/', '.');
-        }
-        //NeoBallerite.LOGGER.debug("id is {}", id);
-
-        return id;
-    }*/
-
-
-    // Returns a FoodProperties instance that has the combined properties of all present items. (Uses default ItemStack.)
-    public static FoodProperties.Builder getCombinedFoodPropertiesBuilder(List<Optional<Item>> items, LivingEntity entity) {
-        // Initialize a list with empty optionals
-        List<Optional<FoodProperties>> properties = new ArrayList<>(items.size());
-        for (var ignored : items) {
-            properties.add(Optional.empty());
-        }
-
-
-        // Get food properties of all items.
-        for (int i = 0; i < items.size(); i ++) {
-            if (items.get(i).isPresent()) {
-                // Might need to refactor all sandwiches to have components of ItemStack, not Item.
-                properties.add(i, Optional.ofNullable(items.get(i).get().getFoodProperties(items.get(i).get().getDefaultInstance(), entity)));
+                Consumable c = item.get().components().get(DataComponents.CONSUMABLE);
+                if (c != null) consumables.add(c);
             }
         }
 
-        List<FoodProperties.PossibleEffect> effects = new ArrayList<>(MAX_SANDWICH_EFFECTS);
         int nutrition = 0;
-        float saturation = 0f;
-        // This is SATURATION, not saturationModifier.
-        // Have to calculate modifier later in builder.
+        float saturation = 0;
+        for (var p : properties) {
+            if (p != null) {
+                nutrition += p.nutrition();
+                saturation += p.saturation();
+            }
+        }
 
-        // Add food properties.
-        for (var x : properties) {
-            if (x.isPresent()) {
-                var property = x.get();
-                nutrition += property.nutrition();
-                saturation += property.saturation();
-                if (!property.effects().isEmpty()) {
-                    effects.addAll(property.effects());
+
+        FoodProperties.Builder foodBuilder = new FoodProperties.Builder()
+                .nutrition(nutrition)
+                .saturationModifier(FoodMath.saturationModifierFromSaturationAndNutrition(saturation, nutrition));
+
+        Consumable.Builder consumableBuilder = Consumable.builder().consumeSeconds(1.0f);
+        for (var c : consumables) {
+            if (c != null && !c.onConsumeEffects().isEmpty()) {
+                for (var consumeEffect : c.onConsumeEffects()) {
+                    consumableBuilder.onConsume(consumeEffect);
                 }
             }
         }
+        return Pair.of(foodBuilder.build(), consumableBuilder);
 
-        float saturationModifier = FoodMath.saturationModifierFromSaturationAndNutrition(
-                saturation, nutrition
-        ); // Formula from "net.minecraft.world.food.FoodConstants.saturationByModifier", do algebra to find sat modifier based on saturation and nutrition.
-
-
-        FoodProperties.Builder foodBuilder = new FoodProperties.Builder();
-        foodBuilder.nutrition(nutrition);
-        foodBuilder.saturationModifier(saturationModifier);
-        for (var effect : effects) {
-            foodBuilder.effect(effect.effectSupplier(), effect.probability());
-        }
-
-
-        return foodBuilder;
     }
+
+
+
     /* Returns the sandwiches texture path (sandwich_bread_meat_cheese)*/
     public static String getPath(ItemStack sandwich) {
         String path = "sandwich_";
