@@ -39,11 +39,11 @@ public class NeoBallerite {
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public NeoBallerite(IEventBus modEventBus, ModContainer modContainer) throws Exception {
+
         modEventBus.addListener(this::commonSetup);
 
 
 
-        ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
 
         // Blocks before Items. See https://docs.neoforged.net/docs/items/#:~:text=If%20you%20keep%20your%20registered%20blocks%20in%20a%20separate%20class%2C%20you%20should%20classload%20your%20blocks%20class%20before%20your%20items%20class.
         //  ok uhm so, if we do blocks first mod berries break :/ fuck it we ball
@@ -51,8 +51,11 @@ public class NeoBallerite {
         // Update : I guess not??? I just came back like over a month later and apparently everything is fine?
         ModBlocks.BLOCKS.register(modEventBus);
         ModItems.ITEMS.register(modEventBus);
+        ModCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
 
         NeoDataComponents.DATA_COMPONENT_TYPES.register(modEventBus);
+
+
 
         NeoRecipeSerializers.RECIPE_SERIALIZERS.register(modEventBus);
         GLMSerializers.GLOBAL_LOOT_MODIFIER_SERIALIZERS.register(modEventBus);

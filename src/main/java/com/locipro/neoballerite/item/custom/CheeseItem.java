@@ -16,9 +16,10 @@ public class CheeseItem extends Item {
         NETHER,
         END
     }
-    private CheeseTypes cheeseType;
-    public CheeseItem(Properties properties) {
+    private final CheeseTypes cheeseType;
+    public CheeseItem(Properties properties, CheeseTypes type) {
         super(properties);
+        this.cheeseType = type;
     }
 
     @Override
@@ -26,11 +27,6 @@ public class CheeseItem extends Item {
         tooltipComponents.add(Component.literal("Cheese type is : " + StringUtils.capitalize(cheeseType.toString().toLowerCase())).withStyle(ChatFormatting.GRAY));
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
-    }
-
-    public CheeseItem cheeseType(CheeseTypes type) {
-        this.cheeseType = type;
-        return this;
     }
     public CheeseTypes getCheeseType() {
         return cheeseType;

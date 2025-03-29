@@ -24,6 +24,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static com.locipro.neoballerite.NeoBallerite.MODID;
@@ -47,20 +48,18 @@ public class ModItems {
         }
         return item;
     }*/
-    private static DeferredItem<JamItem> registerJamItem(String name, Supplier<JamItem> itemSup) {
-        DeferredItem<JamItem> item = ITEMS.register(name, itemSup);
+    private static DeferredItem<JamItem> registerJamItem(String name, Function<Item.Properties, ? extends JamItem> func) {
+        DeferredItem<JamItem> item = ITEMS.registerItem(name, func, new Item.Properties());
         NeoJams.JAMS.add(item);
         return item;
     }
 
 /*    public static final DeferredItem<Item> BALL_DOWSER = ITEMS.register("ball_dowser",
             () -> new BallDowserItem(new Item.Properties()));*/
-    public static final DeferredItem<Item> COMPRESSED_BALLERITE_INGOT = ITEMS.register("compressed_ballerite_ingot",
-            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> COMPRESSED_BALLERITE_INGOT = ITEMS.registerSimpleItem("compressed_ballerite_ingot");
 
-    public static final DeferredItem<Item> RAW_BALLERITE = ITEMS.register("raw_ballerite",
-            () -> new Item(new Item.Properties().food(BalleriteFoodProperties.RAW_BALLERITE)
-                    .component(DataComponents.CONSUMABLE, BalleriteFoodProperties.RAW_BALLERITE_CONSUMABLE)){
+    public static final DeferredItem<Item> RAW_BALLERITE = ITEMS.registerItem("raw_ballerite",
+            (p) -> new Item(p){
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add( Component.literal("Raw ballerite... Suspicious mineral").withStyle(ChatFormatting.GRAY));
@@ -70,10 +69,10 @@ public class ModItems {
                         tooltipComponents.add( Component.literal("--Compressible").withStyle(ChatFormatting.AQUA));
                     }
                 }
-            });
-    public static final DeferredItem<Item> COOKED_BALLERITE = ITEMS.register("cooked_ballerite",
-            () -> new Item(new Item.Properties().food(BalleriteFoodProperties.COOKED_BALLERITE)
-                    .component(DataComponents.CONSUMABLE, BalleriteFoodProperties.COOKED_BALLERITE_CONSUMABLE)){
+            }, new Item.Properties().food(BalleriteFoodProperties.RAW_BALLERITE)
+                    .component(DataComponents.CONSUMABLE, BalleriteFoodProperties.RAW_BALLERITE_CONSUMABLE));
+    public static final DeferredItem<Item> COOKED_BALLERITE = ITEMS.registerItem("cooked_ballerite",
+            (p) -> new Item(p){
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(  Component.literal("Cooked ballerite... still weird.").withStyle(ChatFormatting.GRAY));
@@ -82,9 +81,10 @@ public class ModItems {
                         tooltipComponents.add( Component.literal("--Compressible").withStyle(ChatFormatting.AQUA));
                     }
                 }
-            });
-    public static final DeferredItem<Item> CHARRED_BALLERITE = ITEMS.register("charred_ballerite",
-            () -> new Item(new Item.Properties()){
+            }, new Item.Properties().food(BalleriteFoodProperties.COOKED_BALLERITE)
+                    .component(DataComponents.CONSUMABLE, BalleriteFoodProperties.COOKED_BALLERITE_CONSUMABLE));
+    public static final DeferredItem<Item> CHARRED_BALLERITE = ITEMS.registerItem("charred_ballerite",
+            (p) -> new Item(p){
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add( Component.literal("Charred Ball.").withStyle(ChatFormatting.GRAY));
@@ -94,71 +94,67 @@ public class ModItems {
                 }
             });
 
-    public static final DeferredItem<Item> LEAD_INGOT = ITEMS.register("lead_ingot",
-            () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> RAW_LEAD = ITEMS.register("raw_lead",
-            () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> LEAD_NUGGET = ITEMS.register("lead_nugget",
-            () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> LEAD_INGOT = ITEMS.registerSimpleItem("lead_ingot");
+    public static final DeferredItem<Item> RAW_LEAD = ITEMS.registerSimpleItem("raw_lead");
+    public static final DeferredItem<Item> LEAD_NUGGET = ITEMS.registerSimpleItem("lead_nugget");
+
+    
+
+    public static final DeferredItem<SignItem> WITHERED_SIGN = ITEMS.registerItem("withered_sign_item",
+            (p) -> new SignItem(ModBlocks.WITHERED_SIGN.get(), ModBlocks.WITHERED_WALL_SIGN.get(), p), new Item.Properties().stacksTo(16).useBlockDescriptionPrefix());
+
+    public static final DeferredItem<SignItem> WITHERED_HANGING_SIGN = ITEMS.registerItem("withered_hanging_sign_item",
+            (p) -> new HangingSignItem(ModBlocks.WITHERED_HANGING_SIGN.get(), ModBlocks.WITHERED_WALL_HANGING_SIGN.get(), p), new Item.Properties().stacksTo(16).useBlockDescriptionPrefix());
 
 
-
-
-    public static final DeferredItem<SignItem> WITHERED_SIGN = ITEMS.register("withered_sign_item",
-            () -> new SignItem(ModBlocks.WITHERED_SIGN.get(), ModBlocks.WITHERED_WALL_SIGN.get(), new Item.Properties().stacksTo(16)));
-
-    public static final DeferredItem<SignItem> WITHERED_HANGING_SIGN = ITEMS.register("withered_hanging_sign_item",
-            () -> new HangingSignItem(ModBlocks.WITHERED_HANGING_SIGN.get(), ModBlocks.WITHERED_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16)));
-
-
-    public static final DeferredItem<SignItem> STAR_SIGN = ITEMS.register("star_sign_item",
-            () -> new SignItem(ModBlocks.STAR_SIGN.get(), ModBlocks.STAR_WALL_SIGN.get(), new Item.Properties().stacksTo(16)));
-    public static final DeferredItem<SignItem> STAR_HANGING_SIGN = ITEMS.register("star_hanging_sign_item",
-            () -> new HangingSignItem(ModBlocks.STAR_HANGING_SIGN.get(), ModBlocks.STAR_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16 )));
+    public static final DeferredItem<SignItem> STAR_SIGN = ITEMS.registerItem("star_sign_item",
+            (p) -> new SignItem(ModBlocks.STAR_SIGN.get(), ModBlocks.STAR_WALL_SIGN.get(), p), new Item.Properties().stacksTo(16).useBlockDescriptionPrefix());
+    public static final DeferredItem<SignItem> STAR_HANGING_SIGN = ITEMS.registerItem("star_hanging_sign_item",
+            (p) -> new HangingSignItem(ModBlocks.STAR_HANGING_SIGN.get(), ModBlocks.STAR_WALL_HANGING_SIGN.get(), p), new Item.Properties().stacksTo(16 ).useBlockDescriptionPrefix());
 
     //region ballerite tools
-    public static final DeferredItem<SwordItem> BALLERITE_SWORD = ITEMS.register("ballerite_sword",
-            () -> new BalleriteSwordItem(
+    public static final DeferredItem<SwordItem> BALLERITE_SWORD = ITEMS.registerItem("ballerite_sword",
+            (p) -> new BalleriteSwordItem(
                     NeoToolMaterials.BALLERITE_TIER,
                     3,
                     -2.4f,
-                    new Item.Properties()
+                    p
             ));
-    public static final DeferredItem<PickaxeItem> BALLERITE_PICKAXE = ITEMS.register("ballerite_pickaxe",
-            () -> new BalleritePickaxeItem(
+    public static final DeferredItem<PickaxeItem> BALLERITE_PICKAXE = ITEMS.registerItem("ballerite_pickaxe",
+            (p) -> new BalleritePickaxeItem(
                     NeoToolMaterials.BALLERITE_TIER,
                     -2.8f,
                     1,
-                    new Item.Properties()
+                    p
             ));
-    public static final DeferredItem<AxeItem> BALLERITE_AXE = ITEMS.register("ballerite_axe",
-            () -> new BalleriteAxeItem(
+    public static final DeferredItem<AxeItem> BALLERITE_AXE = ITEMS.registerItem("ballerite_axe",
+            (p) -> new BalleriteAxeItem(
                     NeoToolMaterials.BALLERITE_TIER,
                     6f,
                     -3f,
-                    new Item.Properties()
+                    p
             ));
-    public static final DeferredItem<ShovelItem> BALLERITE_SHOVEL = ITEMS.register("ballerite_shovel",
-            () -> new BalleriteShovelItem(
+    public static final DeferredItem<ShovelItem> BALLERITE_SHOVEL = ITEMS.registerItem("ballerite_shovel",
+            (p) -> new BalleriteShovelItem(
                     NeoToolMaterials.BALLERITE_TIER,
                     1.6f,
                     -2.9f,
-                    new Item.Properties()
+                    p
             ));
-    public static final DeferredItem<HoeItem> BALLERITE_HOE = ITEMS.register("ballerite_hoe",
-            () -> new HoeItem(
+    public static final DeferredItem<HoeItem> BALLERITE_HOE = ITEMS.registerItem("ballerite_hoe",
+            (p) -> new HoeItem(
                     NeoToolMaterials.BALLERITE_TIER,
                     -1f,
                     1f,
-                    new Item.Properties()
+                    p
             ));
 
 
-    public static final DeferredItem<ArmorItem> BALLERITE_HELMET = ITEMS.register("ballerite_helmet",
-            () -> new SetEffectsItem(
+    public static final DeferredItem<ArmorItem> BALLERITE_HELMET = ITEMS.registerItem("ballerite_helmet",
+            (p) -> new SetEffectsItem(
                     NeoArmorMaterials.BALLERITE,
                     ArmorType.HELMET,
-                    new Item.Properties(),
+                    p,
                     MobEffects.LUCK,
                     80,
                     2
@@ -171,85 +167,85 @@ public class ModItems {
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             }.effectParticles().ambient());
-    public static final DeferredItem<ArmorItem> BALLERITE_CHESTPLATE = ITEMS.register("ballerite_chestplate",
-            () -> new BalleriteArmorItem(
+    public static final DeferredItem<ArmorItem> BALLERITE_CHESTPLATE = ITEMS.registerItem("ballerite_chestplate",
+            (p) -> new BalleriteArmorItem(
                     ArmorType.CHESTPLATE,
-                    new Item.Properties()
+                    p
             ));
-    public static final DeferredItem<ArmorItem> BALLERITE_LEGGINGS = ITEMS.register("ballerite_leggings",
-            () -> new BalleriteArmorItem(
+    public static final DeferredItem<ArmorItem> BALLERITE_LEGGINGS = ITEMS.registerItem("ballerite_leggings",
+            (p) -> new BalleriteArmorItem(
                     ArmorType.LEGGINGS,
-                    new Item.Properties()
+                    p
             ));
-    public static final DeferredItem<ArmorItem> BALLERITE_BOOTS = ITEMS.register("ballerite_boots",
-            () -> new BalleriteArmorItem(
+    public static final DeferredItem<ArmorItem> BALLERITE_BOOTS = ITEMS.registerItem("ballerite_boots",
+            (p) -> new BalleriteArmorItem(
                     ArmorType.BOOTS,
-                    new Item.Properties()
+                    p
             ));
 
 
     //TODO  https://docs.neoforged.net/docs/items/armor/#:~:text=render%20the%20equipment.-,.setAsset,-(ResourceKey.
-    public static final DeferredItem<Item> BALLERITE_HORSE_ARMOR = ITEMS.register("ballerite_horse_armor",
-            () -> new AnimalArmorItem(NeoArmorMaterials.BALLERITE, AnimalArmorItem.BodyType.EQUESTRIAN, new Item.Properties()));
+    public static final DeferredItem<Item> BALLERITE_HORSE_ARMOR = ITEMS.registerItem("ballerite_horse_armor",
+            (p) -> new AnimalArmorItem(NeoArmorMaterials.BALLERITE, AnimalArmorItem.BodyType.EQUESTRIAN, p));
 
-    public static final DeferredItem<ArmorItem> LEAVES_BOOTS = ITEMS.register("leaves_boots",
-            () -> new BushNegatingArmorItem(
+    public static final DeferredItem<ArmorItem> LEAVES_BOOTS = ITEMS.registerItem("leaves_boots",
+            (p) -> new BushNegatingArmorItem(
                     NeoArmorMaterials.LEAVES,
                     ArmorType.BOOTS,
-                    new Item.Properties()
-                            .durability(77)
-                            .component(NeoDataComponents.CAN_NEGATE_BUSH_SLOW.value(), true)
-                            .component(NeoDataComponents.ADDED_DURABILITY.value(), 0)
-            ));
+                    p
+            ), new Item.Properties()
+                    .durability(77)
+                    .component(NeoDataComponents.CAN_NEGATE_BUSH_SLOW.value(), true)
+                    .component(NeoDataComponents.ADDED_DURABILITY.value(), 0));
 
     //endregion
 
 
     //region Lead
-    public static final DeferredItem<SwordItem> LEAD_SWORD = ITEMS.register("lead_sword",
-            () -> new PoisonousSwordItem(
+    public static final DeferredItem<SwordItem> LEAD_SWORD = ITEMS.registerItem("lead_sword",
+            (p) -> new PoisonousSwordItem(
                     NeoToolMaterials.LEAD_TIER,
                     3f,
                     -2.4f,
-                    new Item.Properties(),
+                    p,
                     Config.lead_sword_does_poison));
 
-    public static final DeferredItem<PickaxeItem> LEAD_PICKAXE = ITEMS.register("lead_pickaxe",
-            () -> new PickaxeItem(
+    public static final DeferredItem<PickaxeItem> LEAD_PICKAXE = ITEMS.registerItem("lead_pickaxe",
+            (p) -> new PickaxeItem(
                     NeoToolMaterials.LEAD_TIER,
                     1,
                     -2.8f,
-                    new Item.Properties()
+                    p
             ));
-    public static final DeferredItem<AxeItem> LEAD_AXE = ITEMS.register("lead_axe",
-            () -> new AxeItem(
+    public static final DeferredItem<AxeItem> LEAD_AXE = ITEMS.registerItem("lead_axe",
+            (p) -> new AxeItem(
                     NeoToolMaterials.LEAD_TIER,
                     6f,
                     -3f,
-                    new Item.Properties()
+                    p
             ));
-    public static final DeferredItem<ShovelItem> LEAD_SHOVEL = ITEMS.register("lead_shovel",
-            () -> new ShovelItem(
+    public static final DeferredItem<ShovelItem> LEAD_SHOVEL = ITEMS.registerItem("lead_shovel",
+            (p) -> new ShovelItem(
                     NeoToolMaterials.LEAD_TIER,
                     1.4f,
                     -3.1f,
-                    new Item.Properties()
+                    p
             ));
-    public static final DeferredItem<HoeItem> LEAD_HOE = ITEMS.register("lead_hoe",
-            () -> new HoeItem(
+    public static final DeferredItem<HoeItem> LEAD_HOE = ITEMS.registerItem("lead_hoe",
+            (p) -> new HoeItem(
                     NeoToolMaterials.LEAD_TIER,
                     0f,
                     -2f,
-                    new Item.Properties()
+                    p
             ));
 
 
 
-    public static final DeferredItem<ArmorItem> LEAD_HELMET = ITEMS.register("lead_helmet",
-            () -> new SetEffectsItem(
+    public static final DeferredItem<ArmorItem> LEAD_HELMET = ITEMS.registerItem("lead_helmet",
+            (p) -> new SetEffectsItem(
                     NeoArmorMaterials.LEAD,
                     ArmorType.HELMET,
-                    new Item.Properties(),
+                    p,
                     MobEffects.MOVEMENT_SLOWDOWN,
                     80,
                     0
@@ -265,37 +261,37 @@ public class ModItems {
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
             }.effectParticles().ambient());
-    public static final DeferredItem<ArmorItem> LEAD_CHESTPLATE = ITEMS.register("lead_chestplate",
-            () -> new LeadArmorItem(
+    public static final DeferredItem<ArmorItem> LEAD_CHESTPLATE = ITEMS.registerItem("lead_chestplate",
+            (p) -> new LeadArmorItem(
                     ArmorType.CHESTPLATE,
-                    new Item.Properties()
+                    p
             ));
-    public static final DeferredItem<ArmorItem> LEAD_LEGGINGS = ITEMS.register("lead_leggings",
-            () -> new LeadArmorItem(
+    public static final DeferredItem<ArmorItem> LEAD_LEGGINGS = ITEMS.registerItem("lead_leggings",
+            (p) -> new LeadArmorItem(
                     ArmorType.LEGGINGS,
-                    new Item.Properties()
+                    p
             ));
-    public static final DeferredItem<ArmorItem> LEAD_BOOTS = ITEMS.register("lead_boots",
-            () -> new LeadArmorItem(
+    public static final DeferredItem<ArmorItem> LEAD_BOOTS = ITEMS.registerItem("lead_boots",
+            (p) -> new LeadArmorItem(
                     ArmorType.BOOTS,
-                    new Item.Properties()
+                    p
             ));
 
     //endregion
     
     //region CLAYMORES
-    public static final DeferredItem<NeoClaymoreItem> WOODEN_CLAYMORE = ITEMS.register("wooden_claymore",
-            () -> new NeoClaymoreItem(ToolMaterial.WOOD, new Item.Properties()));
-    public static final DeferredItem<NeoClaymoreItem> STONE_CLAYMORE = ITEMS.register("stone_claymore",
-            () -> new NeoClaymoreItem(ToolMaterial.STONE, new Item.Properties()));
-    public static final DeferredItem<NeoClaymoreItem> IRON_CLAYMORE = ITEMS.register("iron_claymore",
-            () -> new NeoClaymoreItem(ToolMaterial.IRON, new Item.Properties()));
-    public static final DeferredItem<NeoClaymoreItem> LEAD_CLAYMORE = ITEMS.register("lead_claymore",
-            () -> new NeoClaymoreItem(NeoToolMaterials.LEAD_TIER, new Item.Properties()).doesPoison());
-    public static final DeferredItem<NeoClaymoreItem> GOLD_CLAYMORE = ITEMS.register("gold_claymore",
-            () -> new NeoClaymoreItem(ToolMaterial.GOLD, new Item.Properties()));
-    public static final DeferredItem<NeoClaymoreItem> DIAMOND_CLAYMORE = ITEMS.register("diamond_claymore",
-            () -> new NeoClaymoreItem(ToolMaterial.DIAMOND, new Item.Properties()) {
+    public static final DeferredItem<NeoClaymoreItem> WOODEN_CLAYMORE = ITEMS.registerItem("wooden_claymore",
+            (p) -> new NeoClaymoreItem(ToolMaterial.WOOD, p));
+    public static final DeferredItem<NeoClaymoreItem> STONE_CLAYMORE = ITEMS.registerItem("stone_claymore",
+            (p) -> new NeoClaymoreItem(ToolMaterial.STONE, p));
+    public static final DeferredItem<NeoClaymoreItem> IRON_CLAYMORE = ITEMS.registerItem("iron_claymore",
+            (p) -> new NeoClaymoreItem(ToolMaterial.IRON, p));
+    public static final DeferredItem<NeoClaymoreItem> LEAD_CLAYMORE = ITEMS.registerItem("lead_claymore",
+            (p) -> new NeoClaymoreItem(NeoToolMaterials.LEAD_TIER, p).doesPoison());
+    public static final DeferredItem<NeoClaymoreItem> GOLD_CLAYMORE = ITEMS.registerItem("gold_claymore",
+            (p) -> new NeoClaymoreItem(ToolMaterial.GOLD, p));
+    public static final DeferredItem<NeoClaymoreItem> DIAMOND_CLAYMORE = ITEMS.registerItem("diamond_claymore",
+            (p) -> new NeoClaymoreItem(ToolMaterial.DIAMOND, p) {
                 @Override
                 public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
                     Level level = attacker.level();
@@ -315,10 +311,10 @@ public class ModItems {
                     return super.hurtEnemy(stack, target, attacker);
                 }
             });
-    public static final DeferredItem<NeoClaymoreItem> NETHERITE_CLAYMORE = ITEMS.register("netherite_claymore",
-            () -> new NeoClaymoreItem(ToolMaterial.NETHERITE, new Item.Properties()));
-    public static final DeferredItem<NeoClaymoreItem> BALLERITE_CLAYMORE = ITEMS.register("ballerite_claymore",
-            () -> new NeoClaymoreItem(NeoToolMaterials.BALLERITE_TIER, new Item.Properties()) {
+    public static final DeferredItem<NeoClaymoreItem> NETHERITE_CLAYMORE = ITEMS.registerItem("netherite_claymore",
+            (p) -> new NeoClaymoreItem(ToolMaterial.NETHERITE, p));
+    public static final DeferredItem<NeoClaymoreItem> BALLERITE_CLAYMORE = ITEMS.registerItem("ballerite_claymore",
+            (p) -> new NeoClaymoreItem(NeoToolMaterials.BALLERITE_TIER, p) {
                 @Override
                 public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
                     Level level = attacker.level();
@@ -343,11 +339,11 @@ public class ModItems {
 
 
     //region foods?
-    public static final DeferredItem<Item> KNIFE = ITEMS.register("knife",
-            () -> new KnifeItem(new Item.Properties().durability(32).setNoCombineRepair(), 3f));
+    public static final DeferredItem<Item> KNIFE = ITEMS.registerItem("knife",
+            (p) -> new KnifeItem(p, 3f), new Item.Properties().durability(32).setNoCombineRepair());
 
-    public static final DeferredItem<Item> DIAMOND_KNIFE = ITEMS.register("diamond_knife",
-            () -> new KnifeItem(new Item.Properties().durability(524).setNoCombineRepair(), 4.5f));
+    public static final DeferredItem<Item> DIAMOND_KNIFE = ITEMS.registerItem("diamond_knife",
+            (p) -> new KnifeItem(p, 4.5f), new Item.Properties().durability(524).setNoCombineRepair());
 
 
     public static final DeferredItem<BlockItem> BLUEBERRIES = ITEMS.registerSimpleBlockItem("blueberries",
@@ -357,128 +353,126 @@ public class ModItems {
             ModBlocks.BLACKBERRY_BUSH, new Item.Properties().food(BerryFoodProperties.BLACK)
                     .component(DataComponents.CONSUMABLE, BerryFoodProperties.DEFAULT_BERRY));
 
-    public static final DeferredItem<Item> STRAWBERRY = ITEMS.register("strawberry",
-            () -> new Item(new Item.Properties().food(BerryFoodProperties.STRAWBERRIES)
-                    .component(DataComponents.CONSUMABLE, BerryFoodProperties.DEFAULT_BERRY)));
-    public static final DeferredItem<Item> UNRIPE_STRAWBERRY = ITEMS.register("unripe_strawberry",
-            () -> new Item(new Item.Properties().food(BerryFoodProperties.UNRIPE_STRAWBERRIES)
-                    .component(DataComponents.CONSUMABLE, BerryFoodProperties.UNRIPE_STRAWBERIES_CONSUMABLE)));
+    public static final DeferredItem<Item> STRAWBERRY = ITEMS.registerSimpleItem("strawberry",
+            new Item.Properties().food(BerryFoodProperties.STRAWBERRIES)
+                    .component(DataComponents.CONSUMABLE, BerryFoodProperties.DEFAULT_BERRY));
+    public static final DeferredItem<Item> UNRIPE_STRAWBERRY = ITEMS.registerSimpleItem("unripe_strawberry",
+            new Item.Properties().food(BerryFoodProperties.UNRIPE_STRAWBERRIES)
+                    .component(DataComponents.CONSUMABLE, BerryFoodProperties.UNRIPE_STRAWBERIES_CONSUMABLE));
     public static final DeferredItem<BlockItem> STRAWBERRY_SEEDS = ITEMS.registerSimpleBlockItem("strawberry_seeds",
             ModBlocks.STRAWBERRY_BUSH, new Item.Properties());
 
-    public static final DeferredItem<Item> TOMATO = ITEMS.register("tomato",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.TOMATO)));
-    public static final DeferredItem<Item> GRILLED_TOMATO = ITEMS.register("grilled_tomato",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.GRILLED_TOMATO)));
+    public static final DeferredItem<Item> TOMATO = ITEMS.registerSimpleItem("tomato",
+            new Item.Properties().food(CropFoodProperties.TOMATO));
+    public static final DeferredItem<Item> GRILLED_TOMATO = ITEMS.registerSimpleItem("grilled_tomato",
+            new Item.Properties().food(CropFoodProperties.GRILLED_TOMATO));
     public static final DeferredItem<BlockItem> TOMATO_SEEDS = ITEMS.registerSimpleBlockItem("tomato_seeds",
             ModBlocks.TOMATO_CROP, new Item.Properties());
 
-    public static final DeferredItem<Item> EGGPLANT = ITEMS.register("eggplant",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.EGGPLANT)));
-    public static final DeferredItem<Item> GRILLED_EGGPLANT = ITEMS.register("grilled_eggplant",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.GRILLED_EGGPLANT)));
+    public static final DeferredItem<Item> EGGPLANT = ITEMS.registerSimpleItem("eggplant",
+            new Item.Properties().food(CropFoodProperties.EGGPLANT));
+    public static final DeferredItem<Item> GRILLED_EGGPLANT = ITEMS.registerSimpleItem("grilled_eggplant",
+            new Item.Properties().food(CropFoodProperties.GRILLED_EGGPLANT));
     public static final DeferredItem<BlockItem> EGGPLANT_SEEDS = ITEMS.registerSimpleBlockItem("eggplant_seeds",
             ModBlocks.EGGPLANT_CROP, new Item.Properties());
 
     public static final DeferredItem<BlockItem> SWEET_POTATO = ITEMS.registerSimpleBlockItem("sweet_potato",
             ModBlocks.SWEET_POTATO_CROP, new Item.Properties().food(CropFoodProperties.SWEET_POTATO));
-    public static final DeferredItem<Item> BAKED_SWEET_POTATO = ITEMS.register("baked_sweet_potato",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.BAKED_SWEET_POTATO)));
+    public static final DeferredItem<Item> BAKED_SWEET_POTATO = ITEMS.registerSimpleItem("baked_sweet_potato",
+            new Item.Properties().food(CropFoodProperties.BAKED_SWEET_POTATO));
 
 
     public static final DeferredItem<BlockItem> CORN_KERNELS = ITEMS.registerSimpleBlockItem("corn_kernels",
             ModBlocks.CORN_CROP, new Item.Properties().food(CropFoodProperties.KERNELS)
                     .component(DataComponents.CONSUMABLE, BerryFoodProperties.DEFAULT_BERRY));
-    public static final DeferredItem<Item> CORN_COB = ITEMS.register("corn_cob",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.COB)));
-    public static final DeferredItem<Item> GRILLED_CORN_COB = ITEMS.register("grilled_corn_cob",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.GRILLED_COB)));
+    public static final DeferredItem<Item> CORN_COB = ITEMS.registerSimpleItem("corn_cob",
+            new Item.Properties().food(CropFoodProperties.COB));
+    public static final DeferredItem<Item> GRILLED_CORN_COB = ITEMS.registerSimpleItem("grilled_corn_cob",
+            new Item.Properties().food(CropFoodProperties.GRILLED_COB));
 
 
 
-    public static final DeferredItem<Item> MILK_VILE = ITEMS.register("milk_vile",
-            () -> new Item(new Item.Properties()
+    public static final DeferredItem<Item> MILK_VILE = ITEMS.registerSimpleItem("milk_vile",
+            new Item.Properties()
                     .food(DrinkFoodProperties.MILK_VILE)
                     .craftRemainder(Items.GLASS_BOTTLE)
                     .component(DataComponents.CONSUMABLE, Consumables.MILK_BUCKET)
-                    .usingConvertsTo(Items.GLASS_BOTTLE)));
+                    .usingConvertsTo(Items.GLASS_BOTTLE));
 
-    public static final DeferredItem<CheeseItem> MILK_CHEESE = ITEMS.register("milk_cheese",
-            () -> new CheeseItem(new Item.Properties().food(CheeseFoodProperties.CHEESE)
-                    .component(DataComponents.CONSUMABLE, BerryFoodProperties.DEFAULT_BERRY))
-                    .cheeseType(CheeseItem.CheeseTypes.OVERWORLD));
-    public static final DeferredItem<CheeseItem> WARPED_CHEESE = ITEMS.register("warped_cheese",
-            () -> new CheeseItem(new Item.Properties().food(CheeseFoodProperties.WARPED)
-                    .component(DataComponents.CONSUMABLE, CheeseFoodProperties.WARPED_C))
-                    .cheeseType(CheeseItem.CheeseTypes.NETHER));
+    public static final DeferredItem<CheeseItem> MILK_CHEESE = ITEMS.registerItem("milk_cheese",
+            (p) -> new CheeseItem(p, CheeseItem.CheeseTypes.OVERWORLD), new Item.Properties().food(CheeseFoodProperties.CHEESE)
+                    .component(DataComponents.CONSUMABLE, BerryFoodProperties.DEFAULT_BERRY));
+    public static final DeferredItem<CheeseItem> WARPED_CHEESE = ITEMS.registerItem("warped_cheese",
+            (p) -> new CheeseItem(p, CheeseItem.CheeseTypes.NETHER), new Item.Properties().food(CheeseFoodProperties.WARPED)
+                    .component(DataComponents.CONSUMABLE, CheeseFoodProperties.WARPED_C));
 
-    public static final DeferredItem<Item> IRON_CARROT = ITEMS.register("iron_carrot",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.IRON_CARROT)
-                    .component(DataComponents.CONSUMABLE, CropFoodProperties.IRON_CARROT_C)) {
+    public static final DeferredItem<Item> IRON_CARROT = ITEMS.registerItem("iron_carrot",
+            (p) -> new Item(p) {
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(Component.literal("Don't have to worry about anemia, heh.").withStyle(ChatFormatting.GRAY));
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
-            });
-    public static final DeferredItem<Item> DIAMOND_CARROT = ITEMS.register("diamond_carrot",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.DIAMOND_CARROT)
-                    .component(DataComponents.CONSUMABLE, CropFoodProperties.DIAMOND_CARROT_C)) {
+            }, new Item.Properties().food(CropFoodProperties.IRON_CARROT)
+                    .component(DataComponents.CONSUMABLE, CropFoodProperties.IRON_CARROT_C));
+    public static final DeferredItem<Item> DIAMOND_CARROT = ITEMS.registerItem("diamond_carrot",
+            (p) -> new Item(p) {
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(Component.literal("Might be a little hard to bite into").withStyle(ChatFormatting.GRAY));
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
-            });
+            }, new Item.Properties().food(CropFoodProperties.DIAMOND_CARROT)
+                    .component(DataComponents.CONSUMABLE, CropFoodProperties.DIAMOND_CARROT_C));
 
 
-    public static final DeferredItem<Item> ENCHANTED_DIAMOND_CARROT = ITEMS.register("enchanted_diamond_carrot",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.ENCHANTED_DIAMOND_CARROT)
-                    .component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
-                    .component(DataComponents.CONSUMABLE, CropFoodProperties.ENCHANTED_DIAMOND_CARROT_C)) {
+    public static final DeferredItem<Item> ENCHANTED_DIAMOND_CARROT = ITEMS.registerItem("enchanted_diamond_carrot",
+            (p) -> new Item(p) {
                 @Override
                 public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
                     tooltipComponents.add(Component.literal("Might be a little harder to bite into").withStyle(ChatFormatting.GRAY));
                     super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
                 }
-            });
+            }, new Item.Properties().food(CropFoodProperties.ENCHANTED_DIAMOND_CARROT)
+                    .component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true)
+                    .component(DataComponents.CONSUMABLE, CropFoodProperties.ENCHANTED_DIAMOND_CARROT_C));
 
 
-    public static final DeferredItem<Item> EGGS_SUNNY = ITEMS.register("eggs_sunny",
-            () -> new Item(new Item.Properties().food(EggFoodProperties.SUNNY)));
-    public static final DeferredItem<Item> EGGS_SCRAMBLED = ITEMS.register("eggs_scrambled",
-            () -> new Item(new Item.Properties().food(EggFoodProperties.SCRAMBLED)));
-    public static final DeferredItem<Item> EGGS_OMLETTE = ITEMS.register("eggs_omlette",
-            () -> new Item(new Item.Properties().food(EggFoodProperties.OMLETTE)));
+    public static final DeferredItem<Item> EGGS_SUNNY = ITEMS.registerSimpleItem("eggs_sunny",
+            new Item.Properties().food(EggFoodProperties.SUNNY));
+    public static final DeferredItem<Item> EGGS_SCRAMBLED = ITEMS.registerSimpleItem("eggs_scrambled",
+            new Item.Properties().food(EggFoodProperties.SCRAMBLED));
+    public static final DeferredItem<Item> EGGS_OMLETTE = ITEMS.registerSimpleItem("eggs_omlette",
+            new Item.Properties().food(EggFoodProperties.OMLETTE));
 
 
 
-    public static final DeferredItem<SandwichItem> SANDWICH = ITEMS.register("default_sandwich", SandwichItem::new);
-    public static final DeferredItem<Item> CORN_BREAD = ITEMS.register("corn_bread",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.CORN_BREAD)));
-    public static final DeferredItem<Item> CORN_BREAD_SLICE = ITEMS.register("corn_bread_slice",
-            () -> new Item(new Item.Properties().food(CropFoodProperties.CORN_BREAD)));
+    public static final DeferredItem<SandwichItem> SANDWICH = ITEMS.registerItem("default_sandwich", properties -> new SandwichItem());
+    public static final DeferredItem<Item> CORN_BREAD = ITEMS.registerSimpleItem("corn_bread",
+            new Item.Properties().food(CropFoodProperties.CORN_BREAD));
+    public static final DeferredItem<Item> CORN_BREAD_SLICE = ITEMS.registerSimpleItem("corn_bread_slice",
+            new Item.Properties().food(CropFoodProperties.CORN_BREAD));
     //endregion
 
 
     //region jams
     public static final DeferredItem<JamItem> JAM_BLUEBERRIES = registerJamItem("jam_blueberries",
-            () -> new JamItem(BLUEBERRIES));
+            (p) -> new JamItem(BLUEBERRIES));
     public static final DeferredItem<JamItem> JAM_BLACKBERRIES = registerJamItem("jam_blackberries",
-            () -> new JamItem(BLACKBERRIES));
+            (p) -> new JamItem(BLACKBERRIES));
     public static final DeferredItem<JamItem> JAM_SWEETBERRIES = registerJamItem("jam_sweetberries",
-            () -> new JamItem(Items.SWEET_BERRIES));
+            (p) -> new JamItem(Items.SWEET_BERRIES));
     public static final DeferredItem<JamItem> JAM_STRAWBERRIES = registerJamItem("jam_strawberries",
-            () -> new JamItem(STRAWBERRY));
+            (p) -> new JamItem(STRAWBERRY));
     public static final DeferredItem<JamItem> JAM_TOMATOES = registerJamItem("jam_tomatoes",
-            () -> new JamItem(TOMATO));
+            (p) -> new JamItem(TOMATO));
     public static final DeferredItem<JamItem> JAM_SWEET_POTATOES = registerJamItem("jam_sweet_potatoes",
-            () -> new JamItem(SWEET_POTATO));
+            (p) -> new JamItem(SWEET_POTATO));
     //enregion
 
 
 
-    /*public static final DeferredItem<Item> LEAD_SHIELD = ITEMS.register("lead_shield",
+    /*public static final DeferredItem<Item> LEAD_SHIELD = ITEMS.registerItem("lead_shield",
             () -> new ShieldItem(new Item.Properties().durability(420).component(DataComponents.BANNER_PATTERNS, BannerPatternLayers.EMPTY)));
 */
 }
